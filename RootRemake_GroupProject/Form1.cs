@@ -5,6 +5,8 @@ namespace RootRemake_GroupProject
         public Form1()
         {
             InitializeComponent();
+            MainGame m = new MainGame();
+            m.Show();
         }
     }
 }
