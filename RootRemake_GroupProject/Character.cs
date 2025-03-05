@@ -12,6 +12,5 @@ namespace RootRemake_GroupProject
         public string characterName;
         public int TotalWarriors;
         public int TotalBuildings;
-        public int 
     }
 }
