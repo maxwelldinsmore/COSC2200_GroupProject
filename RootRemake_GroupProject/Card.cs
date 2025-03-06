@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RootRemake_GroupProject
 {
-    internal class Card
+    public class Card
     {
     }
 }

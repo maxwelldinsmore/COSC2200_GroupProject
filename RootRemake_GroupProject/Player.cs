@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace RootRemake_GroupProject
 {
-    internal class Player
+    public class Player
     {
         public int UserName;
         public Character character;
         public int VictoryPoints;
         public Card[] hand;
+
+        public Player ()
+        {
+
+        }
     }
 }

@@ -56,6 +56,7 @@
             Name = "MainGame";
             Text = "MainGame";
             Load += MainGame_Load;
+            Resize += MainGame_Resize;
             ((System.ComponentModel.ISupportInitialize)picBoxBoard).EndInit();
             ResumeLayout(false);
         }

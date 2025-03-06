@@ -31,5 +31,17 @@ namespace RootRemake_GroupProject
             new []{ 6, 7, 11, 14, 17}
 
         };
+
+        /// <summary>
+        /// Polygons of the locations for the game board
+        /// as percentage values going top left most point 
+        /// then clockwise around
+        /// </summary>
+        decimal[][][] locationPolygon =
+        {
+            new []{ new decimal[] {2.2m, 2.2m }, new decimal[] { }, new decimal[] { }, new decimal[] { }, new decimal[] { } },
+            new []{ new decimal[] { }, new decimal[] { }, new decimal[] { }, new decimal[] { }, new decimal[] { } },
+            new []{ new decimal[] { }, new decimal[] { }, new decimal[] { }, new decimal[] { }, new decimal[] { } },
+        };
     }
 }
