@@ -62,5 +62,15 @@ namespace RootRemake_GroupProject
             //}
 
         }
+
+        /// <summary>
+        /// For use in highlighting certain locations based on the mouse movement
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainGame_MouseMove(object sender, MouseEventArgs e)
+        {
+            return;
+        }
     }
 }

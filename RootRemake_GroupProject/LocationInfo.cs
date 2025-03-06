@@ -34,8 +34,8 @@ namespace RootRemake_GroupProject
 
         /// <summary>
         /// Polygons of the locations for the game board
-        /// as percentage values going top left most point 
-        /// then clockwise around
+        /// as percentage values (12% -> 0.12) going top left most point 
+        /// then clockwise around for later highlighting / hovering
         /// </summary>
         decimal[][][] locationPolygon =
         {
