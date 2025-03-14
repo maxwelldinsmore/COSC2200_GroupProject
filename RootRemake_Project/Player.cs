@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RootRemake_Project
 {
-    internal class Player
+    public class Player
     {
         public int UserName;
         public Character character;

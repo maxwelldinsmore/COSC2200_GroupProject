@@ -17,12 +17,12 @@ namespace RootRemake_Project
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(Player[] players)
+        public MainWindow()
         {
             InitializeComponent();
-            this.players = players ?? throw new ArgumentNullException(nameof(players));
-            currentWidth = this.Width;
-            currentHeight = this.Height;
+            Player[] players = new Player[4];
+            GameScreen gameScreen = new GameScreen();
+            gameScreen.Show();
         }
 
 
@@ -35,4 +35,5 @@ namespace RootRemake_Project
             //   " Y(%): " + ((double)me.Y / picBoxBoard.Height * 100).ToString("F4")
             //);
         }
+    }
 }

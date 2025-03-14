@@ -19,9 +19,13 @@ namespace RootRemake_Project
     /// </summary>
     public partial class GameScreen : Window
     {
+
+        public Player[] players;
         public GameScreen()
         {
             InitializeComponent();
+            this.players = players;
+
         }
     }
 }
