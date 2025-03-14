@@ -15,4 +15,5 @@ namespace RootRemake_Project
         /// </summary>
         public int CharacterSetupOrder;
     }
+
 }
