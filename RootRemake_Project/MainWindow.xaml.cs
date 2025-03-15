@@ -26,14 +26,6 @@ namespace RootRemake_Project
         }
 
 
-        private void imgBoxBoard_Click(object sender, EventArgs e)
-        {
-            //MouseEventArgs me = (MouseEventArgs)e;
-            ////MessageBox.Show("X: " + me.X + " Y: " + me.Y);
-            //MessageBox.Show("X(%): " +
-            //   ((double)me.X / picBoxBoard.Width * 100).ToString("F4") +
-            //   " Y(%): " + ((double)me.Y / picBoxBoard.Height * 100).ToString("F4")
-            //);
-        }
+       
     }
 }

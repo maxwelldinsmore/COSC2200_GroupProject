@@ -6,10 +6,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RootRemake_Project"
         mc:Ignorable="d"
-        Title="GameScreen" Height="450" Width="800">
-    <Grid>
-        <DockPanel Width="800" Height="800">
-            <Image Source="Assets/rootmap.jpg" DockPanel.Dock="Top" Height="695" Width="761" />
+        Title="GameScreen" Height="838" Width="1070">
+    <Grid Margin="0,0,0,-6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="869"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel x:Name="dockPanelMap" Height="797" Width="884" Grid.Column="0" >
+            <Image x:Name="imgMap" Source="Assets/rootmap.jpg"  DockPanel.Dock="Left" Height="797" Width="884" MouseDown="imgMap_MouseDown" />
         </DockPanel>
     </Grid>
 </Window>

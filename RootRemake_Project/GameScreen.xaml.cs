@@ -27,5 +27,15 @@ namespace RootRemake_Project
             this.players = players;
 
         }
+
+        private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MouseEventArgs me = (MouseEventArgs)e;
+            //MessageBox.Show("X: " + me.X + " Y: " + me.Y);
+            MessageBox.Show("X(%): " +
+               ((double)me.X / imgMap.Width * 100).ToString("F4") +
+               " Y(%): " + ((double)me.Y / imgMap.Height * 100).ToString("F4")
+            );
+        }
     }
 }
