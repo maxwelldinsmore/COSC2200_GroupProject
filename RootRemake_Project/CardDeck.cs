@@ -9,6 +9,7 @@ namespace RootRemake_Project
 {
     internal static class CardDeck
     {
+        // TODO: Declare all information for all the cards.
         private static Bitmap spriteSheet;
         private static int spriteWidth = 5330; // 10 columns * 533
         private static int spriteHeight = 4470; // 6 rows * 745

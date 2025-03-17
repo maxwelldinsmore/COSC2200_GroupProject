@@ -53,3 +53,9 @@ namespace RootRemake_Project
         
     }
 }
+
+
+// TODO: Add to gamescreen for collision detection of polygon locations
+// Ray Casting Method (Draw a line through the point and see if it intersects with the polygon)
+// https://rosettacode.org/wiki/Ray-casting_algorithm
+// Add in gamescreen referencing the Location Class / location Array
