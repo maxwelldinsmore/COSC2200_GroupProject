@@ -34,8 +34,8 @@ namespace RootRemake_Project
         {
             Point position = e.GetPosition(imgMap);
             MessageBox.Show("X(%): " +
-               (position.X / imgMap.Width * 100).ToString("F4") +
-               " Y(%): " + (position.Y / imgMap.Height * 100).ToString("F4")
+               (position.X / imgMap.ActualWidth * 100).ToString("F4") +
+               " Y(%): " + (position.Y / imgMap.ActualHeight * 100).ToString("F4")
             );
         }
 
@@ -47,8 +47,8 @@ namespace RootRemake_Project
         /// <param name="e"></param>
         private void imgMap_MouseMove(object sender, MouseEventArgs e)
         {
-            double imgWidth = imgMap.Width;
-            double imgHeight = imgMap.Height;
+            double imgWidth = imgMap.ActualWidth;
+            double imgHeight = imgMap.ActualHeight;
             Point position = e.GetPosition(imgMap);
             Debug.WriteLine($"Img Size: {imgWidth},{imgHeight}");
             this.locationInfo = new LocationInfo();
