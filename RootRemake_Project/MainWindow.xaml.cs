@@ -21,7 +21,10 @@ namespace RootRemake_Project
         {
             InitializeComponent();
             Player[] players = new Player[4];
+
             GameScreen gameScreen = new GameScreen();
+            gameScreen.Closed += (sender, e) => this.Show();
+            this.Hide();
             gameScreen.Show();
         }
 

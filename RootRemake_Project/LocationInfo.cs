@@ -1,9 +1,9 @@
 ﻿
 namespace RootRemake_Project
 {
-    internal class LocationInfo
+    public class LocationInfo
     {
-        int[][] ar =
+        public int[][] ar =
         {
             new []{ 1, 2, 4, 12, 13},
             new []{ 0, 3, 12},
@@ -32,11 +32,24 @@ namespace RootRemake_Project
         /// as percentage values (12% -> 0.12) going top left most point 
         /// then clockwise around for later highlighting / hovering
         /// </summary>
-        decimal[][][] locationPolygon =
+
+        public double[][][] locationSqaures =
         {
-            new []{ new decimal[] {2.2m, 2.2m }, new decimal[] { }, new decimal[] { }, new decimal[] { }, new decimal[] { } },
-            new []{ new decimal[] { }, new decimal[] { }, new decimal[] { }, new decimal[] { }, new decimal[] { } },
-            new []{ new decimal[] { }, new decimal[] { }, new decimal[] { }, new decimal[] { }, new decimal[] { } },
+            new []{ // Location 0
+                new []{ 4.58, 4.14 }, // [0][0]
+                new []{ 19.63, 4.89 }, // [0][1]
+                new []{ 19.63, 19.63 }, // [0][2]
+                new []{ 4.58, 19.63 }   // [0][3]
+            },
+            new []{ // Location 1
+                new []{ 46.21, 0.6 },
+                new []{ 60.01, 0.6 },
+                new []{ 60.01, 14.17 },
+                new []{ 46.21, 14.17 }
+            },
+
         };
+
+        
     }
 }
