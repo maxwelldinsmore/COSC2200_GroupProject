@@ -22,12 +22,13 @@ namespace RootRemake_Project
     {
         public LocationInfo locationInfo;
         public Player[] players;
+        
         public GameScreen()
         {
             InitializeComponent();
             this.players = players;
             this.locationInfo = new LocationInfo();
-
+            testCardLoad();
         }
 
         private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
@@ -107,9 +108,19 @@ namespace RootRemake_Project
 
         }
 
+        private void testCardLoad()
+        {
+            Card card = CardDeck.cardDeck[0];
+            BitmapSource cardImage = card.GetCardImage();
+            CardImage.Source = cardImage;
+        }
+
+
         private void Window_Closed(object sender, EventArgs e)
         {
             
         }
+
+        
     }
 }

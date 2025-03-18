@@ -1,18 +1,18 @@
 ﻿
 
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace RootRemake_Project
 {
     public class Card
     {
-        /// <summary>
-        /// Suit of card 0 to 4
-        /// Wildcard 0, Bunny 1, Fox 2, Mouse 3
-        /// </summary>
         public int Suit;
         public string CardText;
-        public static Bitmap CardArt;
+        public BitmapSource CardArt { get; set; }
         public int[] CraftCost;
         public int CardX;
         public int CardY;
@@ -22,8 +22,23 @@ namespace RootRemake_Project
         private static int quadHeight = 745;   // Card height
         private static int columnsPerRow = 10; // Columns per row (except the last row)
         private static int lastRowColumns = 3; // Columns in the last row
-        private static string imagePath = "RootRemake_Project/Assets/CardDeck.png";
-        private Bitmap CardSheet = new Bitmap(imagePath);
+        private static string imagePath = Path.Combine("pack://application:,,,/Assets/CardDeck.png");
+        private static BitmapImage CardSheet;
+
+        static Card()
+        {
+            try
+            {
+                Uri imageUri = new Uri("pack://application:,,,/Assets/CardDeck.png", UriKind.RelativeOrAbsolute);
+                CardSheet = new BitmapImage(imageUri);
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., log the error)
+                Console.WriteLine($"Error loading card sheet: {ex.Message}");
+            }
+        }
+
 
         // Constructor
         public Card(int suit, string cardText, int cardX, int cardY)
@@ -32,21 +47,24 @@ namespace RootRemake_Project
             CardX = cardX;
             CardY = cardY;
             CardText = cardText;
-            CraftCost = [0,0,0];
-
+            CraftCost = new int[] { 0, 0, 0 };
 
             int x = CardX * quadWidth;
             int y = CardY * quadHeight;
 
             // Extract the card image
-            Rectangle cropArea = new Rectangle(x, y, quadWidth, quadHeight);
-            Bitmap CardArt = CardSheet.Clone(cropArea, CardSheet.PixelFormat);
+            CardArt = new CroppedBitmap(CardSheet, new Int32Rect(x, y, quadWidth, quadHeight));
         }
 
-        // Method to craft the card
-        public void CraftCard()
+        public BitmapSource GetCardImage()
         {
-        }
+            if (CardSheet == null)
+            {
+                throw new InvalidOperationException("Card sheet image not loaded.");
+            }
 
+            Int32Rect rect = new Int32Rect(CardX * quadWidth, CardY * quadHeight, quadWidth, quadHeight);
+            return new CroppedBitmap(CardSheet, rect);
+        }
     }
 }

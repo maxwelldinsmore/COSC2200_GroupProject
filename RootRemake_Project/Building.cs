@@ -24,7 +24,6 @@ namespace RootRemake_Project
         { 
             this.playerID = playerID;
             this.CharacterID = CharacterID;
-
         }
 
     }

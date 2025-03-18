@@ -22,14 +22,17 @@
                 <MenuItem Header="_Debug"/>
             </MenuItem>
         </Menu>
-        
+
         <Image x:Name="imgMap" Source="Assets/rootmap.jpg" 
             MouseDown="imgMap_MouseDown" MouseMove="imgMap_MouseMove"
             Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="-7,0,7,0" 
             Height="777" 
         />
         <Grid Background="PaleGoldenrod" Grid.Column="1" Grid.Row="1">
-            
+            <Image Name="CardImage" Height="250" Margin="29,257,50,256"
+                   
+                   />
+
         </Grid>
     </Grid>
 </Window>

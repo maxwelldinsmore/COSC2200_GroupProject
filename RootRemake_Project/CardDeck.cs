@@ -1,30 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+using System.Windows.Media.Imaging;
 
 namespace RootRemake_Project
 {
-    internal static class CardDeck
+    public static class CardDeck
     {
-        // TODO: Declare all information for all the cards.
-        private static Bitmap spriteSheet;
-        private static int spriteWidth = 5330; // 10 columns * 533
-        private static int spriteHeight = 4470; // 6 rows * 745
-        private static int quadWidth = 533;    // Card width
-        private static int quadHeight = 745;   // Card height
-        private static int columnsPerRow = 10; // Columns per row (except the last row)
-        private static int lastRowColumns = 3; // Columns in the last row
-        private static string imagePath = "RootRemake_Project/Assets/CardDeck.png";
+        public static List<Card> cardDeck;
 
-     
-        static Card[] cardDeck =
+        static CardDeck()
         {
-            new Card(0,0),
-            new Card(0,1),
-        };
-       
+            InitializeCardDeck();
+        }
+
+        private static void InitializeCardDeck()
+        {
+            cardDeck = new List<Card>();
+
+            // Example initialization of cards
+            cardDeck.Add(new Card(1, "Example Card 1", 0, 0));
+            cardDeck.Add(new Card(2, "Example Card 2", 1, 0));
+            // Add more cards as needed
+        }
     }
 }
