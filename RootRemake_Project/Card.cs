@@ -21,7 +21,7 @@ namespace RootRemake_Project
         private static int quadWidth = 533;    // Card width
         private static int quadHeight = 745;   // Card height
         private static int columnsPerRow = 10; // Columns per row (except the last row)
-        private static int lastRowColumns = 3; // Columns in the last row
+        private static int lastRowColumns = 4; // Columns in the last row
         private static string imagePath = Path.Combine("pack://application:,,,/Assets/CardDeck.png");
         private static BitmapImage CardSheet;
 
