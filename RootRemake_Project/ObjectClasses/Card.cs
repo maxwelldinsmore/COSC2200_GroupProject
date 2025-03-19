@@ -64,4 +64,8 @@ namespace RootRemake_Project.ObjectClasses
             return new CroppedBitmap(CardSheet, rect);
         }
     }
+
+    internal class Card1
+    {
+    }
 }

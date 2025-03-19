@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RootRemake_Project.ObjectClasses.Item" Collapsed="true">
+    <Position X="6" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAgAAgA=</HashCode>
+      <FileName>ObjectClasses\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootRemake_Project.ObjectClasses.Building" Collapsed="true">
+    <Position X="8.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAAAAAgAAAAAAAAAAgAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>ObjectClasses\Building.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootRemake_Project.CharacterClasses.Character" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAIAAAMAAAAoAAAAACAAAAEgACAAAAEAAAAAAAAA=</HashCode>
+      <FileName>CharacterClasses\Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootRemake_Project.CharacterClasses.Eyrie" Collapsed="true">
+    <Position X="9.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAgAAAAAAAAAAEgACAAAAEAAAAAAAAA=</HashCode>
+      <FileName>CharacterClasses\Eyrie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootRemake_Project.CharacterClasses.MarquisDeCat" Collapsed="true">
+    <Position X="7.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQAAAgAAIIAAAAgAEAQBCAAAEEwAiAAAAEACEAABAAA=</HashCode>
+      <FileName>CharacterClasses\MarquisDeCat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootRemake_Project.CharacterClasses.Woodland" Collapsed="true">
+    <Position X="5.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAgAAAAAAAAAAEgACAAAAEAAAAAAAAA=</HashCode>
+      <FileName>CharacterClasses\Woodland.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootRemake_Project.LocationClasses.Forest" Collapsed="true">
+    <Position X="1" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LocationClasses\Forest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootRemake_Project.LocationClasses.Location" Collapsed="true">
+    <Position X="2.25" Y="2" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAABACAAAAAAAAAAAAAAAAAAAAAAABAAAAIAAAAA=</HashCode>
+      <FileName>LocationClasses\Location.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootRemake_Project.LocationClasses.LocationInfo" Collapsed="true">
+    <Position X="3" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAABgAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>LocationClasses\LocationInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootRemake_Project.ObjectClasses.Card" Collapsed="true">
+    <Position X="11" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAEAADADIAAAAAAgIAAAAAAAAAAAQAAAAAIAIAAAIA=</HashCode>
+      <FileName>ObjectClasses\Card.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootRemake_Project.ObjectClasses.CardDeck" Collapsed="true">
+    <Position X="4.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjectClasses\CardDeck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootRemake_Project.Player" Collapsed="true">
+    <Position X="7.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgIAAAAAAAAAAAgAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootRemake_Project.GameScreen" Collapsed="true">
+    <Position X="5.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAIAAAAAABAAAAAAAAAAAAAAAAACCIAAACAAAAAA=</HashCode>
+      <FileName>GameScreen.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
