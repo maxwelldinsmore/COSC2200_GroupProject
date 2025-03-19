@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RootRemake_Project.ObjectClasses
 {
-    internal class Building
+    public class Building
     {
         public int BuildingID;
         /// <summary>

@@ -9,9 +9,15 @@ namespace RootRemake_Project.LocationClasses
     // For the Clearing gets the location
     public class Clearing : Location
     {
-        public Clearing(int locationID, decimal[,] locationCoordinates, List<int> connectedLocations)
+        public Clearing(int locationID, double[,] locationCoordinates, List<int> connectedLocations)
             : base(locationID, "Clearing", locationCoordinates, connectedLocations)
         {
+        }
+
+
+        override public Boolean CanBuild()
+        {
+            return true; // TODO: add logic for if character rules the location and if there is space to build
         }
     }
 }

@@ -72,7 +72,7 @@
   <Class Name="RootRemake_Project.ObjectClasses.Card" Collapsed="true">
     <Position X="7.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAAEAADADIAAAAAAgIAAAAAAAAAAAQAAAAAIAIAAAIA=</HashCode>
+      <HashCode>AAAEAADADIAAAAAAAIAAAAAAAAAAAQAAAAAIAAAAAIA=</HashCode>
       <FileName>ObjectClasses\Card.cs</FileName>
     </TypeIdentifier>
   </Class>

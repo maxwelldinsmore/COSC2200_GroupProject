@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RootRemake_Project.ObjectClasses;
+using System;
 using System.Collections.Generic;
 using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
@@ -29,22 +30,33 @@ namespace RootRemake_Project.LocationClasses
 
         public string LocationType { get; set; } // If its a forest or clearing 
 
-        public decimal[,] LocationPolygon { get; set; } // The 2d array of decimals for [x, y] points describing location
+        public double[,] LocationPolygon { get; set; } // The 2d array of decimals for [x, y] points describing location
 
         public List<int> ConnectedLocations { get; set; } // For listing the locations that connect
 
-        public Location(int locationID, string locationType, decimal[,] locationCoordinates, List<int> connectedLocations)
+        /// <summary>
+        /// List of factions that contain units in this location
+        /// </summary>
+        public List<Army> Armies { get; set; }
+
+        public int totalBuildings { get; set; } // The total amount of buildings in the location
+
+        public List<Building> Buildings { get; set; } // The list of buildings in the location
+
+        public Location(int locationID, string locationType, double[,] locationCoordinates, List<int> connectedLocations)
         { 
             LocationID = locationID;
             LocationType = locationType;
             LocationPolygon = locationCoordinates;
             ConnectedLocations = connectedLocations;
-
+            Armies = new List<Army>();
+            Buildings = new List<Building>();
         }
 
-       
+        public abstract bool CanBuild(); // Abstract function for building
 
-        
+
+
 
     }
 }

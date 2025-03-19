@@ -29,6 +29,14 @@ namespace RootRemake_Project.LocationClasses
 
         };
 
+        //TODO: Add in the correct values for the locations
+        public Location[] MapLocations =
+        {
+            // THESE ARE WRONG VALUES JUST THE RIGHT IDEA
+            new Clearing(0, new double[,] { { 4.58, 4.14 }, { 19.63, 4.89 }, { 19.63, 19.63 }, { 4.58, 19.63 } }, new List<int> { 1, 2, 4, 12, 13 }),
+            new Clearing(1, new double[,] { { 46.21, 0.6 }, { 60.01, 0.6 }, { 60.01, 14.17 }, { 46.21, 14.17 } }, new List<int> { 1, 2, 4, 12, 13 }),
+        };
+
         /// <summary>
         /// Polygons of the locations for the game board
         /// as percentage values (12% -> 0.12) going top left most point 

@@ -22,6 +22,9 @@ namespace RootRemake_Project
     /// </summary>
     public partial class GameScreen : Window
     {
+        /// <summary>
+        /// Array of locations
+        /// </summary>
         public LocationInfo locationInfo;
         public Player[] players;
         

@@ -9,9 +9,14 @@ namespace RootRemake_Project.LocationClasses
     // For the forests gets the location 
     public class Forest : Location
     {
-        public Forest(int locationID, decimal[,] locationCoordinates, List<int> connectedLocations)
+        public Forest(int locationID, double[,] locationCoordinates, List<int> connectedLocations)
             : base(locationID, "Forest", locationCoordinates, connectedLocations)
         {
+        }
+        override public Boolean CanBuild()
+        {
+            // Forests can't build
+            return false;
         }
     }
 }
