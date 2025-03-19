@@ -22,20 +22,21 @@ namespace RootRemake_Project
     {
         public LocationInfo locationInfo;
         public Player[] players;
+        
         public GameScreen()
         {
             InitializeComponent();
             this.players = players;
             this.locationInfo = new LocationInfo();
-
+            testCardLoad();
         }
 
         private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Point position = e.GetPosition(imgMap);
             MessageBox.Show("X(%): " +
-               (position.X / imgMap.Width * 100).ToString("F4") +
-               " Y(%): " + (position.Y / imgMap.Height * 100).ToString("F4")
+               (position.X / imgMap.ActualWidth * 100).ToString("F4") +
+               " Y(%): " + (position.Y / imgMap.ActualHeight * 100).ToString("F4")
             );
         }
 
@@ -47,8 +48,8 @@ namespace RootRemake_Project
         /// <param name="e"></param>
         private void imgMap_MouseMove(object sender, MouseEventArgs e)
         {
-            double imgWidth = imgMap.Width;
-            double imgHeight = imgMap.Height;
+            double imgWidth = imgMap.ActualWidth;
+            double imgHeight = imgMap.ActualHeight;
             Point position = e.GetPosition(imgMap);
             Debug.WriteLine($"Img Size: {imgWidth},{imgHeight}");
             this.locationInfo = new LocationInfo();
@@ -107,9 +108,19 @@ namespace RootRemake_Project
 
         }
 
+        private void testCardLoad()
+        {
+            Card card = CardDeck.cardDeck[0];
+            BitmapSource cardImage = card.GetCardImage();
+            CardImage.Source = cardImage;
+        }
+
+
         private void Window_Closed(object sender, EventArgs e)
         {
             
         }
+
+        
     }
 }

@@ -6,7 +6,26 @@ using System.Threading.Tasks;
 
 namespace RootRemake_Project
 {
+    
     internal class Item
     {
+        private int ItemType;
+        private string ItemArt;
+        private string ItemName;
+        /// <summary>
+        /// 0 is not damaged, 1 is exhausted/used, 2 is damaged
+        /// </summary>
+        private int ItemQuality;
+
+        public Item(int ItemType, string ItemArt, string ItemName)
+        {
+            this.ItemType = ItemType;
+            this.ItemArt = ItemArt;
+            this.ItemName = ItemName;
+            this.ItemQuality = 0;
+        }
+
+        //TODO: Add code to resize the item art to fit on the board
+
     }
 }

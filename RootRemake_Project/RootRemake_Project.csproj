@@ -9,11 +9,1189 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\basic UI Mockup.png" />
+    <None Remove="Assets\CardDeck.png" />
+    <None Remove="Assets\EyrieBoard.png" />
+    <None Remove="Assets\EyrieBuildingIcon.png" />
+    <None Remove="Assets\EyrieCards.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc102169712819234858994778DFE9A03CE62752516CB533C50ADC108217C.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc1022824296872628070829A48D0EF229E20FD969DE6FC82B96FB9F70EAA.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc1022824477680997024F9A8AC275B2B4FB2BE1A81670824A563CCE00B7D.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc1028455020027570580552EC90B9F5F995330B83A76C95099B1AB76B08E.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc1771572958566591644F0E33457330E7B27616E3EA47903E932D3BA7FC0.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc177157295856674132633B024F77914392F9DB44741E725D986832C2F97.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc177382653720193126062875B32FA239FC2A3BE898C48D39F215D6BD185.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc79200878791987747743876DC6F423AFB949E5D8311AD154952A062682.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008787919879727FFB2C2FEBC51C6A8069B4DF6459E4102770AB507.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008787919880465BAE253B6EDEC64885AA6A234C8AFA4B8475780B2.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008787919880913DD2757635A2556199FF06032DAEBF710553DB3AE.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920087879198832946C4C04B13F8280A1BEB5BBEBE4812AF3FDE6DE96.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008787919885757B8438636EFE13F132451104805AE0437274F31A9.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc79200878791988766744AEBDF8F6EE11422CD83FBB54E1719FB20B9D22.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920087879199360176373A2067B03E392B66F56DBB137DF5A9922DAD5.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920087879199392841E90452DFA6F3B3F5DB431E3D1133784DDFD173F.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008787919940445442EA6F92D7C270D92ACCB8B74CB929605D53D9D.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920087879199412351DC1825CBA80690BE471451B8BBBAAB0D7DF4A13.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008787919941891FADB3D152E6115081C6905ACB9ACE98D83124BA3.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc79200878791994247949115DC9C5B61708FE647190990328760BE64D96.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920087879199426723155ACE1FDA4349A4CCDEF75ACEB3D553D4F2D72.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc79200896679194524322BCFB3B63FDDC4F572A46303AC29F270B09E8A1.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791945457E61C3BDDCF847A76E242CC170E5C81EB104AD138.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc79200896679194571811ABA8E110D265F95B0EA6064B1072916E2578B0.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791945932A643431C3BB2BB184A52FA91988B50CF9A99CCC8.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920089667919461687A28C4D3D38BA672E26C1B2469A56E656FC83B62.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791946644E132B1A7FEEADADC69E807F60807C4A1FC019F24.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791946915AC90F31B99BB4D243370698B9856A013FCB07D8E.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791947659183DFFE14E18813FC26E7E5B5F208628A9768912.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920089667919478984AC34C0FA07EAF3AE2660844292C08E2F42EC0EF.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920089667919482445BEA2423D3C33F23E78B95342D5D0893D777D61E.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791948574E31DB0846BBD3D08BE3606665FBD724769B6AD47.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920089667919488782D8D8AB3933F4C6BE46ACAD96630C57DBD8590C0.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791949178081FDF628B9B798822F76634B01B73C6DD58BA78.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791949530BF546C3DB797C09F567273A13052A8639C20AB82.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920089667919502650FF759657E652C90E097D86D0ADC97C5684FEA92.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791951084F81EDE1A0756A464C4677F797FE8FD80C42C3AAF.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920089667919514506330D3549A0FA4D9A6CEE27834DC59B3396D4BD6.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920089667919518411440B9EB1B17E9AB149FB33C5021C2E8C5011570.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791952096F7EEAE9338B2AB0EF08BFC384C94B73853372BC1.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791952427B40F2DD83339CD0ED68DAA3C2F41CBF9BD91CB8E.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791952743CD494DB2E6CA7403A24B4F029DE4CF416FC04F0A.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920089667919530297DCC24CFA623ACE43EDD1954FAD8F783DB93387D.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920089667919537846E08F3D2B7CFEB95266E45CDE4F0C131493260B5.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920089667919540519C922B7487C00B7AEDE95AA820905A5DDBBA62F4.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791954401030AD078787CE0564E3B12D733EA03753702756E.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791954955B7B3C484B6899398F07AFD3D9A10668D46FC2078.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791955263F669EAAAE073188F7C34FD723B6C66F488338C11.jpg" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc79200896679195586002D8E01A39FA04F5B87E22C0AAA36F58A77B72DC.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791956195F40E6C3BF7213E4D5525ADA9C5451709D085E1AB.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc792008966791956594578B293DAAC2DE414DAC0AA70FA7F93D05850232.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc79200896679195695348C620B5284463FDBE749B9DFA105230614FFB6D.png" />
+    <None Remove="Assets\Images\httpcloud3steamusercontentcomugc7920089667919572871AFC52512FF2FA1DC6C04CE498BD968FFF599273.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc11905874416590544021E064A88B297D4284FFE3B1506452B5C93B62E68.jpg" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc16419302158057912F5362521C5834C502734540008E78A4F8B3105F4.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc16419302161030312C82A0C235A5FCD839E5242FD40FFB2654CBE1032.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc16419302161036555CC02B14ADD3A4C25950B866B0931551D334541FC.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc16419302161232742A4D7217C4526E93BB851080B0804F1C22BDC6A34.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc16419302161240148A070DD5DCA35CA4A0C712934079FA5F0996A1044.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc16420027239828392D9A788A1356580F7B60B7D3D8507A50CA8A88A39.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc164200272454966030CEAE160AA06FE2B5EBF9C9586CDD385368F0A21.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc164200272454995545D1F4D0E5757E0954CBA8DAD5A974770C0240A49.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc16420027251539310A450741E43546370C6509D413D2CA3F1DABCBFAC.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc164200272515394385ACED6C71A4D2C7292355986C1279349C00BA49E.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc16421205162192117FE3156709F13ED9B46C72C676C938853FB60878D.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc164212051621921840EB23DE14DEEB692BC718D1995877FFEE0F308E6.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc164231082532396124B2CC3EBFD87C25AD92E61110CF80A5C0E461BD6.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc16423272747453068B48EB4FDFB2F15F821BB790DEFDA664305667245.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc16423272747872045D2F069B918E0EFBC461DEA2920B5FFE3282BB053.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1695030024164513547295D37261C5874179FFCE36C5433EC81C0B20EDD.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc169503002416593881012D932C8F3B369CF5DADB6716C431DF02EF0BDA6.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc169503002416595055518567DBC2FAF017705789C5493F5DB8E34F3AF09.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1696154224422718057A8AAC9571CC9982B09392B55E9E751BE319BEA8B.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1696154224422738170CF032C0C50839D92BE2F0A4A2FFACB24C5C3F005.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1696154224422742579AFE057743980A271EE1B308F1B2E44D23AB9E555.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc169615422442282867961E18C178357D1182081FEC391C7F401C5A71905.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1696154224423110603C3BC80DD5A0F72966665CAC14BECEEED1B02A692.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc172541628981327900163A7B0C8DC0B3592F93D530B90451CBEC07547F2.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402718265355D40F5A9F58E29970DD02DE3B668CD35920F4A4C0.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402718274003CD92CEB17685C1F47F3251FA59A5A6C89E068AF3.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17254164027198263297AC0B80B54F7A8AE83E6C1A1F0014EB83926DAB0.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402719828856442D99DF43D27564672F46E7B94389838E77EBB7.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402721063731939DF2074A31CAD355D03105EA90530671E275DE.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17254164027210709453B57F7CCBEDB396CEB70481769051D7CD491CAFB.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402721072522F96D33B2DA2FEC9AA603AFC14D63B34311F34915.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc172541640272107967665CDF0BE142456D54B25285390B4CCF0163B5903.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17254164027210811673E8A5E5A5806EE37F0C95F73AF9FC24D9F9E0AED.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402721084869964BF0F573EDFD0380AD036C520F95955B27A811.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc172541640272108621491112CA7A5B080B4E98EC71B0261A2687E09062E.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc172541640272108720495423490207D628D10A530AACF52998F9CC067B5.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402721121814F441AAAA2A5048397E1685E324C87A4BB946B5B7.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402721123069559A9AE0710087A6BBCC7222757960C83086EFA2.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17254164027211238996AF30E9F551002970DB6F4FB5EEB7BCD65B31F17.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402721125696027507215C8F16B4E56BAAF7217012CFDB9DAB78.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291755956632E99D3C9B246A94F6A898EC0D8098A05FA9467473.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291755958213960DFA43E52D99A3250863FC63F3BA3AE5104325.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc172879329175595985869B8EC707AD26EF2F558ACAB65B39163B812D3F6.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291755960838D88CBE9192488A678AF3EC6DFC45B4C728C9A169.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291755963912C9589D96259534C6FB15DD91F78E7E90A073FDD8.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17287932917562235558BB76979D215E9C042976005212DD7D0F9EBCDBD.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291756318712DAB9CB5B2AA9CF5AF4BDD67CFED687B8595411CF.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291756321980D728E9E7523EF9917554681B8CCFA7A79D6E95DC.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291756323292B5CDBACDB5E58637478F86047D574579AECBC763.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc172879329175632462171561324D23947260120C7F2EDF0A692986619EB.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291756326469AA4F3B6BF91AC337A240B582DF46C07DF9A374E5.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc172879329175632806325E9D54EAFE7A483877DECF1013DE57C96B0F214.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291756329310FEBDC9CB90C879DFC4ECAE1BBDDA857DBF9CD95C.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793367872326632BBBD16CCB2233145C130F362BD4772B701C7DF2D.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17287933678723288739643C19226CC90278C43552680153DDF15418A5A.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17287933678723310883CE6C8D9633EBD9DF25142BA43A97E9B35F01AE4.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793367872333367F2534D89EE4AF2F499B16CBF80B8F265A0119C80.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc172879336787233605205940C3730A58F0B71A020D512486BB890F45550.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793367872340896F217E92D8189385816ACC9A9EA44603D49B19865.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc172879336787250098879BC1C2E8411DCAFADF7C9B7D094F2273CC38E87.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17287936355263714640DB00E235E0DA0EA7201674331D0AE7B8BCD47D1.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17287936355264465119AE39070D94704577D502A7272E2C2BBA280EEB0.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc172879363552648107946982BC98D7F8D610F4F2CEAE92D987F20485862.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1737799767864183308645A94F760E536513EBB7C21526214936B7501BF.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17580723691073531857911CE2914C6DA96F3B28E141231372DE0CAA303.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17591997332848243900C20FDD76FB7E0E77833A6948C12DC931F9A0C30.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17591997332863550617CC669574FB8C2836047540B51419475D35EA270.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391476513193BC24B78DB0EB7F04B03D162BD7C9C4DC56F6BA30.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391476521209314B380DED440A1EA71186A6E99FB3C59402C3C4.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391476562674F7F1CF96513DDEA45A8F3676A265A88E63C676A1.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17603203914774670057C3F17A8356F03ED9959F45D9B75D4806753293D.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391478913266D2EB4AB85F5F10C192BB144B002A32DCF92B3265.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391478914056E3198ED7968E6049D0C66D8FB999C5CACC59DBCC.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17603203914790110219E725254A1E8A5C7F52AC45587D20FE0D013B7BE.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391479013315D70BD5B6EF8801AB463571F52CC69F3A450BF5E2.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391479014412C558A70F5F54251C81131D10EFD090DEE6B421D7.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391479023162017FC34EB2A5461BA9907A6655C19031F88CBF46.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391479024026F0F9819595316F0C4002C81902F616579B413F2C.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391483979109439A3ED93AA7CCEA361EE156603836D8D1AC6213.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17603203914841687826AB3B3D66178AF6937DE96321EB5E9898C6B088B.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17828389335793012057363CC92AB61C7B0BF4D93BFBC9892605BC20B80.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1782838933579302036CE6374FE0E23C9CF5497E9B67F5E6595A262FFA3.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17828391668274863436117E1938803CFB27B9B5E11AE5211EA1D586847.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1782839633458582396169BD7654EE5AE1D88B8C8C2D6C17B31D90927F0.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1782840088903024368D45A2DD6DA43C27CAA47C56305C8E1B0A053F881.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc178284008890303123869C85739BFF03016086DEBE20D49D6DE60314E20.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17862332110716867176EC913639AC72B7CE6D04A9BB36D715A218B1793.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1786233211086847220627C599441E86F86731BEDF96B23634C36882F78.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17862332110868831305B96E0370A42D4CC2C97569EDFF7624621471EDF.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1786233211086912182563B6D9C9AFC31863D36B443728319131A2B4E03.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc17918487893931787809438FC204F346D081D3E66A95BBEAC918288004A.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1807607729518322439BE47EFE061610E9CB724B3095F0956520F95BE45.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1807607729518374394D6531DE057A68951E7432D7D839A6420D4217D90.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1807607729518377223CEC288A5ADF64C89CCFC5A76CA8BD48793A3972B.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1807607729518380061BA2F56A5CBB156CCC8CE23B3EFA045843EB175D7.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1807607729518383515FBDCB69233CF15950FB1782D1BC3796B42E8DD12.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc180760772951838724006CD66E12FB2C9DB4AE1315895D626DE0E694BCE.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18076077295183895506D1B49BBD6E42DB0C25F445A6C3D8D70132B9516.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc180760772951839230549783E3C054D489E41721BE66B0E20728A257F59.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1807607729518395346C0BD4C0686FF2473D2806119A8C24EB0931D44BB.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1808735899838592698230BD7C014065377B9E03360BECFDE63CDF22BBC.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc180873589983882238073FDF88FC8581290043D89083BA64CF90281AF91.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859303950628984979820A68EC7BB7CB0812856DAB8455966C21A10.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859303950632835A47AA2904B4AFFE19648A9583C1AB5F872E84189.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859303950635072B71340F7B3B6B8E30B491868B93CE13539463C4E.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859303950636966DD89D4857C4DB810D71F1ED80DD1ABE3548C5ED5.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859303950638542BD3C9002B06FA848A16378C5E168236F2755775A.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859303950641909BD0B83895573607C967FA637052B486F9EDC37D8.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc180985930395064301184B0F5F2FC4ABE02610EC9DB069F0C87D123DA3D.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859303953108083DE8E54E2AAA576DBCFF1942FE96D79BAEF9FEF00.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18098593039531098540E8E4F07F53C124137BD58D4211953DF6E3514DD.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc180985930395312513785AEEA8FEA3B3E1E9E9695AAF5555FEAFD7A77D1.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc180985953150024968007F53AB05F97BFCD0B372B60ECCAC2534D03C9C0.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859531500252810618CF62B03AC113700F5F3C82C6CC143BD7980CB.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859531500254831DCCA54261EE8176EA4D4A367CD6D510669EE36C7.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18098595315002560360B98A2667B87E1D56069A516C7467A2F3251C00E.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18098595315002567537BE44363B3AB5E9B20DFFF21F9A8D1E8D157656D.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18098596350191918422261ACDE35BDD17F956C0A37DFC2C3149C62C1EF.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002351912627D5210E8BCE36A77E184822010EF2C61F7DEDC.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002352594072F0CCC9D517E9FADC65F7BDE8256398266B047.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002353118D1293E1872A2FF7B6CAF0B439AC7D4EE55D90224.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18098597990023537666F439F94DE0CB726A10D42931F22CF32D2A4D1CA.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc180985979900235439401E665731D3A10966A85E4059731CBAAC99F661A.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002354943AD7A3863BC48FE4CB38148457B42AC00D8BC8EBE.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002355565BEA908D461229491144DC3CEE3047769C645D30E.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18098597990023562040253E139941420EA32CBF63EEB066962A30EE1E3.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002356838C3AF19CCCD1E81E2422E82E60EA512AC12CE5C0C.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002798151522376C833A9089E37B6E190423341DB948709AA.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc180985979900279942955AEE70FBD094EA29A99C1C4D1B1D12B3C43ED3A.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002800397C361CBE503FDE27C2CA0B277BB0B1A8B5B45E9D4.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002801228E66FF018000CC7B4CDA93A658193475F9112D996.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18098597990028021806CE35596C7C0354E7D5868C4B8DC286A2A0EEA36.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002976789D911472850E01877B9C4D64578A98C8943430DAB.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002978285E82A012E48C4D8C29E06225C63E5DF056C1CD281.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc180985979900299532062E29F39304BB917BC7D6B2279023815C567E78B.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc180985979900311117004391B14EF07FBD13352AD45AA63DAE5EDDFD4DC.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799003114048CF48A3023C92C86A4A3D145367AFD84F23681D07.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799003156760E68BD984348439054963132BE9D1E9E708FFB08A.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1833522185818215151BD81EFECC6902E60CAFE69E4D0097FDE9B1C86EB.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18335221858185708375AD9E0C3A070B225F367DA2D8B2FF19B45DE01AE.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1833522185818573545FC3E6F9A6C7EC90D212555F80BAB19A44BE34782.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc183352218581857423699EEEF30B3667FB22F243008BCA1368EE3E05338.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1833522185818578726CE952087E18A1C0B6B94E44EF53EB009A97A7122.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1833522185818579404C0D7197A109DBF0C2EFB34DF50AE2CA70A66C25B.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18335221858192876937774219B8D50A4D4F2C9E616D14308F104490F68.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18357882659349671930E6535D86CDBA7C6C0BC6ED0F1E4A2099FC3FB88.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18357882659370224420610CA38AC064C6C538C3BC7CC0023D8E931354F.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1858304668138699983C44EA2A82303E48DE0BF8014D328132B2254D498.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859433104053128068C897405AA4A79F6BB6BB1FCB437A7DCCE4816E5D.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859433104053130905247FAE492208FF3BEFACE423A31B8D7644BA7B19.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859433396458782841B0C3F1F30DCCF711DA0EC2E5B48F5D410701B958.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859433396458784883C7C6C929AAEFC026633CCB3888A72F0F279DD8A1.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18594333964589404837AAD94536429D22306C090309845DF953CC34532.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859433396459135062253FCE248E26587FB9E4CE4F46FDADF821F9F1C4.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc185943339645913634334E362A154266CD60CAD440C7CA8CA8E36D7BC9C.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18594337362392335351E6EAAD16C69A68CFD5BDFB84411FA65FBD7F2C7.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc185943373623933836143B9B1D5FA66BC4A8DCA9BD72EC9BBD24F7DB2BF.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18594337362410795543E62827E84C53494BD3F30580E30EA0ABC4AB689.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859433736253264110888FA86A8D9B7590713FE892F3D7D5D91905EF69.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc185943373625466149806A46C67E78AC87B2E035E6F5FC6D7F2057A3964.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859433736254662681FE12C3D7360E8D978034EC28132E628C06D9DD2E.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434101951585009F33362E64934EFD20410F353BE64A5451FD4FB73.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434101951610005FF4F77B450D2F32501E70CAF352DE257BDADCC05.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434101951611900514A5003AE63A6AC1FAEB5F68BE741226F779009.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434101951710722B363F2041887AB57F90C594D7036F7FD1745086C.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434101951712863B1CD398C494BE01C9D4E4753E9F915D7EB54E460.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434101951713498B99906D69F79A91FFEEE4444152EA31E923FDA42.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434101951714181CAAC38556E5D2111DA5D75EB136635CA9645C52A.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18594341019517151398ECE46813DCB1D48B3D36A419B88C24C80FAAD93.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18594341019517158817927CA35AB21A6D5BCD9D1249027B258D82A2648.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc185943410195171846165E9006F827C7FC2D5180838E6C4A49F8040D8F5.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18594342250807981640D2C17759DEFDC174D12198136404A7ECE05FC5F.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434225080859685DBC14BF55B906F73925CB99D2A48D8653A6E8655.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434225080861783D301E68CB89DCDF96782CDCCBFE22C1D0E2526C1.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434225080862473E48961307C71CBA6CA9189BDD625E8B84ED2C7F1.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18594342250808639634EA3989FC5CAFDC6E584E2B1A0E7FCB232DE02D8.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18594342250816132222464BDE6BF73D6522AA8BBDB37CB6B5EBD6A4B99.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434225081615866317E175EE2E15A84723CA8510B3B0D74D0B19332.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434258001698297806BC83B3E94AC2454A3E285AC67B90424959125.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434258001794538FC3DA4C98C6DC090A9D3890825B1BA17B39F06FA.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434258003723744420718C7006B759F3C04D418311F841412F8F81E.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18594343881607241283ACB262AA7620A4108D09D1437F9DFA3EE95A62F.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434388160745758EF66E3413945D78D73E0D27E4AD1F3038C687ACA.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1862809798758457073089EBACF82C9F5F6A57DE99BC4B039C26025C7DE.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18628097987584586883E0EB033B013FBF8DC17AB401A9CFC0C042C478B.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1871805410099132277153EB97C3CCEC3B2AC8076C8DDC724F8E1165163.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1871806044359176221007B74BEF5F41C8CF1E3BC6371B8746F85149C5B.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc18718087019138940009E9D2A27ADC818413936D98C3194E03E87A8726A.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1871808701913905742C512B939A77659A639B338D3D7100B46D3B80078.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc1871808701913909385F2E9E01AA0ACFB1783D550FBC0578AD57B21E84F.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc250803452442599174777C277526C0042FE2754C83836A1E2C3C03FAD38.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc792008635622433348E7DABC3D7BDA0854BAC96D2F2A498642BEDAA3EB.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc792008635622434487F7E306C70460E592416C26E7C3F3CFBD4C6E6D89.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc792008635622434911A27DB1ECAF8B22D735422B355EF5FE4B921C1E31.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc7920086356224364825F66602DA4FC363CCFED7A59E8542298BC2C2D2A.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc7920086356224374878BA581BECABCF7D6A8C564A5E6CCC1CD26D4A2EF.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc7920086356224381066BC89893FCB6F878DE0B634BCAF7209CF51CE857.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc7920086356224404277EB6973D1B2CD0A73208B31C46E7F1DC147A6043.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc79200863562245057551CDD71C2C26D962B1B3DBD431C943840BD2CEFE.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc792008635622457026BF0F13D634B3B535D470396151B8A2F456507526.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc792008635622457954195F0F3DFD439596DE7A5D941E93DE07BF820D11.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc792008635622458566AF3D10F25ABE87305AF3F9A77B4C04B7761FBDDA.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc79200878791998918987AA5C7CE4192FBC0900B24EC7DEAB95110CAB94.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc7920087879199894988255A8EFCFB2BD474C3F698579FBBE70662F8CEA.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc7920087879200030552817F237F33C253197D96E9534C17004F2B3D661.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc79200878792000798031E9550DB276915F3EA1F27CD387ADCE81657B2E.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc792008787920013866D250C9591D68B83499A8952BCA5C684F04E13980.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc79200878792001790580BF0B8B6BC138E676AF31B3055DF2124E7F2F4B.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc7920087879200223948AD75E0065109B2350D989D473EBEC170E92BB60.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc7920087879200315689FDA298CAA9675B5DDAC29F1AA1C19DA44AC4BBF.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc7920087879200359893748A07E731D02DC842DFA4D3A92481E4B082D51.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc7920087879200401968328799796E99F07C70A40E7672868F5167091DF.png" />
+    <None Remove="Assets\Images\httpssteamusercontentaakamaihdnetugc792009307520381735D0C808467BA56AFF80A592DF2EEC952526C7E80D.png" />
+    <None Remove="Assets\Images\MarquiseIcon.png" />
+    <None Remove="Assets\Images\Recruiter.png" />
+    <None Remove="Assets\Images\Sawmill.png" />
+    <None Remove="Assets\Images\VagabondIcon.png" />
+    <None Remove="Assets\Images\Wokrshop.png" />
+    <None Remove="Assets\Items\Bag.png" />
+    <None Remove="Assets\Items\BagUsed.png" />
+    <None Remove="Assets\Items\Boot.png" />
+    <None Remove="Assets\Items\BootUsed.png" />
+    <None Remove="Assets\Items\Coin.png" />
+    <None Remove="Assets\Items\CoinUsed.png" />
+    <None Remove="Assets\Items\Crossbow.png" />
+    <None Remove="Assets\Items\CrossbowUsed.png" />
+    <None Remove="Assets\Items\Hammer.png" />
+    <None Remove="Assets\Items\HammerUsed.png" />
+    <None Remove="Assets\Items\Kettle.png" />
+    <None Remove="Assets\Items\KettleUsed.png" />
+    <None Remove="Assets\Items\Sword.png" />
+    <None Remove="Assets\Items\SwordUsed.png" />
+    <None Remove="Assets\MarquisBoard.png" />
+    <None Remove="Assets\RootClassDiagrams.png" />
     <None Remove="Assets\rootmap.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\rootmap.jpg" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\basic UI Mockup.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\CardDeck.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\EyrieBoard.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\EyrieBuildingIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\EyrieCards.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc102169712819234858994778DFE9A03CE62752516CB533C50ADC108217C.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc1022824296872628070829A48D0EF229E20FD969DE6FC82B96FB9F70EAA.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc1022824477680997024F9A8AC275B2B4FB2BE1A81670824A563CCE00B7D.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc1028455020027570580552EC90B9F5F995330B83A76C95099B1AB76B08E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc1771572958566591644F0E33457330E7B27616E3EA47903E932D3BA7FC0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc177157295856674132633B024F77914392F9DB44741E725D986832C2F97.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc177382653720193126062875B32FA239FC2A3BE898C48D39F215D6BD185.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc79200878791987747743876DC6F423AFB949E5D8311AD154952A062682.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008787919879727FFB2C2FEBC51C6A8069B4DF6459E4102770AB507.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008787919880465BAE253B6EDEC64885AA6A234C8AFA4B8475780B2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008787919880913DD2757635A2556199FF06032DAEBF710553DB3AE.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920087879198832946C4C04B13F8280A1BEB5BBEBE4812AF3FDE6DE96.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008787919885757B8438636EFE13F132451104805AE0437274F31A9.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc79200878791988766744AEBDF8F6EE11422CD83FBB54E1719FB20B9D22.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920087879199360176373A2067B03E392B66F56DBB137DF5A9922DAD5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920087879199392841E90452DFA6F3B3F5DB431E3D1133784DDFD173F.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008787919940445442EA6F92D7C270D92ACCB8B74CB929605D53D9D.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920087879199412351DC1825CBA80690BE471451B8BBBAAB0D7DF4A13.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008787919941891FADB3D152E6115081C6905ACB9ACE98D83124BA3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc79200878791994247949115DC9C5B61708FE647190990328760BE64D96.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920087879199426723155ACE1FDA4349A4CCDEF75ACEB3D553D4F2D72.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc79200896679194524322BCFB3B63FDDC4F572A46303AC29F270B09E8A1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791945457E61C3BDDCF847A76E242CC170E5C81EB104AD138.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc79200896679194571811ABA8E110D265F95B0EA6064B1072916E2578B0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791945932A643431C3BB2BB184A52FA91988B50CF9A99CCC8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920089667919461687A28C4D3D38BA672E26C1B2469A56E656FC83B62.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791946644E132B1A7FEEADADC69E807F60807C4A1FC019F24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791946915AC90F31B99BB4D243370698B9856A013FCB07D8E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791947659183DFFE14E18813FC26E7E5B5F208628A9768912.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920089667919478984AC34C0FA07EAF3AE2660844292C08E2F42EC0EF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920089667919482445BEA2423D3C33F23E78B95342D5D0893D777D61E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791948574E31DB0846BBD3D08BE3606665FBD724769B6AD47.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920089667919488782D8D8AB3933F4C6BE46ACAD96630C57DBD8590C0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791949178081FDF628B9B798822F76634B01B73C6DD58BA78.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791949530BF546C3DB797C09F567273A13052A8639C20AB82.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920089667919502650FF759657E652C90E097D86D0ADC97C5684FEA92.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791951084F81EDE1A0756A464C4677F797FE8FD80C42C3AAF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920089667919514506330D3549A0FA4D9A6CEE27834DC59B3396D4BD6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920089667919518411440B9EB1B17E9AB149FB33C5021C2E8C5011570.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791952096F7EEAE9338B2AB0EF08BFC384C94B73853372BC1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791952427B40F2DD83339CD0ED68DAA3C2F41CBF9BD91CB8E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791952743CD494DB2E6CA7403A24B4F029DE4CF416FC04F0A.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920089667919530297DCC24CFA623ACE43EDD1954FAD8F783DB93387D.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920089667919537846E08F3D2B7CFEB95266E45CDE4F0C131493260B5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920089667919540519C922B7487C00B7AEDE95AA820905A5DDBBA62F4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791954401030AD078787CE0564E3B12D733EA03753702756E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791954955B7B3C484B6899398F07AFD3D9A10668D46FC2078.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791955263F669EAAAE073188F7C34FD723B6C66F488338C11.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc79200896679195586002D8E01A39FA04F5B87E22C0AAA36F58A77B72DC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791956195F40E6C3BF7213E4D5525ADA9C5451709D085E1AB.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc792008966791956594578B293DAAC2DE414DAC0AA70FA7F93D05850232.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc79200896679195695348C620B5284463FDBE749B9DFA105230614FFB6D.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpcloud3steamusercontentcomugc7920089667919572871AFC52512FF2FA1DC6C04CE498BD968FFF599273.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc11905874416590544021E064A88B297D4284FFE3B1506452B5C93B62E68.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc16419302158057912F5362521C5834C502734540008E78A4F8B3105F4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc16419302161030312C82A0C235A5FCD839E5242FD40FFB2654CBE1032.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc16419302161036555CC02B14ADD3A4C25950B866B0931551D334541FC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc16419302161232742A4D7217C4526E93BB851080B0804F1C22BDC6A34.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc16419302161240148A070DD5DCA35CA4A0C712934079FA5F0996A1044.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc16420027239828392D9A788A1356580F7B60B7D3D8507A50CA8A88A39.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc164200272454966030CEAE160AA06FE2B5EBF9C9586CDD385368F0A21.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc164200272454995545D1F4D0E5757E0954CBA8DAD5A974770C0240A49.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc16420027251539310A450741E43546370C6509D413D2CA3F1DABCBFAC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc164200272515394385ACED6C71A4D2C7292355986C1279349C00BA49E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc16421205162192117FE3156709F13ED9B46C72C676C938853FB60878D.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc164212051621921840EB23DE14DEEB692BC718D1995877FFEE0F308E6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc164231082532396124B2CC3EBFD87C25AD92E61110CF80A5C0E461BD6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc16423272747453068B48EB4FDFB2F15F821BB790DEFDA664305667245.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc16423272747872045D2F069B918E0EFBC461DEA2920B5FFE3282BB053.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1695030024164513547295D37261C5874179FFCE36C5433EC81C0B20EDD.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc169503002416593881012D932C8F3B369CF5DADB6716C431DF02EF0BDA6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc169503002416595055518567DBC2FAF017705789C5493F5DB8E34F3AF09.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1696154224422718057A8AAC9571CC9982B09392B55E9E751BE319BEA8B.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1696154224422738170CF032C0C50839D92BE2F0A4A2FFACB24C5C3F005.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1696154224422742579AFE057743980A271EE1B308F1B2E44D23AB9E555.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc169615422442282867961E18C178357D1182081FEC391C7F401C5A71905.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1696154224423110603C3BC80DD5A0F72966665CAC14BECEEED1B02A692.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc172541628981327900163A7B0C8DC0B3592F93D530B90451CBEC07547F2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402718265355D40F5A9F58E29970DD02DE3B668CD35920F4A4C0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402718274003CD92CEB17685C1F47F3251FA59A5A6C89E068AF3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17254164027198263297AC0B80B54F7A8AE83E6C1A1F0014EB83926DAB0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402719828856442D99DF43D27564672F46E7B94389838E77EBB7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402721063731939DF2074A31CAD355D03105EA90530671E275DE.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17254164027210709453B57F7CCBEDB396CEB70481769051D7CD491CAFB.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402721072522F96D33B2DA2FEC9AA603AFC14D63B34311F34915.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc172541640272107967665CDF0BE142456D54B25285390B4CCF0163B5903.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17254164027210811673E8A5E5A5806EE37F0C95F73AF9FC24D9F9E0AED.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402721084869964BF0F573EDFD0380AD036C520F95955B27A811.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc172541640272108621491112CA7A5B080B4E98EC71B0261A2687E09062E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc172541640272108720495423490207D628D10A530AACF52998F9CC067B5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402721121814F441AAAA2A5048397E1685E324C87A4BB946B5B7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402721123069559A9AE0710087A6BBCC7222757960C83086EFA2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17254164027211238996AF30E9F551002970DB6F4FB5EEB7BCD65B31F17.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1725416402721125696027507215C8F16B4E56BAAF7217012CFDB9DAB78.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291755956632E99D3C9B246A94F6A898EC0D8098A05FA9467473.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291755958213960DFA43E52D99A3250863FC63F3BA3AE5104325.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc172879329175595985869B8EC707AD26EF2F558ACAB65B39163B812D3F6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291755960838D88CBE9192488A678AF3EC6DFC45B4C728C9A169.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291755963912C9589D96259534C6FB15DD91F78E7E90A073FDD8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17287932917562235558BB76979D215E9C042976005212DD7D0F9EBCDBD.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291756318712DAB9CB5B2AA9CF5AF4BDD67CFED687B8595411CF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291756321980D728E9E7523EF9917554681B8CCFA7A79D6E95DC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291756323292B5CDBACDB5E58637478F86047D574579AECBC763.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc172879329175632462171561324D23947260120C7F2EDF0A692986619EB.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291756326469AA4F3B6BF91AC337A240B582DF46C07DF9A374E5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc172879329175632806325E9D54EAFE7A483877DECF1013DE57C96B0F214.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793291756329310FEBDC9CB90C879DFC4ECAE1BBDDA857DBF9CD95C.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793367872326632BBBD16CCB2233145C130F362BD4772B701C7DF2D.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17287933678723288739643C19226CC90278C43552680153DDF15418A5A.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17287933678723310883CE6C8D9633EBD9DF25142BA43A97E9B35F01AE4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793367872333367F2534D89EE4AF2F499B16CBF80B8F265A0119C80.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc172879336787233605205940C3730A58F0B71A020D512486BB890F45550.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1728793367872340896F217E92D8189385816ACC9A9EA44603D49B19865.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc172879336787250098879BC1C2E8411DCAFADF7C9B7D094F2273CC38E87.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17287936355263714640DB00E235E0DA0EA7201674331D0AE7B8BCD47D1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17287936355264465119AE39070D94704577D502A7272E2C2BBA280EEB0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc172879363552648107946982BC98D7F8D610F4F2CEAE92D987F20485862.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1737799767864183308645A94F760E536513EBB7C21526214936B7501BF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17580723691073531857911CE2914C6DA96F3B28E141231372DE0CAA303.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17591997332848243900C20FDD76FB7E0E77833A6948C12DC931F9A0C30.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17591997332863550617CC669574FB8C2836047540B51419475D35EA270.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391476513193BC24B78DB0EB7F04B03D162BD7C9C4DC56F6BA30.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391476521209314B380DED440A1EA71186A6E99FB3C59402C3C4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391476562674F7F1CF96513DDEA45A8F3676A265A88E63C676A1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17603203914774670057C3F17A8356F03ED9959F45D9B75D4806753293D.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391478913266D2EB4AB85F5F10C192BB144B002A32DCF92B3265.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391478914056E3198ED7968E6049D0C66D8FB999C5CACC59DBCC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17603203914790110219E725254A1E8A5C7F52AC45587D20FE0D013B7BE.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391479013315D70BD5B6EF8801AB463571F52CC69F3A450BF5E2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391479014412C558A70F5F54251C81131D10EFD090DEE6B421D7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391479023162017FC34EB2A5461BA9907A6655C19031F88CBF46.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391479024026F0F9819595316F0C4002C81902F616579B413F2C.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1760320391483979109439A3ED93AA7CCEA361EE156603836D8D1AC6213.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17603203914841687826AB3B3D66178AF6937DE96321EB5E9898C6B088B.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17828389335793012057363CC92AB61C7B0BF4D93BFBC9892605BC20B80.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1782838933579302036CE6374FE0E23C9CF5497E9B67F5E6595A262FFA3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17828391668274863436117E1938803CFB27B9B5E11AE5211EA1D586847.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1782839633458582396169BD7654EE5AE1D88B8C8C2D6C17B31D90927F0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1782840088903024368D45A2DD6DA43C27CAA47C56305C8E1B0A053F881.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc178284008890303123869C85739BFF03016086DEBE20D49D6DE60314E20.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17862332110716867176EC913639AC72B7CE6D04A9BB36D715A218B1793.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1786233211086847220627C599441E86F86731BEDF96B23634C36882F78.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17862332110868831305B96E0370A42D4CC2C97569EDFF7624621471EDF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1786233211086912182563B6D9C9AFC31863D36B443728319131A2B4E03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc17918487893931787809438FC204F346D081D3E66A95BBEAC918288004A.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1807607729518322439BE47EFE061610E9CB724B3095F0956520F95BE45.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1807607729518374394D6531DE057A68951E7432D7D839A6420D4217D90.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1807607729518377223CEC288A5ADF64C89CCFC5A76CA8BD48793A3972B.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1807607729518380061BA2F56A5CBB156CCC8CE23B3EFA045843EB175D7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1807607729518383515FBDCB69233CF15950FB1782D1BC3796B42E8DD12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc180760772951838724006CD66E12FB2C9DB4AE1315895D626DE0E694BCE.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18076077295183895506D1B49BBD6E42DB0C25F445A6C3D8D70132B9516.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc180760772951839230549783E3C054D489E41721BE66B0E20728A257F59.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1807607729518395346C0BD4C0686FF2473D2806119A8C24EB0931D44BB.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1808735899838592698230BD7C014065377B9E03360BECFDE63CDF22BBC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc180873589983882238073FDF88FC8581290043D89083BA64CF90281AF91.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859303950628984979820A68EC7BB7CB0812856DAB8455966C21A10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859303950632835A47AA2904B4AFFE19648A9583C1AB5F872E84189.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859303950635072B71340F7B3B6B8E30B491868B93CE13539463C4E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859303950636966DD89D4857C4DB810D71F1ED80DD1ABE3548C5ED5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859303950638542BD3C9002B06FA848A16378C5E168236F2755775A.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859303950641909BD0B83895573607C967FA637052B486F9EDC37D8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc180985930395064301184B0F5F2FC4ABE02610EC9DB069F0C87D123DA3D.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859303953108083DE8E54E2AAA576DBCFF1942FE96D79BAEF9FEF00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18098593039531098540E8E4F07F53C124137BD58D4211953DF6E3514DD.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc180985930395312513785AEEA8FEA3B3E1E9E9695AAF5555FEAFD7A77D1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc180985953150024968007F53AB05F97BFCD0B372B60ECCAC2534D03C9C0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859531500252810618CF62B03AC113700F5F3C82C6CC143BD7980CB.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859531500254831DCCA54261EE8176EA4D4A367CD6D510669EE36C7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18098595315002560360B98A2667B87E1D56069A516C7467A2F3251C00E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18098595315002567537BE44363B3AB5E9B20DFFF21F9A8D1E8D157656D.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18098596350191918422261ACDE35BDD17F956C0A37DFC2C3149C62C1EF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002351912627D5210E8BCE36A77E184822010EF2C61F7DEDC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002352594072F0CCC9D517E9FADC65F7BDE8256398266B047.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002353118D1293E1872A2FF7B6CAF0B439AC7D4EE55D90224.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18098597990023537666F439F94DE0CB726A10D42931F22CF32D2A4D1CA.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc180985979900235439401E665731D3A10966A85E4059731CBAAC99F661A.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002354943AD7A3863BC48FE4CB38148457B42AC00D8BC8EBE.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002355565BEA908D461229491144DC3CEE3047769C645D30E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18098597990023562040253E139941420EA32CBF63EEB066962A30EE1E3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002356838C3AF19CCCD1E81E2422E82E60EA512AC12CE5C0C.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002798151522376C833A9089E37B6E190423341DB948709AA.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc180985979900279942955AEE70FBD094EA29A99C1C4D1B1D12B3C43ED3A.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002800397C361CBE503FDE27C2CA0B277BB0B1A8B5B45E9D4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002801228E66FF018000CC7B4CDA93A658193475F9112D996.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18098597990028021806CE35596C7C0354E7D5868C4B8DC286A2A0EEA36.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002976789D911472850E01877B9C4D64578A98C8943430DAB.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799002978285E82A012E48C4D8C29E06225C63E5DF056C1CD281.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc180985979900299532062E29F39304BB917BC7D6B2279023815C567E78B.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc180985979900311117004391B14EF07FBD13352AD45AA63DAE5EDDFD4DC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799003114048CF48A3023C92C86A4A3D145367AFD84F23681D07.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1809859799003156760E68BD984348439054963132BE9D1E9E708FFB08A.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1833522185818215151BD81EFECC6902E60CAFE69E4D0097FDE9B1C86EB.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18335221858185708375AD9E0C3A070B225F367DA2D8B2FF19B45DE01AE.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1833522185818573545FC3E6F9A6C7EC90D212555F80BAB19A44BE34782.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc183352218581857423699EEEF30B3667FB22F243008BCA1368EE3E05338.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1833522185818578726CE952087E18A1C0B6B94E44EF53EB009A97A7122.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1833522185818579404C0D7197A109DBF0C2EFB34DF50AE2CA70A66C25B.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18335221858192876937774219B8D50A4D4F2C9E616D14308F104490F68.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18357882659349671930E6535D86CDBA7C6C0BC6ED0F1E4A2099FC3FB88.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18357882659370224420610CA38AC064C6C538C3BC7CC0023D8E931354F.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1858304668138699983C44EA2A82303E48DE0BF8014D328132B2254D498.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859433104053128068C897405AA4A79F6BB6BB1FCB437A7DCCE4816E5D.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859433104053130905247FAE492208FF3BEFACE423A31B8D7644BA7B19.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859433396458782841B0C3F1F30DCCF711DA0EC2E5B48F5D410701B958.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859433396458784883C7C6C929AAEFC026633CCB3888A72F0F279DD8A1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18594333964589404837AAD94536429D22306C090309845DF953CC34532.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859433396459135062253FCE248E26587FB9E4CE4F46FDADF821F9F1C4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc185943339645913634334E362A154266CD60CAD440C7CA8CA8E36D7BC9C.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18594337362392335351E6EAAD16C69A68CFD5BDFB84411FA65FBD7F2C7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc185943373623933836143B9B1D5FA66BC4A8DCA9BD72EC9BBD24F7DB2BF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18594337362410795543E62827E84C53494BD3F30580E30EA0ABC4AB689.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859433736253264110888FA86A8D9B7590713FE892F3D7D5D91905EF69.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc185943373625466149806A46C67E78AC87B2E035E6F5FC6D7F2057A3964.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859433736254662681FE12C3D7360E8D978034EC28132E628C06D9DD2E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434101951585009F33362E64934EFD20410F353BE64A5451FD4FB73.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434101951610005FF4F77B450D2F32501E70CAF352DE257BDADCC05.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434101951611900514A5003AE63A6AC1FAEB5F68BE741226F779009.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434101951710722B363F2041887AB57F90C594D7036F7FD1745086C.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434101951712863B1CD398C494BE01C9D4E4753E9F915D7EB54E460.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434101951713498B99906D69F79A91FFEEE4444152EA31E923FDA42.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434101951714181CAAC38556E5D2111DA5D75EB136635CA9645C52A.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18594341019517151398ECE46813DCB1D48B3D36A419B88C24C80FAAD93.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18594341019517158817927CA35AB21A6D5BCD9D1249027B258D82A2648.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc185943410195171846165E9006F827C7FC2D5180838E6C4A49F8040D8F5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18594342250807981640D2C17759DEFDC174D12198136404A7ECE05FC5F.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434225080859685DBC14BF55B906F73925CB99D2A48D8653A6E8655.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434225080861783D301E68CB89DCDF96782CDCCBFE22C1D0E2526C1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434225080862473E48961307C71CBA6CA9189BDD625E8B84ED2C7F1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18594342250808639634EA3989FC5CAFDC6E584E2B1A0E7FCB232DE02D8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18594342250816132222464BDE6BF73D6522AA8BBDB37CB6B5EBD6A4B99.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434225081615866317E175EE2E15A84723CA8510B3B0D74D0B19332.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434258001698297806BC83B3E94AC2454A3E285AC67B90424959125.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434258001794538FC3DA4C98C6DC090A9D3890825B1BA17B39F06FA.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434258003723744420718C7006B759F3C04D418311F841412F8F81E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18594343881607241283ACB262AA7620A4108D09D1437F9DFA3EE95A62F.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1859434388160745758EF66E3413945D78D73E0D27E4AD1F3038C687ACA.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1862809798758457073089EBACF82C9F5F6A57DE99BC4B039C26025C7DE.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18628097987584586883E0EB033B013FBF8DC17AB401A9CFC0C042C478B.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1871805410099132277153EB97C3CCEC3B2AC8076C8DDC724F8E1165163.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1871806044359176221007B74BEF5F41C8CF1E3BC6371B8746F85149C5B.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc18718087019138940009E9D2A27ADC818413936D98C3194E03E87A8726A.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1871808701913905742C512B939A77659A639B338D3D7100B46D3B80078.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc1871808701913909385F2E9E01AA0ACFB1783D550FBC0578AD57B21E84F.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc250803452442599174777C277526C0042FE2754C83836A1E2C3C03FAD38.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc792008635622433348E7DABC3D7BDA0854BAC96D2F2A498642BEDAA3EB.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc792008635622434487F7E306C70460E592416C26E7C3F3CFBD4C6E6D89.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc792008635622434911A27DB1ECAF8B22D735422B355EF5FE4B921C1E31.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc7920086356224364825F66602DA4FC363CCFED7A59E8542298BC2C2D2A.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc7920086356224374878BA581BECABCF7D6A8C564A5E6CCC1CD26D4A2EF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc7920086356224381066BC89893FCB6F878DE0B634BCAF7209CF51CE857.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc7920086356224404277EB6973D1B2CD0A73208B31C46E7F1DC147A6043.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc79200863562245057551CDD71C2C26D962B1B3DBD431C943840BD2CEFE.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc792008635622457026BF0F13D634B3B535D470396151B8A2F456507526.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc792008635622457954195F0F3DFD439596DE7A5D941E93DE07BF820D11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc792008635622458566AF3D10F25ABE87305AF3F9A77B4C04B7761FBDDA.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc79200878791998918987AA5C7CE4192FBC0900B24EC7DEAB95110CAB94.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc7920087879199894988255A8EFCFB2BD474C3F698579FBBE70662F8CEA.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc7920087879200030552817F237F33C253197D96E9534C17004F2B3D661.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc79200878792000798031E9550DB276915F3EA1F27CD387ADCE81657B2E.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc792008787920013866D250C9591D68B83499A8952BCA5C684F04E13980.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc79200878792001790580BF0B8B6BC138E676AF31B3055DF2124E7F2F4B.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc7920087879200223948AD75E0065109B2350D989D473EBEC170E92BB60.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc7920087879200315689FDA298CAA9675B5DDAC29F1AA1C19DA44AC4BBF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc7920087879200359893748A07E731D02DC842DFA4D3A92481E4B082D51.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc7920087879200401968328799796E99F07C70A40E7672868F5167091DF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\httpssteamusercontentaakamaihdnetugc792009307520381735D0C808467BA56AFF80A592DF2EEC952526C7E80D.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\MarquiseIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Recruiter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Sawmill.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\VagabondIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Wokrshop.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Items\Bag.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Items\BagUsed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Items\Boot.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Items\BootUsed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Items\Coin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Items\CoinUsed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Items\Crossbow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Items\CrossbowUsed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Items\Hammer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Items\HammerUsed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Items\Kettle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Items\KettleUsed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Items\Sword.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Items\SwordUsed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\MarquisBoard.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\RootClassDiagrams.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\rootmap.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

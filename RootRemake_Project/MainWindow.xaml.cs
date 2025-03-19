@@ -10,6 +10,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+
+
 namespace RootRemake_Project
 {
     /// <summary>
@@ -29,6 +32,5 @@ namespace RootRemake_Project
         }
 
 
-       
     }
 }
