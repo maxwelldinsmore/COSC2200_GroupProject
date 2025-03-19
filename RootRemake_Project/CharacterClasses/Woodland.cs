@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RootRemake_Project
+namespace RootRemake_Project.CharacterClasses
 {
     internal class Woodland : Character
     {

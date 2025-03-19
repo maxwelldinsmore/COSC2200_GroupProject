@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RootRemake_Project
+namespace RootRemake_Project.ObjectClasses
 {
     
     internal class Item
@@ -22,7 +22,7 @@ namespace RootRemake_Project
             this.ItemType = ItemType;
             this.ItemArt = ItemArt;
             this.ItemName = ItemName;
-            this.ItemQuality = 0;
+            ItemQuality = 0;
         }
 
         //TODO: Add code to resize the item art to fit on the board

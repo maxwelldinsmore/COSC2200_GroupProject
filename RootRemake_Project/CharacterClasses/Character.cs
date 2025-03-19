@@ -1,7 +1,6 @@
-﻿
-using System.Windows.Media.Animation;
+﻿using System.Windows.Media.Animation;
 
-namespace RootRemake_Project
+namespace RootRemake_Project.CharacterClasses
 {
 
     public abstract class Character

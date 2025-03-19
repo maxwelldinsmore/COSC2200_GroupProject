@@ -1,5 +1,4 @@
-﻿using RootRemake_Project;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
@@ -22,23 +21,23 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 //setter and getters for adding units in location or adding building to location.
 ///</summary>
 
-namespace RootRemake_Project
+namespace RootRemake_Project.LocationClasses
 {
-    internal class Location 
+    internal abstract class Location 
     {
         public int LocationID { get; set; } // An set and get for the location
 
         public string LocationType { get; set; } // If its a forest or clearing (for clear skin)
 
-        public decimal[,] LocationCoordinates { get; set; } // The 2d array of decimals for [x, y] points describing location
+        public decimal[,] LocationPolygon { get; set; } // The 2d array of decimals for [x, y] points describing location
 
         public List<int> ConnectedLocations { get; set; } // For listing the locations that connect
 
         public Location(int locationID, string locationType, decimal[,] locationCoordinates)
         { 
             LocationID = locationID;
-            locationType = locationType;
-            LocationCoordinates = locationCoordinates;
+            LocationType = locationType;
+            LocationPolygon = locationCoordinates;
             ConnectedLocations = new List<int>();
 
         }

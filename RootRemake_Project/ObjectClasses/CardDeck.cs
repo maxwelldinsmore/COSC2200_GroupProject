@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace RootRemake_Project
+namespace RootRemake_Project.ObjectClasses
 {
     public static class CardDeck
     {

@@ -1,7 +1,6 @@
-﻿
-using System.Drawing;
+﻿using System.Drawing;
 
-namespace RootRemake_Project
+namespace RootRemake_Project.LocationClasses
 {
     public class LocationInfo
     {
@@ -62,7 +61,7 @@ namespace RootRemake_Project
 
         }
 
-        public Boolean InsideLocation(Point mouse, double[][] locationPolygon)
+        public bool InsideLocation(Point mouse, double[][] locationPolygon)
         {
             // First gets inner polygon line used in point in polygon method
             double x1 = 0;

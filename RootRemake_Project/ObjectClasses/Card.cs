@@ -1,12 +1,10 @@
-﻿
-
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
-namespace RootRemake_Project
+namespace RootRemake_Project.ObjectClasses
 {
     public class Card
     {
@@ -16,8 +14,7 @@ namespace RootRemake_Project
         public int[] CraftCost;
         public int CardX;
         public int CardY;
-        private static int spriteWidth = 5330; // 10 columns * 533
-        private static int spriteHeight = 4470; // 6 rows * 745
+        // 10 columns * 533 6 rows * 745
         private static int quadWidth = 533;    // Card width
         private static int quadHeight = 745;   // Card height
         private static int columnsPerRow = 10; // Columns per row (except the last row)
