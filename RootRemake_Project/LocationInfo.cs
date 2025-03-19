@@ -1,4 +1,6 @@
 ﻿
+using System.Drawing;
+
 namespace RootRemake_Project
 {
     public class LocationInfo
@@ -51,8 +53,71 @@ namespace RootRemake_Project
 
         };
 
-        
+        /// <summary>
+        /// Sets the locations boundaries from percentage
+        /// to real values for the game board
+        /// </summary>
+        public void onresize()
+        {
+
+        }
+
+        public Boolean InsideLocation(Point mouse, double[][] locationPolygon)
+        {
+            // First gets inner polygon line used in point in polygon method
+            double x1 = 0;
+            double x2 = 0;
+            double y1 = 0;
+            double y2 = 99999999;
+            foreach (double[] location in locationPolygon)
+            {
+                if (location[1] < y1)
+                {
+                    y1 = location[1];
+                    x1 = location[0];
+                }
+                if (location[1] > y2)
+                {
+                    y2 = location[1];
+                    x2 = location[0];
+                }
+            }
+
+            // Ray Casting method 
+            int intersectionCount = 0;
+            // IDK IF THIS WORKS TOTALLY NOT AI
+            for (int i = 0; i < locationPolygon.Length; i++)
+            {
+                double x1p = locationPolygon[i][0];
+                double y1p = locationPolygon[i][1];
+                double x2p = locationPolygon[(i + 1) % locationPolygon.Length][0];
+                double y2p = locationPolygon[(i + 1) % locationPolygon.Length][1];
+                if (y1p == y2p)
+                {
+                    continue;
+                }
+                if (mouse.Y < y1p && mouse.Y < y2p)
+                {
+                    continue;
+                }
+                if (mouse.Y >= y1p && mouse.Y >= y2p)
+                {
+                    continue;
+                }
+                double x = (mouse.Y - y1p) * (x2p - x1p) / (y2p - y1p) + x1p;
+                if (x > mouse.X)
+                {
+                    intersectionCount++;
+                }
+            }
+            // If even return false, if odd return true
+            return intersectionCount % 2 == 1;
+
+        }
+
     }
+
+    
 }
 
 
@@ -60,3 +125,5 @@ namespace RootRemake_Project
 // Ray Casting Method (Draw a line through the point and see if it intersects with the polygon)
 // https://rosettacode.org/wiki/Ray-casting_algorithm
 // Add in gamescreen referencing the Location Class / location Array
+
+

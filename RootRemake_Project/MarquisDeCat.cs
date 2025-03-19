@@ -27,15 +27,15 @@ namespace RootRemake_Project
         // -----------------------------------------------
         // SET UP PHASE -- at the start of the game
         // -----------------------------------------------
-        public void setUp()
+        override public void CharacterSetup()
         {
-            placeCats();
-            tokens();
+            PlaceCats();
+            Tokens();
             Console.WriteLine("Set up complete.");
         }
 
         // places a cat at each area on the game board
-        private void placeCats()
+        private void PlaceCats()
         {
             foreach (int i in locationSquares)
             {
@@ -44,13 +44,13 @@ namespace RootRemake_Project
         }
 
         // places the keep token to the selected area
-        private void tokens()
+        private void Tokens()
         {
             keepToken = locationSquares[0];
             Console.WriteLine($"Keep token placed at location {keepToken}");
         }
 
-        public void placeBuilding(int locationId, string buildingType)
+        public void PlaceBuilding(int locationId, string buildingType)
         {
             //if (!buildings.ContainsKey(locationId) && (buildingType == "Sawmill" || buildingType == "Workshop" || buildingType == "Recruiter"))
             //{
@@ -69,7 +69,7 @@ namespace RootRemake_Project
         /// <summary>
         /// 
         /// </summary>
-        public void birdsong()
+        override public void BirdSong()
         {
             int sawmills = 0;
             foreach (var building in buildings.Values)
@@ -82,7 +82,7 @@ namespace RootRemake_Project
         // -----------------------------------------------
         // DAYLIGHT
         // -----------------------------------------------
-        public void daylight()
+        override public void Daylight()
         {
             int totalActions = 3;
             while (totalActions > 0)
@@ -92,25 +92,25 @@ namespace RootRemake_Project
                 switch (action.ToUpper())
                 {
                     case "B":
-                        build();
+                        Build();
                         break;
                     case "R":
-                        recruit();
+                        Recruit();
                         break;
                     case "M":
-                        move();
+                        Move();
                         break;
                     case "MA":
-                        march();
+                        March();
                         break;
                     case "O":
-                        overwork();
+                        Overwork();
                         break;
                     case "BT":
-                        battle();
+                        Battle();
                         break;
                     case "E":
-                        extraAction();
+                        ExtraAction();
                         break;
                     default:
                         Console.WriteLine("Invalid action.");
@@ -121,7 +121,7 @@ namespace RootRemake_Project
         }
         // action methods
         // build : let player build a building of choice by spending their wood
-        public void build()
+        public void Build()
         {
             if (noWoods > 0)
             {
@@ -129,12 +129,12 @@ namespace RootRemake_Project
                 int loc = int.Parse(Console.ReadLine());
                 Console.WriteLine("Enter building type (Sawmill/Workshop/Recruiter: ");
                 string type = Console.ReadLine();
-                placeBuilding(loc, type);
+                PlaceBuilding(loc, type);
                 noWoods--;
             }
         } 
         // recruit: lets player to span a cat to a recruiter building
-        public void recruit()
+        public void Recruit()
         {
             if (noCats > 0)
             {
@@ -148,31 +148,31 @@ namespace RootRemake_Project
         }
 
         // move: moves a cat by 1 area
-        private void move()
+        override public void Move()
         {
             
         }
 
         // march: moves a cat by 2 areas
-        private void march()
+        public void March()
         {
 
         }
 
         // battle: battles againts another character
-        private void battle()
+        private void Battle()
         {
 
         }
 
         // overwork: spends a card to plcae one wood at a sawmill in a matching clearing
-        private void overwork()
+        private void Overwork()
         {
 
         }
 
         // extra action: allows user to have 1 more action by using their wil card
-        private void extraAction()
+        private void ExtraAction()
         {
 
         }
@@ -180,14 +180,19 @@ namespace RootRemake_Project
         // -----------------------------------------------
         // EVENING 
         // -----------------------------------------------
-        public void evening()
+        override public void Evening()
         {
-            drawCard();
+            DrawCard();
         }
 
-        private void drawCard()
+        private void DrawCard()
         {
 
+        }
+
+        override public string CharacterName()
+        {
+            return "Marquis";
         }
     }
 }
