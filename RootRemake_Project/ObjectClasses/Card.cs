@@ -8,6 +8,9 @@ namespace RootRemake_Project.ObjectClasses
 {
     public class Card
     {
+        /// <summary>
+        /// Suit 1 is Wild, Suit 2 is Fox, Suit 3 is Bunny, Suit 4 is Rat.
+        /// </summary>
         public int Suit;
         public string CardText;
         public BitmapSource CardArt { get; set; }
@@ -15,11 +18,10 @@ namespace RootRemake_Project.ObjectClasses
         public int CardX;
         public int CardY;
         // 10 columns * 533 6 rows * 745
+
+        // TODO: Pixel Count slightly off so will show part of a card and another card
         private static int quadWidth = 533;    // Card width
         private static int quadHeight = 745;   // Card height
-        private static int columnsPerRow = 10; // Columns per row (except the last row)
-        private static int lastRowColumns = 4; // Columns in the last row
-        private static string imagePath = Path.Combine("pack://application:,,,/Assets/CardDeck.png");
         private static BitmapImage CardSheet;
 
         static Card()
@@ -65,7 +67,5 @@ namespace RootRemake_Project.ObjectClasses
         }
     }
 
-    internal class Card1
-    {
-    }
+    
 }

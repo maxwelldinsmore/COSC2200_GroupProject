@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace RootRemake_Project.LocationClasses
 {
-    internal class Forest
+    // For the forests gets the location 
+    public class Forest : Location
     {
+        public Forest(int locationID, decimal[,] locationCoordinates, List<int> connectedLocations)
+            : base(locationID, "Forest", locationCoordinates, connectedLocations)
+        {
+        }
     }
 }

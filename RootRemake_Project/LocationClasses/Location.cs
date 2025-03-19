@@ -23,42 +23,28 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace RootRemake_Project.LocationClasses
 {
-    internal abstract class Location 
+    public abstract class Location 
     {
         public int LocationID { get; set; } // An set and get for the location
 
-        public string LocationType { get; set; } // If its a forest or clearing (for clear skin)
+        public string LocationType { get; set; } // If its a forest or clearing 
 
         public decimal[,] LocationPolygon { get; set; } // The 2d array of decimals for [x, y] points describing location
 
         public List<int> ConnectedLocations { get; set; } // For listing the locations that connect
 
-        public Location(int locationID, string locationType, decimal[,] locationCoordinates)
+        public Location(int locationID, string locationType, decimal[,] locationCoordinates, List<int> connectedLocations)
         { 
             LocationID = locationID;
             LocationType = locationType;
             LocationPolygon = locationCoordinates;
-            ConnectedLocations = new List<int>();
+            ConnectedLocations = connectedLocations;
 
         }
 
-        // For the forests gets the location 
-        public class Forest : Location
-        {
-            public Forest(int locationID, decimal[,] locationCoordinates)
-                : base(locationID, "Forest", locationCoordinates)
-            {
-            }
-        }
+       
 
-        // For the Clearing gets the location
-        public class Clearing : Location
-        {
-            public Clearing(int locationID, decimal[,] locationCoordinates)
-                : base(locationID, "Clearing", locationCoordinates)
-            {
-            }
-        }
+        
 
     }
 }

@@ -112,7 +112,7 @@ namespace RootRemake_Project
 
         private void testCardLoad()
         {
-            Card card = CardDeck.cardDeck[0];
+            Card card = CardDeck.cardDeck[9];
             BitmapSource cardImage = card.GetCardImage();
             CardImage.Source = cardImage;
         }

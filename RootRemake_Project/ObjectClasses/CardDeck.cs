@@ -16,6 +16,7 @@ namespace RootRemake_Project.ObjectClasses
 
         private static void InitializeCardDeck()
         {
+            
             cardDeck = new List<Card>();
 
             // Example initialization of cards
