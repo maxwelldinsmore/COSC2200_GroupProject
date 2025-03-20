@@ -9,6 +9,11 @@ namespace RootRemake_Project.ObjectClasses
     public class Army
     {
         public string playerID { get; set; }
+
+        /// <summary>
+        /// Id of the player's character for doing character specific testing
+        /// </summary>
+        public int characterID { get; set; }
         public string warriorCount { get; set; }
 
         public string warriorArt { get; set; }

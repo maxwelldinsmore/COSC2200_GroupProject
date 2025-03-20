@@ -25,16 +25,21 @@ namespace RootRemake_Project
         /// <summary>
         /// Array of locations
         /// </summary>
-        public LocationInfo locationInfo;
+
         public Player[] players;
-        
+        public Location[] Locations;
+
+
         public GameScreen()
         {
             InitializeComponent();
-            this.players = players;
-            this.locationInfo = new LocationInfo();
+            this.Locations = LocationInfo.MapLocations;
+            OnResize();
             testCardLoad();
         }
+
+        
+
 
         private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -56,9 +61,7 @@ namespace RootRemake_Project
             double imgWidth = imgMap.ActualWidth;
             double imgHeight = imgMap.ActualHeight;
             Point position = e.GetPosition(imgMap);
-            Debug.WriteLine($"Img Size: {imgWidth},{imgHeight}");
-            this.locationInfo = new LocationInfo();
-            double[][][] locationSquares = locationInfo.locationSqaures;
+            double[][][] locationSquares = LocationInfo.locationSqaures;
             double[][] location = locationSquares[0];
 
             //for (int i = 0; i < location.Length; i++)
@@ -97,21 +100,9 @@ namespace RootRemake_Project
             location[3][1] *= imgHeight / 100;
             Debug.WriteLine($"Location 0 bottom right: {location[2][0]},{location[2][1]}");
 
-            isWithinBounds((double)position.X, (double)position.Y, location);
+            InsideLocation(new Point(position.X, position.Y), location);
         }
-        private Boolean isWithinBounds(double x, double y, double[][] location)
-        {
-            if (x >= location[0][0] && x <= location[2][0] && y >= location[0][1] && y <= location[2][1])
-            {
-                MessageBox.Show("Mouse is within bounds of location 0");
-                return true;
-            
-            }
-            //Debug.WriteLine($"Mouse X: {x} Mouse Y: {y}\nLocation 0 bottom right: {location[2][0]},{location[2][1]}");
-
-            return false;
-
-        }
+        
 
         private void testCardLoad()
         {
@@ -120,6 +111,79 @@ namespace RootRemake_Project
             CardImage.Source = cardImage;
         }
 
+        public bool InsideLocation(Point mouse, double[][] locationPolygon)
+        {
+            // First gets inner polygon line used in point in polygon method
+            double x1 = 0;
+            double x2 = 0;
+            double y1 = 0;
+            double y2 = 99999999;
+            foreach (double[] location in locationPolygon)
+            {
+                if (location[1] < y1)
+                {
+                    y1 = location[1];
+                    x1 = location[0];
+                }
+                if (location[1] > y2)
+                {
+                    y2 = location[1];
+                    x2 = location[0];
+                }
+            }
+
+            // Ray Casting method 
+            int intersectionCount = 0;
+            // IDK IF THIS WORKS TOTALLY NOT AI
+            for (int i = 0; i < locationPolygon.Length; i++)
+            {
+                double x1p = locationPolygon[i][0];
+                double y1p = locationPolygon[i][1];
+                double x2p = locationPolygon[(i + 1) % locationPolygon.Length][0];
+                double y2p = locationPolygon[(i + 1) % locationPolygon.Length][1];
+                if (y1p == y2p)
+                {
+                    continue;
+                }
+                if (mouse.Y < y1p && mouse.Y < y2p)
+                {
+                    continue;
+                }
+                if (mouse.Y >= y1p && mouse.Y >= y2p)
+                {
+                    continue;
+                }
+                double x = (mouse.Y - y1p) * (x2p - x1p) / (y2p - y1p) + x1p;
+                if (x > mouse.X)
+                {
+                    intersectionCount++;
+                }
+            }
+            // If even return false, if odd return true
+            return intersectionCount % 2 == 1;
+        }
+
+
+        /// <summary>
+        /// Sets the locations boundaries from percentage
+        /// to real values for the game board
+        /// Only Called when gamescreen is loaded so far.
+        /// NOT TIED TO AN EVENT
+        /// </summary>
+        public void OnResize()
+        {
+            double imgWidth = imgMap.ActualWidth;
+            double imgHeight = imgMap.ActualHeight;
+
+            foreach (var location in Locations)
+            {
+                for (int i = 0; i < location.LocationPolygonPercents.GetLength(0); i++)
+                {
+                    location.LocationPolygon[i, 0] = location.LocationPolygonPercents[i, 0] * imgWidth / 100;
+                    location.LocationPolygon[i, 1] = location.LocationPolygonPercents[i, 1] * imgHeight / 100;
+                }
+            }
+        }
 
         private void Window_Closed(object sender, EventArgs e)
         {

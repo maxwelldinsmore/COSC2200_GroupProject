@@ -11,15 +11,21 @@ namespace RootRemake_Project
     public class Player
     {
         public int UserName;
-        public Character character;
+        private Character character { get; set; }
         public int VictoryPoints;
-        public Card[] hand;
+        public Card[] hand { get; set; }
 
         public Player()
         {
 
 
         }
-        
+
+
+        /// <summary>
+        /// TODO: Ask Kyle about this
+        /// Property for the character. 
+        /// </summary>
+
     }
 }

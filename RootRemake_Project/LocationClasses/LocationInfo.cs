@@ -2,9 +2,9 @@
 
 namespace RootRemake_Project.LocationClasses
 {
-    public class LocationInfo
+    public static class LocationInfo
     {
-        public int[][] ar =
+        public static int[][] ar =
         {
             [ 1, 2, 4, 12, 13],
             [ 1, 2, 4, 12, 13],
@@ -30,7 +30,7 @@ namespace RootRemake_Project.LocationClasses
         };
 
         //TODO: Add in the correct values for the locations
-        public Location[] MapLocations =
+        public static Location[] MapLocations =
         {
             // THESE ARE WRONG VALUES JUST THE RIGHT IDEA
             new Clearing(0, new double[,] { { 4.58, 4.14 }, { 19.63, 4.89 }, { 19.63, 19.63 }, { 4.58, 19.63 } }, new List<int> { 1, 2, 4, 12, 13 }),
@@ -43,7 +43,7 @@ namespace RootRemake_Project.LocationClasses
         /// then clockwise around for later highlighting / hovering
         /// </summary>
 
-        public double[][][] locationSqaures =
+        public static double[][][] locationSqaures =
         {
             new []{ // Location 0
                 new []{ 4.58, 4.14 }, // [0][0]
@@ -60,67 +60,10 @@ namespace RootRemake_Project.LocationClasses
 
         };
 
-        /// <summary>
-        /// Sets the locations boundaries from percentage
-        /// to real values for the game board
-        /// </summary>
-        public void onresize()
-        {
 
-        }
+        
 
-        public bool InsideLocation(Point mouse, double[][] locationPolygon)
-        {
-            // First gets inner polygon line used in point in polygon method
-            double x1 = 0;
-            double x2 = 0;
-            double y1 = 0;
-            double y2 = 99999999;
-            foreach (double[] location in locationPolygon)
-            {
-                if (location[1] < y1)
-                {
-                    y1 = location[1];
-                    x1 = location[0];
-                }
-                if (location[1] > y2)
-                {
-                    y2 = location[1];
-                    x2 = location[0];
-                }
-            }
-
-            // Ray Casting method 
-            int intersectionCount = 0;
-            // IDK IF THIS WORKS TOTALLY NOT AI
-            for (int i = 0; i < locationPolygon.Length; i++)
-            {
-                double x1p = locationPolygon[i][0];
-                double y1p = locationPolygon[i][1];
-                double x2p = locationPolygon[(i + 1) % locationPolygon.Length][0];
-                double y2p = locationPolygon[(i + 1) % locationPolygon.Length][1];
-                if (y1p == y2p)
-                {
-                    continue;
-                }
-                if (mouse.Y < y1p && mouse.Y < y2p)
-                {
-                    continue;
-                }
-                if (mouse.Y >= y1p && mouse.Y >= y2p)
-                {
-                    continue;
-                }
-                double x = (mouse.Y - y1p) * (x2p - x1p) / (y2p - y1p) + x1p;
-                if (x > mouse.X)
-                {
-                    intersectionCount++;
-                }
-            }
-            // If even return false, if odd return true
-            return intersectionCount % 2 == 1;
-
-        }
+        
 
     }
 

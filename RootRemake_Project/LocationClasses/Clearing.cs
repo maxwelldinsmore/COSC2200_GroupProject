@@ -19,5 +19,11 @@ namespace RootRemake_Project.LocationClasses
         {
             return true; // TODO: add logic for if character rules the location and if there is space to build
         }
+
+        public bool RulesClearing(int playerID)
+        {
+            // TODO: add logic
+            return false;
+        }
     }
 }
