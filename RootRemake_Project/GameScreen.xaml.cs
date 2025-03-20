@@ -25,9 +25,13 @@ namespace RootRemake_Project
         /// <summary>
         /// Array of locations
         /// </summary>
+        public Location[] Locations;
 
         public Player[] players;
-        public Location[] Locations;
+        public List<Card> cardDeck;
+        public List<Card> discardPile;
+        public int CurrentPlayerTurn;
+        public int TurnNumber;
 
 
         public GameScreen()
@@ -58,59 +62,33 @@ namespace RootRemake_Project
         /// <param name="e"></param>
         private void imgMap_MouseMove(object sender, MouseEventArgs e)
         {
+            //Debug.WriteLine("Mouse Move");
             double imgWidth = imgMap.ActualWidth;
             double imgHeight = imgMap.ActualHeight;
             Point position = e.GetPosition(imgMap);
-            double[][][] locationSquares = LocationInfo.locationSqaures;
-            double[][] location = locationSquares[0];
+            double[][] location = Locations[0].LocationPolygon;
 
-            //for (int i = 0; i < location.Length; i++)
-            //{
-            //    for (int j = 0; j < location[i].Length; j++)
-            //    {
-            //        try
-            //        {
-            //            if (j % 2 == 0)
-            //            {
-            //                location[i][j] = location[i][j] * imgHeight;
-            //            }
-            //            else
-            //            {
-            //                location[i][j] = location[i][j] * imgWidth;
-            //            }
-            //        }
-            //        catch (OverflowException ex)
-            //        {
-            //            // Handle the exception, e.g., log the error
-            //            Console.WriteLine($"Overflow at location[{i}][{j}]: {location[i][j]}");
-            //        }
-            //    }
-            //}
 
-            location[0][0] *= imgWidth / 100;
-            location[0][1] *= imgHeight / 100;
-
-            location[1][0] *= imgWidth / 100;
-            location[1][1] *= imgHeight / 100;
-
-            location[2][0] *= imgWidth / 100;
-            location[2][1] *= imgHeight / 100;
-
-            location[3][0] *= imgWidth / 100;
-            location[3][1] *= imgHeight / 100;
-            Debug.WriteLine($"Location 0 bottom right: {location[2][0]},{location[2][1]}");
-
-            InsideLocation(new Point(position.X, position.Y), location);
+            if (InsideLocation(position, location))
+            {
+                Debug.WriteLine("Inside Location 0");
+            }
         }
         
 
         private void testCardLoad()
         {
-            Card card = CardDeck.cardDeck[9];
+            Card card = CardDeck.cardDeck[1];
             BitmapSource cardImage = card.GetCardImage();
             CardImage.Source = cardImage;
         }
 
+        /// <summary>
+        /// Hit detection for locations on the map
+        /// </summary>
+        /// <param name="mouse">point for the position of player mouse</param>
+        /// <param name="locationPolygon">location being checked for collision</param>
+        /// <returns></returns>
         public bool InsideLocation(Point mouse, double[][] locationPolygon)
         {
             // First gets inner polygon line used in point in polygon method
@@ -172,15 +150,16 @@ namespace RootRemake_Project
         /// </summary>
         public void OnResize()
         {
+
             double imgWidth = imgMap.ActualWidth;
             double imgHeight = imgMap.ActualHeight;
 
             foreach (var location in Locations)
             {
-                for (int i = 0; i < location.LocationPolygonPercents.GetLength(0); i++)
+                for (int i = 0; i < location.LocationPolygonPercents.Length; i++)
                 {
-                    location.LocationPolygon[i, 0] = location.LocationPolygonPercents[i, 0] * imgWidth / 100;
-                    location.LocationPolygon[i, 1] = location.LocationPolygonPercents[i, 1] * imgHeight / 100;
+                    location.LocationPolygon[i][0] = location.LocationPolygonPercents[i][0] * imgWidth / 100;
+                    location.LocationPolygon[i][1] = location.LocationPolygonPercents[i][1] * imgHeight / 100;
                 }
             }
         }
