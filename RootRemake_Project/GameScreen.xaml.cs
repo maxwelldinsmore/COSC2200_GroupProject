@@ -40,6 +40,8 @@ namespace RootRemake_Project
             this.Locations = LocationInfo.MapLocations;
             OnResize();
             testCardLoad();
+            players = new Player[4];
+            players[0] = new Player("Carlos");
         }
 
         

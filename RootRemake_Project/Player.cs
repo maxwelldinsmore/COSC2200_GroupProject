@@ -10,22 +10,19 @@ namespace RootRemake_Project
 {
     public class Player
     {
-        public int UserName;
+        public string UserName;
         private Character character { get; set; }
         public int VictoryPoints;
-        public Card[] hand { get; set; }
+        public List<Card> hand { get; set; }
 
-        public Player()
+        public Player(string UserName)
         {
-
-
+            hand = new List<Card>();
+            VictoryPoints = 0;
+            this.UserName = UserName;
         }
 
 
-        /// <summary>
-        /// TODO: Ask Kyle about this
-        /// Property for the character. 
-        /// </summary>
 
     }
 }
