@@ -38,10 +38,10 @@ namespace RootRemake_Project
         {
             InitializeComponent();
             this.Locations = LocationInfo.MapLocations;
-            OnResize();
             testCardLoad();
             players = new Player[4];
             players[0] = new Player("Carlos");
+            OnResize();
 
         }
 
@@ -147,11 +147,11 @@ namespace RootRemake_Project
 
         public void HighlightLocation()
         {
-            Polygon polygon = new Polygon();
-            PointCollection points = new PointCollection();
-
+            
             foreach (var location in Locations)
             {
+                Polygon polygon = new Polygon();
+                PointCollection points = new PointCollection();
                 // Convert LocationPolygon to PointCollection
                 foreach (var point in location.LocationPolygon)
                 {
@@ -166,7 +166,6 @@ namespace RootRemake_Project
                     canvasGameBoard.Children.Add(polygon);
                 }
             }
-
         }
         public void HighlightLocation(int locationID)
         {
