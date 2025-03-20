@@ -42,9 +42,10 @@ namespace RootRemake_Project
             testCardLoad();
             players = new Player[4];
             players[0] = new Player("Carlos");
+
         }
 
-        
+
 
 
         private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
@@ -76,7 +77,7 @@ namespace RootRemake_Project
                 Debug.WriteLine("Inside Location 0");
             }
         }
-        
+
 
         private void testCardLoad()
         {
@@ -143,21 +144,52 @@ namespace RootRemake_Project
             return intersectionCount % 2 == 1;
         }
 
-        //public void HighlightLocation(int locationID)
-        ////{
-        ////    for each(var location in Locations)
-        ////    {
-        ////        if (location.LocationID == locationID)
-        ////        {
-        ////            Polygon polygon = new Polygon();
-        ////            polygon.Points = new PointCollection(location.LocationPolygon);
-        ////            polygon.Fill = Brushes.Red;
-        ////            polygon.Opacity = 0.5;
-        ////            imgMap.Children.Add(polygon);
-        ////        }
-        ////    }
-        ////    Locations[locationID];
-        //}
+
+        public void HighlightLocation()
+        {
+            Polygon polygon = new Polygon();
+            PointCollection points = new PointCollection();
+
+            foreach (var location in Locations)
+            {
+                // Convert LocationPolygon to PointCollection
+                foreach (var point in location.LocationPolygon)
+                {
+                    points.Add(new Point(point[0], point[1]));
+                }
+                polygon.Points = points;
+                polygon.Fill = Brushes.Red;
+                polygon.Opacity = 0.5;
+                // Assuming imgMap is a Canvas or similar container
+                if (canvasGameBoard is Canvas canvas)
+                {
+                    canvasGameBoard.Children.Add(polygon);
+                }
+            }
+
+        }
+        public void HighlightLocation(int locationID)
+        {
+            Polygon polygon = new Polygon();
+            PointCollection points = new PointCollection();
+
+            // Convert LocationPolygon to PointCollection
+            foreach (var point in Locations[locationID].LocationPolygon)
+            {
+                points.Add(new Point(point[0], point[1]));
+            }
+
+            polygon.Points = points;
+            polygon.Fill = Brushes.Red;
+            polygon.Opacity = 0.5;
+
+            // Assuming imgMap is a Canvas or similar container
+            if (canvasGameBoard is Canvas canvas)
+            {
+                canvasGameBoard.Children.Add(polygon);
+            }
+        }
+
 
 
         /// <summary>
@@ -166,7 +198,7 @@ namespace RootRemake_Project
         /// Only Called when gamescreen is loaded so far.
         /// NOT TIED TO AN EVENT
         /// </summary>
-        public void OnResize()
+        async public void OnResize()
         {
 
             double imgWidth = imgMap.ActualWidth;
@@ -186,12 +218,20 @@ namespace RootRemake_Project
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            
+
         }
 
         private void resizeMenuItem_Click(object sender, RoutedEventArgs e)
         {
             OnResize();
+
+        }
+
+
+        private void highlightMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            OnResize();
+            HighlightLocation();
         }
     }
 }

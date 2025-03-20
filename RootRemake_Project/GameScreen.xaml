@@ -21,14 +21,17 @@
             <MenuItem Header="_Options">
                 <MenuItem Header="_Debug"/>
                 <MenuItem Name="resizeMenuItem" Header="_Manually Resize" Click="resizeMenuItem_Click"/>
+                <MenuItem Name="highlightMenuItem" Header="_Highlight All locations" Click="highlightMenuItem_Click"/>
             </MenuItem>
         </Menu>
-
-        <Image x:Name="imgMap" Source="Assets/rootmap.jpg" 
-            MouseDown="imgMap_MouseDown" MouseMove="imgMap_MouseMove"
-            Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="0,0,0,0" 
-            Height="777" HorizontalAlignment="Stretch"
-        />
+        <Canvas x:Name="canvasGameBoard" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
+            <Image x:Name="imgMap" Source="Assets/rootmap.jpg" 
+                MouseDown="imgMap_MouseDown" MouseMove="imgMap_MouseMove"
+                 Margin="0,0,0,0" 
+                Height="777" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+            />
+        </Canvas>
+        
         <Grid Background="PaleGoldenrod" Grid.Column="1" Grid.Row="1">
             <Image Name="CardImage" Height="250" Margin="29,257,50,256"
                    
