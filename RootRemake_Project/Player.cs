@@ -11,7 +11,7 @@ namespace RootRemake_Project
     public class Player
     {
         public string UserName;
-        private Character character { get; set; }
+        public Character character { get; set; }
         public int VictoryPoints;
         public List<Card> hand { get; set; }
 

@@ -80,7 +80,7 @@ namespace RootRemake_Project
 
         private void testCardLoad()
         {
-            Card card = CardDeck.cardDeck[1];
+            Card card = CardDeck.cardDeck[25];
             BitmapSource cardImage = card.GetCardImage();
             CardImage.Source = cardImage;
         }
@@ -143,6 +143,22 @@ namespace RootRemake_Project
             return intersectionCount % 2 == 1;
         }
 
+        //public void HighlightLocation(int locationID)
+        ////{
+        ////    for each(var location in Locations)
+        ////    {
+        ////        if (location.LocationID == locationID)
+        ////        {
+        ////            Polygon polygon = new Polygon();
+        ////            polygon.Points = new PointCollection(location.LocationPolygon);
+        ////            polygon.Fill = Brushes.Red;
+        ////            polygon.Opacity = 0.5;
+        ////            imgMap.Children.Add(polygon);
+        ////        }
+        ////    }
+        ////    Locations[locationID];
+        //}
+
 
         /// <summary>
         /// Sets the locations boundaries from percentage
@@ -156,12 +172,14 @@ namespace RootRemake_Project
             double imgWidth = imgMap.ActualWidth;
             double imgHeight = imgMap.ActualHeight;
 
+
             foreach (var location in Locations)
             {
                 for (int i = 0; i < location.LocationPolygonPercents.Length; i++)
                 {
                     location.LocationPolygon[i][0] = location.LocationPolygonPercents[i][0] * imgWidth / 100;
                     location.LocationPolygon[i][1] = location.LocationPolygonPercents[i][1] * imgHeight / 100;
+                    Debug.WriteLine("Location " + location.LocationID + " X: " + location.LocationPolygon[i][0] + " Y: " + location.LocationPolygon[i][1]);
                 }
             }
         }
@@ -171,6 +189,9 @@ namespace RootRemake_Project
             
         }
 
-        
+        private void resizeMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            OnResize();
+        }
     }
 }

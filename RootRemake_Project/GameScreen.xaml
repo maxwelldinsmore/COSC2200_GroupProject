@@ -20,13 +20,14 @@
         <Menu DockPanel.Dock="Top" Grid.Row="0" Grid.Column="1" Margin="0,0,0,0">
             <MenuItem Header="_Options">
                 <MenuItem Header="_Debug"/>
+                <MenuItem Name="resizeMenuItem" Header="_Manually Resize" Click="resizeMenuItem_Click"/>
             </MenuItem>
         </Menu>
 
         <Image x:Name="imgMap" Source="Assets/rootmap.jpg" 
             MouseDown="imgMap_MouseDown" MouseMove="imgMap_MouseMove"
-            Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="-7,0,7,0" 
-            Height="777" 
+            Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="0,0,0,0" 
+            Height="777" HorizontalAlignment="Stretch"
         />
         <Grid Background="PaleGoldenrod" Grid.Column="1" Grid.Row="1">
             <Image Name="CardImage" Height="250" Margin="29,257,50,256"

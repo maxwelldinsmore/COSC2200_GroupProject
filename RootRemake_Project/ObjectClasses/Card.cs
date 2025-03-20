@@ -21,7 +21,7 @@ namespace RootRemake_Project.ObjectClasses
 
         // TODO: Pixel Count slightly off so will show part of a card and another card
         private readonly static int quadWidth = 537;    // Card width
-        private readonly static int quadHeight = 745;   // Card height
+        private readonly static int quadHeight = 749;   // Card height
         private static BitmapImage CardSheet;
 
         static Card()
