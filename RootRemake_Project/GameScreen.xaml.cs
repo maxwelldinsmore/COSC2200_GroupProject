@@ -27,20 +27,39 @@ namespace RootRemake_Project
         /// </summary>
         public Location[] Locations;
 
-        public Player[] players;
+        /// <summary>
+        /// Array of Players in the game
+        /// </summary>
+        public Player[] Players;
+        /// <summary>
+        /// Array of cards in the card deck
+        /// that are dealt out to the Players
+        /// </summary>
         public List<Card> cardDeck;
+        /// <summary>
+        /// Array of cards that are discarded
+        /// </summary>
         public List<Card> discardPile;
+        /// <summary>
+        /// turn for the current player based off position
+        /// in the Players array
+        /// </summary>
         public int CurrentPlayerTurn;
-        public int TurnNumber;
+        /// <summary>
+        /// Overall turn number for the game
+        /// </summary>
+        public int TurnNumber = 1;
 
 
         public GameScreen()
         {
             InitializeComponent();
             this.Locations = LocationInfo.MapLocations;
-            testCardLoad();
-            players = new Player[4];
-            players[0] = new Player("Carlos");
+            //testCardLoad();
+            Players = new Player[4];
+            Players[0] = new Player("Carlos");
+            cardDeck = CardDeck.cardDeck;
+            discardPile = new List<Card>();
             OnResize();
 
         }
@@ -72,22 +91,32 @@ namespace RootRemake_Project
             double[][] location = Locations[0].LocationPolygon;
 
 
-            if (InsideLocation(position, location))
-            {
-                Debug.WriteLine("Inside Location 0");
-            }
+            //if (InsideLocation(position, location))
+            //{
+            //    Debug.WriteLine("Inside Location 0");
+            //}
         }
-
+     
 
         private void testCardLoad()
         {
             Card card = CardDeck.cardDeck[25];
             BitmapSource cardImage = card.GetCardImage();
-            CardImage.Source = cardImage;
+
+            canvasGameBoard.Children.Add(
+                new Image
+                {
+                    Source = cardImage,
+                    Height = 250,
+                    Margin = new Thickness(29, 257, 50, 256)
+                }
+                );
         }
 
         /// <summary>
         /// Hit detection for locations on the map
+        /// CURRENTLY UNUSED: polygon on click event has replaced it,
+        /// might be important if polygon needs to be replaced with another asset
         /// </summary>
         /// <param name="mouse">point for the position of player mouse</param>
         /// <param name="locationPolygon">location being checked for collision</param>
@@ -160,6 +189,8 @@ namespace RootRemake_Project
                 polygon.Points = points;
                 polygon.Fill = Brushes.Red;
                 polygon.Opacity = 0.5;
+                polygon.Name = "Location_" + location.LocationID;
+                polygon.AddHandler(MouseDownEvent, new MouseButtonEventHandler(Location_MouseDown), true);
                 // Assuming imgMap is a Canvas or similar container
                 if (canvasGameBoard is Canvas canvas)
                 {
@@ -167,27 +198,7 @@ namespace RootRemake_Project
                 }
             }
         }
-        public void HighlightLocation(int locationID)
-        {
-            Polygon polygon = new Polygon();
-            PointCollection points = new PointCollection();
 
-            // Convert LocationPolygon to PointCollection
-            foreach (var point in Locations[locationID].LocationPolygon)
-            {
-                points.Add(new Point(point[0], point[1]));
-            }
-
-            polygon.Points = points;
-            polygon.Fill = Brushes.Red;
-            polygon.Opacity = 0.5;
-
-            // Assuming imgMap is a Canvas or similar container
-            if (canvasGameBoard is Canvas canvas)
-            {
-                canvasGameBoard.Children.Add(polygon);
-            }
-        }
 
 
 
@@ -215,6 +226,16 @@ namespace RootRemake_Project
             }
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            OnResize();
+        }
+
+        private void Location_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Location Clicked");
+        }
+
         private void Window_Closed(object sender, EventArgs e)
         {
 
@@ -231,6 +252,11 @@ namespace RootRemake_Project
         {
             OnResize();
             HighlightLocation();
+        }
+
+        private void endTurnBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

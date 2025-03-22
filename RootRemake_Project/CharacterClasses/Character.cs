@@ -27,7 +27,7 @@ namespace RootRemake_Project.CharacterClasses
         abstract public void Move();
 
         /// <summary>
-        /// The battle function takes two players in a location and has them fight
+        /// The battle function takes two Players in a location and has them fight
         /// rolls are 0-3 equal odds, and two dice are rolled, attacking player gets 
         /// advantage (gets higher number roll) in expection to woodland alliance where they
         /// get advantage if they are the defender
