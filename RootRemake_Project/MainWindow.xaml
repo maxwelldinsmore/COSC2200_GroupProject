@@ -6,7 +6,29 @@
         xmlns:local="clr-namespace:RootRemake_Project"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Button Content="Button" HorizontalAlignment="Left" Margin="219,82,0,0" VerticalAlignment="Top"/>
+    <Grid>
+        <TextBlock Text="Select Your Character" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 100,0,0">
+            <Button Tag="Marquis" Click="CharacterSelected">
+                <Image Source="Assests/Marquis/Icon.png" Width="100" Height="100"/>
+            </Button>
+            <Button Tag="Eyrie" Click="CharacterSelected">
+                <Image Source="Assests/Eyrie/Icon.png" Width="100" Height="100"/>
+            </Button>
+            <Button Tag="Vagabond" Click="CharacterSelected">
+                <Image Source="Assests/Vagabond/Icon.png" Width="100" Height="100"/>
+            </Button>
+            <Button Tag="Vagabond" Click="CharacterSelected">
+                <Image Source="Assests/Vagabond/Icon.png" Width="100" Height="100"/>
+            </Button>
+            <Button Tag="Woodland" Click="CharacterSelected">
+                <Image Source="Assests/Woodland/Icon.png" Width="100" Height="100"/>
+            </Button>
+        </StackPanel>
+
+        <Button Content="Start Game" Click="StartGame_Click" Width="150" Height="50" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30"/>
+    </Grid>
 
 
 </Window>
