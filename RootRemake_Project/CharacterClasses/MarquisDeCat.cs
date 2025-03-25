@@ -127,7 +127,7 @@ namespace RootRemake_Project.CharacterClasses
             {
                 Console.WriteLine("Enter location ID to build: ");
                 int loc = int.Parse(Console.ReadLine());
-                Console.WriteLine("Enter building type (Sawmill/Workshop/Recruiter: ");
+                Console.WriteLine("Enter building type Sawmill/Workshop/Recruiter: ");
                 string type = Console.ReadLine();
                 PlaceBuilding(loc, type);
                 noWoods--;
