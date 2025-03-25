@@ -20,8 +20,8 @@ namespace RootRemake_Project.ObjectClasses
         // 10 columns * 533 6 rows * 745
 
         // TODO: Pixel Count slightly off so will show part of a card and another card
-        private static int quadWidth = 533;    // Card width
-        private static int quadHeight = 745;   // Card height
+        private readonly static int quadWidth = 537;    // Card width
+        private readonly static int quadHeight = 749;   // Card height
         private static BitmapImage CardSheet;
 
         static Card()

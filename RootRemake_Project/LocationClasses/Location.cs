@@ -33,15 +33,15 @@ namespace RootRemake_Project.LocationClasses
         /// <summary>
         /// The 2d array of doubles for [x, y] points describing location in percentage of map/image
         /// </summary>
-        public double[,] LocationPolygonPercents { get; set; }
+        public double[][] LocationPolygonPercents { get; set; }
 
         /// <summary>
         /// The 2d array of doubles for [x, y] points describing location,
         /// updated when map is loaded and on every resize
         /// </summary>
-        public double[,] LocationPolygon { get; set; } 
+        public double[][] LocationPolygon { get; set; } 
 
-        public List<int> ConnectedLocations { get; set; } // For listing the locations that connect
+        public int[] ConnectedLocations { get; set; } // For listing the locations that connect
 
         /// <summary>
         /// List of factions that contain units in this location
@@ -52,7 +52,9 @@ namespace RootRemake_Project.LocationClasses
 
         public List<Building> Buildings { get; set; } // The list of buildings in the location
 
-        public Location(int locationID, string locationType, double[,] locationCoordinates, List<int> connectedLocations)
+        public bool ContainsRuin { get; set; } // If the location contains a ruin
+
+        public Location(int locationID, string locationType, double[][] locationCoordinates, int[] connectedLocations)
         {
             LocationID = locationID;
             LocationType = locationType;
@@ -60,8 +62,13 @@ namespace RootRemake_Project.LocationClasses
             ConnectedLocations = connectedLocations;
             Armies = new List<Army>();
             Buildings = new List<Building>();
-            LocationPolygon = new double[locationCoordinates.GetLength(0), locationCoordinates.GetLength(1)];
+            LocationPolygon = new double[locationCoordinates.Length][];
+            for (int i = 0; i < locationCoordinates.Length; i++)
+            {
+                LocationPolygon[i] = new double[locationCoordinates[i].Length];
+            }
         }
+        public Location() { }
 
         public abstract bool CanBuild(); // Abstract function for building
 
