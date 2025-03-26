@@ -6,19 +6,6 @@ namespace RootRemake_Project.LocationClasses
     {
         public static int[][] ar =
         {
-            [ 1, 2, 4, 12, 13],
-            [ 1, 2, 4, 12, 13],
-            [0, 3, 12],
-            [0, 3, 5, 12, 13, 14],
-            [1, 2, 7, 12, 14],
-            [0, 5, 8, 13, 15],
-            [2, 4, 6 , 8, 10, 13, 14, 15, 16, 17],
-            [5, 7, 11, 14, 17, 18],
-            [3, 6, 11, 14, 18],
-            [4, 5, 9, 15, 16],
-            [8, 10, 16],
-            [5, 9, 11, 16, 17],
-            [7, 10, 17, 18],
             [0, 1, 2, 3, 13, 14],
             [0, 2, 4, 5, 12, 14, 15],
             [2, 3, 5, 6, 7, 12, 13, 17, 18],
@@ -50,7 +37,7 @@ namespace RootRemake_Project.LocationClasses
             new Clearing(
                 2,
                 new double[][] { [289.6000, 176.0000], [362.4000, 145.6000], [419.2000, 168.8000], [416.8000, 271.2000], [305.6000, 275.2000] },
-                new int[] {0, 3, 12 },
+                new int[] {0, 3, 5, 12, 13, 14 },
                 "2",
                 new Point(0, 0),
                 new Point(0, 0)
@@ -58,7 +45,7 @@ namespace RootRemake_Project.LocationClasses
             new Clearing(
                 3,
                 new double[][] { [684.0000, 104.0000], [797.6000, 98.4000], [796.0000, 223.2000], [687.2000, 220.8000]},
-                new int[] {0, 3, 12 },
+                new int[] {1, 2, 7, 12, 14 },
                 "3",
                 new Point(0, 0),
                 new Point(0, 0)
@@ -71,7 +58,7 @@ namespace RootRemake_Project.LocationClasses
                     [141.6000, 302.4000], 
                     [138.4000, 390.4000], 
                     [28.0000, 392.0000] },
-                new int[] {0, 3, 12 },
+                new int[] {0, 5, 8, 13, 15 },
                 "4",
                 new Point(0, 0),
                 new Point(0, 0)
@@ -84,7 +71,7 @@ namespace RootRemake_Project.LocationClasses
                     [320.8000, 495.2000],
                     [204.0000, 495.2000]
                 },
-                new int[] {0, 3, 12 },
+                new int[] {2, 4, 6 , 8, 10, 13, 14, 15, 16, 17 },
                 "5",
                 new Point(0, 0),
                 new Point(0, 0)
@@ -97,7 +84,7 @@ namespace RootRemake_Project.LocationClasses
                     [598.4000, 432.8000],
                     [489.6000, 434.4000]
                 },
-                new int[] {0, 3, 12 },
+                new int[] {5, 7, 11, 14, 17, 18},
                 "6",
                 new Point(0, 0),
                 new Point(0, 0)
@@ -111,7 +98,7 @@ namespace RootRemake_Project.LocationClasses
                     [816.80, 462.40],
                     [718.40, 464.00]
                 },
-                new int[] {0, 3, 12 },
+                new int[] {3, 6, 11, 14, 18 },
                 "7",
                 new Point(0, 0),
                 new Point(0, 0)
@@ -125,7 +112,7 @@ namespace RootRemake_Project.LocationClasses
                     [155.20, 675.20],
                     [41.60, 686.40]
                 },
-                new int[] {0, 3, 12 },
+                new int[] {4, 5, 9, 15, 16},
                 "8",
                 new Point(0, 0),
                 new Point(0, 0)
@@ -139,7 +126,7 @@ namespace RootRemake_Project.LocationClasses
                     [371.20, 664.00],
                     [357.60, 739.20]
                 },
-                new int[] {0, 3, 12 },
+                new int[] {8, 10, 16},
                 "9",
                 new Point(0, 0),
                 new Point(0, 0)
@@ -153,7 +140,7 @@ namespace RootRemake_Project.LocationClasses
                     [543.20, 568.80],
                     [548.80, 659.20]
                 },
-                new int[] {0, 3, 12 },
+                new int[] {5, 9, 11, 16, 17 },
                 "10",
                 new Point(0, 0),
                 new Point(0, 0)
@@ -167,7 +154,7 @@ namespace RootRemake_Project.LocationClasses
                     [764.00, 706.40],
                     [641.60, 717.60]
                 },
-                new int[] {0, 3, 12 },
+                new int[] {7, 10, 17, 18 },
                 "11",
                 new Point(0, 0),
                 new Point(0, 0)

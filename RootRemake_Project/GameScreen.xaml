@@ -25,6 +25,7 @@
                 <MenuItem Header="_Debug"/>
                 <MenuItem Name="resizeMenuItem" Header="_Manually Resize" Click="resizeMenuItem_Click"/>
                 <MenuItem Name="highlightMenuItem" Header="_Highlight All locations" Click="highlightMenuItem_Click"/>
+                <MenuItem Name="hideLocationMenuItem" Header="_Hide Locations" Click="hideLocationMenuItem_Click"/>
             </MenuItem>
         </Menu>
         <Canvas x:Name="canvasGameBoard" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">

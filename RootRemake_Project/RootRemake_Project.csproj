@@ -46,8 +46,10 @@
     <None Remove="Assets\Items\Sword.png" />
     <None Remove="Assets\Items\SwordUsed.png" />
     <None Remove="Assets\MarquisBoard.png" />
+    <None Remove="Assets\Marquis\Icon.png" />
     <None Remove="Assets\RootClassDiagrams.png" />
     <None Remove="Assets\rootmap.jpg" />
+    <None Remove="Assets\Vagabond\Icon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -94,9 +96,13 @@
     <Resource Include="Assets\CardDeck.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Marquis\Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\rootmap.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Vagabond\Icon.png" />
   </ItemGroup>
 
 </Project>

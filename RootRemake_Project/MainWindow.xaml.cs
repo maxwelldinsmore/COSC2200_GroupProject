@@ -31,6 +31,18 @@ namespace RootRemake_Project
             gameScreen.Show();
         }
 
+        private void CharacterSelected(object sender, RoutedEventArgs e)
+        {
+            Button selectedButton = sender as Button;
+            string characterTag = selectedButton.Tag.ToString();
+            MessageBox.Show($"Character selected: {characterTag}");
+        }
 
+        private void StartGame_Click(object sender, RoutedEventArgs e)
+        {
+      
+        }
+
+        
     }
 }

@@ -121,8 +121,8 @@ namespace RootRemake_Project
        
 
 
- void HighlightLocation()
-        {
+        void HighlightLocation()
+            {
             foreach (var location in Locations)
             {
                 Polygon polygon = new Polygon();
@@ -153,7 +153,7 @@ namespace RootRemake_Project
                 image.Source = new BitmapImage(imageUri);
                 image.Width = imgMap.ActualWidth;
                 image.Height = imgMap.ActualHeight;
-                image.Opacity = 0.5;
+                image.Opacity = 0.8;
                 image.Name = "Highlight_" + location.LocationID;
                 image.HorizontalAlignment = HorizontalAlignment.Left;
                 image.VerticalAlignment = VerticalAlignment.Top;
@@ -174,8 +174,28 @@ namespace RootRemake_Project
 
 
 
+        private void hideLocationMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            int locationAdjacent = 0;
 
-      
+            // Hide locations that are not adjacent to the current location
+            foreach (var image in canvasGameBoard.Children.OfType<Image>())
+            {
+                if (image.Name.Contains("Highlight_"))
+                {
+                    image.Visibility = Visibility.Hidden;
+                    int currentLocation = Int32.Parse(image.Name.Split('_')[1]);
+                    if (Locations[currentLocation].ConnectedLocations.Contains(locationAdjacent))
+                    {
+                        image.Visibility = Visibility.Visible;
+                    }
+                    Console.WriteLine("Current Location: " + currentLocation);
+
+                }
+            }
+        }
+
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -207,6 +227,7 @@ namespace RootRemake_Project
         {
 
         }
+
     }
 }
 
