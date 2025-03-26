@@ -48,7 +48,8 @@ namespace RootRemake_Project.LocationClasses
 
         public bool ContainsRuin { get; set; } // If the location contains a ruin
 
-        public Location(int locationID, string locationType, double[][] locationCoordinates, int[] connectedLocations)
+        public string LocationHighlight { get; set; } // The location of the highlight image for the location
+        public Location(int locationID, string locationType, double[][] locationCoordinates, int[] connectedLocations, string locationHighlight)
         {
             LocationID = locationID;
             LocationType = locationType;
@@ -56,7 +57,7 @@ namespace RootRemake_Project.LocationClasses
             ConnectedLocations = connectedLocations;
             Armies = new List<Army>();
             Buildings = new List<Building>();
-
+            LocationHighlight = locationHighlight;
         }
         public Location() { }
 

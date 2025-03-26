@@ -11,13 +11,12 @@ namespace RootRemake_Project.LocationClasses
     // For the Clearing gets the location
     public class Clearing : Location
     {
-        public Point Building1LocationPercents { get; set; }
-        public Point? Building2LocationPercents { get; set; }
+
         public Point Building1Location { get; set; }
         public Point? Building2Location { get; set; }
 
 
-        public Clearing(int locationID, double[][] locationCoordinates, int[] connectedLocations, Point buildLocation, Point buildLocation2)
+        public Clearing(int locationID, double[][] locationCoordinates, int[] connectedLocations, string locationHighlight, Point buildLocation, Point buildLocation2)
         {
             this.LocationID = locationID;
             this.LocationType = "Forest";
@@ -26,12 +25,13 @@ namespace RootRemake_Project.LocationClasses
             this.Armies = new List<Army>();
             this.Buildings = new List<Building>();
             this.totalBuildings = 2;
+            LocationHighlight = locationHighlight;
 
-            this.Building1LocationPercents = buildLocation;
-            this.Building2LocationPercents = buildLocation2;
+            this.Building1Location = buildLocation;
+            this.Building2Location = buildLocation2;
         }
 
-        public Clearing(int locationID, double[][] locationCoordinates, int[] connectedLocations, Point buildLocation)
+        public Clearing(int locationID, double[][] locationCoordinates, int[] connectedLocations, string locationHighlight, Point buildLocation)
         {
             this.LocationID = locationID;
             this.LocationType = "Forest";
@@ -40,8 +40,9 @@ namespace RootRemake_Project.LocationClasses
             this.Armies = new List<Army>();
             this.Buildings = new List<Building>();
             this.totalBuildings = 1;
-            this.Building1LocationPercents = buildLocation;
-            this.Building2LocationPercents = null;
+            this.Building1Location = buildLocation;
+            this.Building2Location = null;
+            LocationHighlight = locationHighlight;
         }
         override public bool CanBuild()
         {

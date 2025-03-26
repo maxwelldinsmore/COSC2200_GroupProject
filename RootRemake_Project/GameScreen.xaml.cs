@@ -54,7 +54,7 @@ namespace RootRemake_Project
         /// Viewability of the location polygons on the map
         /// 1 is fully visible, 0 is invisible
         /// </summary>
-        public double locationPolygonViewability = .8;
+        public double locationPolygonViewability = 0;
 
         public GameScreen()
         {
@@ -73,10 +73,11 @@ namespace RootRemake_Project
 
         private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
         {
+         
             Point position = e.GetPosition(imgMap);
-            MessageBox.Show(position.X.ToString("F4") + ", " + position.Y.ToString("F4"));
+            MessageBox.Show(position.X.ToString("F2") + ", " + position.Y.ToString("F2"));
           
-            Clipboard.SetText(position.X.ToString("F4") + ", " + position.Y.ToString("F4")
+            Clipboard.SetText(position.X.ToString("F2") + ", " + position.Y.ToString("F2")
             );
         }
 
@@ -146,11 +147,28 @@ namespace RootRemake_Project
                     Debug.WriteLine($"X: {p.X}, Y: {p.Y}");
                 }
 
+                Image image = new Image();
+                Uri imageUri = new Uri("pack://application:,,,/Assets/Areas/" + location.LocationHighlight + ".png", UriKind.RelativeOrAbsolute );
+
+                image.Source = new BitmapImage(imageUri);
+                image.Width = imgMap.ActualWidth;
+                image.Height = imgMap.ActualHeight;
+                image.Opacity = 0.5;
+                image.Name = "Highlight_" + location.LocationID;
+                image.HorizontalAlignment = HorizontalAlignment.Left;
+                image.VerticalAlignment = VerticalAlignment.Top;
+                image.Visibility = Visibility.Visible;
+                image.IsHitTestVisible = false;
+
                 // Assuming canvasGameBoard is a Canvas or similar container
                 if (canvasGameBoard is Canvas canvas)
                 {
                     canvas.Children.Add(polygon);
+                    canvas.Children.Add(image);
+
                 }
+
+                
             }
         }
 
@@ -192,6 +210,10 @@ namespace RootRemake_Project
     }
 }
 
+
+//#if DEBUG
+//MessageBox.Show("App is running in Debug mode!");
+//#endif
 
 //     /// <summary>
 //     /// Hit detection for locations on the map
