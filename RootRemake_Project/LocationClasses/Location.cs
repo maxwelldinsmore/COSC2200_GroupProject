@@ -31,13 +31,7 @@ namespace RootRemake_Project.LocationClasses
         public string LocationType { get; set; } // If its a forest or clearing 
 
         /// <summary>
-        /// The 2d array of doubles for [x, y] points describing location in percentage of map/image
-        /// </summary>
-        public double[][] LocationPolygonPercents { get; set; }
-
-        /// <summary>
         /// The 2d array of doubles for [x, y] points describing location,
-        /// updated when map is loaded and on every resize
         /// </summary>
         public double[][] LocationPolygon { get; set; } 
 
@@ -58,15 +52,11 @@ namespace RootRemake_Project.LocationClasses
         {
             LocationID = locationID;
             LocationType = locationType;
-            LocationPolygonPercents = locationCoordinates;
+            LocationPolygon = locationCoordinates;
             ConnectedLocations = connectedLocations;
             Armies = new List<Army>();
             Buildings = new List<Building>();
-            LocationPolygon = new double[locationCoordinates.Length][];
-            for (int i = 0; i < locationCoordinates.Length; i++)
-            {
-                LocationPolygon[i] = new double[locationCoordinates[i].Length];
-            }
+
         }
         public Location() { }
 

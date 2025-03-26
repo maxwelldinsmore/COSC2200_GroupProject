@@ -14,16 +14,11 @@ namespace RootRemake_Project.LocationClasses
         {
             this.LocationID = locationID;
             this.LocationType = "Forest";
-            this.LocationPolygonPercents = locationCoordinates;
+            this.LocationPolygon = locationCoordinates;
             this.ConnectedLocations = connectedLocations;
             this.Armies = new List<Army>();
             this.Buildings = new List<Building>();
-            LocationPolygon = new double[locationCoordinates.Length][];
-
-            for (int i = 0; i < locationCoordinates.Length; i++)
-            {
-                LocationPolygon[i] = new double[locationCoordinates[i].Length];
-            }
+        
         }
         override public bool CanBuild()
         {

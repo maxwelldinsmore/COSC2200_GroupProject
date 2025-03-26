@@ -26,22 +26,24 @@ namespace RootRemake_Project.LocationClasses
             [5, 8, 9, 10, 15, 17],
             [5, 6, 10, 14, 16, 18],
             [6, 7, 11, 14, 17]
-
         };
 
         //TODO: Add in the correct values for the locations
         public static Location[] MapLocations =
         {
-            // THESE ARE WRONG VALUES JUST THE RIGHT IDEA
+            // location 0
             new Clearing(
                 0, 
-                new double[][] { [ 4.58, 4.14 ], [19.63, 4.89 ], [19.63, 19.63 ], [4.58, 19.63 ] },
-                new int[] { 1, 2, 4, 12, 13 } 
+                new double[][] { [37.6000, 37.6000], [153.6000, 36.8000], [156.8000, 162.4000], [43.2000, 157.6000] },
+                new int[] { 1, 2, 4, 12, 13 },
+                new Point(90, 112)
                 ),
             new Clearing(
                 1,
-                new double[][] { [ 46.1, 0 ], [60.01, 0 ], [60.01, 15 ], [46.1, 15] },
-                new int[] {0, 3, 12 }
+                new double[][] { [402.4000, 1.6000], [524.0000, 4.0000], [511.2000, 108.8000], [444.8000, 124.8000], [398.4000, 95.2000] },
+                new int[] {0, 3, 12 },
+                new Point(0, 0),
+                new Point(0, 0)
                 )
 
         };
