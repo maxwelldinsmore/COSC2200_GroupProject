@@ -50,6 +50,11 @@ namespace RootRemake_Project
         /// </summary>
         public int TurnNumber = 1;
 
+        /// <summary>
+        /// Viewability of the location polygons on the map
+        /// 1 is fully visible, 0 is invisible
+        /// </summary>
+        public double locationPolygonViewability = 0;
 
         public GameScreen()
         {
@@ -60,7 +65,6 @@ namespace RootRemake_Project
             Players[0] = new Player("Carlos");
             cardDeck = CardDeck.cardDeck;
             discardPile = new List<Card>();
-            OnResize();
 
         }
 
@@ -69,10 +73,11 @@ namespace RootRemake_Project
 
         private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
         {
+         
             Point position = e.GetPosition(imgMap);
-            MessageBox.Show("X(%): " +
-               (position.X / imgMap.ActualWidth * 100).ToString("F4") +
-               " Y(%): " + (position.Y / imgMap.ActualHeight * 100).ToString("F4")
+            MessageBox.Show(position.X.ToString("F2") + ", " + position.Y.ToString("F2"));
+          
+            Clipboard.SetText(position.X.ToString("F2") + ", " + position.Y.ToString("F2")
             );
         }
 
@@ -113,122 +118,67 @@ namespace RootRemake_Project
                 );
         }
 
-        /// <summary>
-        /// Hit detection for locations on the map
-        /// CURRENTLY UNUSED: polygon on click event has replaced it,
-        /// might be important if polygon needs to be replaced with another asset
-        /// </summary>
-        /// <param name="mouse">point for the position of player mouse</param>
-        /// <param name="locationPolygon">location being checked for collision</param>
-        /// <returns></returns>
-        public bool InsideLocation(Point mouse, double[][] locationPolygon)
+       
+
+
+ void HighlightLocation()
         {
-            // First gets inner polygon line used in point in polygon method
-            double x1 = 0;
-            double x2 = 0;
-            double y1 = 0;
-            double y2 = 99999999;
-            foreach (double[] location in locationPolygon)
-            {
-                if (location[1] < y1)
-                {
-                    y1 = location[1];
-                    x1 = location[0];
-                }
-                if (location[1] > y2)
-                {
-                    y2 = location[1];
-                    x2 = location[0];
-                }
-            }
-
-            // Ray Casting method 
-            int intersectionCount = 0;
-            // IDK IF THIS WORKS TOTALLY NOT AI
-            for (int i = 0; i < locationPolygon.Length; i++)
-            {
-                double x1p = locationPolygon[i][0];
-                double y1p = locationPolygon[i][1];
-                double x2p = locationPolygon[(i + 1) % locationPolygon.Length][0];
-                double y2p = locationPolygon[(i + 1) % locationPolygon.Length][1];
-                if (y1p == y2p)
-                {
-                    continue;
-                }
-                if (mouse.Y < y1p && mouse.Y < y2p)
-                {
-                    continue;
-                }
-                if (mouse.Y >= y1p && mouse.Y >= y2p)
-                {
-                    continue;
-                }
-                double x = (mouse.Y - y1p) * (x2p - x1p) / (y2p - y1p) + x1p;
-                if (x > mouse.X)
-                {
-                    intersectionCount++;
-                }
-            }
-            // If even return false, if odd return true
-            return intersectionCount % 2 == 1;
-        }
-
-
-        public void HighlightLocation()
-        {
-            
             foreach (var location in Locations)
             {
                 Polygon polygon = new Polygon();
                 PointCollection points = new PointCollection();
+
                 // Convert LocationPolygon to PointCollection
                 foreach (var point in location.LocationPolygon)
                 {
                     points.Add(new Point(point[0], point[1]));
                 }
+
                 polygon.Points = points;
                 polygon.Fill = Brushes.Red;
-                polygon.Opacity = 0.5;
+                polygon.Opacity = locationPolygonViewability;
                 polygon.Name = "Location_" + location.LocationID;
                 polygon.AddHandler(MouseDownEvent, new MouseButtonEventHandler(Location_MouseDown), true);
-                // Assuming imgMap is a Canvas or similar container
+
+                // Debug: Log the points being added to the polygon
+                Debug.WriteLine($"Location {location.LocationID} Points:");
+                foreach (var p in points)
+                {
+                    Debug.WriteLine($"X: {p.X}, Y: {p.Y}");
+                }
+
+                Image image = new Image();
+                Uri imageUri = new Uri("pack://application:,,,/Assets/Areas/" + location.LocationHighlight + ".png", UriKind.RelativeOrAbsolute );
+
+                image.Source = new BitmapImage(imageUri);
+                image.Width = imgMap.ActualWidth;
+                image.Height = imgMap.ActualHeight;
+                image.Opacity = 0.5;
+                image.Name = "Highlight_" + location.LocationID;
+                image.HorizontalAlignment = HorizontalAlignment.Left;
+                image.VerticalAlignment = VerticalAlignment.Top;
+                image.Visibility = Visibility.Visible;
+                image.IsHitTestVisible = false;
+
+                // Assuming canvasGameBoard is a Canvas or similar container
                 if (canvasGameBoard is Canvas canvas)
                 {
-                    canvasGameBoard.Children.Add(polygon);
+                    canvas.Children.Add(polygon);
+                    canvas.Children.Add(image);
+
                 }
+
+                
             }
         }
 
 
 
 
-        /// <summary>
-        /// Sets the locations boundaries from percentage
-        /// to real values for the game board
-        /// Only Called when gamescreen is loaded so far.
-        /// NOT TIED TO AN EVENT
-        /// </summary>
-        async public void OnResize()
-        {
-
-            double imgWidth = imgMap.ActualWidth;
-            double imgHeight = imgMap.ActualHeight;
-
-
-            foreach (var location in Locations)
-            {
-                for (int i = 0; i < location.LocationPolygonPercents.Length; i++)
-                {
-                    location.LocationPolygon[i][0] = location.LocationPolygonPercents[i][0] * imgWidth / 100;
-                    location.LocationPolygon[i][1] = location.LocationPolygonPercents[i][1] * imgHeight / 100;
-                    Debug.WriteLine("Location " + location.LocationID + " X: " + location.LocationPolygon[i][0] + " Y: " + location.LocationPolygon[i][1]);
-                }
-            }
-        }
+      
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            OnResize();
         }
 
         private void Location_MouseDown(object sender, MouseButtonEventArgs e)
@@ -243,14 +193,13 @@ namespace RootRemake_Project
 
         private void resizeMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            OnResize();
 
         }
 
 
         private void highlightMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            OnResize();
+            
             HighlightLocation();
         }
 
@@ -260,3 +209,92 @@ namespace RootRemake_Project
         }
     }
 }
+
+
+//#if DEBUG
+//MessageBox.Show("App is running in Debug mode!");
+//#endif
+
+//     /// <summary>
+//     /// Hit detection for locations on the map
+//     /// CURRENTLY UNUSED: polygon on click event has replaced it,
+//     /// might be important if polygon needs to be replaced with another asset
+//     /// </summary>
+//     /// <param name="mouse">point for the position of player mouse</param>
+//     /// <param name="locationPolygon">location being checked for collision</param>
+//     /// <returns></returns>
+//        public bool InsideLocation(Point mouse, double[][] locationPolygon)
+//{
+//    // First gets inner polygon line used in point in polygon method
+//    double x1 = 0;
+//    double x2 = 0;
+//    double y1 = 0;
+//    double y2 = 99999999;
+//    foreach (double[] location in locationPolygon)
+//    {
+//        if (location[1] < y1)
+//        {
+//            y1 = location[1];
+//            x1 = location[0];
+//        }
+//        if (location[1] > y2)
+//        {
+//            y2 = location[1];
+//            x2 = location[0];
+//        }
+//    }
+
+//    // Ray Casting method 
+//    int intersectionCount = 0;
+//    // IDK IF THIS WORKS TOTALLY NOT AI
+//    for (int i = 0; i < locationPolygon.Length; i++)
+//    {
+//        double x1p = locationPolygon[i][0];
+//        double y1p = locationPolygon[i][1];
+//        double x2p = locationPolygon[(i + 1) % locationPolygon.Length][0];
+//        double y2p = locationPolygon[(i + 1) % locationPolygon.Length][1];
+//        if (y1p == y2p)
+//        {
+//            continue;
+//        }
+//        if (mouse.Y < y1p && mouse.Y < y2p)
+//        {
+//            continue;
+//        }
+//        if (mouse.Y >= y1p && mouse.Y >= y2p)
+//        {
+//            continue;
+//        }
+//        double x = (mouse.Y - y1p) * (x2p - x1p) / (y2p - y1p) + x1p;
+//        if (x > mouse.X)
+//        {
+//            intersectionCount++;
+//        }
+//    }
+//    // If even return false, if odd return true
+//    return intersectionCount % 2 == 1;
+//}
+
+///// <summary>
+///// Sets the locations boundaries from percentage
+///// to real values for the game board
+///// Only Called when gamescreen is loaded so far.
+///// NOT TIED TO AN EVENT
+///// </summary>
+//async public void OnResize()
+//{
+
+//    double imgWidth = imgMap.ActualWidth;
+//    double imgHeight = imgMap.ActualHeight;
+
+
+//    foreach (var location in Locations)
+//    {
+//        for (int i = 0; i < location.LocationPolygonPercents.Length; i++)
+//        {
+//            location.LocationPolygon[i][0] = location.LocationPolygonPercents[i][0] * imgWidth / 100;
+//            location.LocationPolygon[i][1] = location.LocationPolygonPercents[i][1] * imgHeight / 100;
+//            Debug.WriteLine("Location " + location.LocationID + " X: " + location.LocationPolygon[i][0] + " Y: " + location.LocationPolygon[i][1]);
+//        }
+//    }
+//}
