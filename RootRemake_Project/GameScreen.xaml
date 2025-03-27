@@ -9,9 +9,9 @@
         Title="GameScreen" 
         WindowStartupLocation="CenterScreen"
         Height="800" Width="1100" ResizeMode="NoResize" Closed="Window_Closed">
-    
 
-    <Grid Margin="0,0,0,0">
+
+    <Grid Margin="0,0,0,0" Height="800" Width="1100">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="860"/>
             <ColumnDefinition Width="1*"/>
@@ -28,7 +28,7 @@
                 <MenuItem Name="hideLocationMenuItem" Header="_Hide Locations" Click="hideLocationMenuItem_Click"/>
             </MenuItem>
         </Menu>
-        <Canvas x:Name="canvasGameBoard" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
+        <Canvas x:Name="canvasGameBoard" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="0,0,0,10">
             <Image x:Name="imgMap" Source="Assets/rootmap.jpg" 
                 MouseDown="imgMap_MouseDown" MouseMove="imgMap_MouseMove"
                  Margin="0,0,0,0" 
@@ -36,13 +36,13 @@
             />
         </Canvas>
 
-        <Grid Background="PaleGoldenrod" Grid.Row="1" Grid.ColumnSpan="2" Margin="847,0,0,0">
+        <Grid Background="PaleGoldenrod" Grid.Row="1" Grid.ColumnSpan="2" Margin="847,0,0,10">
             <Grid.RowDefinitions>
 
                 <RowDefinition />
                 <RowDefinition Height="319.04"/>
             </Grid.RowDefinitions>
-            <myComponents:Marquis HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <myComponents:Marquis />
             <Button Name="endTurnBtn" Content="End Turn Phase" HorizontalAlignment="Left" Margin="5,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="57" Width="116" Click="endTurnBtn_Click"/>
             <Button Content="ViewBoard" HorizontalAlignment="Left" Margin="126,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="57" Width="116" />
         </Grid>

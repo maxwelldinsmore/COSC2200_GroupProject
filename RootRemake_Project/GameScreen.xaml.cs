@@ -53,8 +53,11 @@ namespace RootRemake_Project
         /// <summary>
         /// Viewability of the location polygons on the map
         /// 1 is fully visible, 0 is invisible
+        /// Don't need to be shown only for debugging / resizing collision boxes
         /// </summary>
         public double locationPolygonViewability = 0;
+
+
 
         public GameScreen()
         {
@@ -65,10 +68,14 @@ namespace RootRemake_Project
             Players[0] = new Player("Carlos");
             cardDeck = CardDeck.cardDeck;
             discardPile = new List<Card>();
-
+            // Images don't properly load here so need to be pushed to the loaded event
+            this.Loaded += GameScreen_Loaded; 
         }
 
-
+        private void GameScreen_Loaded(object sender, RoutedEventArgs e)
+        {
+            loadLocationHighlights(); // Call the method to load location highlights
+        }
 
 
         private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
@@ -121,8 +128,8 @@ namespace RootRemake_Project
        
 
 
-        void HighlightLocation()
-            {
+        public void loadLocationHighlights()
+        {
             foreach (var location in Locations)
             {
                 Polygon polygon = new Polygon();
@@ -137,7 +144,7 @@ namespace RootRemake_Project
                 polygon.Points = points;
                 polygon.Fill = Brushes.Red;
                 polygon.Opacity = locationPolygonViewability;
-                polygon.Name = "Location_" + location.LocationID;
+                polygon.Name = "Polygon_" + location.LocationID;
                 polygon.AddHandler(MouseDownEvent, new MouseButtonEventHandler(Location_MouseDown), true);
 
                 // Debug: Log the points being added to the polygon
@@ -150,10 +157,11 @@ namespace RootRemake_Project
                 Image image = new Image();
                 Uri imageUri = new Uri("pack://application:,,,/Assets/Areas/" + location.LocationHighlight + ".png", UriKind.RelativeOrAbsolute );
 
+
                 image.Source = new BitmapImage(imageUri);
                 image.Width = imgMap.ActualWidth;
                 image.Height = imgMap.ActualHeight;
-                image.Opacity = 0.8;
+                image.Opacity = 1;
                 image.Name = "Highlight_" + location.LocationID;
                 image.HorizontalAlignment = HorizontalAlignment.Left;
                 image.VerticalAlignment = VerticalAlignment.Top;
@@ -165,9 +173,7 @@ namespace RootRemake_Project
                 {
                     canvas.Children.Add(polygon);
                     canvas.Children.Add(image);
-
                 }
-
                 
             }
         }
@@ -188,6 +194,20 @@ namespace RootRemake_Project
                     if (Locations[currentLocation].ConnectedLocations.Contains(locationAdjacent))
                     {
                         image.Visibility = Visibility.Visible;
+                    }
+                    Console.WriteLine("Current Location: " + currentLocation);
+
+                }
+            }
+            foreach (var polygon in canvasGameBoard.Children.OfType<Polygon>())
+            {
+                if (polygon.Name.Contains("Polygon_"))
+                {
+                    polygon.Visibility = Visibility.Hidden;
+                    int currentLocation = Int32.Parse(polygon.Name.Split('_')[1]);
+                    if (Locations[currentLocation].ConnectedLocations.Contains(locationAdjacent))
+                    {
+                        polygon.Visibility = Visibility.Visible;
                     }
                     Console.WriteLine("Current Location: " + currentLocation);
 
@@ -219,8 +239,10 @@ namespace RootRemake_Project
 
         private void highlightMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            
-            HighlightLocation();
+            foreach (var image in  canvasGameBoard.Children.OfType<Image>())
+            {
+                image.Visibility = Visibility.Visible;
+            }
         }
 
         private void endTurnBtn_Click(object sender, RoutedEventArgs e)
