@@ -1,21 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace RootRemake_Project.CharacterClasses
 {
     internal class MarquisDeCat : Character
     {
-        
+
+        public event PropertyChangedEventHandler? PropertyChanged;
         // properties
         public int noCats; // total available cats
         public int noWoods; // available wood for buildings
         public int keepToken; // represents the keep token location
         private Dictionary<int, string> buildings; // key: location, value: buildingType
         private List<int> locationSquares; // area locations
+        private int workspace;
+        public int Workshop
+        {
+            get => workspace;
+            set
+            {
+                if (workspace != value)
+                {
+                    workspace = value;
+                    OnPropertyChanged(nameof(Workshop));
+                    BuildingPlaced?.Invoke(this, workspace); // Fire custom event
+                }
+            }
+        }
 
+
+        public event EventHandler<int>? BuildingPlaced;
+        // Standard property changed notification
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         public MarquisDeCat()
         {
             noCats = 25; // total cat count

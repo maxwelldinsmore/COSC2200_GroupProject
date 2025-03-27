@@ -63,11 +63,12 @@ namespace RootRemake_Project
         {
             InitializeComponent();
             this.Locations = LocationInfo.MapLocations;
-            Players = new Player[4];
+            Players = new Player[5];
             Players[0] = new Player("Max");
             Players[1] = new Player("Mariah");
             Players[2] = new Player("Shane");
             Players[3] = new Player("Bilgan");
+            Players[4] = new Player("Carlos");
             cardDeck = CardDeck.cardDeck;
             discardPile = new List<Card>();
             // Shuffle and deal initial cards
@@ -82,10 +83,10 @@ namespace RootRemake_Project
                     Debug.WriteLine($"- {card.CardText}");
                 }
             }
-        }
             // Images don't properly load here so need to be pushed to the loaded event
-            this.Loaded += GameScreen_Loaded; 
+            this.Loaded += GameScreen_Loaded;
         }
+            
 
         private void ShuffleDeck()
         {
@@ -113,6 +114,7 @@ namespace RootRemake_Project
                     }
                 }
             }
+        }
         private void GameScreen_Loaded(object sender, RoutedEventArgs e)
         {
             loadLocationHighlights(); // Call the method to load location highlights
@@ -198,6 +200,7 @@ namespace RootRemake_Project
         private void testCardLoad()
         {
             Card card = CardDeck.cardDeck[25];
+            card = Players[0].hand[0];
             BitmapSource cardImage = card.GetCardImage();
 
             canvasGameBoard.Children.Add(
