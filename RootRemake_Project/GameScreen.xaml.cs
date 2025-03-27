@@ -60,13 +60,98 @@ namespace RootRemake_Project
         {
             InitializeComponent();
             this.Locations = LocationInfo.MapLocations;
-            //testCardLoad();
             Players = new Player[4];
-            Players[0] = new Player("Carlos");
+            Players[0] = new Player("Max");
+            Players[1] = new Player("Mariah");
+            Players[2] = new Player("Shane");
+            Players[3] = new Player("Bilgan");
             cardDeck = CardDeck.cardDeck;
             discardPile = new List<Card>();
-
+            // Shuffle and deal initial cards
+            ShuffleDeck();
+            DealInitialCards();
+            // Temporary verification code
+            for (int i = 0; i < Players.Length; i++)
+            {
+                Debug.WriteLine($"Player {i + 1} has {Players[i].hand.Count} cards");
+                foreach (Card card in Players[i].hand)
+                {
+                    Debug.WriteLine($"- {card.CardText}");
+                }
+            }
         }
+
+        private void ShuffleDeck()
+        {
+            Random rng = new Random();
+            int n = cardDeck.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                Card value = cardDeck[k];
+                cardDeck[k] = cardDeck[n];
+                cardDeck[n] = value;
+            }
+        }
+
+        private void DealInitialCards()
+        {
+            foreach (Player player in Players)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    if (cardDeck.Count > 0)
+                    {
+                        player.DrawCard(cardDeck);
+                    }
+                }
+            }
+        }
+
+        public void DrawCardsForPlayer(int playerIndex, int numberOfCards)
+        {
+            if (playerIndex < 0 || playerIndex >= Players.Length)
+                return;
+
+            Player player = Players[playerIndex];
+            for (int i = 0; i < numberOfCards; i++)
+            {
+                if (cardDeck.Count > 0)
+                {
+                    player.DrawCard(cardDeck);
+                }
+                else
+                {
+                    // If deck is empty, reshuffle discard pile into deck
+                    if (discardPile.Count > 0)
+                    {
+                        cardDeck.AddRange(discardPile);
+                        discardPile.Clear();
+                        ShuffleDeck();
+                        player.DrawCard(cardDeck);
+                    }
+                    else
+                    {
+                        // No cards left to draw
+                        break;
+                    }
+                }
+            }
+
+            // Check if player needs to discard
+            if (player.hand.Count > 5)
+            {
+                // For now, we'll just discard down to 5 randomly
+                // In a real game, you'd want the player to choose which cards to discard
+                while (player.hand.Count > 5)
+                {
+                    Card cardToDiscard = player.hand[0]; // Always discards first card - should be changed to player choice
+                    player.DiscardCard(cardToDiscard, discardPile);
+                }
+            }
+        }
+
 
 
 
