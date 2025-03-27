@@ -22,7 +22,23 @@ namespace RootRemake_Project
             this.UserName = UserName;
         }
 
+        public void DrawCard(List<Card> deck)
+        {
+            if (deck.Count > 0)
+            {
+                Card drawnCard = deck[0];
+                hand.Add(drawnCard);
+                deck.RemoveAt(0);
+            }
+        }
 
-
+        public void DiscardCard(Card card, List<Card> discardPile)
+        {
+            if (hand.Contains(card))
+            {
+                hand.Remove(card);
+                discardPile.Add(card);
+            }
+        }
     }
 }
