@@ -14,7 +14,7 @@ namespace RootRemake_Project.CharacterClasses
         /// 0 will be A, B would be 1 and so on
         /// </summary>
         public int CharacterSetupOrder;
-
+        public int VictoryPoints = 0;
 
         abstract public void CharacterSetup();
 

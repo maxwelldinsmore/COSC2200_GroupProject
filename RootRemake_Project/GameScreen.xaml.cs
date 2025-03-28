@@ -347,17 +347,18 @@ namespace RootRemake_Project
             Image BuildingImage = new Image();
             MarquisDeCat marquis = (MarquisDeCat)Players[0].Character;
             BuildingImage.Source = new BitmapImage(marquis.RecruiterArt);
-            BuildingImage.Width = 50;
-            BuildingImage.Height = 50;
+            BuildingImage.Width = 25;
+            BuildingImage.Height = 25;
             BuildingImage.Name = "Recruiter";
 
             BuildingImage.IsHitTestVisible = false;
-            if (Locations[0].Building1Location != null)
+            if (Locations[0].Building1Location.HasValue)
             {
-                Point buildingPoint = Locations[0].Building1Location;
+                Point buildingPoint = Locations[0].Building1Location.Value;
                 Canvas.SetLeft(BuildingImage, buildingPoint.X);
                 Canvas.SetTop(BuildingImage, buildingPoint.Y);
             }
+            canvasGameBoard.Children.Add(BuildingImage);
 
         }
     }
