@@ -1,4 +1,5 @@
-﻿using RootRemake_Project.LocationClasses;
+﻿using RootRemake_Project.CharacterClasses;
+using RootRemake_Project.LocationClasses;
 using RootRemake_Project.ObjectClasses;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+
 
 namespace RootRemake_Project
 {
@@ -64,11 +66,11 @@ namespace RootRemake_Project
             InitializeComponent();
             this.Locations = LocationInfo.MapLocations;
             Players = new Player[5];
-            Players[0] = new Player("Max");
-            Players[1] = new Player("Mariah");
-            Players[2] = new Player("Shane");
-            Players[3] = new Player("Bilgan");
-            Players[4] = new Player("Carlos");
+            Players[0] = new Player("Bilgan", new MarquisDeCat());
+            Players[1] = new Player("Mariah", new MarquisDeCat());
+            Players[2] = new Player("Shane", new MarquisDeCat());
+            Players[3] = new Player("Max", new MarquisDeCat());
+            Players[4] = new Player("Carlos", new MarquisDeCat());
             cardDeck = CardDeck.cardDeck;
             discardPile = new List<Card>();
             // Shuffle and deal initial cards
@@ -311,7 +313,9 @@ namespace RootRemake_Project
 
         private void Location_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Location Clicked");
+            Polygon source = (Polygon)sender;
+            MessageBox.Show("Location Clicked " + source.Name.Split('_')[1]);
+
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -338,8 +342,43 @@ namespace RootRemake_Project
 
         }
 
+        private void loadBuildingMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Image BuildingImage = new Image();
+            MarquisDeCat marquis = (MarquisDeCat)Players[0].Character;
+            BuildingImage.Source = new BitmapImage(marquis.RecruiterArt);
+            BuildingImage.Width = 50;
+            BuildingImage.Height = 50;
+            BuildingImage.Name = "Recruiter";
+
+            BuildingImage.IsHitTestVisible = false;
+            if (Locations[0].Building1Location != null)
+            {
+                Point buildingPoint = Locations[0].Building1Location;
+                Canvas.SetLeft(BuildingImage, buildingPoint.X);
+                Canvas.SetTop(BuildingImage, buildingPoint.Y);
+            }
+
+        }
     }
 }
+//Image BuildingImage = new Image();
+//MarquisDeCat marquis = (MarquisDeCat)Players[building.playerID].Character;
+//BuildingImage.Source = new BitmapImage(marquis.RecruiterArt);
+//BuildingImage.Width = 50;
+//BuildingImage.Height = 50;
+//BuildingImage.Name = "Recruiter_" + building.BuildingID;
+
+//// Assuming BuildingPoints is a property in Location that gives the position of buildings
+//double[] buildingPoint = location.LocationPolygon[building.BuildingID];
+//Canvas.SetLeft(BuildingImage, buildingPoint[0]);
+//Canvas.SetTop(BuildingImage, buildingPoint[1]);
+
+//// Assuming canvasGameBoard is a Canvas or similar container
+//if (canvasGameBoard is Canvas canvas)
+//{
+//    canvas.Children.Add(BuildingImage);
+//}
 
 
 //#if DEBUG

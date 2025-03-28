@@ -47,6 +47,9 @@
     <None Remove="Assets\Items\SwordUsed.png" />
     <None Remove="Assets\MarquisBoard.png" />
     <None Remove="Assets\Marquis\Icon.png" />
+    <None Remove="Assets\Marquis\Recruiter.png" />
+    <None Remove="Assets\Marquis\Sawmill.png" />
+    <None Remove="Assets\Marquis\Wokrshop.png" />
     <None Remove="Assets\RootClassDiagrams.png" />
     <None Remove="Assets\rootmap.jpg" />
     <None Remove="Assets\Vagabond\Icon.png" />
@@ -98,6 +101,15 @@
     </Resource>
     <Resource Include="Assets\Marquis\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Marquis\Recruiter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Marquis\Sawmill.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Marquis\Wokrshop.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\rootmap.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

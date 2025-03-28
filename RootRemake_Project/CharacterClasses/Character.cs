@@ -50,7 +50,7 @@ namespace RootRemake_Project.CharacterClasses
         }
 
         /// <summary>
-        /// Gets Name of the character
+        /// Gets Name of the Character
         /// </summary>
         abstract public string CharacterName();
         

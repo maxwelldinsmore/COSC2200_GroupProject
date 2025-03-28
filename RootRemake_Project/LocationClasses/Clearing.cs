@@ -12,8 +12,7 @@ namespace RootRemake_Project.LocationClasses
     public class Clearing : Location
     {
 
-        public Point Building1Location { get; set; }
-        public Point? Building2Location { get; set; }
+
 
 
         public Clearing(int locationID, double[][] locationCoordinates, int[] connectedLocations, string locationHighlight, Point buildLocation, Point buildLocation2)

@@ -11,15 +11,16 @@ namespace RootRemake_Project
     public class Player
     {
         public string UserName;
-        public Character character { get; set; }
+        public Character Character { get; set; }
         public int VictoryPoints;
         public List<Card> hand { get; set; }
 
-        public Player(string UserName)
+        public Player(string UserName, Character chosenCharacter)
         {
             hand = new List<Card>();
             VictoryPoints = 0;
             this.UserName = UserName;
+            Character = chosenCharacter;
         }
 
         public void DrawCard(List<Card> deck)
