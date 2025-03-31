@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RootRemake_Project.CharacterClasses
 {
-    public class Vegabond
+    public class Vagabond : Player
     {
 
         public string Name { get; set; }
@@ -14,7 +14,7 @@ namespace RootRemake_Project.CharacterClasses
         public Dictionary<string, int> FactionRank { get; set; }
         public List<string> Quests { get; set; }
 
-        public Vegabond(string name)
+        public Vagabond(string name) : base()
         {
             Name = name;
             RuinItems = 0;
@@ -42,6 +42,34 @@ namespace RootRemake_Project.CharacterClasses
             Quests.Add(Quests[0]);
         }
 
+        public override void CharacterSetup()
+        {
+            throw new NotImplementedException();
+        }
 
+        public override void BirdSong()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Daylight()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Evening()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Move()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string CharacterName()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

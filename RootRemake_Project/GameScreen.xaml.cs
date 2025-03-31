@@ -66,11 +66,11 @@ namespace RootRemake_Project
             InitializeComponent();
             this.Locations = LocationInfo.MapLocations;
             Players = new Player[5];
-            Players[0] = new Player("Bilgan", new MarquisDeCat());
-            Players[1] = new Player("Mariah", new MarquisDeCat());
-            Players[2] = new Player("Shane", new MarquisDeCat());
-            Players[3] = new Player("Max", new MarquisDeCat());
-            Players[4] = new Player("Carlos", new MarquisDeCat());
+            Players[0] = new MarquisDeCat("Bilgan");
+            Players[1] = new MarquisDeCat("Mariah");
+            Players[2] = new MarquisDeCat("Shane");
+            Players[3] = new MarquisDeCat("Max");
+            Players[4] = new MarquisDeCat("Carlos");
             cardDeck = CardDeck.cardDeck;
             discardPile = new List<Card>();
             // Shuffle and deal initial cards
@@ -79,8 +79,8 @@ namespace RootRemake_Project
             // Temporary verification code
             for (int i = 0; i < Players.Length; i++)
             {
-                Debug.WriteLine($"Player {i + 1} has {Players[i].hand.Count} cards");
-                foreach (Card card in Players[i].hand)
+                Debug.WriteLine($"Player {i + 1} has {Players[i].Hand.Count} cards");
+                foreach (Card card in Players[i].Hand)
                 {
                     Debug.WriteLine($"- {card.CardText}");
                 }
@@ -153,13 +153,13 @@ namespace RootRemake_Project
             }
 
             // Check if player needs to discard
-            if (player.hand.Count > 5)
+            if (player.Hand.Count > 5)
             {
                 // For now, we'll just discard down to 5 randomly
                 // In a real game, you'd want the player to choose which cards to discard
-                while (player.hand.Count > 5)
+                while (player.Hand.Count > 5)
                 {
-                    Card cardToDiscard = player.hand[0]; // Always discards first card - should be changed to player choice
+                    Card cardToDiscard = player.Hand[0]; // Always discards first card - should be changed to player choice
                     player.DiscardCard(cardToDiscard, discardPile);
                 }
             }
@@ -202,7 +202,7 @@ namespace RootRemake_Project
         private void testCardLoad()
         {
             Card card = CardDeck.cardDeck[25];
-            card = Players[0].hand[0];
+            card = Players[0].Hand[0];
             BitmapSource cardImage = card.GetCardImage();
 
             canvasGameBoard.Children.Add(
@@ -212,7 +212,7 @@ namespace RootRemake_Project
                     Height = 250,
                     Margin = new Thickness(29, 257, 50, 256)
                 }
-                );
+            );
         }
 
        
@@ -345,7 +345,7 @@ namespace RootRemake_Project
         private void loadBuildingMenuItem_Click(object sender, RoutedEventArgs e)
         {
             Image BuildingImage = new Image();
-            MarquisDeCat marquis = (MarquisDeCat)Players[0].Character;
+            MarquisDeCat marquis = (MarquisDeCat)Players[0];
             BuildingImage.Source = new BitmapImage(marquis.RecruiterArt);
             BuildingImage.Width = 25;
             BuildingImage.Height = 25;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RootRemake_Project.ObjectClasses;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Windows.Controls;
 
 namespace RootRemake_Project.CharacterClasses
 {
-    public class MarquisDeCat : Character
+    public class MarquisDeCat : Player
     {
 
 
@@ -32,8 +33,12 @@ namespace RootRemake_Project.CharacterClasses
 
         public Uri SawmillArt { get; set; } 
 
-        public MarquisDeCat()
+        public MarquisDeCat(string PlayerName)
         {
+            UserName = PlayerName;
+            Hand = new List<Card>();
+            VictoryPoints = 0;
+
             TotalCats = 25; // total cat count
             AvailableWood = 1; // starting wood count
             //locationSquares = new List<int>() {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };

@@ -17,13 +17,6 @@
       <FileName>ObjectClasses\Building.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RootRemake_Project.CharacterClasses.Character">
-    <Position X="9" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AEgAAIAAAMAAAAoAAAAACAAAAEgACAAAAEAAAAAAAAA=</HashCode>
-      <FileName>CharacterClasses\Character.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="RootRemake_Project.CharacterClasses.Eyrie" Collapsed="true">
     <Position X="13" Y="2.25" Width="1.5" />
     <TypeIdentifier>
@@ -32,7 +25,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="RootRemake_Project.CharacterClasses.MarquisDeCat">
-    <Position X="11" Y="1" Width="1.5" />
+    <Position X="10.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAIIAAAAgIEAEAyIAAMEwAiIAAAEACEMAhIAA=</HashCode>
       <FileName>CharacterClasses\MarquisDeCat.cs</FileName>
@@ -84,13 +77,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAIAAAAAAAAAAAA=</HashCode>
       <FileName>ObjectClasses\CardDeck.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="RootRemake_Project.Player">
-    <Position X="7.25" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAgAAAABAAAEAAAAAAAAQAAAAAACAA=</HashCode>
-      <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RootRemake_Project.GameScreen" Collapsed="true">

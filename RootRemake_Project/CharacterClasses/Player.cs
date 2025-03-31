@@ -1,10 +1,16 @@
-﻿using System.Windows.Media.Animation;
+﻿using RootRemake_Project.ObjectClasses;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RootRemake_Project.CharacterClasses
 {
-
-    public abstract class Character
+    public abstract class Player
     {
+
+        public string UserName { get; set; }
         public int TotalWarriors;
         public int TotalBuildings;
         private Random rand = new Random();
@@ -14,7 +20,34 @@ namespace RootRemake_Project.CharacterClasses
         /// 0 will be A, B would be 1 and so on
         /// </summary>
         public int CharacterSetupOrder;
-        public int VictoryPoints = 0;
+        public int VictoryPoints {get; set; }
+
+        public List<Card> Hand { get; set; }
+
+        // Constructor
+        public Player()
+        {
+            
+        }
+
+        public void DrawCard(List<Card> deck)
+        {
+            if (deck.Count > 0)
+            {
+                Card drawnCard = deck[0];
+                Hand.Add(drawnCard);
+                deck.RemoveAt(0);
+            }
+        }
+
+        public void DiscardCard(Card card, List<Card> discardPile)
+        {
+            if (Hand.Contains(card))
+            {
+                Hand.Remove(card);
+                discardPile.Add(card);
+            }
+        }
 
         abstract public void CharacterSetup();
 
@@ -35,7 +68,7 @@ namespace RootRemake_Project.CharacterClasses
         /// </summary>
         /// <returns>int[] {damage attacker takes, damage defender takes}</returns>
         /// //TODO: add condition for woodland alliance
-        public int[] Battle(Character attacker, Character defender)
+        public int[] Battle(Player attacker, Player defender)
         {
             int roll1 = rand.Next(0, 4);
             int roll2 = rand.Next(0, 4);
@@ -53,10 +86,9 @@ namespace RootRemake_Project.CharacterClasses
         /// Gets Name of the Character
         /// </summary>
         abstract public string CharacterName();
-        
+
 
     }
-
 
 
 }
