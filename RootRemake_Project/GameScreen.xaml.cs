@@ -160,7 +160,37 @@ namespace RootRemake_Project
             }
         }
 
+        private bool isHandVisible = false;
 
+        private void toggleHandBtn_Click(object sender, RoutedEventArgs e)
+        {
+            isHandVisible = !isHandVisible; // Toggle state
+
+            if (isHandVisible)
+            {
+                // Show the hand
+                cardHand.Visibility = Visibility.Visible;
+                toggleHandBtn.Content = "Hide Hand";
+
+                // Refresh the display in case cards changed
+                cardHand.DisplayHand(Players[CurrentPlayerTurn].Hand);
+            }
+            else
+            {
+                // Hide the hand
+                cardHand.Visibility = Visibility.Collapsed;
+                toggleHandBtn.Content = "Show Hand";
+            }
+        }
+
+        // Call this whenever the hand changes to keep it updated
+        private void UpdateHandDisplay()
+        {
+            if (isHandVisible)
+            {
+                cardHand.DisplayHand(Players[CurrentPlayerTurn].Hand);
+            }
+        }
 
         private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
         {
