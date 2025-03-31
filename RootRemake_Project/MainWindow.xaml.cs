@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using RootRemake_Project.CharacterClasses;
+using System.Numerics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;

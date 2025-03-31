@@ -1,19 +1,17 @@
 ﻿using RootRemake_Project.ObjectClasses;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows;
 namespace RootRemake_Project.LocationClasses
 {
     // For the Clearing gets the location
     public class Clearing : Location
     {
 
-        public Point Building1Location { get; set; }
-        public Point? Building2Location { get; set; }
+
 
 
         public Clearing(int locationID, double[][] locationCoordinates, int[] connectedLocations, string locationHighlight, Point buildLocation, Point buildLocation2)
