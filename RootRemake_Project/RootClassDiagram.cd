@@ -17,29 +17,22 @@
       <FileName>ObjectClasses\Building.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RootRemake_Project.CharacterClasses.Character">
-    <Position X="9.5" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AEAAAIAAAMAAAAoAAAAACAAAAEgACAAAAEAAAAAAAAA=</HashCode>
-      <FileName>CharacterClasses\Character.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="RootRemake_Project.CharacterClasses.Eyrie" Collapsed="true">
-    <Position X="11.5" Y="2.25" Width="1.5" />
+    <Position X="13" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAgAAAAAAAAAAEgACAAAAEAAAAAAAAA=</HashCode>
       <FileName>CharacterClasses\Eyrie.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RootRemake_Project.CharacterClasses.MarquisDeCat" Collapsed="true">
-    <Position X="11.5" Y="1.25" Width="1.5" />
+  <Class Name="RootRemake_Project.CharacterClasses.MarquisDeCat">
+    <Position X="10.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EQAAAgAAIIAAAAgAEAQBCAAAEEwAiAAAAEACEAABAAA=</HashCode>
+      <HashCode>AAAAAgAAIIAAAAgIEAEAyIAAMEwAiIAAAEACEMAhIAA=</HashCode>
       <FileName>CharacterClasses\MarquisDeCat.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RootRemake_Project.CharacterClasses.Woodland" Collapsed="true">
-    <Position X="11.5" Y="3.25" Width="1.5" />
+    <Position X="13" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAgAAAAAAAAAAEgACAAAAEAAAAAAAAA=</HashCode>
       <FileName>CharacterClasses\Woodland.cs</FileName>
@@ -61,7 +54,7 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>BAEAAhBACAAAAAAAAAACAAAAAAAAAAAABAAAAIAAAgA=</HashCode>
+      <HashCode>BAAAAhBACAAAAAAAAAACAAAAAAAAAAAAFAAAAIAAAgg=</HashCode>
       <FileName>LocationClasses\Location.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -86,17 +79,10 @@
       <FileName>ObjectClasses\CardDeck.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RootRemake_Project.Player" Collapsed="true">
-    <Position X="7.25" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAgIAAAAAAAAAAAgAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>Player.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="RootRemake_Project.GameScreen" Collapsed="true">
     <Position X="5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAABAAAQAIAAAABAAAAEACCJAAACAAAgAA=</HashCode>
+      <HashCode>AAACAEAQAIiABgAAIAIAAAgBAAAgFBCCBAAACAAAAAI=</HashCode>
       <FileName>GameScreen.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -104,7 +90,7 @@
   <Class Name="RootRemake_Project.MainWindow" Collapsed="true">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

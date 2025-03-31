@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace RootRemake_Project.CharacterClasses
 {
-    internal class Woodland : Character
+    internal class Woodland : Player
     {
+        public Woodland() : base()
+        {
+            // Implementation of Woodland constructor
+        }
         public override void CharacterSetup()
         {
             // Implementation of CharacterSetup method

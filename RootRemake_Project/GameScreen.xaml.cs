@@ -1,4 +1,5 @@
-﻿using RootRemake_Project.LocationClasses;
+﻿using RootRemake_Project.CharacterClasses;
+using RootRemake_Project.LocationClasses;
 using RootRemake_Project.ObjectClasses;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+
 
 namespace RootRemake_Project
 {
@@ -53,18 +55,22 @@ namespace RootRemake_Project
         /// <summary>
         /// Viewability of the location polygons on the map
         /// 1 is fully visible, 0 is invisible
+        /// Don't need to be shown only for debugging / resizing collision boxes
         /// </summary>
         public double locationPolygonViewability = 0;
+
+
 
         public GameScreen()
         {
             InitializeComponent();
             this.Locations = LocationInfo.MapLocations;
-            Players = new Player[4];
-            Players[0] = new Player("Max");
-            Players[1] = new Player("Mariah");
-            Players[2] = new Player("Shane");
-            Players[3] = new Player("Bilgan");
+            Players = new Player[5];
+            Players[0] = new MarquisDeCat("Bilgan");
+            Players[1] = new MarquisDeCat("Mariah");
+            Players[2] = new MarquisDeCat("Shane");
+            Players[3] = new MarquisDeCat("Max");
+            Players[4] = new MarquisDeCat("Carlos");
             cardDeck = CardDeck.cardDeck;
             discardPile = new List<Card>();
             // Shuffle and deal initial cards
@@ -72,6 +78,7 @@ namespace RootRemake_Project
             DealInitialCards();
             cardHand.DisplayHand(Players[0].hand);
         }
+            
 
         private void ShuffleDeck()
         {
@@ -99,6 +106,10 @@ namespace RootRemake_Project
                     }
                 }
             }
+        }
+        private void GameScreen_Loaded(object sender, RoutedEventArgs e)
+        {
+            loadLocationHighlights(); // Call the method to load location highlights
         }
 
         public void DrawCardsForPlayer(int playerIndex, int numberOfCards)
@@ -132,19 +143,17 @@ namespace RootRemake_Project
             }
 
             // Check if player needs to discard
-            if (player.hand.Count > 5)
+            if (player.Hand.Count > 5)
             {
                 // For now, we'll just discard down to 5 randomly
                 // In a real game, you'd want the player to choose which cards to discard
-                while (player.hand.Count > 5)
+                while (player.Hand.Count > 5)
                 {
-                    Card cardToDiscard = player.hand[0]; // Always discards first card - should be changed to player choice
+                    Card cardToDiscard = player.Hand[0]; // Always discards first card - should be changed to player choice
                     player.DiscardCard(cardToDiscard, discardPile);
                 }
             }
         }
-
-
 
 
 
@@ -183,6 +192,7 @@ namespace RootRemake_Project
         private void testCardLoad()
         {
             Card card = CardDeck.cardDeck[25];
+            card = Players[0].Hand[0];
             BitmapSource cardImage = card.GetCardImage();
 
             canvasGameBoard.Children.Add(
@@ -192,14 +202,14 @@ namespace RootRemake_Project
                     Height = 250,
                     Margin = new Thickness(29, 257, 50, 256)
                 }
-                );
+            );
         }
 
        
 
 
-        void HighlightLocation()
-            {
+        public void loadLocationHighlights()
+        {
             foreach (var location in Locations)
             {
                 Polygon polygon = new Polygon();
@@ -214,7 +224,7 @@ namespace RootRemake_Project
                 polygon.Points = points;
                 polygon.Fill = Brushes.Red;
                 polygon.Opacity = locationPolygonViewability;
-                polygon.Name = "Location_" + location.LocationID;
+                polygon.Name = "Polygon_" + location.LocationID;
                 polygon.AddHandler(MouseDownEvent, new MouseButtonEventHandler(Location_MouseDown), true);
 
                 // Debug: Log the points being added to the polygon
@@ -227,10 +237,11 @@ namespace RootRemake_Project
                 Image image = new Image();
                 Uri imageUri = new Uri("pack://application:,,,/Assets/Areas/" + location.LocationHighlight + ".png", UriKind.RelativeOrAbsolute );
 
+
                 image.Source = new BitmapImage(imageUri);
                 image.Width = imgMap.ActualWidth;
                 image.Height = imgMap.ActualHeight;
-                image.Opacity = 0.8;
+                image.Opacity = 1;
                 image.Name = "Highlight_" + location.LocationID;
                 image.HorizontalAlignment = HorizontalAlignment.Left;
                 image.VerticalAlignment = VerticalAlignment.Top;
@@ -242,9 +253,7 @@ namespace RootRemake_Project
                 {
                     canvas.Children.Add(polygon);
                     canvas.Children.Add(image);
-
                 }
-
                 
             }
         }
@@ -270,6 +279,20 @@ namespace RootRemake_Project
 
                 }
             }
+            foreach (var polygon in canvasGameBoard.Children.OfType<Polygon>())
+            {
+                if (polygon.Name.Contains("Polygon_"))
+                {
+                    polygon.Visibility = Visibility.Hidden;
+                    int currentLocation = Int32.Parse(polygon.Name.Split('_')[1]);
+                    if (Locations[currentLocation].ConnectedLocations.Contains(locationAdjacent))
+                    {
+                        polygon.Visibility = Visibility.Visible;
+                    }
+                    Console.WriteLine("Current Location: " + currentLocation);
+
+                }
+            }
         }
 
 
@@ -280,7 +303,9 @@ namespace RootRemake_Project
 
         private void Location_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Location Clicked");
+            Polygon source = (Polygon)sender;
+            MessageBox.Show("Location Clicked " + source.Name.Split('_')[1]);
+
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -288,16 +313,19 @@ namespace RootRemake_Project
 
         }
 
-        private void resizeMenuItem_Click(object sender, RoutedEventArgs e)
+        private void chooseKeepMenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            int[] cornerLocations = [0, 3, 8, 11];
+            HighlightLocations(cornerLocations);
         }
 
 
         private void highlightMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            
-            HighlightLocation();
+            foreach (var image in  canvasGameBoard.Children.OfType<Image>())
+            {
+                image.Visibility = Visibility.Visible;
+            }
         }
 
         private void endTurnBtn_Click(object sender, RoutedEventArgs e)
@@ -305,12 +333,90 @@ namespace RootRemake_Project
 
         }
 
-        private void cardHand_Loaded(object sender, RoutedEventArgs e)
+        private void loadBuildingMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Image BuildingImage = new Image();
+            MarquisDeCat marquis = (MarquisDeCat)Players[0];
+            BuildingImage.Source = new BitmapImage(marquis.RecruiterArt);
+            BuildingImage.Width = 25;
+            BuildingImage.Height = 25;
+            BuildingImage.Name = "Recruiter";
+
+            BuildingImage.IsHitTestVisible = false;
+            if (Locations[0].Building1Location.HasValue)
+            {
+                Point buildingPoint = Locations[0].Building1Location.Value;
+                Canvas.SetLeft(BuildingImage, buildingPoint.X);
+                Canvas.SetTop(BuildingImage, buildingPoint.Y);
+            }
+            canvasGameBoard.Children.Add(BuildingImage);
+
+        }
+
+        
+
+        private void GameStart()
+        {
+            // highlights the 4 corners on the map
+        }
+
+
+        private void HighlightLocations(int[] highlightedAreas)
         {
 
+            // Hide locations that are not adjacent to the current location
+            foreach (var image in canvasGameBoard.Children.OfType<Image>())
+            {
+                if (image.Name.Contains("Highlight_"))
+                {
+                    image.Visibility = Visibility.Hidden;
+                    int currentLocation = Int32.Parse(image.Name.Split('_')[1]);
+                    if (highlightedAreas.Contains(currentLocation))
+                    {
+                        image.Visibility = Visibility.Visible;
+                    } else
+                    {
+                        image.Visibility = Visibility.Hidden;
+                    }
+                }
+            }
+            foreach (var polygon in canvasGameBoard.Children.OfType<Polygon>())
+            {
+                if (polygon.Name.Contains("Polygon_"))
+                {
+                    polygon.Visibility = Visibility.Hidden;
+                    int currentLocation = Int32.Parse(polygon.Name.Split('_')[1]);
+                    if (highlightedAreas.Contains(currentLocation))
+                    {
+                        polygon.Visibility = Visibility.Visible;
+                    } else
+                    {
+                        polygon.Visibility = Visibility.Hidden;
+                    }
+                        Console.WriteLine("Current Location: " + currentLocation);
+
+                }
+            }
         }
     }
 }
+//Image BuildingImage = new Image();
+//MarquisDeCat marquis = (MarquisDeCat)Players[building.playerID].Character;
+//BuildingImage.Source = new BitmapImage(marquis.RecruiterArt);
+//BuildingImage.Width = 50;
+//BuildingImage.Height = 50;
+//BuildingImage.Name = "Recruiter_" + building.BuildingID;
+
+//// Assuming BuildingPoints is a property in Location that gives the position of buildings
+//double[] buildingPoint = location.LocationPolygon[building.BuildingID];
+//Canvas.SetLeft(BuildingImage, buildingPoint[0]);
+//Canvas.SetTop(BuildingImage, buildingPoint[1]);
+
+//// Assuming canvasGameBoard is a Canvas or similar container
+//if (canvasGameBoard is Canvas canvas)
+//{
+//    canvas.Children.Add(BuildingImage);
+//}
 
 
 //#if DEBUG

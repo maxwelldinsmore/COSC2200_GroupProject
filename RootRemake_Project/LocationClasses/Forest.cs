@@ -18,7 +18,10 @@ namespace RootRemake_Project.LocationClasses
             this.ConnectedLocations = connectedLocations;
             this.Armies = new List<Army>();
             this.Buildings = new List<Building>();
-        
+            this.ContainsRuin = false;
+            this.totalBuildings = 0;
+            this.Building1Location = null;
+            this.Building2Location = null;
         }
         override public bool CanBuild()
         {

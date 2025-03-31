@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace RootRemake_Project.CharacterClasses
 {
-    internal class Eyrie : Character
+    internal class Eyrie : Player
     {
-        
+        public Eyrie() : base() 
+        {
+            // Implementation of Eyrie constructor
+        }
         public override void CharacterSetup()
         {
             // Implementation of CharacterSetup method

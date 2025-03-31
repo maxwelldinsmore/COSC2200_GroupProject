@@ -11,7 +11,7 @@ namespace RootRemake_Project.ObjectClasses
         public string playerID { get; set; }
 
         /// <summary>
-        /// Id of the player's character for doing character specific testing
+        /// Id of the player's Character for doing Character specific testing
         /// </summary>
         public int characterID { get; set; }
         public string warriorCount { get; set; }

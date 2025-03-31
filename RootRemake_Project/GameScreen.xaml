@@ -23,9 +23,10 @@
         <Menu DockPanel.Dock="Top" Grid.Row="0" Margin="847,0,0,0" Grid.ColumnSpan="2">
             <MenuItem Header="_Options">
                 <MenuItem Header="_Debug"/>
-                <MenuItem Name="resizeMenuItem" Header="_Manually Resize" Click="resizeMenuItem_Click"/>
+                <MenuItem Name="chooseKeepMenuItem" Header="_Choose Keep" Click="chooseKeepMenuItem_Click"/>
                 <MenuItem Name="highlightMenuItem" Header="_Highlight All locations" Click="highlightMenuItem_Click"/>
                 <MenuItem Name="hideLocationMenuItem" Header="_Hide Locations" Click="hideLocationMenuItem_Click"/>
+                <MenuItem Name="loadBuildingMenuItem" Header="_Hide Locations" Click="loadBuildingMenuItem_Click"/>
             </MenuItem>
         </Menu>
         <Canvas x:Name="canvasGameBoard" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
@@ -51,7 +52,7 @@
                 <RowDefinition />
                 <RowDefinition Height="319.04"/>
             </Grid.RowDefinitions>
-            <myComponents:Marquis HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <myComponents:Marquis />
             <Button Name="endTurnBtn" Content="End Turn Phase" HorizontalAlignment="Left" Margin="5,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="57" Width="116" Click="endTurnBtn_Click"/>
             <Button Content="ViewBoard" HorizontalAlignment="Left" Margin="126,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="57" Width="116" />
         </Grid>
