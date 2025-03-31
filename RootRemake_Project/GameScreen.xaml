@@ -37,7 +37,7 @@
             />
             <myComponents:CardHand x:Name="cardHand"
                        Width="763"
-                       Height="226" HorizontalAlignment="Left" Canvas.Top="504" VerticalAlignment="Center" Opacity="0.8" Loaded="cardHand_Loaded">
+                       Height="226" HorizontalAlignment="Left" Canvas.Top="504" VerticalAlignment="Center" Opacity="0.8" Loaded="cardHand_Loaded" Visibility="Collapsed">
                 <Canvas.Bottom>20</Canvas.Bottom>
                 <Canvas.Left>50</Canvas.Left>
             </myComponents:CardHand>
@@ -55,6 +55,7 @@
             <myComponents:Marquis />
             <Button Name="endTurnBtn" Content="End Turn Phase" HorizontalAlignment="Left" Margin="5,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="57" Width="116" Click="endTurnBtn_Click"/>
             <Button Content="ViewBoard" HorizontalAlignment="Left" Margin="126,71,0,0" Grid.Row="1" VerticalAlignment="Top" Height="57" Width="116" />
+            <Button x:Name="toggleHandBtn" Content="Show Hand" HorizontalAlignment="Center" Margin="0,160,0,0" Grid.Row="1" VerticalAlignment="Top" Height="81" Width="162" Click="toggleHandBtn_Click"/>
         </Grid>
     </Grid>
 </Window>
