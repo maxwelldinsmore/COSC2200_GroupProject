@@ -107,6 +107,12 @@ namespace RootRemake_Project
                 }
             }
         }
+
+        private void cardHand_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void GameScreen_Loaded(object sender, RoutedEventArgs e)
         {
             loadLocationHighlights(); // Call the method to load location highlights
