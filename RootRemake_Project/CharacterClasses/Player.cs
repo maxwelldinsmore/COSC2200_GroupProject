@@ -24,12 +24,6 @@ namespace RootRemake_Project.CharacterClasses
 
         public List<Card> Hand { get; set; }
 
-        // Constructor
-        public Player()
-        {
-            
-        }
-
         public void DrawCard(List<Card> deck)
         {
             if (deck.Count > 0)

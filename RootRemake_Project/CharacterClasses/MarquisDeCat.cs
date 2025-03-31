@@ -25,13 +25,15 @@ namespace RootRemake_Project.CharacterClasses
         public int AvailableRecruiters = 6; // available recruiters
         public int[] RecruiterVP = { 0, 1, 2, 3, 3, 4 }; // recruiter victory points
 
-        public int[] buildingCosts = { 0, 1, 2, 3, 3, 4 }; // building costs
+        public int[] BuildingCosts = { 0, 1, 2, 3, 3, 4 }; // building costs
 
         public Uri RecruiterArt { get; set; }
 
         public Uri WorkshopArt { get; set; }
 
         public Uri SawmillArt { get; set; } 
+
+        public int DaylightActions { get; set; }
 
         public MarquisDeCat(string PlayerName)
         {
@@ -100,9 +102,8 @@ namespace RootRemake_Project.CharacterClasses
         // -----------------------------------------------
         override public void Daylight()
         {
-            int totalActions = 3;
+            DaylightActions = 3;
             // Event to update Marquis daylight user control
-
         }
         // action methods
         // build : let player build a building of choice by spending their wood

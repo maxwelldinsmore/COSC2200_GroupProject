@@ -323,9 +323,10 @@ namespace RootRemake_Project
 
         }
 
-        private void resizeMenuItem_Click(object sender, RoutedEventArgs e)
+        private void chooseKeepMenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            int[] cornerLocations = [0, 3, 8, 11];
+            HighlightLocations(cornerLocations);
         }
 
 
@@ -360,6 +361,52 @@ namespace RootRemake_Project
             }
             canvasGameBoard.Children.Add(BuildingImage);
 
+        }
+
+        
+
+        private void GameStart()
+        {
+            // highlights the 4 corners on the map
+        }
+
+
+        private void HighlightLocations(int[] highlightedAreas)
+        {
+
+            // Hide locations that are not adjacent to the current location
+            foreach (var image in canvasGameBoard.Children.OfType<Image>())
+            {
+                if (image.Name.Contains("Highlight_"))
+                {
+                    image.Visibility = Visibility.Hidden;
+                    int currentLocation = Int32.Parse(image.Name.Split('_')[1]);
+                    if (highlightedAreas.Contains(currentLocation))
+                    {
+                        image.Visibility = Visibility.Visible;
+                    } else
+                    {
+                        image.Visibility = Visibility.Hidden;
+                    }
+                }
+            }
+            foreach (var polygon in canvasGameBoard.Children.OfType<Polygon>())
+            {
+                if (polygon.Name.Contains("Polygon_"))
+                {
+                    polygon.Visibility = Visibility.Hidden;
+                    int currentLocation = Int32.Parse(polygon.Name.Split('_')[1]);
+                    if (highlightedAreas.Contains(currentLocation))
+                    {
+                        polygon.Visibility = Visibility.Visible;
+                    } else
+                    {
+                        polygon.Visibility = Visibility.Hidden;
+                    }
+                        Console.WriteLine("Current Location: " + currentLocation);
+
+                }
+            }
         }
     }
 }
