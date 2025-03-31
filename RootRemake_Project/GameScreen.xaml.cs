@@ -76,7 +76,7 @@ namespace RootRemake_Project
             // Shuffle and deal initial cards
             ShuffleDeck();
             DealInitialCards();
-            cardHand.DisplayHand(Players[0].hand);
+            cardHand.DisplayHand(Players[0].Hand);
         }
             
 
