@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock Text="Select Your Character" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" Margin="290,45,0,339" Width="257"/>
+        <TextBlock Text="Select Your Character" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" Margin="290,45,0,339" 
+                   FontFamily="{DynamicResource Luminari}"  Width="257"/>
 
         <StackPanel Orientation="Horizontal" Margin="0, 100,0,0">
             <Button Tag="Marquis" Click="CharacterSelected" Height="100" Width="91">
@@ -27,7 +28,9 @@
             </Button>
         </StackPanel>
 
-        <Button Content="Start Game" Click="StartGame_Click" Width="150" Height="50" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30"/>
+        <Button Content="Start Game" Click="StartGame_Click" Width="150" Height="50" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30"
+                FontFamily="{StaticResource Luminari}" FontSize="20" FontStyle="Normal"
+                />
     </Grid>
 
 

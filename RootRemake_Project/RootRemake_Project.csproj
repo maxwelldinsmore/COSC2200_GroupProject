@@ -26,6 +26,7 @@
     <None Remove="Assets\EyrieBoard.png" />
     <None Remove="Assets\EyrieBuildingIcon.png" />
     <None Remove="Assets\EyrieCards.png" />
+    <None Remove="Assets\Eyrie\Icon.png" />
     <None Remove="Assets\Images\MarquiseIcon.png" />
     <None Remove="Assets\Images\Recruiter.png" />
     <None Remove="Assets\Images\Sawmill.png" />
@@ -45,6 +46,7 @@
     <None Remove="Assets\Items\KettleUsed.png" />
     <None Remove="Assets\Items\Sword.png" />
     <None Remove="Assets\Items\SwordUsed.png" />
+    <None Remove="Assets\Luminari-Regular.ttf" />
     <None Remove="Assets\MarquisBoard.png" />
     <None Remove="Assets\Marquis\Icon.png" />
     <None Remove="Assets\Marquis\Recruiter.png" />
@@ -53,6 +55,7 @@
     <None Remove="Assets\RootClassDiagrams.png" />
     <None Remove="Assets\rootmap.jpg" />
     <None Remove="Assets\Vagabond\Icon.png" />
+    <None Remove="Assets\Woodland\Icon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -99,6 +102,12 @@
     <Resource Include="Assets\CardDeck.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Eyrie\Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Luminari-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Marquis\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -114,7 +123,12 @@
     <Resource Include="Assets\rootmap.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Vagabond\Icon.png" />
+    <Resource Include="Assets\Vagabond\Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Woodland\Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:RootRemake_Project"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="Luminari">pack://application:,,,/Assets/Luminari-Regular.ttf#Luminari</FontFamily>
     </Application.Resources>
 </Application>
