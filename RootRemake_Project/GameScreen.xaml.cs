@@ -77,6 +77,7 @@ namespace RootRemake_Project
             ShuffleDeck();
             DealInitialCards();
             cardHand.DisplayHand(Players[0].Hand);
+            this.Loaded += GameScreen_Loaded; // Add this line to attach the Loaded event
         }
             
 
@@ -108,13 +109,11 @@ namespace RootRemake_Project
             }
         }
 
-        private void cardHand_Loaded(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         private void GameScreen_Loaded(object sender, RoutedEventArgs e)
         {
+            //locationPolygonViewability = 1; // Ensure polygons are visible
             loadLocationHighlights(); // Call the method to load location highlights
         }
 

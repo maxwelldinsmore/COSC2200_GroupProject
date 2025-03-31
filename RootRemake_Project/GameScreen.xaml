@@ -37,13 +37,10 @@
             />
             <myComponents:CardHand x:Name="cardHand"
                        Width="763"
-                       Height="226" HorizontalAlignment="Left" Canvas.Top="504" VerticalAlignment="Center" Opacity="0.8" Loaded="cardHand_Loaded">
+                       Height="226" HorizontalAlignment="Left" Canvas.Top="504" VerticalAlignment="Center" Opacity="0.8" >
                 <Canvas.Bottom>20</Canvas.Bottom>
                 <Canvas.Left>50</Canvas.Left>
             </myComponents:CardHand>
-
-
-
         </Canvas>
 
         <Grid Background="PaleGoldenrod" Grid.Row="1" Grid.ColumnSpan="2" Margin="847,0,0,0">
