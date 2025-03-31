@@ -70,15 +70,7 @@ namespace RootRemake_Project
             // Shuffle and deal initial cards
             ShuffleDeck();
             DealInitialCards();
-            // Temporary verification code
-            for (int i = 0; i < Players.Length; i++)
-            {
-                Debug.WriteLine($"Player {i + 1} has {Players[i].hand.Count} cards");
-                foreach (Card card in Players[i].hand)
-                {
-                    Debug.WriteLine($"- {card.CardText}");
-                }
-            }
+            cardHand.DisplayHand(Players[0].hand);
         }
 
         private void ShuffleDeck()
@@ -313,6 +305,10 @@ namespace RootRemake_Project
 
         }
 
+        private void cardHand_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 

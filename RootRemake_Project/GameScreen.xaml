@@ -9,7 +9,7 @@
         Title="GameScreen" 
         WindowStartupLocation="CenterScreen"
         Height="800" Width="1100" ResizeMode="NoResize" Closed="Window_Closed">
-    
+
 
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
@@ -34,6 +34,15 @@
                  Margin="0,0,0,0" 
                 Height="777" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
             />
+            <myComponents:CardHand x:Name="cardHand"
+                       Width="763"
+                       Height="226" HorizontalAlignment="Left" Canvas.Top="504" VerticalAlignment="Center" Opacity="0.8" Loaded="cardHand_Loaded">
+                <Canvas.Bottom>20</Canvas.Bottom>
+                <Canvas.Left>50</Canvas.Left>
+            </myComponents:CardHand>
+
+
+
         </Canvas>
 
         <Grid Background="PaleGoldenrod" Grid.Row="1" Grid.ColumnSpan="2" Margin="847,0,0,0">
