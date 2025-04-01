@@ -29,9 +29,9 @@ namespace RootRemake_Project.LocationClasses
                     // string of location highlight image i.e. Assets/Areas/0.png
                     "0",
                     // Point for warrior location
-                    new Point(90, 112),
+                    new Point(164, 90),
                     // Point for building location
-                    new Point(0, 0)
+                    new Point(90, 112)
                 ),
                 new Clearing(
                     1,

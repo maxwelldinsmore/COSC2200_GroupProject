@@ -301,11 +301,14 @@ namespace RootRemake_Project
             image.Height = 20;
             image.Name = "Warrior_0";
             image.IsHitTestVisible = false;
+            Point buildingPoint = Locations[0].WarriorLocation;
+            Canvas.SetLeft(image, buildingPoint.X);
+            Canvas.SetTop(image, buildingPoint.Y);
+           
             if (canvasGameBoard is Canvas canvas)
             {
                 canvas.Children.Add(image);
             }
-            // TODO: Place it to the right of the location
         }
 
 
