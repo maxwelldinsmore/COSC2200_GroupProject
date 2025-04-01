@@ -6,27 +6,25 @@
         xmlns:local="clr-namespace:RootRemake_Project"
         mc:Ignorable="d"
         x:Name="PlayerContainer"
-        Title="MainWindow" Height="389" Width="800">
+        FontFamily="{StaticResource Luminari}"
+        Title="MainWindow" Height="800" Width="800"
+        >
     <Grid>
-        <TextBlock FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" Margin="23,28,0,356"
-                   FontFamily="Luminari" Width="257">
-            <Run Language="en-ca" Text="Playe"/><Run Text="r"/><Run Language="en-ca" Text=" 1"/>
-        </TextBlock>
 
         <Button Content="Start Game" Click="StartGame_Click" Width="150" Height="50"
                 HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,290,0,0"
                 FontFamily="Luminari" FontSize="20" FontStyle="Normal"/>
 
-        <Rectangle HorizontalAlignment="Left" Height="257" Margin="10,10,0,0" Stroke="Black"
-                   VerticalAlignment="Top" Width="496"/>
+        <Rectangle HorizontalAlignment="Left" Height="256" Margin="10,10,0,0" Stroke="Black"
+                   VerticalAlignment="Top" Width="456"/>
         <Label Content="Player Name:" HorizontalAlignment="Left" Margin="23,74,0,0"
-               VerticalAlignment="Top" Width="89"/>
+               VerticalAlignment="Top" Width="89" />
         <TextBox HorizontalAlignment="Left" Height="22" Margin="128,78,0,0" TextWrapping="Wrap"
                  VerticalAlignment="Top" Width="196" TextChanged="TextBox_TextChanged"/>
-        <Rectangle HorizontalAlignment="Left" Height="257" Margin="523,10,0,0" Stroke="Black"
-                   VerticalAlignment="Top" Width="255"/>
-        <Label Content="Player 1" HorizontalAlignment="Left" Height="32" Margin="23,28,0,0"
-               VerticalAlignment="Top" Width="235" FontFamily="Wide Latin" FontSize="20"/>
+        <Rectangle HorizontalAlignment="Left" Height="257" Margin="486,10,0,0" Stroke="Black"
+                   VerticalAlignment="Top" Width="292"/>
+        <Label Content="Player 1" HorizontalAlignment="Left" Height="50" Margin="152,18,0,0"
+               VerticalAlignment="Top" Width="234"  FontSize="30"/>
         <Label Content="Add Player" HorizontalAlignment="Left" Height="32" Margin="533,27,0,0"
                VerticalAlignment="Top" Width="235" FontFamily="Wide Latin" FontSize="20"/>
         <Button x:Name="charAddButton" Content="+" HorizontalAlignment="Left" Margin="594,89,0,0"

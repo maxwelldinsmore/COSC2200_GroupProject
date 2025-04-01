@@ -48,7 +48,14 @@ namespace RootRemake_Project
             Button selectedButton = sender as Button;
             if (selectedButton != null) 
             {
-                selectedButton.Background = new SolidColorBrush(Color.FromArgb(128, 0, 255, 0));
+                if (selectedButton.Background == new SolidColorBrush(Color.FromArgb(128, 0, 255, 0)))
+                {
+                    selectedButton.Background = new SolidColorBrush(Color.FromArgb(128, 255, 0, 0));
+                } else
+                {
+                    selectedButton.Background = new SolidColorBrush(Color.FromArgb(128, 0, 255, 0));
+                }
+                    
             }
         }
 

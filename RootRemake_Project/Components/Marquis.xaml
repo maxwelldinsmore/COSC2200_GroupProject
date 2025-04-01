@@ -5,10 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RootRemake_Project.Components"
              mc:Ignorable="d" 
+             FontFamily="{StaticResource Luminari}"
              d:DesignHeight="481" Width="253">
-    <Grid >
-        <Button Content="Attack" HorizontalAlignment="Left" Margin="119,117,0,0" VerticalAlignment="Top" Height="68" Width="101"/>
-        <Button Content="Move" HorizontalAlignment="Left" Margin="98,290,0,0" VerticalAlignment="Top" Height="38" Width="122"/>
+    <Grid Background="PaleGoldenrod">
+        <Button Content="Attack" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Height="68" Width="101"/>
+        <Button Content="Battle" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" Height="79" Width="101"/>
+        <Button Content="Move" HorizontalAlignment="Left" Margin="126,52,0,0" VerticalAlignment="Top" Height="68" Width="100" Click="Button_Click"/>
+        <Button Content="Recruiter" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Height="52" Width="83"/>
+        <Label Content="Build" HorizontalAlignment="Left" Margin="12,240,0,0" VerticalAlignment="Top" Width="48"/>
+        <Button Content="Workshop" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" Height="52" Width="83"/>
+        <Button Content="Sawmill" HorizontalAlignment="Left" Margin="10,419,0,0" VerticalAlignment="Top" Height="52" Width="83"/>
+        <Button Content="Overwork&#xD;&#xA;" HorizontalAlignment="Left" Margin="130,237,0,0" VerticalAlignment="Top" Height="60" Width="92"/>
+        <Button Content="Gain Action" HorizontalAlignment="Left" Margin="134,158,0,0" VerticalAlignment="Top" Height="52" Width="84"/>
 
     </Grid>
 </UserControl>
