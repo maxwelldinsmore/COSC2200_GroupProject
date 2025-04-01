@@ -51,6 +51,8 @@
     <None Remove="Assets\Marquis\Icon.png" />
     <None Remove="Assets\Marquis\Recruiter.png" />
     <None Remove="Assets\Marquis\Sawmill.png" />
+    <None Remove="Assets\Marquis\Warrior.png" />
+    <None Remove="Assets\Marquis\Warrior.svg" />
     <None Remove="Assets\Marquis\Wokrshop.png" />
     <None Remove="Assets\RootClassDiagrams.png" />
     <None Remove="Assets\rootmap.jpg" />
@@ -59,6 +61,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Svg.Skia" Version="2.0.0.4" />
     <PackageReference Include="System.Drawing.Common" Version="9.0.3" />
   </ItemGroup>
 
@@ -116,6 +119,12 @@
     </Resource>
     <Resource Include="Assets\Marquis\Sawmill.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Marquis\Warrior.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Marquis\Warrior.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Marquis\Wokrshop.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

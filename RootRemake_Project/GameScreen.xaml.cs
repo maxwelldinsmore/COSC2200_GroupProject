@@ -15,7 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.IO;
 
 namespace RootRemake_Project
 {
@@ -272,7 +272,6 @@ namespace RootRemake_Project
                 Image image = new Image();
                 Uri imageUri = new Uri("pack://application:,,,/Assets/Areas/" + location.LocationHighlight + ".png", UriKind.RelativeOrAbsolute );
 
-
                 image.Source = new BitmapImage(imageUri);
                 image.Width = imgMap.ActualWidth;
                 image.Height = imgMap.ActualHeight;
@@ -294,42 +293,20 @@ namespace RootRemake_Project
         }
 
 
-
-        private void hideLocationMenuItem_Click(object sender, RoutedEventArgs e)
+        private void placeWarriorMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            int locationAdjacent = 0;
-
-            // Hide locations that are not adjacent to the current location
-            foreach (var image in canvasGameBoard.Children.OfType<Image>())
+            Image image = new Image();
+            image.Source = new BitmapImage(Players[0].warriorArt);
+            image.Width = 20;
+            image.Height = 20;
+            image.Name = "Warrior_0";
+            image.IsHitTestVisible = false;
+            if (canvasGameBoard is Canvas canvas)
             {
-                if (image.Name.Contains("Highlight_"))
-                {
-                    image.Visibility = Visibility.Hidden;
-                    int currentLocation = Int32.Parse(image.Name.Split('_')[1]);
-                    if (Locations[currentLocation].ConnectedLocations.Contains(locationAdjacent))
-                    {
-                        image.Visibility = Visibility.Visible;
-                    }
-                    Console.WriteLine("Current Location: " + currentLocation);
-
-                }
+                canvas.Children.Add(image);
             }
-            foreach (var polygon in canvasGameBoard.Children.OfType<Polygon>())
-            {
-                if (polygon.Name.Contains("Polygon_"))
-                {
-                    polygon.Visibility = Visibility.Hidden;
-                    int currentLocation = Int32.Parse(polygon.Name.Split('_')[1]);
-                    if (Locations[currentLocation].ConnectedLocations.Contains(locationAdjacent))
-                    {
-                        polygon.Visibility = Visibility.Visible;
-                    }
-                    Console.WriteLine("Current Location: " + currentLocation);
-
-                }
-            }
+            // TODO: Place it to the right of the location
         }
-
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -343,11 +320,20 @@ namespace RootRemake_Project
 
         }
 
+        /// <summary>
+        /// NOT USED AS OF YET BUT COULD BE USED FOR SUMMARY SCREEN WHEN GAME OVER
+        /// </summary>
         private void Window_Closed(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Implements a test use for highlight locations
+        /// highlighting the corner locations
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void chooseKeepMenuItem_Click(object sender, RoutedEventArgs e)
         {
             int[] cornerLocations = [0, 3, 8, 11];
@@ -355,6 +341,9 @@ namespace RootRemake_Project
         }
 
 
+        /// <summary>
+        /// Highlights all the locations
+        /// </summary>
         private void highlightMenuItem_Click(object sender, RoutedEventArgs e)
         {
             foreach (var image in  canvasGameBoard.Children.OfType<Image>())
@@ -363,6 +352,9 @@ namespace RootRemake_Project
             }
         }
 
+        /// <summary>
+        /// Button for when the turn is ended
+        /// </summary>
         private void endTurnBtn_Click(object sender, RoutedEventArgs e)
         {
 
@@ -389,16 +381,22 @@ namespace RootRemake_Project
         }
 
         
-
+        /// <summary>
+        /// For later loads the setup character methods
+        /// and assigns random player order
+        /// </summary>
         private void GameStart()
         {
             // highlights the 4 corners on the map
         }
 
-
+        /// <summary>
+        /// Takes in an array and highlights all the 
+        /// locations on the map and unhighlights the rest
+        /// </summary>
+        /// <param name="highlightedAreas">Array of Locations ID's to be highlighted</param>
         private void HighlightLocations(int[] highlightedAreas)
         {
-
             // Hide locations that are not adjacent to the current location
             foreach (var image in canvasGameBoard.Children.OfType<Image>())
             {
@@ -428,8 +426,6 @@ namespace RootRemake_Project
                     {
                         polygon.Visibility = Visibility.Hidden;
                     }
-                        Console.WriteLine("Current Location: " + currentLocation);
-
                 }
             }
         }

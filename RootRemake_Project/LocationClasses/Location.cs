@@ -50,6 +50,8 @@ namespace RootRemake_Project.LocationClasses
 
         public string LocationHighlight { get; set; } // The location of the highlight image for the location
 
+        public Point WarriorLocation { get; set; } // The location of the warriors
+
         public Point? Building1Location { get; set; }
         public Point? Building2Location { get; set; }
         public Location(int locationID, string locationType, double[][] locationCoordinates, int[] connectedLocations, string locationHighlight)

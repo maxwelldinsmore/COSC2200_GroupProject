@@ -13,6 +13,7 @@ namespace RootRemake_Project.CharacterClasses
         public string UserName { get; set; }
         public int TotalWarriors;
         public int TotalBuildings;
+        public Uri warriorArt;
         private Random rand = new Random();
         /// <summary>
         /// The order in which the characters set up

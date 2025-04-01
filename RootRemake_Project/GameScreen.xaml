@@ -8,8 +8,10 @@
         mc:Ignorable="d"
         Title="GameScreen" 
         WindowStartupLocation="CenterScreen"
-        Height="800" Width="1100" ResizeMode="NoResize" Closed="Window_Closed">
-
+        Height="800" Width="1100" ResizeMode="NoResize" Closed="Window_Closed"
+        FontFamily="{StaticResource Luminari}"
+        >
+        
 
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
@@ -21,12 +23,12 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Menu DockPanel.Dock="Top" Grid.Row="0" Margin="847,0,0,0" Grid.ColumnSpan="2">
-            <MenuItem Header="_Options">
+            <MenuItem Header="_Options" >
                 <MenuItem Header="_Debug"/>
                 <MenuItem Name="chooseKeepMenuItem" Header="_Choose Keep" Click="chooseKeepMenuItem_Click"/>
                 <MenuItem Name="highlightMenuItem" Header="_Highlight All locations" Click="highlightMenuItem_Click"/>
-                <MenuItem Name="hideLocationMenuItem" Header="_Hide Locations" Click="hideLocationMenuItem_Click"/>
-                <MenuItem Name="loadBuildingMenuItem" Header="_Hide Locations" Click="loadBuildingMenuItem_Click"/>
+                <MenuItem Name="placeWarriorMenuItem" Header="_Place Warrior" Click="placeWarriorMenuItem_Click"/>
+                <MenuItem Name="loadBuildingMenuItem" Header="_Test Load a building" Click="loadBuildingMenuItem_Click"/>
             </MenuItem>
         </Menu>
         <Canvas x:Name="canvasGameBoard" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
