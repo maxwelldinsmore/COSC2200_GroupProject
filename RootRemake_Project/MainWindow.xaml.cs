@@ -32,13 +32,14 @@ namespace RootRemake_Project
             /// character selection to go first.
             //if (Debugger.IsAttached)
             //{
-            //    Player[] players = new Player[4];
-
-            //    GameScreen gameScreen = new GameScreen();
-            //    gameScreen.Closed += (sender, e) => this.Show();
-            //    this.Hide();
-            //    gameScreen.Show();
             //}
+                Player[] players = new Player[4];
+
+                GameScreen gameScreen = new GameScreen();
+                gameScreen.Closed += (sender, e) => this.Show();
+                this.Hide();
+                gameScreen.Show();
+            
 
         }
 
