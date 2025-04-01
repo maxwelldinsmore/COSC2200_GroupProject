@@ -30,19 +30,16 @@ namespace RootRemake_Project
             /// If you click run with debugging the debugger is attached code 
             /// will run, i.e. straight into the game screen or allowing
             /// character selection to go first.
-            if (Debugger.IsAttached)
-            {
-                Player[] players = new Player[4];
+            //if (Debugger.IsAttached)
+            //{
+            //    Player[] players = new Player[4];
 
-                GameScreen gameScreen = new GameScreen();
-                gameScreen.Closed += (sender, e) => this.Show();
-                this.Hide();
-                gameScreen.Show();
-            }
-            else
-            {
-                MessageBox.Show("Select your characters!");
-            }
+            //    GameScreen gameScreen = new GameScreen();
+            //    gameScreen.Closed += (sender, e) => this.Show();
+            //    this.Hide();
+            //    gameScreen.Show();
+            //}
+
         }
 
         private void CharacterSelected(object sender, RoutedEventArgs e)

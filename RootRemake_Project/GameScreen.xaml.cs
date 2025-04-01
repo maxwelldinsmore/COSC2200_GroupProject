@@ -48,9 +48,10 @@ namespace RootRemake_Project
         /// </summary>
         public int CurrentPlayerTurn;
         /// <summary>
-        /// Overall turn number for the game
+        /// Overall turn number for the game,
+        /// 0 is setup turn
         /// </summary>
-        public int TurnNumber = 1;
+        public int TurnNumber = 0;
 
         /// <summary>
         /// Viewability of the location polygons on the map
@@ -451,11 +452,6 @@ namespace RootRemake_Project
 //{
 //    canvas.Children.Add(BuildingImage);
 //}
-
-
-//#if DEBUG
-//MessageBox.Show("App is running in Debug mode!");
-//#endif
 
 //     /// <summary>
 //     /// Hit detection for locations on the map
