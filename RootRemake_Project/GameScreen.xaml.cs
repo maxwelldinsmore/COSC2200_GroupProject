@@ -78,6 +78,7 @@ namespace RootRemake_Project
             ShuffleDeck();
             DealInitialCards();
             cardHand.DisplayHand(Players[0].Hand);
+            cardHand.CardClicked += OnCardClicked;
             this.Loaded += GameScreen_Loaded; // Add this line to attach the Loaded event
         }
             
@@ -191,6 +192,31 @@ namespace RootRemake_Project
             {
                 cardHand.DisplayHand(Players[CurrentPlayerTurn].Hand);
             }
+        }
+
+        private void OnCardClicked(int cardIndex)
+        {
+            // Get the clicked card from current player's hand
+            Card clickedCard = Players[CurrentPlayerTurn].Hand[cardIndex];
+
+            MessageBox.Show($"Card {cardIndex + 1} clicked\n" +
+                           $"{clickedCard.CardText}\n" +
+                           $"Suit: {GetSuitName(clickedCard.Suit)}",
+                           "Card Selected",
+                           MessageBoxButton.OK,
+                           MessageBoxImage.Information);
+        }
+
+        private string GetSuitName(int suit)
+        {
+            return suit switch
+            {
+                1 => "Bird (Wild)",
+                2 => "Fox",
+                3 => "Rabbit",
+                4 => "Mouse",
+                _ => "Unknown"
+            };
         }
 
         private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
