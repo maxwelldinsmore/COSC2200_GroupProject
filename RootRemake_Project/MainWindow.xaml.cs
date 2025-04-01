@@ -1,4 +1,5 @@
 ﻿using RootRemake_Project.CharacterClasses;
+using System.Diagnostics;
 using System.Numerics;
 using System.Text;
 using System.Windows;
@@ -24,12 +25,22 @@ namespace RootRemake_Project
         public MainWindow()
         {
             InitializeComponent();
-            Player[] players = new Player[4];
 
-            GameScreen gameScreen = new GameScreen();
-            gameScreen.Closed += (sender, e) => this.Show();
-            this.Hide();
-            gameScreen.Show();
+
+            /// If you click run with debugging the debugger is attached code 
+            /// will run, i.e. straight into the game screen or allowing
+            /// character selection to go first.
+            //if (Debugger.IsAttached)
+            //{
+            //}
+                Player[] players = new Player[4];
+
+                GameScreen gameScreen = new GameScreen();
+                gameScreen.Closed += (sender, e) => this.Show();
+                this.Hide();
+                gameScreen.Show();
+            
+
         }
 
         private void CharacterSelected(object sender, RoutedEventArgs e)

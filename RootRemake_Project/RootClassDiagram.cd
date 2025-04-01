@@ -18,21 +18,45 @@
     </TypeIdentifier>
   </Class>
   <Class Name="RootRemake_Project.CharacterClasses.Eyrie" Collapsed="true">
-    <Position X="13" Y="2.25" Width="1.5" />
+    <Position X="12.5" Y="1" Width="1.5" />
+    <InheritanceLine Type="RootRemake_Project.CharacterClasses.Player" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="0.75" />
+        <Point X="7.75" Y="0.375" />
+        <Point X="13.312" Y="0.375" />
+        <Point X="13.312" Y="1" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAgAAAAAAAAAAEgACAAAAEAAAAAAAAA=</HashCode>
       <FileName>CharacterClasses\Eyrie.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RootRemake_Project.CharacterClasses.MarquisDeCat">
-    <Position X="10.25" Y="0.75" Width="1.5" />
+  <Class Name="RootRemake_Project.CharacterClasses.MarquisDeCat" Collapsed="true">
+    <Position X="9" Y="1" Width="1.5" />
+    <InheritanceLine Type="RootRemake_Project.CharacterClasses.Player" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="0.75" />
+        <Point X="7.75" Y="0.375" />
+        <Point X="9.688" Y="0.375" />
+        <Point X="9.688" Y="1" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAgAAIIAAAAgIEAEAyIAAMEwAiIAAAEACEMAhIAA=</HashCode>
+      <HashCode>AAAAAgAAIIAAAAgIkAEAyAAAMEwAiIAAAEACEMAhIAA=</HashCode>
       <FileName>CharacterClasses\MarquisDeCat.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RootRemake_Project.CharacterClasses.Woodland" Collapsed="true">
-    <Position X="13" Y="1" Width="1.5" />
+    <Position X="10.75" Y="1" Width="1.5" />
+    <InheritanceLine Type="RootRemake_Project.CharacterClasses.Player" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="0.75" />
+        <Point X="7.75" Y="0.375" />
+        <Point X="11.562" Y="0.375" />
+        <Point X="11.562" Y="1" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAgAAAAAAAAAAEgACAAAAEAAAAAAAAA=</HashCode>
       <FileName>CharacterClasses\Woodland.cs</FileName>
@@ -54,14 +78,14 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>BAAAAhBACAAAAAAAAAACAAAAAAAAAAAAFAAAAIAAAgg=</HashCode>
+      <HashCode>BAAAAhBACAAAAAAAAAACAAAAACAAAAAAFAAAAIAAAgg=</HashCode>
       <FileName>LocationClasses\Location.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RootRemake_Project.LocationClasses.LocationInfo" Collapsed="true">
     <Position X="5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAACAAAAAAAABgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>LocationClasses\LocationInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -82,7 +106,7 @@
   <Class Name="RootRemake_Project.GameScreen" Collapsed="true">
     <Position X="5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAEAQAIiABgAAIAIAAAgBAAAgFBCCBAAACAAAAAI=</HashCode>
+      <HashCode>AEAAAEAQAIiCBgAAIAIAAAgBAQAgFBCCFAACCAAAQAA=</HashCode>
       <FileName>GameScreen.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -100,6 +124,28 @@
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>LocationClasses\Clearing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootRemake_Project.CharacterClasses.Player" Collapsed="true">
+    <Position X="7" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEgAAIAAAOAAAAoABAAADAAAEEgACAAAAUAAAAAAAAA=</HashCode>
+      <FileName>CharacterClasses\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RootRemake_Project.CharacterClasses.Vagabond" Collapsed="true">
+    <Position X="14.25" Y="1" Width="1.5" />
+    <InheritanceLine Type="RootRemake_Project.CharacterClasses.Player" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="0.75" />
+        <Point X="7.75" Y="0.375" />
+        <Point X="15" Y="0.375" />
+        <Point X="15" Y="1" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAIBgAAgAA4AAAAQAAEgACAAAAEAAAAAAAAA=</HashCode>
+      <FileName>CharacterClasses\Vagabond.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
