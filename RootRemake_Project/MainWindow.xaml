@@ -16,43 +16,47 @@
         <Button Content="Start Game" Click="StartGame_Click" Width="150" Height="50"
                 HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,290,0,0"
                 FontFamily="Luminari" FontSize="20" FontStyle="Normal"/>
-
+        
         <Rectangle HorizontalAlignment="Left" Height="257" Margin="10,10,0,0" Stroke="Black"
                    VerticalAlignment="Top" Width="496"/>
         <Label Content="Player Name:" HorizontalAlignment="Left" Margin="23,74,0,0"
                VerticalAlignment="Top" Width="89"/>
+        <Label Content="Select Character:" HorizontalAlignment="Left" Margin="23,120,0,0"
+       VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="marquisCharButton" HorizontalAlignment="Left" Height="61" Margin="131,133,0,0"
+        VerticalAlignment="Top" Width="61" Tag="Marquis" Click="CharacterSelected">
+            <Image Height="59" Width="59" Source="pack://application:,,,/Assets/Marquis/Icon.png"/>
+        </Button>
+        <Button x:Name="eyrieCharButton" HorizontalAlignment="Left" Height="61"
+        Margin="197,133,0,0" VerticalAlignment="Top" Width="61" Tag="Eyrie" Click="CharacterSelected">
+            <Image Height="56" Width="56" Source="/Assets/Eyrie/Icon.png"/>
+        </Button>
+        <Button x:Name="woodlandCharButton" HorizontalAlignment="Left" Height="61"
+        Margin="263,133,0,0" VerticalAlignment="Top" Width="61" Tag="Woodland" Click="CharacterSelected">
+            <Image Height="57" Width="57" Source="/Assets/Woodland/Icon.png"/>
+        </Button>
+        <Button x:Name="vagabondCharButtonGray" HorizontalAlignment="Left" Height="61"
+        Margin="329,134,0,0" VerticalAlignment="Top" Width="61" Tag="VagabondGray" Click="CharacterSelected">
+            <Image Height="57" Width="57" Source="/Assets/Vagabond/Icon.png"/>
+        </Button>
+        <Button x:Name="vagabondCharButtonBlack" HorizontalAlignment="Left" Height="61"
+        Margin="395,134,0,0" VerticalAlignment="Top" Width="61" Tag="VagabondBlack" Click="CharacterSelected">
+            <Image Height="56" Width="56" Source="/Assets/Vagabond/Icon.png"/>
+        </Button>
         <TextBox HorizontalAlignment="Left" Height="22" Margin="128,78,0,0" TextWrapping="Wrap"
                  VerticalAlignment="Top" Width="196" TextChanged="TextBox_TextChanged"/>
-        <Rectangle HorizontalAlignment="Left" Height="257" Margin="523,10,0,0" Stroke="Black"
-                   VerticalAlignment="Top" Width="255"/>
         <Label Content="Player 1" HorizontalAlignment="Left" Height="32" Margin="23,28,0,0"
                VerticalAlignment="Top" Width="235" FontFamily="Wide Latin" FontSize="20"/>
+        <Rectangle HorizontalAlignment="Left" Height="257" Margin="523,10,0,0" Stroke="Black"
+                   VerticalAlignment="Top" Width="255"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10,50,10,10">
+            <StackPanel x:Name="PlayersContainer" Orientation="Vertical" Margin="10"/>
+        </ScrollViewer>
         <Label Content="Add Player" HorizontalAlignment="Left" Height="32" Margin="533,27,0,0"
                VerticalAlignment="Top" Width="235" FontFamily="Wide Latin" FontSize="20"/>
         <Button x:Name="charAddButton" Content="+" HorizontalAlignment="Left" Margin="594,89,0,0"
                 VerticalAlignment="Top" Height="114" Width="112" FontSize="72"
                 RenderTransformOrigin="0.5,0.5" Click="AddPLayer_Click"/>
-        <Label Content="Select Character:" HorizontalAlignment="Left" Margin="23,120,0,0"
-               VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="marquisCharButton" HorizontalAlignment="Left" Height="61" Margin="131,133,0,0"
-                VerticalAlignment="Top" Width="61" Tag="Marquis" Click="CharacterSelected">
-            <Image Height="59" Width="59" Source="pack://application:,,,/Assets/Marquis/Icon.png"/>
-        </Button>
-        <Button x:Name="eyrieCharButton" HorizontalAlignment="Left" Height="61"
-                Margin="197,133,0,0" VerticalAlignment="Top" Width="61" Tag="Eyrie" Click="CharacterSelected">
-            <Image Height="56" Width="56" Source="/Assets/Eyrie/Icon.png"/>
-        </Button>
-        <Button x:Name="woodlandCharButton" HorizontalAlignment="Left" Height="61"
-                Margin="263,133,0,0" VerticalAlignment="Top" Width="61" Tag="Woodland" Click="CharacterSelected">
-            <Image Height="57" Width="57" Source="/Assets/Woodland/Icon.png"/>
-        </Button>
-        <Button x:Name="vagabondCharButtonGray" HorizontalAlignment="Left" Height="61"
-                Margin="329,134,0,0" VerticalAlignment="Top" Width="61" Tag="VagabondGray" Click="CharacterSelected">
-            <Image Height="57" Width="57" Source="/Assets/Vagabond/Icon.png"/>
-        </Button>
-        <Button x:Name="vagabondCharButtonBlack" HorizontalAlignment="Left" Height="61"
-                Margin="395,134,0,0" VerticalAlignment="Top" Width="61" Tag="VagabondBlack" Click="CharacterSelected">
-            <Image Height="56" Width="56" Source="/Assets/Vagabond/Icon.png"/>
-        </Button>
+        
     </Grid>
 </Window>
