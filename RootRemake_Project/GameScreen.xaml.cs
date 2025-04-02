@@ -343,6 +343,12 @@ namespace RootRemake_Project
         {
         }
 
+        /// <summary>
+        /// General on click event for location being clicked
+        /// will need to be cleaned up to be used for specific events
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Location_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Polygon source = (Polygon)sender;

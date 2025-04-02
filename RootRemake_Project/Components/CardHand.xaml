@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     
-    <Grid>
-        <StackPanel x:Name="CardsPanel" Orientation="Horizontal"/>
+    <Grid >
+        <StackPanel x:Name="CardsPanel" Orientation="Horizontal" Panel.ZIndex="40000"/>
     </Grid>
 </UserControl>
