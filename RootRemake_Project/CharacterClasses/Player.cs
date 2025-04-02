@@ -21,7 +21,7 @@ namespace RootRemake_Project.CharacterClasses
         /// 0 will be A, B would be 1 and so on
         /// </summary>
         public int CharacterSetupOrder;
-        public int VictoryPoints {get; set; }
+        public int VictoryPoints { get; set; }
 
         public List<Card> Hand { get; set; }
 
@@ -85,5 +85,44 @@ namespace RootRemake_Project.CharacterClasses
 
     }
 
+    public class TurnManager
+    {
+        private List<Player> players;
+        private int currentPlayerIndex = 0;
+        public TurnManager(List<Player> players)
+        {
+            this.players = players;
+        }
 
+        /// <summary>
+        /// Changes the player turn to the next in the list
+        /// </summary>
+        public void NextTurn()
+        {
+            currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
+        }
+
+        /// <summary>
+        /// Changes to Morning to Daylight to Evening 
+        /// </summary>
+        public void StartDayCycle()
+        {
+            foreach (var player in players)
+            {
+                player.BirdSong();
+            }
+
+            foreach (var player in players)
+            {
+                player.Daylight();
+            }
+
+            foreach (var player in players)
+            {
+                player.Evening();
+            }
+
+        }
+
+    }
 }
