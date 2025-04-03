@@ -19,10 +19,10 @@ namespace RootRemake_Project.Components
     /// <summary>
     /// Interaction logic for CardHand.xaml
     /// </summary>
-      public partial class CardHand : UserControl
+    public partial class CardHand : UserControl
     {
-        public event Action<int> CardClicked; // Event for card clicks
-        
+        public event Action<int>? CardClicked; // Declare the event as nullable
+
         public CardHand()
         {
             InitializeComponent();
@@ -42,6 +42,7 @@ namespace RootRemake_Project.Components
                     Source = card.GetCardImage(),
                     Height = 200,
                     Margin = new Thickness(5),
+                    Opacity = 1,
                     Tag = cardIndex // Store index instead of card object
                 };
 
@@ -50,7 +51,7 @@ namespace RootRemake_Project.Components
                 cardControl.MouseLeave += (s, e) => cardControl.Height = 200;
 
                 // Add click handler
-                cardControl.MouseDown += (s, e) => 
+                cardControl.MouseDown += (s, e) =>
                 {
                     CardClicked?.Invoke(cardIndex);
                 };
