@@ -59,6 +59,8 @@
     <None Remove="Assets\Marquis\Warrior.svg" />
     <None Remove="Assets\RootClassDiagrams.png" />
     <None Remove="Assets\rootmap.jpg" />
+    <None Remove="Assets\Setups.png" />
+    <None Remove="Assets\SidePanelBackground.png" />
     <None Remove="Assets\Vagabond\Icon.png" />
     <None Remove="Assets\Woodland\Icon.png" />
   </ItemGroup>
@@ -146,6 +148,12 @@
     </Resource>
     <Resource Include="Assets\rootmap.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Setups.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\SidePanelBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Vagabond\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

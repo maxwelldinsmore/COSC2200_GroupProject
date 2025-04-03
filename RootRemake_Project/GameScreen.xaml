@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="GameScreen" 
         WindowStartupLocation="CenterScreen"
-        
+        Background="#7C816A"
         ResizeMode="NoResize"
         Height="800" Width="1100"  Closed="Window_Closed"
         FontFamily="{StaticResource Luminari}"
@@ -26,7 +26,7 @@
             <RowDefinition Height="21"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Menu DockPanel.Dock="Top" Grid.Row="0" Margin="847,0,0,0" Grid.ColumnSpan="2">
+        <Menu DockPanel.Dock="Top" Grid.Row="0" Margin="847,0,0,0" Grid.ColumnSpan="2 " Background="#7C816A" FontFamily="{StaticResource Luminari}">
             <MenuItem Header="_Options" >
                 <MenuItem Header="_Debug"/>
                 <MenuItem Name="chooseKeepMenuItem" Header="_Choose Keep" Click="chooseKeepMenuItem_Click"/>
@@ -51,19 +51,20 @@
                 <Canvas.Left>50</Canvas.Left>
             </myComponents:CardHand>
         </Canvas>
-
-        <Grid Background="PaleGoldenrod" Grid.Row="1" Grid.ColumnSpan="2" Margin="847,0,0,0">
+        <Image x:Name="backgroundImage" Grid.ColumnSpan="2" Margin="838,11,0,0" Stretch="UniformToFill" Source="/Assets/SidePanelBackground.png" Grid.RowSpan="2"/>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="847,0,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
                 <RowDefinition Height="70" />
                 <RowDefinition Height="481"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Image x:Name="turnPhaseImage" Grid.Row="0" Stretch="UniformToFill" Source="/Assets/Birdsong.png"/>
+
+            <Image x:Name="turnPhaseImage" Grid.Row="0" Stretch="Uniform" Source="/Assets/Setups.png"/>
             <Image x:Name="chaaracterImage" Grid.Row="1" Stretch="UniformToFill" Source="/Assets/Marquis/Banner.png" />
 
             <myComponents:Marquis Grid.Row="2"/>
-            <Button Name="endTurnBtn" Content="End Turn Phase" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="46" Width="232" Click="endTurnBtn_Click"/>
+            <Button Name="endTurnBtn" Content="End Turn Phase" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="46" Width="232" Click="endPhaseBtn_Click"/>
             <Button Content="ViewBoard" HorizontalAlignment="Left" Margin="6,64,0,0" Grid.Row="3" VerticalAlignment="Top" Height="57" Width="116" />
             <Button x:Name="toggleHandBtn" Content="Show Hand" HorizontalAlignment="Left" Margin="127,66,0,0" Grid.Row="3" VerticalAlignment="Top" Height="56" Width="116" Click="toggleHandBtn_Click"/>
         </Grid>

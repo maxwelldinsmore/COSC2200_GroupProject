@@ -50,6 +50,7 @@ namespace RootRemake_Project.Components
                 cardControl.MouseEnter += (s, e) => cardControl.Height = 220;
                 cardControl.MouseLeave += (s, e) => cardControl.Height = 200;
 
+
                 // Add click handler
                 cardControl.MouseDown += (s, e) =>
                 {

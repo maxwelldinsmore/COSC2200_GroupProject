@@ -84,49 +84,4 @@ namespace RootRemake_Project.CharacterClasses
 
 
     }
-
-    public class TurnManager
-    {
-        private List<Player> players;
-        private int currentPlayerIndex = 0;
-        public TurnManager(List<Player> players)
-        {
-            this.players = players;
-        }
-
-        public Player GetCurrentPlayer()
-        {
-            return players[currentPlayerIndex];
-        }
-
-        /// <summary>
-        /// Changes the player turn to the next in the list
-        /// </summary>
-        public void NextTurn()
-        {
-            currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
-            Console.WriteLine($"Now it's {players[currentPlayerIndex].UserName}'s turn");
-        }
-
-        /// <summary>
-        /// Changes to BirdSong to Daylight to Evening 
-        /// </summary>
-        public void StartDayCycle(Player player)
-        {
-            Console.WriteLine("New day cycle starts.");
-
-            Console.WriteLine("Starting BirdSong phase...");
-            player.BirdSong();
-
-            Console.WriteLine("Starting Daylight phase...");
-            player.Daylight();
-
-            Console.WriteLine("Starting Evening phase...");
-            player.Evening();
-
-            Console.WriteLine("day cycle ends.");
-
-        }
-
-    }
 }

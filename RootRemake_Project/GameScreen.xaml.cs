@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace RootRemake_Project
 {
@@ -24,6 +25,7 @@ namespace RootRemake_Project
     /// </summary>
     public partial class GameScreen : Window
     {
+        public Random random = new Random();
         /// <summary>
         /// Array of locations
         /// </summary>
@@ -60,7 +62,9 @@ namespace RootRemake_Project
         /// </summary>
         public double locationPolygonViewability = 0;
 
+        public string TurnPhase = "Setup";
 
+        public int StartingPlayersTurn;
 
         public GameScreen()
         {
@@ -74,12 +78,17 @@ namespace RootRemake_Project
             Players[4] = new MarquisDeCat("Carlos");
             cardDeck = CardDeck.cardDeck;
             discardPile = new List<Card>();
+            
             // Shuffle and deal initial cards
             ShuffleDeck();
             DealInitialCards();
             cardHand.DisplayHand(Players[0].Hand);
             cardHand.CardClicked += OnCardClicked;
             this.Loaded += GameScreen_Loaded; // Add this line to attach the Loaded event
+
+            // Could randomize this later
+            StartingPlayersTurn = 0;
+            CurrentPlayerTurn = StartingPlayersTurn;
         }
             
 
@@ -391,12 +400,54 @@ namespace RootRemake_Project
         /// <summary>
         /// Button for when the turn is ended
         /// </summary>
-        private void endTurnBtn_Click(object sender, RoutedEventArgs e)
+        private void endPhaseBtn_Click(object sender, RoutedEventArgs e)
         {
-            var currentPlayer = TurnManager.GetCurrentPlayer();
-            TurnManager.StartDayCycle(currentPlayer);
-            TurnManager.NextTurn();
+            if (TurnPhase == "Setup") // Setup goes once for each player
+            {
+                ChangePlayersTurn();
+                if (CurrentPlayerTurn == StartingPlayersTurn)
+                {
+                    TurnPhase = "Birdsong";
+                    turnPhaseImage.Stretch = Stretch.UniformToFill;
+                    turnPhaseImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Birdsong.png", UriKind.RelativeOrAbsolute));
+                }
+            } else if (TurnPhase == "Birdsong")
+            {
+                TurnPhase = "Daylight";
+                turnPhaseImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Daylight.png", UriKind.RelativeOrAbsolute));
+
+            }
+            else if (TurnPhase == "Daylight")
+            {
+                TurnPhase = "Evening";
+                turnPhaseImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Evening.png", UriKind.RelativeOrAbsolute));
+
+            }
+            else if (TurnPhase == "Evening")
+            {
+                // Next Players turn and set to 
+                ChangePlayersTurn();
+                TurnPhase = "Birdsong";
+                turnPhaseImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Birdsong.png", UriKind.RelativeOrAbsolute));
+            }
+
         }
+        public int ChangePlayersTurn()
+        {
+
+            CurrentPlayerTurn++;
+            if (CurrentPlayerTurn >= Players.Length)
+            {
+                CurrentPlayerTurn = 0;
+            }
+            if (CurrentPlayerTurn == StartingPlayersTurn)
+            {
+                TurnNumber++;
+            }
+
+            return 0;
+        }
+
 
         private void loadBuildingMenuItem_Click(object sender, RoutedEventArgs e)
         {
