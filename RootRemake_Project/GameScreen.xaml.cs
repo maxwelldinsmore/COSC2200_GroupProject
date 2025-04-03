@@ -387,7 +387,9 @@ namespace RootRemake_Project
         /// </summary>
         private void endTurnBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var currentPlayer = TurnManager.GetCurrentPlayer();
+            TurnManager.StartDayCycle(currentPlayer);
+            TurnManager.NextTurn();
         }
 
         private void loadBuildingMenuItem_Click(object sender, RoutedEventArgs e)

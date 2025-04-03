@@ -94,33 +94,37 @@ namespace RootRemake_Project.CharacterClasses
             this.players = players;
         }
 
+        public Player GetCurrentPlayer()
+        {
+            return players[currentPlayerIndex];
+        }
+
         /// <summary>
         /// Changes the player turn to the next in the list
         /// </summary>
         public void NextTurn()
         {
             currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
+            Console.WriteLine($"Now it's {players[currentPlayerIndex].UserName}'s turn");
         }
 
         /// <summary>
-        /// Changes to Morning to Daylight to Evening 
+        /// Changes to BirdSong to Daylight to Evening 
         /// </summary>
-        public void StartDayCycle()
+        public void StartDayCycle(Player player)
         {
-            foreach (var player in players)
-            {
-                player.BirdSong();
-            }
+            Console.WriteLine("New day cycle starts.");
 
-            foreach (var player in players)
-            {
-                player.Daylight();
-            }
+            Console.WriteLine("Starting BirdSong phase...");
+            player.BirdSong();
 
-            foreach (var player in players)
-            {
-                player.Evening();
-            }
+            Console.WriteLine("Starting Daylight phase...");
+            player.Daylight();
+
+            Console.WriteLine("Starting Evening phase...");
+            player.Evening();
+
+            Console.WriteLine("day cycle ends.");
 
         }
 
