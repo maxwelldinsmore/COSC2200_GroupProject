@@ -39,6 +39,7 @@ namespace RootRemake_Project.LocationClasses
                     new int[] {0, 3, 12 },
                     "1",
                     new Point(0, 0),
+                    new Point(0, 0),
                     new Point(0, 0)
                 ),
                 new Clearing(

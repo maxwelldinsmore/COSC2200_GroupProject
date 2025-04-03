@@ -89,6 +89,7 @@ namespace RootRemake_Project
             // Could randomize this later
             StartingPlayersTurn = 0;
             CurrentPlayerTurn = StartingPlayersTurn;
+            playerNameTextBlock.Text = Players[CurrentPlayerTurn].UserName;
         }
             
 
@@ -432,7 +433,7 @@ namespace RootRemake_Project
             }
 
         }
-        public int ChangePlayersTurn()
+        public void ChangePlayersTurn()
         {
 
             CurrentPlayerTurn++;
@@ -444,8 +445,7 @@ namespace RootRemake_Project
             {
                 TurnNumber++;
             }
-
-            return 0;
+            playerNameTextBlock.Text = Players[CurrentPlayerTurn].UserName;
         }
 
 
