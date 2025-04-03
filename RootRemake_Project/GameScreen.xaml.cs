@@ -307,7 +307,7 @@ namespace RootRemake_Project
                 }
 
                 Image image = new Image();
-                Uri imageUri = new Uri("pack://application:,,,/Assets/Areas/" + location.LocationHighlight + ".png", UriKind.RelativeOrAbsolute );
+                Uri imageUri = new Uri("pack://application:,,,/Assets/Areas/" + location.LocationID + ".png", UriKind.RelativeOrAbsolute );
 
                 image.Source = new BitmapImage(imageUri);
                 image.Width = imgMap.ActualWidth;
@@ -461,7 +461,7 @@ namespace RootRemake_Project
             BuildingImage.IsHitTestVisible = false;
             if (Locations[0].Building1Location.HasValue)
             {
-                Point buildingPoint = Locations[0].Building1Location.Value;
+                Point buildingPoint = Locations[6].Building2Location.Value;
                 Canvas.SetLeft(BuildingImage, buildingPoint.X);
                 Canvas.SetTop(BuildingImage, buildingPoint.Y);
             }
