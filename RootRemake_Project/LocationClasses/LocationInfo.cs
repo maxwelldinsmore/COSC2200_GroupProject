@@ -27,7 +27,7 @@ namespace RootRemake_Project.LocationClasses
                     // all location id's that are 1 move away from this location
                     new int[] { 1, 2, 4, 12, 13 },
                     // string of location highlight image i.e. Assets/Areas/0.png
-                    "0",
+             
                     // Point for warrior location
                     new Point(164, 90),
                     // Point for building location
@@ -37,26 +37,33 @@ namespace RootRemake_Project.LocationClasses
                     1,
                     new double[][] { new double[] {402.4000, 1.6000}, new double[] {524.0000, 4.0000}, new double[] {511.2000, 108.8000}, new double[] {444.8000, 124.8000}, new double[] {398.4000, 95.2000} },
                     new int[] {0, 3, 12 },
-                    "1",
+                    
+                    // Point for warrior location
                     new Point(0, 0),
-                    new Point(0, 0),
-                    new Point(0, 0)
+                    // Point for building location
+                    new Point(412, 72),
+                    new Point(453, 63)
+
                 ),
                 new Clearing(
                     2,
                     new double[][] { new double[] {289.6000, 176.0000}, new double[] {362.4000, 145.6000}, new double[] {419.2000, 168.8000}, new double[] {416.8000, 271.2000}, new double[] {305.6000, 275.2000} },
                     new int[] {0, 3, 5, 12, 13, 14 },
-                    "2",
+                    // Point for warrior location
                     new Point(0, 0),
-                    new Point(0, 0)
+                    // Point for building location
+                    new Point(337, 225),
+                    new Point(368, 184)
                 ),
                 new Clearing(
                     3,
                     new double[][] { new double[] {684.0000, 104.0000}, new double[] {797.6000, 98.4000}, new double[] {796.0000, 223.2000}, new double[] {687.2000, 220.8000}},
                     new int[] {1, 2, 7, 12, 14 },
-                    "3",
+                   // Point for warrior location
                     new Point(0, 0),
-                    new Point(0, 0)
+                    // Point for building location
+                    new Point(701, 184),
+                    new Point(765, 152)
                 ),
                 new Clearing(
                     4,
@@ -67,9 +74,11 @@ namespace RootRemake_Project.LocationClasses
                         new double[] {138.4000, 390.4000},
                         new double[] {28.0000, 392.0000} },
                     new int[] {0, 5, 8, 13, 15 },
-                    "4",
+                    // Point for warrior location
                     new Point(0, 0),
-                    new Point(0, 0)
+                    // Point for building location
+                    new Point(44, 252),
+                    new Point(66, 308)
                 ),
                 new Clearing(
                     5,
@@ -80,9 +89,12 @@ namespace RootRemake_Project.LocationClasses
                         new double[] {204.0000, 495.2000}
                     },
                     new int[] {2, 4, 6 , 8, 10, 13, 14, 15, 16, 17 },
-                    "5",
+                    // Point for warrior location
                     new Point(0, 0),
-                    new Point(0, 0)
+                    // Point for building location
+                    new Point(213, 393),
+                    new Point(270, 364)
+
                 ),
                 new Clearing(
                     6,
@@ -93,9 +105,11 @@ namespace RootRemake_Project.LocationClasses
                         new double[] {489.6000, 434.4000}
                     },
                     new int[] {5, 7, 11, 14, 17, 18},
-                    "6",
+                    // Point for warrior location
                     new Point(0, 0),
-                    new Point(0, 0)
+                    // Point for building location
+                    new Point(511, 377),
+                    new Point(576, 331)
                 ),
                 new Clearing(
                     7,
@@ -107,9 +121,11 @@ namespace RootRemake_Project.LocationClasses
                         new double[] {718.40, 464.00}
                     },
                     new int[] {3, 6, 11, 14, 18 },
-                    "7",
+                   // Point for warrior location
                     new Point(0, 0),
-                    new Point(0, 0)
+                    // Point for building location
+                    new Point(784, 407)
+
                 ),
                 new Clearing(
                     8,
@@ -120,10 +136,12 @@ namespace RootRemake_Project.LocationClasses
                         new double[] {155.20, 675.20},
                         new double[] {41.60, 686.40}
                     },
-                    new int[] {4, 5, 9, 15, 16},
-                    "8",
+                    new int[] {4, 5, 9, 15, 16},                  
+                    // Point for warrior location
                     new Point(0, 0),
-                    new Point(0, 0)
+                    // Point for building location
+                    new Point(72, 605)
+
                 ),
                 new Clearing(
                     9,
@@ -135,9 +153,10 @@ namespace RootRemake_Project.LocationClasses
                         new double[] {357.60, 739.20}
                     },
                     new int[] {8, 10, 16},
-                    "9",
-                    new Point(0, 0),
-                    new Point(0, 0)
+                  
+                    // Point for building location
+                    new Point(247, 674),
+                    new Point(319, 640)
                 ),
                 new Clearing(
                     10,
@@ -149,9 +168,9 @@ namespace RootRemake_Project.LocationClasses
                         new double[] {548.80, 659.20}
                     },
                     new int[] {5, 9, 11, 16, 17 },
-                    "10",
-                    new Point(0, 0),
-                    new Point(0, 0)
+                    // Point for building location
+                    new Point(436, 558),
+                    new Point(501, 600)
                 ),
                 new Clearing(
                     11,
@@ -163,9 +182,10 @@ namespace RootRemake_Project.LocationClasses
                         new double[] {641.60, 717.60}
                     },
                     new int[] {7, 10, 17, 18 },
-                    "11",
+                    // Point for warrior location
                     new Point(0, 0),
-                    new Point(0, 0)
+                    // Point for building location
+                    new Point(716, 611)
                 )
                 //new Forest(
                 //    12,

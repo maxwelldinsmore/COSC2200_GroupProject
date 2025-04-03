@@ -14,7 +14,7 @@ namespace RootRemake_Project.LocationClasses
 
 
 
-        public Clearing(int locationID, double[][] locationCoordinates, int[] connectedLocations, string locationHighlight, Point warriorLocations, Point buildLocation, Point buildLocation2)
+        public Clearing(int locationID, double[][] locationCoordinates, int[] connectedLocations, Point warriorLocations, Point buildLocation, Point buildLocation2)
         {
             this.LocationID = locationID;
             this.LocationType = "Forest";
@@ -23,14 +23,14 @@ namespace RootRemake_Project.LocationClasses
             this.Armies = new List<Army>();
             this.Buildings = new List<Building>();
             this.totalBuildings = 2;
-            LocationHighlight = locationHighlight;
+            //LocationHighlight = locationHighlight;
             this.WarriorLocation = warriorLocations;
 
             this.Building1Location = buildLocation;
             this.Building2Location = buildLocation2;
         }
 
-        public Clearing(int locationID, double[][] locationCoordinates, int[] connectedLocations, string locationHighlight, Point warriorLocations, Point buildLocation)
+        public Clearing(int locationID, double[][] locationCoordinates, int[] connectedLocations, Point warriorLocations, Point buildLocation)
         {
             this.LocationID = locationID;
             this.LocationType = "Forest";
@@ -42,7 +42,7 @@ namespace RootRemake_Project.LocationClasses
             this.Building1Location = buildLocation;
             this.WarriorLocation = warriorLocations;
             this.Building2Location = null;
-            LocationHighlight = locationHighlight;
+            //LocationHighlight = locationHighlight;
         }
         override public bool CanBuild()
         {
