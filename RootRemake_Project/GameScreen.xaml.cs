@@ -73,7 +73,7 @@ namespace RootRemake_Project
             Players = new Player[5];
             Players[0] = new MarquisDeCat("Bilgan");
             Players[1] = new MarquisDeCat("Mariah");
-            Players[2] = new MarquisDeCat("Shane");
+            Players[2] = new Eyrie("Shane");
             Players[3] = new MarquisDeCat("Max");
             Players[4] = new MarquisDeCat("Carlos");
             cardDeck = CardDeck.cardDeck;
@@ -333,7 +333,7 @@ namespace RootRemake_Project
         private void placeWarriorMenuItem_Click(object sender, RoutedEventArgs e)
         {
             Image image = new Image();
-            image.Source = new BitmapImage(Players[0].warriorArt);
+            image.Source = new BitmapImage(Players[0].WarriorArt);
             image.Width = 20;
             image.Height = 20;
             image.Name = "Warrior_0";
@@ -446,6 +446,7 @@ namespace RootRemake_Project
                 TurnNumber++;
             }
             playerNameTextBlock.Text = Players[CurrentPlayerTurn].UserName;
+            chaBannerImage.Source = new BitmapImage(Players[CurrentPlayerTurn].BannerArt);
         }
 
 

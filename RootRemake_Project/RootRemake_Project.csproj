@@ -29,6 +29,8 @@
     <None Remove="Assets\EyrieBoard.png" />
     <None Remove="Assets\EyrieBuildingIcon.png" />
     <None Remove="Assets\EyrieCards.png" />
+    <None Remove="Assets\Eyrie\Banner.png" />
+    <None Remove="Assets\Eyrie\BuildingIcon.png" />
     <None Remove="Assets\Eyrie\Icon.png" />
     <None Remove="Assets\Images\MarquiseIcon.png" />
     <None Remove="Assets\Images\Recruiter.png" />
@@ -61,6 +63,7 @@
     <None Remove="Assets\rootmap.jpg" />
     <None Remove="Assets\Setups.png" />
     <None Remove="Assets\SidePanelBackground.png" />
+    <None Remove="Assets\Vagabond\Banner.png" />
     <None Remove="Assets\Vagabond\Icon.png" />
     <None Remove="Assets\Woodland\Icon.png" />
   </ItemGroup>
@@ -119,6 +122,12 @@
     <Resource Include="Assets\Evening.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Eyrie\Banner.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Eyrie\BuildingIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Eyrie\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -153,6 +162,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\SidePanelBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Vagabond\Banner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Vagabond\Icon.png">

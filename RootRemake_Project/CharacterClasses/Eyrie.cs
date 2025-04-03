@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RootRemake_Project.ObjectClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,14 @@ namespace RootRemake_Project.CharacterClasses
 {
     internal class Eyrie : Player
     {
-        public Eyrie() : base() 
+        public Eyrie(string UserName) 
         {
+            this.UserName = UserName;
+            Hand = new List<Card>();
+            VictoryPoints = 0;
             // Implementation of Eyrie constructor
+            BannerArt = new Uri("pack://application:,,,/Assets/Eyrie/Banner.png", UriKind.RelativeOrAbsolute);
+
         }
         public override void CharacterSetup()
         {

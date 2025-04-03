@@ -13,7 +13,7 @@ namespace RootRemake_Project.CharacterClasses
         public string UserName { get; set; }
         public int TotalWarriors;
         public int TotalBuildings;
-        public Uri warriorArt;
+        public Uri WarriorArt;
         private Random rand = new Random();
         /// <summary>
         /// The order in which the characters set up
@@ -23,8 +23,13 @@ namespace RootRemake_Project.CharacterClasses
         public int CharacterSetupOrder;
         public int VictoryPoints { get; set; }
 
+        public Uri BannerArt;
         public List<Card> Hand { get; set; }
 
+
+
+        // PLAYER METHDOS
+        
         public void DrawCard(List<Card> deck)
         {
             if (deck.Count > 0)

@@ -63,7 +63,7 @@
             </Grid.RowDefinitions>
 
             <Image x:Name="turnPhaseImage" Grid.Row="0" Stretch="Uniform" Source="/Assets/Setups.png"/>
-            <Image x:Name="chaaracterImage" Grid.Row="1" Stretch="UniformToFill" Source="/Assets/Marquis/Banner.png" />
+            <Image x:Name="chaBannerImage" Grid.Row="1" Stretch="UniformToFill" Source="/Assets/Marquis/Banner.png" />
             <TextBlock x:Name="playerNameTextBlock" Grid.Row="2" Text="Player1" TextAlignment="Center" FontSize="26"/>
             <myComponents:Marquis Grid.Row="3"/>
             

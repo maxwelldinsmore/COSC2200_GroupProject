@@ -47,7 +47,8 @@ namespace RootRemake_Project.CharacterClasses
             SawmillArt = new Uri("pack://application:,,,/Assets/Marquis/Sawmill.png", UriKind.RelativeOrAbsolute);
             WorkshopArt = new Uri("pack://application:,,,/Assets/Marquis/Workshop.png", UriKind.RelativeOrAbsolute);
             RecruiterArt = new Uri("pack://application:,,,/Assets/Marquis/Recruiter.png", UriKind.RelativeOrAbsolute);
-            warriorArt = new Uri("pack://application:,,,/Assets/Marquis/Warrior.png", UriKind.RelativeOrAbsolute);
+            WarriorArt = new Uri("pack://application:,,,/Assets/Marquis/Warrior.png", UriKind.RelativeOrAbsolute);
+            BannerArt = new Uri("pack://application:,,,/Assets/Marquis/Banner.png", UriKind.RelativeOrAbsolute);
         }
         // -----------------------------------------------
         // SET UP PHASE -- at the start of the game
