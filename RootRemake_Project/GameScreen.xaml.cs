@@ -272,8 +272,11 @@ namespace RootRemake_Project
             );
         }
 
+        #region Location Highlighting Methods
 
-
+        /// <summary>
+        /// On game start loads the locations on the map
+        /// </summary>
         public void loadLocationHighlights()
         {
             foreach (var location in Locations)
@@ -323,22 +326,69 @@ namespace RootRemake_Project
             }
         }
 
+        /// <summary>
+        /// Takes in an array and highlights all the 
+        /// locations on the map and unhighlights the rest
+        /// </summary>
+        /// <param name="highlightedAreas">Array of Locations ID's to be highlighted</param>
+        private void HighlightLocations(int[] highlightedAreas)
+        {
+            // Hide locations that are not adjacent to the current location
+            foreach (var image in canvasGameBoard.Children.OfType<Image>())
+            {
+                if (image.Name.Contains("Highlight_"))
+                {
+                    image.Visibility = Visibility.Hidden;
+                    int currentLocation = Int32.Parse(image.Name.Split('_')[1]);
+                    if (highlightedAreas.Contains(currentLocation))
+                    {
+                        image.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        image.Visibility = Visibility.Hidden;
+                    }
+                }
+            }
+            foreach (var polygon in canvasGameBoard.Children.OfType<Polygon>())
+            {
+                if (polygon.Name.Contains("Polygon_"))
+                {
+                    polygon.Visibility = Visibility.Visible;
+                    polygon.Opacity = locationPolygonViewability;
+                    int currentLocation = Int32.Parse(polygon.Name.Split('_')[1]);
+                    if (highlightedAreas.Contains(currentLocation))
+                    {
+                        polygon.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        polygon.Visibility = Visibility.Hidden;
+                    }
+                }
+            }
+        }
+        #endregion
+
+
         #region Debug on Click methods
         private void placeWarriorMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            Image image = new Image();
-            image.Source = new BitmapImage(Players[0].WarriorArt);
-            image.Width = 20;
-            image.Height = 20;
-            image.Name = "Warrior_0";
-            image.IsHitTestVisible = false;
-            Point buildingPoint = Locations[0].WarriorLocation;
-            Canvas.SetLeft(image, buildingPoint.X);
-            Canvas.SetTop(image, buildingPoint.Y);
+            AddWarriorToLocation(0, 2, CurrentPlayerTurn);
            
-            if (canvasGameBoard is Canvas canvas)
+        
+        }
+
+        private void displayPolygonsMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            locationPolygonViewability = locationPolygonViewability + 1 % 2;
+            foreach (var polygon in canvasGameBoard.Children.OfType<Polygon>())
             {
-                canvas.Children.Add(image);
+                if (polygon.Name.Contains("Polygon_"))
+                {
+                    polygon.Opacity = locationPolygonViewability;
+                    int currentLocation = Int32.Parse(polygon.Name.Split('_')[1]);
+                }
             }
         }
         private void loadBuildingMenuItem_Click(object sender, RoutedEventArgs e)
@@ -407,6 +457,9 @@ namespace RootRemake_Project
             }
         }
         #endregion
+
+
+        #region Player Turn Related
         /// <summary>
         /// Button for when the turn is ended
         /// </summary>
@@ -461,10 +514,10 @@ namespace RootRemake_Project
             chaBannerImage.Source = new BitmapImage(Players[CurrentPlayerTurn].BannerArt);
         }
 
+        #endregion
 
 
 
-        
         /// <summary>
         /// For later loads the setup character methods
         /// and assigns random player order
@@ -474,49 +527,73 @@ namespace RootRemake_Project
             // highlights the 4 corners on the map
         }
 
+
         /// <summary>
-        /// Takes in an array and highlights all the 
-        /// locations on the map and unhighlights the rest
+        /// Updates the information of the warriors on the map
         /// </summary>
-        /// <param name="highlightedAreas">Array of Locations ID's to be highlighted</param>
-        private void HighlightLocations(int[] highlightedAreas)
+        public void UpdateWarriorPlacement(int locationID)
         {
-            // Hide locations that are not adjacent to the current location
-            foreach (var image in canvasGameBoard.Children.OfType<Image>())
+            int yShift = 0;
+            foreach (var Army in Locations[locationID].Armies)
             {
-                if (image.Name.Contains("Highlight_"))
+                foreach (var image in canvasGameBoard.Children.OfType<Image>())
                 {
-                    image.Visibility = Visibility.Hidden;
-                    int currentLocation = Int32.Parse(image.Name.Split('_')[1]);
-                    if (highlightedAreas.Contains(currentLocation))
+                    if (image.Name.Contains("Army_" + Army.KeyString))
                     {
-                        image.Visibility = Visibility.Visible;
-                    } else
-                    {
-                        image.Visibility = Visibility.Hidden;
+                        Canvas.SetLeft(image, Locations[locationID].WarriorLocation.X);
+                        Canvas.SetTop(image, Locations[locationID].WarriorLocation.Y + yShift);
+                       
                     }
                 }
-            }
-            foreach (var polygon in canvasGameBoard.Children.OfType<Polygon>())
-            {
-                if (polygon.Name.Contains("Polygon_"))
+                foreach (var labelNum in canvasGameBoard.Children.OfType<Label>())
                 {
-                    polygon.Visibility = Visibility.Hidden;
-                    int currentLocation = Int32.Parse(polygon.Name.Split('_')[1]);
-                    if (highlightedAreas.Contains(currentLocation))
+                    if (labelNum.Name.Contains("Label_" + Army.KeyString))
                     {
-                        polygon.Visibility = Visibility.Visible;
-                    } else
-                    {
-                        polygon.Visibility = Visibility.Hidden;
+                        Canvas.SetLeft(labelNum, Locations[locationID].WarriorLocation.X  + 20);
+                        Canvas.SetTop(labelNum, Locations[locationID].WarriorLocation.Y + yShift);
+                        labelNum.Content = Army.WarriorCount.ToString();
+                        yShift += 40;
                     }
                 }
+
             }
         }
 
-        public void PlaceWarrior()
+        /// <summary>
+        /// Adds a image and name for the warrior and the number of warriors 
+        /// to the map then calls UpdateWarriorPlacement to update placements
+        /// </summary>
+        /// <param name="locationID"></param>
+        public void AddWarriorToLocation(int locationID, int WarriorsAdded, int playerID)
         {
+            string keyString = GetRandomString();
+            Locations[locationID].Armies.Add(
+                new Army(
+                    playerID,
+                    Players[CurrentPlayerTurn].WarriorArt,
+                    WarriorsAdded,
+                    keyString
+            ));
+            Image image = new Image();
+            image.Source = new BitmapImage(Players[CurrentPlayerTurn].WarriorArt);
+            image.Width = 30;
+            image.Height = 30;
+            image.Name = "Army_" + keyString;
+            image.IsHitTestVisible = false;
 
+            Label label = new Label();
+            label.Content = WarriorsAdded.ToString();
+            label.Width = 40;
+            label.Height = 40;
+            label.Name = "Label_" + keyString;
+            label.FontSize = 20;
+            label.Foreground = Brushes.White;
+            if (canvasGameBoard is Canvas canvas)
+            {
+                canvas.Children.Add(image);
+                canvas.Children.Add(label);
+            }
+            UpdateWarriorPlacement(locationID);
         }
 
         /// <summary>
@@ -531,128 +608,7 @@ namespace RootRemake_Project
             return new string(Enumerable.Repeat(chars, 10)
                               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
+
+
     }
 }
-
-//Image BuildingImage = new Image();
-//MarquisDeCat marquis = (MarquisDeCat)Players[building.playerID].Character;
-//BuildingImage.Source = new BitmapImage(marquis.RecruiterArt);
-//BuildingImage.Width = 50;
-//BuildingImage.Height = 50;
-//BuildingImage.Name = "Recruiter_" + building.BuildingID;
-
-//// Assuming BuildingPoints is a property in Location that gives the position of buildings
-//double[] buildingPoint = location.LocationPolygon[building.BuildingID];
-//Canvas.SetLeft(BuildingImage, buildingPoint[0]);
-//Canvas.SetTop(BuildingImage, buildingPoint[1]);
-
-//// Assuming canvasGameBoard is a Canvas or similar container
-//if (canvasGameBoard is Canvas canvas)
-//{
-//    canvas.Children.Add(BuildingImage);
-//}
-
-//     /// <summary>
-//     /// Hit detection for locations on the map
-//     /// CURRENTLY UNUSED: polygon on click event has replaced it,
-//     /// might be important if polygon needs to be replaced with another asset
-//     /// </summary>
-//     /// <param name="mouse">point for the position of player mouse</param>
-//     /// <param name="locationPolygon">location being checked for collision</param>
-//     /// <returns></returns>
-//        public bool InsideLocation(Point mouse, double[][] locationPolygon)
-//{
-//    // First gets inner polygon line used in point in polygon method
-//    double x1 = 0;
-//    double x2 = 0;
-//    double y1 = 0;
-//    double y2 = 99999999;
-//    foreach (double[] location in locationPolygon)
-//    {
-//        if (location[1] < y1)
-//        {
-//            y1 = location[1];
-//            x1 = location[0];
-//        }
-//        if (location[1] > y2)
-//        {
-//            y2 = location[1];
-//            x2 = location[0];
-//        }
-//    }
-
-//    // Ray Casting method 
-//    int intersectionCount = 0;
-//    // IDK IF THIS WORKS TOTALLY NOT AI
-//    for (int i = 0; i < locationPolygon.Length; i++)
-//    {
-//        double x1p = locationPolygon[i][0];
-//        double y1p = locationPolygon[i][1];
-//        double x2p = locationPolygon[(i + 1) % locationPolygon.Length][0];
-//        double y2p = locationPolygon[(i + 1) % locationPolygon.Length][1];
-//        if (y1p == y2p)
-//        {
-//            continue;
-//        }
-//        if (mouse.Y < y1p && mouse.Y < y2p)
-//        {
-//            continue;
-//        }
-//        if (mouse.Y >= y1p && mouse.Y >= y2p)
-//        {
-//            continue;
-//        }
-//        double x = (mouse.Y - y1p) * (x2p - x1p) / (y2p - y1p) + x1p;
-//        if (x > mouse.X)
-//        {
-//            intersectionCount++;
-//        }
-//    }
-//    // If even return false, if odd return true
-//    return intersectionCount % 2 == 1;
-//}
-
-///// <summary>
-///// Sets the locations boundaries from percentage
-///// to real values for the game board
-///// Only Called when gamescreen is loaded so far.
-///// NOT TIED TO AN EVENT
-///// </summary>
-//async public void OnResize()
-//{
-
-//    double imgWidth = imgMap.ActualWidth;
-//    double imgHeight = imgMap.ActualHeight;
-
-
-//    foreach (var location in Locations)
-//    {
-//        for (int i = 0; i < location.LocationPolygonPercents.Length; i++)
-//        {
-//            location.LocationPolygon[i][0] = location.LocationPolygonPercents[i][0] * imgWidth / 100;
-//            location.LocationPolygon[i][1] = location.LocationPolygonPercents[i][1] * imgHeight / 100;
-//            Debug.WriteLine("Location " + location.LocationID + " X: " + location.LocationPolygon[i][0] + " Y: " + location.LocationPolygon[i][1]);
-//        }
-//    }
-//}
-
-///// <summary>
-///// Collision detection for locations on the map
-///// Temporaryily will be square locations
-///// </summary>
-///// <param name="sender"></param>
-///// <param name="e"></param>
-//private void imgMap_MouseMove(object sender, MouseEventArgs e)
-//{
-//    //Debug.WriteLine("Mouse Move");
-//    double imgWidth = imgMap.ActualWidth;
-//    double imgHeight = imgMap.ActualHeight;
-//    Point position = e.GetPosition(imgMap);
-//    double[][] location = Locations[0].LocationPolygon;
-
-
-//    //if (InsideLocation(position, location))
-//    //{
-//    //    Debug.WriteLine("Inside Location 0");
-//    //}
-//}

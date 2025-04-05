@@ -8,18 +8,22 @@ namespace RootRemake_Project.ObjectClasses
 {
     public class Army
     {
-        public string playerID { get; set; }
+        public int PlayerID { get; set; }
 
-        /// <summary>
-        /// Id of the player's Character for doing Character specific testing
-        /// </summary>
-        public int characterID { get; set; }
-        public string WarriorCount { get; set; }
+        public int WarriorCount { get; set; }
 
-        public string warriorImageArtName { get; set; }
+        public Uri warriorImageArtName { get; set; }
 
-        public string WarriorArt { get; set; }
+        public string KeyString { get; set; } // The key string for the army
 
-        public Army() { }
+        
+
+        public Army(int playerID, Uri imageArt, int warriorCount, string keyString) 
+        {
+            this.PlayerID = playerID;
+            this.WarriorCount = warriorCount;
+            this.warriorImageArtName = imageArt;
+            this.KeyString = keyString;
+        }
     }
 }
