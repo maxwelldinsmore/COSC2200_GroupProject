@@ -42,7 +42,7 @@ namespace RootRemake_Project.LocationClasses
         /// </summary>
         public List<Army> Armies { get; set; }
 
-        public int totalBuildings { get; set; } // The total amount of buildings in the location
+        public int TotalBuildings { get; set; } // The total amount of buildings in the location
 
         public List<Building> Buildings { get; set; } // The list of buildings in the location
 

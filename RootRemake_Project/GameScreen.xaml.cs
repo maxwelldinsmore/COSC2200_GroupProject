@@ -262,15 +262,7 @@ namespace RootRemake_Project
 
         #endregion
 
-        private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-         
-            Point position = e.GetPosition(imgMap);
-            MessageBox.Show(position.X.ToString("F2") + ", " + position.Y.ToString("F2"));
-          
-            Clipboard.SetText(position.X.ToString("F2") + ", " + position.Y.ToString("F2")
-            );
-        }
+
 
         #region Location Highlighting Methods
 
@@ -372,6 +364,16 @@ namespace RootRemake_Project
 
 
         #region Debug on Click methods
+
+        private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+            Point position = e.GetPosition(imgMap);
+            MessageBox.Show(position.X.ToString("F2") + ", " + position.Y.ToString("F2"));
+
+            Clipboard.SetText(position.X.ToString("F2") + ", " + position.Y.ToString("F2")
+            );
+        }
         private void placeWarriorMenuItem_Click(object sender, RoutedEventArgs e)
         {
             AddWarriorToLocation(0, 2, CurrentPlayerTurn);
@@ -518,16 +520,7 @@ namespace RootRemake_Project
 
 
 
-        /// <summary>
-        /// For later loads the setup character methods
-        /// and assigns random player order
-        /// </summary>
-        private void GameStart()
-        {
-            // highlights the 4 corners on the map
-        }
-
-
+        #region Warrior Related Methods
         /// <summary>
         /// Updates the information of the warriors on the map
         /// </summary>
@@ -595,12 +588,22 @@ namespace RootRemake_Project
             }
             UpdateWarriorPlacement(locationID);
         }
+        #endregion
+
+
+        /// <summary>
+        /// For later loads the setup character methods
+        /// and assigns random player order
+        /// </summary>
+        private void GameStart()
+        {
+            // highlights the 4 corners on the map
+        }
 
         /// <summary>
         /// Gets string of 10 random characters, used for adding in images and labels
         /// to the game board
         /// </summary>
-        /// <returns></returns>
         public static string GetRandomString()
         {
             Random random = new Random();
