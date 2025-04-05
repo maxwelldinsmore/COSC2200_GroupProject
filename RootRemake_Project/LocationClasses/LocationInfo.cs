@@ -4,16 +4,7 @@ namespace RootRemake_Project.LocationClasses
 {
     public static class LocationInfo
     {
-        public static int[][] ar =
-        {
-                new int[] {0, 1, 2, 3, 13, 14},
-                new int[] {0, 2, 4, 5, 12, 14, 15},
-                new int[] {2, 3, 5, 6, 7, 12, 13, 17, 18},
-                new int[] {4, 5, 8 , 13, 16},
-                new int[] {5, 8, 9, 10, 15, 17},
-                new int[] {5, 6, 10, 14, 16, 18},
-                new int[] {6, 7, 11, 14, 17}
-            };
+
 
         //TODO: Add in the correct values for the locations
         public static Location[] MapLocations =
@@ -186,23 +177,131 @@ namespace RootRemake_Project.LocationClasses
                     new Point(0, 0),
                     // Point for building location
                     new Point(716, 611)
+                 ),
+                
+                new Forest(
+                    12,
+                    new double[][] {
+                        new double[] {178.40, 92.80},
+                        new double[] {379.20, 88.80},
+                        new double[] {434.40, 132.00},
+                        new double[] {528.00, 114.40},
+                        new double[] { 655.20, 167.20 },
+                        new double[] { 445.60, 204.80 },
+                        new double[] { 428.00, 161.60 },
+                        new double[] { 362.40, 141.60},
+                        new double[] { 288.00, 167.20},
+                        new double[] { 164.80, 116.80 }
+                    },
+                    new int[] {0, 1, 2, 3, 13, 14},
+                    new Point(0,0)
+                 ),
+
+                new Forest(
+                    13,
+                    new double[][] {
+                        new double[] {108.00, 170.40},
+                        new double[] {162.40, 174.40},
+                        new double[] {280.80, 205.60},
+                        new double[] {307.20, 316.80},
+                        new double[] {199.20, 381.60},
+                        new double[] {146.40, 356.80},
+                        new double[] {152.80, 296.00},
+                        new double[] {99.20, 232.80},
+                    },
+                    new int[] {0, 2, 4, 5, 12, 14, 15},
+                    new Point(0,0)
+                             ),
+
+                new Forest(
+                    14,
+                    new double[][] {
+                        new double[] {310.40, 368.00},
+                        new double[] {364.00, 282.40},
+                        new double[] {423.20, 279.20},
+                        new double[] {428.80, 231.20},
+                        new double[] { 668.80, 214.40 },
+                        new double[] { 736.00, 234.40 },
+                        new double[] {734.40, 349.60 },
+                        new double[] { 605.60, 373.60 },
+                        new double[] { 608.80, 316.80 },
+                        new double[] { 499.20, 311.20 },
+                        new double[] { 467.20, 377.60 },
+                        new double[] {  320.00, 412.80},
+
+
+
+                    },
+                    new int[] {2, 3, 5, 6, 7, 12, 13, 17, 18},
+                    new Point(0,0)
+                ),
+
+                new Forest(
+                    15,
+                    new double[][] {
+                        new double[] {87.20, 397.60},
+                        new double[] {152.80, 392.00},
+                        new double[] {196.00, 490.40},
+                        new double[] {130.40, 576.80},
+                        new double[] {101.60, 556.00}
+                    },
+                    new int[] {4, 5, 8 , 13, 16},
+                    new Point(0,0)
+                ),
+
+                new Forest(
+                    16,
+                    new double[][] {
+                        new double[] {160.00, 576.80},
+                        new double[] {229.60, 500.00},
+                        new double[] {331.20, 504.00},
+                        new double[] {423.20, 572.80},
+                        new double[] {421.60, 622.40 },
+                        new double[] { 348.80, 614.40 },
+                        new double[] { 234.40, 628.80},
+                        new double[] { 165.60, 651.20},
+                    },
+                    new int[] {5, 8, 9, 10, 15, 17},
+                    new Point(0,0)
+                ),
+
+                new Forest(
+                    17,
+                    new double[][] {
+                        new double[] {325.60, 441.60},
+                        new double[] {473.60, 400.80},
+                        new double[] {480.00, 434.40},
+                        new double[] {548.80, 442.40},
+                        new double[] { 648.80, 625.60 },
+                        new double[] { 548.00, 564.80},
+                        new double[] { 500.00, 535.20 },
+                        new double[] { 426.40, 537.60 },
+                    },
+                    new int[] {5, 6, 10, 14, 16, 18},
+                    new Point(0,0)
+                ),
+
+                new Forest(
+                    18,
+                    new double[][] {
+                        new double[] {594.40, 456.80},
+                        new double[] {608.80, 399.20},
+                        new double[] {688.00, 416.80},
+                        new double[] {725.60, 496.80},
+                        new double[] { 681.60, 612.80 }
+                    },
+                    new int[] {6, 7, 11, 14, 17},
+                    new Point(0,0)
                 )
-                //new Forest(
-                //    12,
-                //    new double[][] {
-                //        [],
-                //        [],
-                //        [],
-                //        []
-                //    },
-                //    new int[] {0, 3, 12 }
-                //    )
+
+
             };
 
 
 
-    } 
+    }
 }
+
 
 
 // Ray Casting Method (Draw a line through the point and see if it intersects with the polygon)

@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
+using RootRemake_Project.Components;
 
 namespace RootRemake_Project
 {
@@ -57,12 +58,10 @@ namespace RootRemake_Project
 
         private bool isHandVisible = false;
 
-        /// <summary>
-        /// Viewability of the location polygons on the map
-        /// 1 is fully visible, 0 is invisible
-        /// Don't need to be shown only for debugging / resizing collision boxes
-        /// </summary>
-        public double locationPolygonViewability = 0;
+
+        public double LocationPolygonViewability = 0;
+
+        public int LocationHighlightViewability = 1;
 
         public string TurnPhase = "Setup";
 
@@ -72,12 +71,9 @@ namespace RootRemake_Project
         {
             InitializeComponent();
             this.Locations = LocationInfo.MapLocations;
-            Players = new Player[5];
+            Players = new Player[2];
             Players[0] = new MarquisDeCat("Bilgan");
             Players[1] = new MarquisDeCat("Mariah");
-            Players[2] = new Eyrie("Shane");
-            Players[3] = new MarquisDeCat("Max");
-            Players[4] = new MarquisDeCat("Carlos");
             cardDeck = CardDeck.cardDeck;
             discardPile = new List<Card>();
             
@@ -94,10 +90,18 @@ namespace RootRemake_Project
             playerNameTextBlock.Text = Players[CurrentPlayerTurn].UserName;
         }
 
+        /// <summary>
+        /// Game Start method that runs after window fully loaded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GameScreen_Loaded(object sender, RoutedEventArgs e)
         {
-            //locationPolygonViewability = 1; // Ensure polygons are visible
+            //LocationPolygonViewability = 1; // Ensure polygons are visible
             loadLocationHighlights(); // Call the method to load location highlights
+            LoadUserControl();
+
+
         }
 
         #region Card Related Methods
@@ -263,7 +267,6 @@ namespace RootRemake_Project
         #endregion
 
 
-
         #region Location Highlighting Methods
 
         /// <summary>
@@ -284,7 +287,7 @@ namespace RootRemake_Project
 
                 polygon.Points = points;
                 polygon.Fill = Brushes.Red;
-                polygon.Opacity = locationPolygonViewability;
+                polygon.Opacity = LocationPolygonViewability;
                 polygon.Name = "Polygon_" + location.LocationID;
                 polygon.AddHandler(MouseDownEvent, new MouseButtonEventHandler(Location_MouseDown), true);
 
@@ -296,10 +299,18 @@ namespace RootRemake_Project
                 }
 
                 Image image = new Image();
-                Uri imageUri = new Uri("pack://application:,,,/Assets/Areas/" + location.LocationID + ".png", UriKind.RelativeOrAbsolute );
+               // TODO: Once we Have all the assets revert This to the original
+                if (location.LocationType == "Forest")
+                {
+                    Uri imageUri = new Uri("pack://application:,,,/Assets/Areas/" + location.LocationID + "_gray.png", UriKind.RelativeOrAbsolute);
+                    image.Source = new BitmapImage(imageUri);
+                } else
+                {
+                    Uri imageUri = new Uri("pack://application:,,,/Assets/Areas/" + location.LocationID + ".png", UriKind.RelativeOrAbsolute);
+                    image.Source = new BitmapImage(imageUri);
+                }
 
-                image.Source = new BitmapImage(imageUri);
-                image.Width = imgMap.ActualWidth;
+                    image.Width = imgMap.ActualWidth;
                 image.Height = imgMap.ActualHeight;
                 image.Opacity = 1;
                 image.Name = "Highlight_" + location.LocationID;
@@ -347,7 +358,7 @@ namespace RootRemake_Project
                 if (polygon.Name.Contains("Polygon_"))
                 {
                     polygon.Visibility = Visibility.Visible;
-                    polygon.Opacity = locationPolygonViewability;
+                    polygon.Opacity = LocationPolygonViewability;
                     int currentLocation = Int32.Parse(polygon.Name.Split('_')[1]);
                     if (highlightedAreas.Contains(currentLocation))
                     {
@@ -383,16 +394,43 @@ namespace RootRemake_Project
 
         private void displayPolygonsMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            locationPolygonViewability = locationPolygonViewability + 1 % 2;
+            if (LocationPolygonViewability == 0)
+            {
+                LocationPolygonViewability = 1;
+            }
+            else
+            {
+                LocationPolygonViewability = 0;
+            }
             foreach (var polygon in canvasGameBoard.Children.OfType<Polygon>())
             {
                 if (polygon.Name.Contains("Polygon_"))
                 {
-                    polygon.Opacity = locationPolygonViewability;
+                    polygon.Opacity = LocationPolygonViewability;
                     int currentLocation = Int32.Parse(polygon.Name.Split('_')[1]);
                 }
             }
         }
+        private void displayHighlightsMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (LocationHighlightViewability == 0)
+            {
+                LocationHighlightViewability = 1;
+            }
+            else
+            {
+                LocationHighlightViewability = 0;
+            }
+            foreach (var image in canvasGameBoard.Children.OfType<Image>())
+            {
+                if (image.Name.Contains("Highlight_"))
+                {
+                    image.Opacity = LocationHighlightViewability;
+                    int currentLocation = Int32.Parse(image.Name.Split('_')[1]);
+                }
+            }
+        }
+
         private void loadBuildingMenuItem_Click(object sender, RoutedEventArgs e)
         {
             Image BuildingImage = new Image();
@@ -591,14 +629,17 @@ namespace RootRemake_Project
         #endregion
 
 
-        /// <summary>
-        /// For later loads the setup character methods
-        /// and assigns random player order
-        /// </summary>
-        private void GameStart()
+        #region User Control Panels
+
+        public void LoadUserControl()
         {
-            // highlights the 4 corners on the map
+            UserControl userControl = new MarquisSetup();
+            sidePanelGrid.Children.Add(userControl);
+            Grid.SetRow(userControl, 3);
+
         }
+
+        #endregion
 
         /// <summary>
         /// Gets string of 10 random characters, used for adding in images and labels
@@ -612,6 +653,6 @@ namespace RootRemake_Project
                               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-
+       
     }
 }

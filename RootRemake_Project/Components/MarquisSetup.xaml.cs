@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace RootRemake_Project.Components
 {
     /// <summary>
-    /// Interaction logic for Marquis.xaml
+    /// Interaction logic for MarquisSetup.xaml
     /// </summary>
-    public partial class MarquisDaylight : UserControl
+    public partial class MarquisSetup : UserControl
     {
-        public MarquisDaylight()
+        public MarquisSetup()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
