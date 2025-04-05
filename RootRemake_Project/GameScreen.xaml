@@ -27,8 +27,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Menu DockPanel.Dock="Top" Grid.Row="0" Margin="847,0,0,0" Grid.ColumnSpan="2 " Background="#7C816A" FontFamily="{StaticResource Luminari}">
-            <MenuItem Header="_Options" >
-                <MenuItem Header="_Debug"/>
+            <MenuItem Header="_Debug" >
                 <MenuItem Name="chooseKeepMenuItem" Header="_Choose Keep" Click="chooseKeepMenuItem_Click"/>
                 <MenuItem Name="highlightMenuItem" Header="_Highlight All locations" Click="highlightMenuItem_Click"/>
                 <MenuItem Name="placeWarriorMenuItem" Header="_Place Warrior" Click="placeWarriorMenuItem_Click"/>
