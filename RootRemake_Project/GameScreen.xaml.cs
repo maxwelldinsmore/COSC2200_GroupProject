@@ -25,7 +25,7 @@ namespace RootRemake_Project
     /// </summary>
     public partial class GameScreen : Window
     {
-        public Random random = new Random();
+       
         /// <summary>
         /// Array of locations
         /// </summary>
@@ -54,6 +54,8 @@ namespace RootRemake_Project
         /// 0 is setup turn
         /// </summary>
         public int TurnNumber = 0;
+
+        private bool isHandVisible = false;
 
         /// <summary>
         /// Viewability of the location polygons on the map
@@ -91,8 +93,14 @@ namespace RootRemake_Project
             CurrentPlayerTurn = StartingPlayersTurn;
             playerNameTextBlock.Text = Players[CurrentPlayerTurn].UserName;
         }
-            
 
+        private void GameScreen_Loaded(object sender, RoutedEventArgs e)
+        {
+            //locationPolygonViewability = 1; // Ensure polygons are visible
+            loadLocationHighlights(); // Call the method to load location highlights
+        }
+
+        #region Card Related Methods
         private void ShuffleDeck()
         {
             Random rng = new Random();
@@ -119,14 +127,6 @@ namespace RootRemake_Project
                     }
                 }
             }
-        }
-
-
-
-        private void GameScreen_Loaded(object sender, RoutedEventArgs e)
-        {
-            //locationPolygonViewability = 1; // Ensure polygons are visible
-            loadLocationHighlights(); // Call the method to load location highlights
         }
 
         public void DrawCardsForPlayer(int playerIndex, int numberOfCards)
@@ -160,8 +160,6 @@ namespace RootRemake_Project
             }
         }
 
-        private bool isHandVisible = false;
-
         private void toggleHandBtn_Click(object sender, RoutedEventArgs e)
         {
             isHandVisible = !isHandVisible; // Toggle state
@@ -191,7 +189,6 @@ namespace RootRemake_Project
                 cardHand.DisplayHand(Players[CurrentPlayerTurn].Hand);
             }
         }
-
         private void OnCardClicked(int cardIndex)
         {
             var currentPlayer = Players[CurrentPlayerTurn];
@@ -263,6 +260,8 @@ namespace RootRemake_Project
             }
         }
 
+        #endregion
+
         private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
         {
          
@@ -273,45 +272,6 @@ namespace RootRemake_Project
             );
         }
 
-        /// <summary>
-        /// Collision detection for locations on the map
-        /// Temporaryily will be square locations
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void imgMap_MouseMove(object sender, MouseEventArgs e)
-        {
-            //Debug.WriteLine("Mouse Move");
-            double imgWidth = imgMap.ActualWidth;
-            double imgHeight = imgMap.ActualHeight;
-            Point position = e.GetPosition(imgMap);
-            double[][] location = Locations[0].LocationPolygon;
-
-
-            //if (InsideLocation(position, location))
-            //{
-            //    Debug.WriteLine("Inside Location 0");
-            //}
-        }
-     
-
-        private void testCardLoad()
-        {
-            Card card = CardDeck.cardDeck[25];
-            card = Players[0].Hand[0];
-            BitmapSource cardImage = card.GetCardImage();
-
-            canvasGameBoard.Children.Add(
-                new Image
-                {
-                    Source = cardImage,
-                    Height = 250,
-                    Margin = new Thickness(29, 257, 50, 256)
-                }
-            );
-        }
-
-       
 
 
         public void loadLocationHighlights()
@@ -363,7 +323,7 @@ namespace RootRemake_Project
             }
         }
 
-
+        #region Debug on Click methods
         private void placeWarriorMenuItem_Click(object sender, RoutedEventArgs e)
         {
             Image image = new Image();
@@ -381,11 +341,26 @@ namespace RootRemake_Project
                 canvas.Children.Add(image);
             }
         }
-
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void loadBuildingMenuItem_Click(object sender, RoutedEventArgs e)
         {
+            Image BuildingImage = new Image();
+            MarquisDeCat marquis = (MarquisDeCat)Players[0];
+            BuildingImage.Source = new BitmapImage(marquis.RecruiterArt);
+            BuildingImage.Width = 25;
+            BuildingImage.Height = 25;
+            BuildingImage.Name = "Recruiter";
+
+            BuildingImage.IsHitTestVisible = false;
+            if (Locations[0].Building1Location.HasValue)
+            {
+                Point buildingPoint = Locations[6].Building2Location.Value;
+                Canvas.SetLeft(BuildingImage, buildingPoint.X);
+                Canvas.SetTop(BuildingImage, buildingPoint.Y);
+            }
+            canvasGameBoard.Children.Add(BuildingImage);
+
         }
+
 
         /// <summary>
         /// General on click event for location being clicked
@@ -431,7 +406,7 @@ namespace RootRemake_Project
                 image.Visibility = Visibility.Visible;
             }
         }
-
+        #endregion
         /// <summary>
         /// Button for when the turn is ended
         /// </summary>
@@ -487,25 +462,7 @@ namespace RootRemake_Project
         }
 
 
-        private void loadBuildingMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            Image BuildingImage = new Image();
-            MarquisDeCat marquis = (MarquisDeCat)Players[0];
-            BuildingImage.Source = new BitmapImage(marquis.RecruiterArt);
-            BuildingImage.Width = 25;
-            BuildingImage.Height = 25;
-            BuildingImage.Name = "Recruiter";
 
-            BuildingImage.IsHitTestVisible = false;
-            if (Locations[0].Building1Location.HasValue)
-            {
-                Point buildingPoint = Locations[6].Building2Location.Value;
-                Canvas.SetLeft(BuildingImage, buildingPoint.X);
-                Canvas.SetTop(BuildingImage, buildingPoint.Y);
-            }
-            canvasGameBoard.Children.Add(BuildingImage);
-
-        }
 
         
         /// <summary>
@@ -556,8 +513,27 @@ namespace RootRemake_Project
                 }
             }
         }
+
+        public void PlaceWarrior()
+        {
+
+        }
+
+        /// <summary>
+        /// Gets string of 10 random characters, used for adding in images and labels
+        /// to the game board
+        /// </summary>
+        /// <returns></returns>
+        public static string GetRandomString()
+        {
+            Random random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            return new string(Enumerable.Repeat(chars, 10)
+                              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
     }
 }
+
 //Image BuildingImage = new Image();
 //MarquisDeCat marquis = (MarquisDeCat)Players[building.playerID].Character;
 //BuildingImage.Source = new BitmapImage(marquis.RecruiterArt);
@@ -658,4 +634,25 @@ namespace RootRemake_Project
 //            Debug.WriteLine("Location " + location.LocationID + " X: " + location.LocationPolygon[i][0] + " Y: " + location.LocationPolygon[i][1]);
 //        }
 //    }
+//}
+
+///// <summary>
+///// Collision detection for locations on the map
+///// Temporaryily will be square locations
+///// </summary>
+///// <param name="sender"></param>
+///// <param name="e"></param>
+//private void imgMap_MouseMove(object sender, MouseEventArgs e)
+//{
+//    //Debug.WriteLine("Mouse Move");
+//    double imgWidth = imgMap.ActualWidth;
+//    double imgHeight = imgMap.ActualHeight;
+//    Point position = e.GetPosition(imgMap);
+//    double[][] location = Locations[0].LocationPolygon;
+
+
+//    //if (InsideLocation(position, location))
+//    //{
+//    //    Debug.WriteLine("Inside Location 0");
+//    //}
 //}

@@ -14,9 +14,11 @@ namespace RootRemake_Project.ObjectClasses
         /// Id of the player's Character for doing Character specific testing
         /// </summary>
         public int characterID { get; set; }
-        public string warriorCount { get; set; }
+        public string WarriorCount { get; set; }
 
-        public string warriorArt { get; set; }
+        public string warriorImageArtName { get; set; }
+
+        public string WarriorArt { get; set; }
 
         public Army() { }
     }

@@ -74,6 +74,11 @@ namespace RootRemake_Project.LocationClasses
             LocationHighlight = string.Empty;
         }
 
+        public void AddArmy(Army army)
+        {
+            Armies.Add(army);
+        }
+
         public abstract bool CanBuild(); // Abstract function for building
     }
 }
