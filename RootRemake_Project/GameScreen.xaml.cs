@@ -158,18 +158,6 @@ namespace RootRemake_Project
                     }
                 }
             }
-
-            // Check if player needs to discard
-            if (player.Hand.Count > 5)
-            {
-                // For now, we'll just discard down to 5 randomly
-                // In a real game, you'd want the player to choose which cards to discard
-                while (player.Hand.Count > 5)
-                {
-                    Card cardToDiscard = player.Hand[0]; // Always discards first card - should be changed to player choice
-                    player.DiscardCard(cardToDiscard, discardPile);
-                }
-            }
         }
 
         private bool isHandVisible = false;
@@ -206,15 +194,38 @@ namespace RootRemake_Project
 
         private void OnCardClicked(int cardIndex)
         {
-            // Get the clicked card from current player's hand
-            Card clickedCard = Players[CurrentPlayerTurn].Hand[cardIndex];
+            var currentPlayer = Players[CurrentPlayerTurn];
+            int excessCards = currentPlayer.Hand.Count - 5;
 
-            MessageBox.Show($"Card {cardIndex + 1} clicked\n" +
-                           $"{clickedCard.CardText}\n" +
-                           $"Suit: {GetSuitName(clickedCard.Suit)}",
-                           "Card Selected",
-                           MessageBoxButton.OK,
-                           MessageBoxImage.Information);
+            if (excessCards > 0 && TurnPhase == "Evening")
+            {
+                // Discard mode
+                Card clickedCard = currentPlayer.Hand[cardIndex];
+
+                var result = MessageBox.Show($"Discard this card?\n{clickedCard.CardText}",
+                                            "Confirm Discard",
+                                            MessageBoxButton.YesNo,
+                                            MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    currentPlayer.DiscardCard(clickedCard, discardPile);
+                    UpdateHandDisplay();
+
+
+                }
+            }
+            else
+            {
+                // Normal card viewing
+                Card clickedCard = currentPlayer.Hand[cardIndex];
+                MessageBox.Show($"Card {cardIndex + 1} clicked\n" +
+                               $"{clickedCard.CardText}\n" +
+                               $"Suit: {GetSuitName(clickedCard.Suit)}",
+                               "Card Selected",
+                               MessageBoxButton.OK,
+                               MessageBoxImage.Information);
+            }
         }
 
         private string GetSuitName(int suit)
@@ -227,6 +238,29 @@ namespace RootRemake_Project
                 4 => "Mouse",
                 _ => "Unknown"
             };
+        }
+
+        private void CheckForDiscard()
+        {
+            var currentPlayer = Players[CurrentPlayerTurn];
+            int excessCards = currentPlayer.Hand.Count - 5;
+
+            if (excessCards > 0)
+            {
+                // Show discard notification
+                string message = $"{currentPlayer.UserName} has too many cards!\n" +
+                               $"You have {currentPlayer.Hand.Count} cards (max 5).\n" +
+                               $"Please discard {excessCards} card(s).\n\n" +
+                               "Click OK then select cards to discard from your hand.";
+
+                MessageBox.Show(message, "Too Many Cards", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
+                // Force hand to be visible
+                isHandVisible = true;
+                cardHand.Visibility = Visibility.Visible;
+                toggleHandBtn.Content = "Hide Hand";
+                cardHand.DisplayHand(currentPlayer.Hand);
+            }
         }
 
         private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
@@ -403,35 +437,38 @@ namespace RootRemake_Project
         /// </summary>
         private void endPhaseBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (TurnPhase == "Setup") // Setup goes once for each player
+            if (TurnPhase == "Setup")
             {
                 ChangePlayersTurn();
                 if (CurrentPlayerTurn == StartingPlayersTurn)
                 {
                     TurnPhase = "Birdsong";
-                    turnPhaseImage.Stretch = Stretch.UniformToFill;
                     turnPhaseImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Birdsong.png", UriKind.RelativeOrAbsolute));
                 }
-            } else if (TurnPhase == "Birdsong")
+            }
+            else if (TurnPhase == "Birdsong")
             {
                 TurnPhase = "Daylight";
                 turnPhaseImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Daylight.png", UriKind.RelativeOrAbsolute));
-
             }
             else if (TurnPhase == "Daylight")
             {
                 TurnPhase = "Evening";
                 turnPhaseImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Evening.png", UriKind.RelativeOrAbsolute));
-
             }
             else if (TurnPhase == "Evening")
             {
-                // Next Players turn and set to 
-                ChangePlayersTurn();
-                TurnPhase = "Birdsong";
-                turnPhaseImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Birdsong.png", UriKind.RelativeOrAbsolute));
-            }
+                // Check for discard before changing turns
+                CheckForDiscard();
 
+                // Only proceed if player doesn't need to discard
+                if (Players[CurrentPlayerTurn].Hand.Count <= 5)
+                {
+                    ChangePlayersTurn();
+                    TurnPhase = "Birdsong";
+                    turnPhaseImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Birdsong.png", UriKind.RelativeOrAbsolute));
+                }
+            }
         }
         public void ChangePlayersTurn()
         {
