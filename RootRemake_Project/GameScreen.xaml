@@ -28,7 +28,6 @@
         </Grid.RowDefinitions>
         <Menu DockPanel.Dock="Top" Grid.Row="0" Margin="847,0,0,0" Grid.ColumnSpan="2 " Background="#7C816A" FontFamily="{StaticResource Luminari}">
             <MenuItem Header="_Debug" >
-                <MenuItem Name="chooseKeepMenuItem" Header="_Choose Keep" Click="chooseKeepMenuItem_Click"/>
                 <MenuItem Name="displayPolygonsMenuItem" Header="_Display Collison Polygons" Click="displayPolygonsMenuItem_Click"/>
                 <MenuItem Name="displayHighlightsMenuItem" Header="_Toggle Highlight Viewability" Click="displayHighlightsMenuItem_Click"/>
                 <MenuItem Name="highlightMenuItem" Header="_Highlight All locations" Click="highlightMenuItem_Click"/>

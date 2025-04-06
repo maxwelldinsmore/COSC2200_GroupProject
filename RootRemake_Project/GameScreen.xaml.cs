@@ -31,7 +31,6 @@ namespace RootRemake_Project
         /// Array of locations
         /// </summary>
         public Location[] Locations;
-
         /// <summary>
         /// Array of Players in the game
         /// </summary>
@@ -58,7 +57,6 @@ namespace RootRemake_Project
 
         private bool isHandVisible = false;
 
-
         public double LocationPolygonViewability = 0;
 
         public int LocationHighlightViewability = 1;
@@ -66,6 +64,11 @@ namespace RootRemake_Project
         public string TurnPhase = "Setup";
 
         public int StartingPlayersTurn;
+
+        /// <summary>
+        /// Keeps track of users actions
+        /// </summary>
+        public int lastLocationClicked = -1;
 
         public GameScreen()
         {
@@ -99,7 +102,7 @@ namespace RootRemake_Project
         {
             //LocationPolygonViewability = 1; // Ensure polygons are visible
             loadLocationHighlights(); // Call the method to load location highlights
-            LoadUserControl();
+            LoadUserControl("Setup", "Marquis");
 
 
         }
@@ -266,7 +269,6 @@ namespace RootRemake_Project
 
         #endregion
 
-
         #region Location Highlighting Methods
 
         /// <summary>
@@ -373,7 +375,6 @@ namespace RootRemake_Project
         }
         #endregion
 
-
         #region Debug on Click methods
 
         private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
@@ -387,7 +388,11 @@ namespace RootRemake_Project
         }
         private void placeWarriorMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            AddWarriorToLocation(0, 2, CurrentPlayerTurn);
+            foreach (var location in Locations)
+            {
+                AddWarriorToLocation(location.LocationID, 2, CurrentPlayerTurn);
+            }
+            
            
         
         }
@@ -462,7 +467,8 @@ namespace RootRemake_Project
         {
             Polygon source = (Polygon)sender;
             MessageBox.Show("Location Clicked " + source.Name.Split('_')[1]);
-
+            //Updates what location the user clicked
+            lastLocationClicked = Int32.Parse(source.Name.Split('_')[1]);
         }
 
         /// <summary>
@@ -471,18 +477,6 @@ namespace RootRemake_Project
         private void Window_Closed(object sender, EventArgs e)
         {
 
-        }
-
-        /// <summary>
-        /// Implements a test use for highlight locations
-        /// highlighting the corner locations
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void chooseKeepMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            int[] cornerLocations = [0, 3, 8, 11];
-            HighlightLocations(cornerLocations);
         }
 
 
@@ -497,7 +491,6 @@ namespace RootRemake_Project
             }
         }
         #endregion
-
 
         #region Player Turn Related
         /// <summary>
@@ -556,8 +549,6 @@ namespace RootRemake_Project
 
         #endregion
 
-
-
         #region Warrior Related Methods
         /// <summary>
         /// Updates the information of the warriors on the map
@@ -583,13 +574,12 @@ namespace RootRemake_Project
                         Canvas.SetLeft(labelNum, Locations[locationID].WarriorLocation.X  + 20);
                         Canvas.SetTop(labelNum, Locations[locationID].WarriorLocation.Y + yShift);
                         labelNum.Content = Army.WarriorCount.ToString();
-                        yShift += 40;
+                        yShift += 30;
                     }
                 }
 
             }
         }
-
         /// <summary>
         /// Adds a image and name for the warrior and the number of warriors 
         /// to the map then calls UpdateWarriorPlacement to update placements
@@ -626,20 +616,80 @@ namespace RootRemake_Project
             }
             UpdateWarriorPlacement(locationID);
         }
-        #endregion
 
-
-        #region User Control Panels
-
-        public void LoadUserControl()
+        /// <summary>
+        /// Removes the image and label of the warrior from the map
+        /// and then calls UpdateWarriorPlacement to update placements
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="deletedArmy"></param>
+        public void DeleteWarriorImage(int locationID, Army deletedArmy)
         {
-            UserControl userControl = new MarquisSetup();
-            sidePanelGrid.Children.Add(userControl);
-            Grid.SetRow(userControl, 3);
-
+            if (canvasGameBoard is Canvas canvas)
+            {
+                foreach (var image in canvas.Children.OfType<Image>())
+                {
+                    if (image.Name.Contains(deletedArmy.KeyString))
+                    {
+                        canvas.Children.Remove(image);
+                    }
+                }
+                foreach (var labelNum in canvas.Children.OfType<Label>())
+                {
+                    if (labelNum.Name.Contains(deletedArmy.KeyString))
+                    {
+                        canvas.Children.Remove(labelNum);
+                    }
+                }
+            }
+            // Removes from players army from the location
+            Locations[locationID].Armies.Remove(deletedArmy);
+            UpdateWarriorPlacement(locationID);
         }
 
         #endregion
+
+        #region load Side panel character actions 
+
+        // TODO: Implement once all character methods added
+        public void LoadUserControl(string turnPhase, string characterName)
+        {
+            // Example usage: Load a user control based on character and time of day
+            var control = AddControlByName(characterName, turnPhase);
+            if (control is MarquisSetup marquisSetup)
+            {
+                marquisSetup.SetupLoaded += MarquisSetup_SetupLoaded;
+            }
+            sidePanelGrid.Children.Add(control);
+            Grid.SetRow(control, 3);
+
+        }
+        public static UserControl AddControlByName(string character, string turnPhase)
+        {
+            string className = $"{character}{turnPhase}";
+            string fullTypeName = $"RootRemake_Project.Components.{className}"; // Replace with your actual namespace
+
+            var type = Type.GetType(fullTypeName);
+            if (type != null && typeof(UserControl).IsAssignableFrom(type))
+            {
+                var control = (UserControl)Activator.CreateInstance(type);
+                return control;
+            }
+
+            throw new InvalidOperationException($"UserControl class '{fullTypeName}' not found.");
+        }
+
+        #endregion
+
+        #region Marquis Methods
+        private void MarquisSetup_SetupLoaded(object sender, EventArgs e)
+        {
+            int[] cornerLocations = { 0, 3, 8, 11 };
+            HighlightLocations(cornerLocations);
+        }
+
+        #endregion
+
 
         /// <summary>
         /// Gets string of 10 random characters, used for adding in images and labels

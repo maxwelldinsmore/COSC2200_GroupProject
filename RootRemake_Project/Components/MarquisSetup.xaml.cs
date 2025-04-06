@@ -20,9 +20,19 @@ namespace RootRemake_Project.Components
     /// </summary>
     public partial class MarquisSetup : UserControl
     {
+
+        public event EventHandler SetupLoaded;
+
         public MarquisSetup()
         {
             InitializeComponent();
+            this.Loaded += MarquisSetup_Loaded;
         }
+
+        private void MarquisSetup_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            SetupLoaded?.Invoke(this, EventArgs.Empty);
+        }
+
     }
 }
