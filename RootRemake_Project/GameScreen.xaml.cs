@@ -86,6 +86,12 @@ namespace RootRemake_Project
             cardHand.CardClicked += OnCardClicked;
             this.Loaded += GameScreen_Loaded; // Add this line to attach the Loaded event
 
+            // Place initial VP tokens
+            foreach (var player in Players)
+            {
+                PlaceVPToken(player); // This will use each faction's VictoryPointArt
+            }
+
             // Could randomize this later
             StartingPlayersTurn = 0;
             CurrentPlayerTurn = StartingPlayersTurn;
@@ -293,8 +299,92 @@ namespace RootRemake_Project
             //    Debug.WriteLine("Inside Location 0");
             //}
         }
-     
 
+        private readonly Point[] _scoreTrackPositions = new Point[]
+        {
+            new Point(17, 715),  // VP 0
+            new Point(43.3, 715),  // VP 1 
+            new Point(69.6, 715),  // VP 2
+            new Point(95.9, 715),  // VP 3
+            new Point(122.2, 715), // VP 4                      
+            new Point(148.5, 715), // VP 5
+            new Point(174.8, 715), // VP 6
+            new Point(201.1, 715), // VP 7 
+            new Point(227.4, 715), // VP 8
+            new Point(253.7, 715), // VP 9
+            new Point(280, 715),   // VP 10                     
+            new Point(306.3, 715), // VP 11
+            new Point(332.6, 715), // VP 12
+            new Point(358.9, 715), // VP 13
+            new Point(385.2, 715), // VP 14
+            new Point(411.5, 715), // VP 15
+            new Point(437.8, 715), // VP 16
+            new Point(464.1, 715), // VP 17
+            new Point(490.4, 715), // VP 18
+            new Point(516.7, 715), // VP 19
+            new Point(543, 715),   // VP 20
+            new Point(569.3, 715), // VP 21
+            new Point(595.6, 715), // VP 22
+            new Point(621.9, 715), // VP 23
+            new Point(648.2, 715), // VP 24
+            new Point(674.5, 715), // VP 25
+            new Point(700.8, 715), // VP 26
+            new Point(727.1, 715), // VP 27
+            new Point(753.4, 715), // VP 28
+            new Point(779.7, 715), // VP 29
+            new Point(806, 715)    // VP 30
+        };
+
+        private void PlaceVPToken(Player player)
+        {
+            // Remove existing token if any
+            var oldToken = canvasGameBoard.Children
+                .OfType<Image>()
+                .FirstOrDefault(img => img.Name == $"VP_{player.UserName}");
+
+            if (oldToken != null)
+            {
+                canvasGameBoard.Children.Remove(oldToken);
+            }
+
+            // Create new token using the player's VictoryPointArt
+            Image vpToken = new Image
+            {
+                Source = new BitmapImage(new Uri(player.VictoryPointArt.ToString(), UriKind.Absolute)), // Correct URI format
+                Width = 25,
+                Height = 25,
+                Name = $"VP_{player.UserName}",
+                IsHitTestVisible = false
+            };
+
+            // Position on score track
+            Canvas.SetLeft(vpToken, _scoreTrackPositions[player.VictoryPoints].X);
+            Canvas.SetTop(vpToken, _scoreTrackPositions[player.VictoryPoints].Y);
+
+            canvasGameBoard.Children.Add(vpToken);
+        }
+
+        private void CheckForVictory(Player player)
+        {
+            if (player.VictoryPoints >= 30)
+            {
+                // Stop game flow
+                endTurnBtn.IsEnabled = false;
+                toggleHandBtn.IsEnabled = false;
+
+                // Show victory message
+                MessageBox.Show(
+                    $"{player.UserName} has won with {player.VictoryPoints} Victory Points!",
+                    "Game Over",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Exclamation);
+
+                // Optional: Highlight winning player
+                chaBannerImage.Source = new BitmapImage(player.BannerArt);
+                playerNameTextBlock.Text = $"{player.UserName} (WINNER)";
+                playerNameTextBlock.Foreground = Brushes.Gold;
+            }
+        }
         private void testCardLoad()
         {
             Card card = CardDeck.cardDeck[25];
@@ -460,13 +550,19 @@ namespace RootRemake_Project
             {
                 // Check for discard before changing turns
                 CheckForDiscard();
+                Players[CurrentPlayerTurn].VictoryPoints++;
+                PlaceVPToken(Players[CurrentPlayerTurn]);
 
-                // Only proceed if player doesn't need to discard
-                if (Players[CurrentPlayerTurn].Hand.Count <= 5)
+                // Add this victory check
+                CheckForVictory(Players[CurrentPlayerTurn]);
+
+                // Only proceed if game isn't over
+                if (endTurnBtn.IsEnabled)
                 {
                     ChangePlayersTurn();
                     TurnPhase = "Birdsong";
-                    turnPhaseImage.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/Birdsong.png", UriKind.RelativeOrAbsolute));
+                    turnPhaseImage.Source = new BitmapImage(
+                        new Uri("pack://application:,,,/Assets/Birdsong.png", UriKind.RelativeOrAbsolute));
                 }
             }
         }

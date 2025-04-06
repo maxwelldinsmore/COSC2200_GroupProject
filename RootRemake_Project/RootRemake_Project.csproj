@@ -32,6 +32,7 @@
     <None Remove="Assets\Eyrie\Banner.png" />
     <None Remove="Assets\Eyrie\BuildingIcon.png" />
     <None Remove="Assets\Eyrie\Icon.png" />
+    <None Remove="Assets\Eyrie\VP.png" />
     <None Remove="Assets\Images\MarquiseIcon.png" />
     <None Remove="Assets\Images\Recruiter.png" />
     <None Remove="Assets\Images\Sawmill.png" />
@@ -57,6 +58,7 @@
     <None Remove="Assets\Marquis\Icon.png" />
     <None Remove="Assets\Marquis\Recruiter.png" />
     <None Remove="Assets\Marquis\Sawmill.png" />
+    <None Remove="Assets\Marquis\VP.png" />
     <None Remove="Assets\Marquis\Warrior.png" />
     <None Remove="Assets\Marquis\Warrior.svg" />
     <None Remove="Assets\RootClassDiagrams.png" />
@@ -65,7 +67,9 @@
     <None Remove="Assets\SidePanelBackground.png" />
     <None Remove="Assets\Vagabond\Banner.png" />
     <None Remove="Assets\Vagabond\Icon.png" />
+    <None Remove="Assets\Vagabond\VP.png" />
     <None Remove="Assets\Woodland\Icon.png" />
+    <None Remove="Assets\Woodland\VP.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -131,6 +135,9 @@
     <Resource Include="Assets\Eyrie\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Eyrie\VP.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Luminari-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -145,6 +152,9 @@
     </Resource>
     <Resource Include="Assets\Marquis\Sawmill.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Marquis\VP.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Marquis\Warrior.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -170,8 +180,14 @@
     <Resource Include="Assets\Vagabond\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Vagabond\VP.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Woodland\Icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Woodland\VP.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 

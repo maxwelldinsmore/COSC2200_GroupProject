@@ -8,9 +8,11 @@ namespace RootRemake_Project.CharacterClasses
 {
     internal class Woodland : Player
     {
+
         public Woodland() : base()
         {
             // Implementation of Woodland constructor
+            VictoryPointArt = new Uri("pack://application:,,,/Assets/Woodland/VP.png", UriKind.RelativeOrAbsolute);
         }
         public override void CharacterSetup()
         {
