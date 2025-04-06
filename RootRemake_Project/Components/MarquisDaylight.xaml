@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:RootRemake_Project.Components"
              mc:Ignorable="d" 
              FontFamily="{StaticResource Luminari}"
-             d:DesignHeight="451" Height="451" Width="253">
+             Height="451" Width="253">
     <Grid >
         <Label x:Name="actionsRemainingLabel" Content="Actions Remaining: X" Margin="10,3,42,411" FontSize="18" RenderTransformOrigin="0.491,0.978"/>
         <Label x:Name="woodCountLabel" Content="Available Wood: X" Margin="10,40,73,374" FontSize="18" RenderTransformOrigin="0.491,0.978"/>

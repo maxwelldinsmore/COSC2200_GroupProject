@@ -65,6 +65,8 @@ namespace RootRemake_Project
 
         public int StartingPlayersTurn;
 
+        public event EventHandler<int> LocationClicked;
+
         /// <summary>
         /// Keeps track of users actions
         /// </summary>
@@ -112,6 +114,30 @@ namespace RootRemake_Project
 
 
         }
+
+        #region Location Clicking
+
+        protected virtual void OnLocationClicked(int locationId)
+        {
+            LocationClicked?.Invoke(this, locationId);
+        }
+
+        /// <summary>
+        /// General on click event for location being clicked
+        /// will need to be cleaned up to be used for specific events
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Location_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Polygon source = (Polygon)sender;
+            MessageBox.Show("Location Clicked " + source.Name.Split('_')[1]);
+            //Updates what location the user clicked
+            lastLocationClicked = Int32.Parse(source.Name.Split('_')[1]);
+            OnLocationClicked(lastLocationClicked);
+        }
+
+        #endregion
 
         #region Card Related Methods
         private void ShuffleDeck()
@@ -275,33 +301,13 @@ namespace RootRemake_Project
 
         #endregion
 
-        #region Location Highlighting Methods
-
-        /// <summary>
-        /// On game start loads the locations on the map
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void imgMap_MouseMove(object sender, MouseEventArgs e)
-        {
-            //Debug.WriteLine("Mouse Move");
-            double imgWidth = imgMap.ActualWidth;
-            double imgHeight = imgMap.ActualHeight;
-            Point position = e.GetPosition(imgMap);
-            double[][] location = Locations[0].LocationPolygon;
-
-
-            //if (InsideLocation(position, location))
-            //{
-            //    Debug.WriteLine("Inside Location 0");
-            //}
-        }
+        #region Victory Points
 
         private readonly Point[] _scoreTrackPositions = new Point[]
-        {
+      {
             new Point(17, 715),  // VP 0
             new Point(43.3, 715),  // VP 1 
-            new Point(69.6, 715),  // VP 2
+            new (69.6, 715),  // VP 2
             new Point(95.9, 715),  // VP 3
             new Point(122.2, 715), // VP 4                      
             new Point(148.5, 715), // VP 5
@@ -330,7 +336,7 @@ namespace RootRemake_Project
             new Point(753.4, 715), // VP 28
             new Point(779.7, 715), // VP 29
             new Point(806, 715)    // VP 30
-        };
+      };
 
         private void PlaceVPToken(Player player)
         {
@@ -382,24 +388,31 @@ namespace RootRemake_Project
                 playerNameTextBlock.Foreground = Brushes.Gold;
             }
         }
-        private void testCardLoad()
-        {
-            Card card = CardDeck.cardDeck[25];
-            card = Players[0].Hand[0];
-            BitmapSource cardImage = card.GetCardImage();
+        #endregion
 
-            canvasGameBoard.Children.Add(
-                new Image
-                {
-                    Source = cardImage,
-                    Height = 250,
-                    Margin = new Thickness(29, 257, 50, 256)
-                }
-            );
+        #region Location Highlighting Methods
+
+        /// <summary>
+        /// On game start loads the locations on the map
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void imgMap_MouseMove(object sender, MouseEventArgs e)
+        {
+            //Debug.WriteLine("Mouse Move");
+            double imgWidth = imgMap.ActualWidth;
+            double imgHeight = imgMap.ActualHeight;
+            Point position = e.GetPosition(imgMap);
+            double[][] location = Locations[0].LocationPolygon;
+
+
+            //if (InsideLocation(position, location))
+            //{
+            //    Debug.WriteLine("Inside Location 0");
+            //}
         }
 
-       
-
+      
 
         public void loadLocationHighlights()
         {
@@ -463,7 +476,7 @@ namespace RootRemake_Project
         /// locations on the map and unhighlights the rest
         /// </summary>
         /// <param name="highlightedAreas">Array of Locations ID's to be highlighted</param>
-        private void HighlightLocations(int[] highlightedAreas)
+        public void HighlightLocations(int[] highlightedAreas)
         {
             // Hide locations that are not adjacent to the current location
             foreach (var image in canvasGameBoard.Children.OfType<Image>())
@@ -584,20 +597,7 @@ namespace RootRemake_Project
         }
 
 
-        /// <summary>
-        /// General on click event for location being clicked
-        /// will need to be cleaned up to be used for specific events
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Location_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Polygon source = (Polygon)sender;
-            MessageBox.Show("Location Clicked " + source.Name.Split('_')[1]);
-            //Updates what location the user clicked
-            lastLocationClicked = Int32.Parse(source.Name.Split('_')[1]);
 
-        }
 
         /// <summary>
         /// NOT USED AS OF YET BUT COULD BE USED FOR SUMMARY SCREEN WHEN GAME OVER
@@ -798,7 +798,7 @@ namespace RootRemake_Project
             Grid.SetRow(control, 3);
 
         }
-        public static UserControl AddControlByName(string character, string turnPhase)
+        public static UserControl? AddControlByName(string character, string turnPhase)
         {
             string className = $"{character}{turnPhase}";
             string fullTypeName = $"RootRemake_Project.Components.{className}"; // Replace with your actual namespace
@@ -806,7 +806,7 @@ namespace RootRemake_Project
             var type = Type.GetType(fullTypeName);
             if (type != null && typeof(UserControl).IsAssignableFrom(type))
             {
-                var control = (UserControl)Activator.CreateInstance(type);
+                var control = (UserControl?)Activator.CreateInstance(type);
                 return control;
             }
 
@@ -820,38 +820,9 @@ namespace RootRemake_Project
         {
             int[] cornerLocations = { 0, 3, 8, 11 };
             HighlightLocations(cornerLocations);
-            
-
         }
 
-        private void MarquisKeepAdded(int keepChosen)
-        {
-            int OppositeCorner = -1;
-            if (keepChosen == 0)
-            {
-                OppositeCorner = 11;
-            }
-            else if (keepChosen == 3)
-            {
-                OppositeCorner = 8;
-            }
-            else if (keepChosen == 8)
-            {
-                OppositeCorner = 3;
-            }
-            else if (keepChosen == 11)
-            {
-                OppositeCorner = 0;
-            }
-            foreach (var location in Locations)
-            {
-                if (location.LocationID != OppositeCorner)
-                {
-                    AddWarriorToLocation(location.LocationID, 1, CurrentPlayerTurn);
 
-                }
-            }
-        }
 
         #endregion
 
