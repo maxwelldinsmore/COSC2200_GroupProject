@@ -17,13 +17,12 @@ namespace RootRemake_Project.LocationClasses
         public Clearing(int locationID, double[][] locationCoordinates, int[] connectedLocations, Point warriorLocations, Point buildLocation, Point buildLocation2)
         {
             this.LocationID = locationID;
-            this.LocationType = "Forest";
+            this.LocationType = "Clearing";
             this.LocationPolygon = locationCoordinates;
             this.ConnectedLocations = connectedLocations;
             this.Armies = new List<Army>();
             this.Buildings = new List<Building>();
-            this.totalBuildings = 2;
-            //LocationHighlight = locationHighlight;
+            this.TotalBuildings = 2;
             this.WarriorLocation = warriorLocations;
 
             this.Building1Location = buildLocation;
@@ -33,16 +32,15 @@ namespace RootRemake_Project.LocationClasses
         public Clearing(int locationID, double[][] locationCoordinates, int[] connectedLocations, Point warriorLocations, Point buildLocation)
         {
             this.LocationID = locationID;
-            this.LocationType = "Forest";
+            this.LocationType = "Clearing";
             this.LocationPolygon = locationCoordinates;
             this.ConnectedLocations = connectedLocations;
             this.Armies = new List<Army>();
             this.Buildings = new List<Building>();
-            this.totalBuildings = 1;
+            this.TotalBuildings = 1;
             this.Building1Location = buildLocation;
             this.WarriorLocation = warriorLocations;
             this.Building2Location = null;
-            //LocationHighlight = locationHighlight;
         }
         override public bool CanBuild()
         {

@@ -42,7 +42,7 @@ namespace RootRemake_Project.LocationClasses
         /// </summary>
         public List<Army> Armies { get; set; }
 
-        public int totalBuildings { get; set; } // The total amount of buildings in the location
+        public int TotalBuildings { get; set; } // The total amount of buildings in the location
 
         public List<Building> Buildings { get; set; } // The list of buildings in the location
 
@@ -72,6 +72,11 @@ namespace RootRemake_Project.LocationClasses
             Armies = new List<Army>();
             Buildings = new List<Building>();
             LocationHighlight = string.Empty;
+        }
+
+        public void AddArmy(Army army)
+        {
+            Armies.Add(army);
         }
 
         public abstract bool CanBuild(); // Abstract function for building

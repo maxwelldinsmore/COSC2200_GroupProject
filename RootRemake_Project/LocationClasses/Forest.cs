@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace RootRemake_Project.LocationClasses
 {
     // For the forests gets the location 
     public class Forest : Location
     {
-        public Forest(int locationID, double[][] locationCoordinates, int[] connectedLocations)
+        public Forest(int locationID, double[][] locationCoordinates, int[] connectedLocations, Point warriorLocations)
         {
             this.LocationID = locationID;
             this.LocationType = "Forest";
@@ -19,9 +20,10 @@ namespace RootRemake_Project.LocationClasses
             this.Armies = new List<Army>();
             this.Buildings = new List<Building>();
             this.ContainsRuin = false;
-            this.totalBuildings = 0;
+            this.TotalBuildings = 0;
             this.Building1Location = null;
             this.Building2Location = null;
+            this.WarriorLocation = warriorLocations;
         }
         override public bool CanBuild()
         {

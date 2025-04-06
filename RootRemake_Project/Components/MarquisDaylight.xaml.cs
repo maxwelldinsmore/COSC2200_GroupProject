@@ -18,9 +18,9 @@ namespace RootRemake_Project.Components
     /// <summary>
     /// Interaction logic for Marquis.xaml
     /// </summary>
-    public partial class Marquis : UserControl
+    public partial class MarquisDaylight : UserControl
     {
-        public Marquis()
+        public MarquisDaylight()
         {
             InitializeComponent();
         }

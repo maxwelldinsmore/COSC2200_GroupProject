@@ -61,7 +61,6 @@ namespace RootRemake_Project.CharacterClasses
             // then auto spawn cats and auto place buildings around
 
             PlaceCats();
-            Tokens();
         }
 
         // places a cat at each area on the game board
@@ -69,11 +68,6 @@ namespace RootRemake_Project.CharacterClasses
         {
         }
 
-        // places the keep token to the selected area
-        private void Tokens()
-        {
-            
-        }
 
         public void PlaceBuilding(int locationId, string buildingType)
         {

@@ -13,6 +13,13 @@
     <None Remove="Assets\Areas\1.png" />
     <None Remove="Assets\Areas\10.png" />
     <None Remove="Assets\Areas\11.png" />
+    <None Remove="Assets\Areas\12_gray.png" />
+    <None Remove="Assets\Areas\13_gray.png" />
+    <None Remove="Assets\Areas\14_gray.png" />
+    <None Remove="Assets\Areas\15_gray.png" />
+    <None Remove="Assets\Areas\16_gray.png" />
+    <None Remove="Assets\Areas\17_gray.png" />
+    <None Remove="Assets\Areas\18_gray.png" />
     <None Remove="Assets\Areas\2.png" />
     <None Remove="Assets\Areas\3.png" />
     <None Remove="Assets\Areas\4.png" />
@@ -89,6 +96,27 @@
     </Resource>
     <Resource Include="Assets\Areas\11.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Areas\12_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Areas\13_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Areas\14_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Areas\15_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Areas\16_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Areas\17_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Areas\18_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Areas\2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
