@@ -469,6 +469,7 @@ namespace RootRemake_Project
             MessageBox.Show("Location Clicked " + source.Name.Split('_')[1]);
             //Updates what location the user clicked
             lastLocationClicked = Int32.Parse(source.Name.Split('_')[1]);
+
         }
 
         /// <summary>
@@ -686,6 +687,37 @@ namespace RootRemake_Project
         {
             int[] cornerLocations = { 0, 3, 8, 11 };
             HighlightLocations(cornerLocations);
+            
+
+        }
+
+        private void MarquisKeepAdded(int keepChosen)
+        {
+            int OppositeCorner = -1;
+            if (keepChosen == 0)
+            {
+                OppositeCorner = 11;
+            }
+            else if (keepChosen == 3)
+            {
+                OppositeCorner = 8;
+            }
+            else if (keepChosen == 8)
+            {
+                OppositeCorner = 3;
+            }
+            else if (keepChosen == 11)
+            {
+                OppositeCorner = 0;
+            }
+            foreach (var location in Locations)
+            {
+                if (location.LocationID != OppositeCorner)
+                {
+                    AddWarriorToLocation(location.LocationID, 1, CurrentPlayerTurn);
+
+                }
+            }
         }
 
         #endregion
