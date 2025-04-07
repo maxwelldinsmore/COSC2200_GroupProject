@@ -762,6 +762,15 @@ namespace RootRemake_Project
         /// <param name="locationID"></param>
         public void AddWarriorToLocation(int locationID, int WarriorsAdded, int playerID)
         {
+            // Checks if there is already warriors in the location
+            if (Locations[locationID].ContainsArmy(playerID))
+            {
+                // If there is already an army in the location, add to it
+                Locations[locationID].Armies[0].WarriorCount += WarriorsAdded;
+                UpdateWarriorPlacement(locationID);
+                return;
+            }
+
             string keyString = GetRandomString();
             Locations[locationID].Armies.Add(
                 new Army(

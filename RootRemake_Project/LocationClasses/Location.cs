@@ -79,6 +79,17 @@ namespace RootRemake_Project.LocationClasses
             Armies.Add(army);
         }
 
+        public void RemoveArmy(Army army)
+        {
+            Armies.Remove(army);
+        }
+
+        public bool ContainsArmy(int PlayerID)
+        {
+            return Armies.Any(a => a.PlayerID == PlayerID);
+        }
+
+
         public abstract bool CanBuild(); // Abstract function for building
     }
 }

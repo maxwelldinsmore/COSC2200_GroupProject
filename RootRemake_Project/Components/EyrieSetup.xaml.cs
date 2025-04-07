@@ -40,7 +40,7 @@ namespace RootRemake_Project.Components
                 parentWindow.HighlightLocations(new int[] { 0, 3, 8, 11 });
 
             }
-        }
+        } 
     
         private void ParentWindow_LocationClicked(object sender, int locationId)
         {
