@@ -25,13 +25,21 @@ namespace RootRemake_Project.Components
         public event EventHandler SidePanelLoaded;
         private int lastLocationClicked;
 
-
         public MarquisDaylight()
         {
             InitializeComponent();
             this.Loaded += UserControl_Loaded;
+            this.Unloaded += UserControl_Unloaded;
         }
 
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow != null)
+            {
+                parentWindow.LocationClicked -= ParentWindow_LocationClicked;
+            }
+        }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             SidePanelLoaded?.Invoke(this, EventArgs.Empty);
@@ -39,8 +47,6 @@ namespace RootRemake_Project.Components
             var parentWindow = Window.GetWindow(this) as GameScreen;
             if (parentWindow != null)
             {
-                // Setting the next phase button to disabled until actions go to 0
-                parentWindow.endTurnBtn.IsEnabled = false;
 
 
                 parentWindow.LocationClicked += ParentWindow_LocationClicked;
@@ -62,8 +68,7 @@ namespace RootRemake_Project.Components
             if (parentWindow != null)
             { 
 
-                // Disconnects the event
-                parentWindow.LocationClicked -= ParentWindow_LocationClicked;
+               
 
             }
 
@@ -77,44 +82,24 @@ namespace RootRemake_Project.Components
             marquis.DaylightActions -= 1;
             actionsRemainingLabel.Content = "Actions Remaining: " + marquis.DaylightActions.ToString();
             woodCountLabel.Content = "Wood: " + marquis.AvailableWood.ToString();
-
-
-
-            // Updates the actions remaining
-            if (marquis.DaylightActions == 0)
-            {
-                // Enable the end turn button
-                var parentWindow = Window.GetWindow(this) as GameScreen;
-                if (parentWindow != null)
-                {
-                    parentWindow.endTurnBtn.IsEnabled = true;
-                }
-            }
-            else
-            {
-                // Disable the end turn button
-                var parentWindow = Window.GetWindow(this) as GameScreen;
-                if (parentWindow != null)
-                {
-                    parentWindow.endTurnBtn.IsEnabled = false;
-                }
-            }
         }
 
         #region Action Methods
 
         private void marchBtn_Click(object sender, RoutedEventArgs e)
         {
+            UpdateActionsInfo();
         }
 
         private void attackBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            UpdateActionsInfo();
         }
 
         private void recruitBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            UpdateActionsInfo();
+            recruitBtn.IsEnabled = false;
         }
 
         //TODO: add a check to spend a wildcard first
@@ -127,7 +112,7 @@ namespace RootRemake_Project.Components
 
         private void overworkBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            UpdateActionsInfo();
         }
 
         #endregion
@@ -136,17 +121,17 @@ namespace RootRemake_Project.Components
         #region Building Methods
         private void buildWorkShopBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            UpdateActionsInfo();
         }
 
         private void buildSawmillBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            UpdateActionsInfo();
         }
 
         private void buildRecruiterBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            UpdateActionsInfo();
         }
 
         #endregion

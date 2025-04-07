@@ -40,6 +40,7 @@ namespace RootRemake_Project.Components
                 parentWindow.LocationClicked += ParentWindow_LocationClicked;
                 parentWindow.HighlightLocations(new int[] { 0, 3, 8, 11 });
                 parentWindow.endTurnBtn.IsEnabled = false;
+                
             }
 
         }

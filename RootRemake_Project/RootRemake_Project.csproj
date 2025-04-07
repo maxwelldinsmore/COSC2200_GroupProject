@@ -29,7 +29,9 @@
     <None Remove="Assets\Areas\8.png" />
     <None Remove="Assets\Areas\9.png" />
     <None Remove="Assets\basic UI Mockup.png" />
+    <None Remove="Assets\Bird.png" />
     <None Remove="Assets\Birdsong.png" />
+    <None Remove="Assets\Bunny.png" />
     <None Remove="Assets\CardDeck.png" />
     <None Remove="Assets\Daylight.png" />
     <None Remove="Assets\Evening.png" />
@@ -42,6 +44,7 @@
     <None Remove="Assets\Eyrie\Icon.png" />
     <None Remove="Assets\Eyrie\VP.png" />
     <None Remove="Assets\Eyrie\Warrior.png" />
+    <None Remove="Assets\Fox.png" />
     <None Remove="Assets\Images\MarquiseIcon.png" />
     <None Remove="Assets\Images\Recruiter.png" />
     <None Remove="Assets\Images\Sawmill.png" />
@@ -70,6 +73,7 @@
     <None Remove="Assets\Marquis\Sawmill.png" />
     <None Remove="Assets\Marquis\VP.png" />
     <None Remove="Assets\Marquis\Warrior.png" />
+    <None Remove="Assets\Mouse.png" />
     <None Remove="Assets\RootClassDiagrams.png" />
     <None Remove="Assets\rootmap.jpg" />
     <None Remove="Assets\Setups.png" />
@@ -148,7 +152,13 @@
     <Resource Include="Assets\Areas\9.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Bird.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Birdsong.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Bunny.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\CardDeck.png">
@@ -178,6 +188,9 @@
     <Resource Include="Assets\Eyrie\Warrior.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Fox.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Luminari-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -204,6 +217,9 @@
     </Resource>
     <Resource Include="Assets\Marquis\Workshop.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Mouse.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\rootmap.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

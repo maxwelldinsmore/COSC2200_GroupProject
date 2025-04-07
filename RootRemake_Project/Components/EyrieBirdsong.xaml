@@ -6,8 +6,15 @@
              xmlns:local="clr-namespace:RootRemake_Project.Components"
              mc:Ignorable="d" 
              FontFamily="{StaticResource Luminari}"
-             Height="451" Width="253">
+             Height="451" Width="253"
+             FontSize="24">
     <Grid>
-            
+        <Label Content="Add to Decree Up to 2&#xD;&#xA;times (using a&#xD;&#xA; wildcard only once)" />
+        <Button Margin="10,174,146,225" Content="Recruit"/>
+        
+        <Button Margin="10,346,146,46" Content="Move"/>
+        <Button Margin="10,261,146,146" Content="Attack"/>
+
+        <Button Margin="10,103,146,301" Content="Build"/>
     </Grid>
 </UserControl>

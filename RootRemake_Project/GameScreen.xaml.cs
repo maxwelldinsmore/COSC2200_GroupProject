@@ -27,7 +27,7 @@ namespace RootRemake_Project
     /// </summary>
     public partial class GameScreen : Window
     {
-       
+        #region Properties
         /// <summary>
         /// Array of locations
         /// </summary>
@@ -56,7 +56,7 @@ namespace RootRemake_Project
         /// </summary>
         public int TurnNumber = 0;
 
-        private bool isHandVisible = false;
+        private bool IsHandVisible = false;
 
         public double LocationPolygonViewability = 0;
 
@@ -68,6 +68,8 @@ namespace RootRemake_Project
 
         public event EventHandler<int> LocationClicked;
 
+        
+
         /// <summary>
         /// Keeps track of users actions
         /// </summary>
@@ -75,7 +77,9 @@ namespace RootRemake_Project
 
         public int[] CornersNotChosen = new int[] {0,3,8,11};
 
-        
+        public bool SidePanelLoaded = false;
+
+        #endregion
 
         public GameScreen()
         {
@@ -117,8 +121,7 @@ namespace RootRemake_Project
             //LocationPolygonViewability = 1; // Ensure polygons are visible
             loadLocationHighlights(); // Call the method to load location highlights
 
-            // TODO: remove this later once character select screen added
-            LoadUserControl("Setup", "Marquis");
+            LoadUserControl(TurnPhase, Players[0].CharacterName());
 
 
         }
@@ -209,9 +212,9 @@ namespace RootRemake_Project
 
         private void toggleHandBtn_Click(object sender, RoutedEventArgs e)
         {
-            isHandVisible = !isHandVisible; // Toggle state
+            IsHandVisible = !IsHandVisible; // Toggle state
 
-            if (isHandVisible)
+            if (IsHandVisible)
             {
                 // Show the hand
                 cardHand.Visibility = Visibility.Visible;
@@ -231,7 +234,7 @@ namespace RootRemake_Project
         // Call this whenever the hand changes to keep it updated
         private void UpdateHandDisplay()
         {
-            if (isHandVisible)
+            if (IsHandVisible)
             {
                 cardHand.DisplayHand(Players[CurrentPlayerTurn].Hand);
             }
@@ -300,7 +303,7 @@ namespace RootRemake_Project
                 MessageBox.Show(message, "Too Many Cards", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 
                 // Force hand to be visible
-                isHandVisible = true;
+                IsHandVisible = true;
                 cardHand.Visibility = Visibility.Visible;
                 toggleHandBtn.Content = "Hide Hand";
                 cardHand.DisplayHand(currentPlayer.Hand);
@@ -641,6 +644,8 @@ namespace RootRemake_Project
         /// </summary>
         private void endPhaseBtn_Click(object sender, RoutedEventArgs e)
         {
+            // 
+            RemoveControlByName(Players[CurrentPlayerTurn].CharacterName(), TurnPhase);
             if (TurnPhase == "Setup")
             {
                 ChangePlayersTurn();
@@ -681,6 +686,8 @@ namespace RootRemake_Project
                         new Uri("pack://application:,,,/Assets/Birdsong.png", UriKind.RelativeOrAbsolute));
                 }
             }
+            // TODO: CARLOS ADD YOUR CODE HERE
+
             // Adds new Side Panel user control
             LoadUserControl(TurnPhase, Players[CurrentPlayerTurn].CharacterName());
         }
@@ -718,7 +725,7 @@ namespace RootRemake_Project
             }
 
             // Update hand display if visible
-            if (isHandVisible)
+            if (IsHandVisible)
             {
                 cardHand.DisplayHand(Players[CurrentPlayerTurn].Hand);
             }
@@ -839,11 +846,16 @@ namespace RootRemake_Project
 
         public void LoadUserControl(string turnPhase, string characterName)
         {
+            if (SidePanelLoaded)
+            {
+                throw new InvalidOperationException($"User control Already Loaded");
+            }
             // Example usage: Load a user control based on character and time of day
             var control = AddControlByName(characterName, turnPhase);
 
             sidePanelGrid.Children.Add(control);
             Grid.SetRow(control, 3);
+            SidePanelLoaded = true;
 
         }
         public static UserControl? AddControlByName(string character, string turnPhase)
@@ -855,7 +867,10 @@ namespace RootRemake_Project
             if (type != null && typeof(UserControl).IsAssignableFrom(type))
             {
                 var control = (UserControl?)Activator.CreateInstance(type);
+               
+
                 return control;
+
             }
 
             throw new InvalidOperationException($"UserControl class '{fullTypeName}' not found.");
@@ -870,8 +885,7 @@ namespace RootRemake_Project
                     .OfType<UserControl>()
                     .FirstOrDefault(c => c.GetType().Name == $"{character}{turnPhase}")
                 );
-
-
+                SidePanelLoaded = false;
             } catch
             {
                 Debug.WriteLine($"Error removing control");
