@@ -1,5 +1,4 @@
-﻿using RootRemake_Project.LocationClasses;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,15 +15,15 @@ using System.Windows.Shapes;
 
 namespace RootRemake_Project.Components
 {
-    /// <summary>
-    /// Interaction logic for MarquisSetup.xaml
-    /// </summary>
-    public partial class MarquisSetup : UserControl
-    {
-        public event EventHandler SetupLoaded;
-        private int lastLocationClicked;
 
-        public MarquisSetup()
+    /// <summary>
+    /// Interaction logic for EyrieSetup.xaml
+    /// </summary>
+    public partial class EyrieSetup : UserControl
+    {
+        public event EventHandler SidePanelLoaded;
+        private int lastLocationClicked;
+        public EyrieSetup()
         {
             InitializeComponent();
             this.Loaded += UserControl_Loaded;
@@ -32,17 +31,17 @@ namespace RootRemake_Project.Components
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            SetupLoaded?.Invoke(this, EventArgs.Empty);
+            SidePanelLoaded?.Invoke(this, EventArgs.Empty);
 
             var parentWindow = Window.GetWindow(this) as GameScreen;
             if (parentWindow != null)
             {
                 parentWindow.LocationClicked += ParentWindow_LocationClicked;
                 parentWindow.HighlightLocations(new int[] { 0, 3, 8, 11 });
+
             }
-
         }
-
+    
         private void ParentWindow_LocationClicked(object sender, int locationId)
         {
             lastLocationClicked = locationId;
@@ -50,33 +49,7 @@ namespace RootRemake_Project.Components
             var parentWindow = Window.GetWindow(this) as GameScreen;
             if (parentWindow != null)
             {
-
-                int OppositeCorner = -1;
-                if (lastLocationClicked == 0)
-                {
-                    OppositeCorner = 11;
-                }
-                else if (lastLocationClicked == 3)
-                {
-                    OppositeCorner = 8;
-                }
-                else if (lastLocationClicked == 8)
-                {
-                    OppositeCorner = 3;
-                }
-                else if (lastLocationClicked == 11)
-                {
-                    OppositeCorner = 0;
-                }
-
-                foreach (var location in parentWindow.Locations)
-                {
-                    if (location.LocationID != OppositeCorner && location.LocationType != "Forest")
-                    {
-                        parentWindow.AddWarriorToLocation(location.LocationID, 1, lastLocationClicked);
-
-                    }
-                }
+                parentWindow.AddWarriorToLocation(locationId, 6, lastLocationClicked);
 
                 // Disables Location highlights
                 parentWindow.HighlightLocations([]);
@@ -88,12 +61,7 @@ namespace RootRemake_Project.Components
                 parentWindow.LocationClicked -= ParentWindow_LocationClicked;
             }
 
-
         }
-
     }
 
-
-
-    
 }

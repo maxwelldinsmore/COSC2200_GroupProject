@@ -41,6 +41,7 @@
     <None Remove="Assets\Eyrie\BuildingIcon.png" />
     <None Remove="Assets\Eyrie\Icon.png" />
     <None Remove="Assets\Eyrie\VP.png" />
+    <None Remove="Assets\Eyrie\Warrior.png" />
     <None Remove="Assets\Images\MarquiseIcon.png" />
     <None Remove="Assets\Images\Recruiter.png" />
     <None Remove="Assets\Images\Sawmill.png" />
@@ -69,7 +70,6 @@
     <None Remove="Assets\Marquis\Sawmill.png" />
     <None Remove="Assets\Marquis\VP.png" />
     <None Remove="Assets\Marquis\Warrior.png" />
-    <None Remove="Assets\Marquis\Warrior.svg" />
     <None Remove="Assets\RootClassDiagrams.png" />
     <None Remove="Assets\rootmap.jpg" />
     <None Remove="Assets\Setups.png" />
@@ -78,6 +78,8 @@
     <None Remove="Assets\Vagabond\Board.jpg" />
     <None Remove="Assets\Vagabond\Icon.png" />
     <None Remove="Assets\Vagabond\VP.png" />
+    <None Remove="Assets\Vagabond\Warrior.png" />
+    <None Remove="Assets\Vagabond\Warrior2.png" />
     <None Remove="Assets\Woodland\Board.jpg" />
     <None Remove="Assets\Woodland\Icon.png" />
     <None Remove="Assets\Woodland\VP.png" />
@@ -173,6 +175,9 @@
     <Resource Include="Assets\Eyrie\VP.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Eyrie\Warrior.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Luminari-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -195,9 +200,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Marquis\Warrior.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Marquis\Warrior.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Marquis\Workshop.png">
@@ -223,6 +225,12 @@
     </Resource>
     <Resource Include="Assets\Vagabond\VP.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Vagabond\Warrior.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Vagabond\Warrior2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Woodland\Board.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
