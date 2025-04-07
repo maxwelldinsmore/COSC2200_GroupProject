@@ -50,6 +50,7 @@ namespace RootRemake_Project.CharacterClasses
             WarriorArt = new Uri("pack://application:,,,/Assets/Marquis/Warrior.png", UriKind.RelativeOrAbsolute);
             BannerArt = new Uri("pack://application:,,,/Assets/Marquis/Banner.png", UriKind.RelativeOrAbsolute);
             VictoryPointArt = new Uri("pack://application:,,,/Assets/Marquis/VP.png", UriKind.RelativeOrAbsolute);
+            BoardArt = new Uri("pack://application:,,,/Assets/Marquis/Board.png", UriKind.Absolute);
         }
         // -----------------------------------------------
         // SET UP PHASE -- at the start of the game
@@ -135,7 +136,7 @@ namespace RootRemake_Project.CharacterClasses
         // overwork: spends a card to plcae one wood at a sawmill in a matching clearing
         private void Overwork()
         {
-
+            DaylightActions += 1;
         }
 
         // extra action: allows user to have 1 more action by using their wil card

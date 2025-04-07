@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using RootRemake_Project.Components;
+using Microsoft.VisualBasic;
 
 namespace RootRemake_Project
 {
@@ -72,13 +73,17 @@ namespace RootRemake_Project
         /// </summary>
         public int lastLocationClicked = -1;
 
+        public int[] CornersNotChosen = new int[] {0,3,8,11};
+
+        
+
         public GameScreen()
         {
             InitializeComponent();
             this.Locations = LocationInfo.MapLocations;
             Players = new Player[2];
             Players[0] = new MarquisDeCat("Bilgan");
-            Players[1] = new MarquisDeCat("Mariah");
+            Players[1] = new Eyrie("Mariah");
             cardDeck = CardDeck.cardDeck;
             discardPile = new List<Card>();
             
@@ -99,6 +104,7 @@ namespace RootRemake_Project
             StartingPlayersTurn = 0;
             CurrentPlayerTurn = StartingPlayersTurn;
             playerNameTextBlock.Text = Players[CurrentPlayerTurn].UserName;
+
         }
 
         /// <summary>
@@ -110,6 +116,8 @@ namespace RootRemake_Project
         {
             //LocationPolygonViewability = 1; // Ensure polygons are visible
             loadLocationHighlights(); // Call the method to load location highlights
+
+            // TODO: remove this later once character select screen added
             LoadUserControl("Setup", "Marquis");
 
 
@@ -305,37 +313,37 @@ namespace RootRemake_Project
 
         private readonly Point[] _scoreTrackPositions = new Point[]
       {
-            new Point(17, 715),  // VP 0
-            new Point(43.3, 715),  // VP 1 
+            new (17, 715),  // VP 0
+            new (43.3, 715),  // VP 1 
             new (69.6, 715),  // VP 2
-            new Point(95.9, 715),  // VP 3
-            new Point(122.2, 715), // VP 4                      
-            new Point(148.5, 715), // VP 5
-            new Point(174.8, 715), // VP 6
-            new Point(201.1, 715), // VP 7 
-            new Point(227.4, 715), // VP 8
-            new Point(253.7, 715), // VP 9
-            new Point(280, 715),   // VP 10                     
-            new Point(306.3, 715), // VP 11
-            new Point(332.6, 715), // VP 12
-            new Point(358.9, 715), // VP 13
-            new Point(385.2, 715), // VP 14
-            new Point(411.5, 715), // VP 15
-            new Point(437.8, 715), // VP 16
-            new Point(464.1, 715), // VP 17
-            new Point(490.4, 715), // VP 18
-            new Point(516.7, 715), // VP 19
-            new Point(543, 715),   // VP 20
-            new Point(569.3, 715), // VP 21
-            new Point(595.6, 715), // VP 22
-            new Point(621.9, 715), // VP 23
-            new Point(648.2, 715), // VP 24
-            new Point(674.5, 715), // VP 25
-            new Point(700.8, 715), // VP 26
-            new Point(727.1, 715), // VP 27
-            new Point(753.4, 715), // VP 28
-            new Point(779.7, 715), // VP 29
-            new Point(806, 715)    // VP 30
+            new (95.9, 715),  // VP 3
+            new (122.2, 715), // VP 4                      
+            new (148.5, 715), // VP 5
+            new (174.8, 715), // VP 6
+            new (201.1, 715), // VP 7 
+            new (227.4, 715), // VP 8
+            new (253.7, 715), // VP 9
+            new (280, 715),   // VP 10                     
+            new (306.3, 715), // VP 11
+            new (332.6, 715), // VP 12
+            new (358.9, 715), // VP 13
+            new (385.2, 715), // VP 14
+            new (411.5, 715), // VP 15
+            new (437.8, 715), // VP 16
+            new (464.1, 715), // VP 17
+            new (490.4, 715), // VP 18
+            new (516.7, 715), // VP 19
+            new (543, 715),   // VP 20
+            new (569.3, 715), // VP 21
+            new (595.6, 715), // VP 22
+            new (621.9, 715), // VP 23
+            new (648.2, 715), // VP 24
+            new (674.5, 715), // VP 25
+            new (700.8, 715), // VP 26
+            new (727.1, 715), // VP 27
+            new (753.4, 715), // VP 28
+            new (779.7, 715), // VP 29
+            new (806, 715)    // VP 30
       };
 
         private void PlaceVPToken(Player player)
@@ -397,20 +405,27 @@ namespace RootRemake_Project
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void imgMap_MouseMove(object sender, MouseEventArgs e)
+       
+
+
+        private void ToggleFactionBoard()
         {
-            //Debug.WriteLine("Mouse Move");
-            double imgWidth = imgMap.ActualWidth;
-            double imgHeight = imgMap.ActualHeight;
-            Point position = e.GetPosition(imgMap);
-            double[][] location = Locations[0].LocationPolygon;
+            factionBoardImage.Source = new BitmapImage(Players[CurrentPlayerTurn].BoardArt);
+            factionBoardImage.Visibility = factionBoardImage.Visibility == Visibility.Visible
+                ? Visibility.Collapsed
+                : Visibility.Visible;
+        }
 
-
+        private void viewBoardBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleFactionBoard();
+        }
+       
             //if (InsideLocation(position, location))
             //{
             //    Debug.WriteLine("Inside Location 0");
             //}
-        }
+        
 
       
 
@@ -647,6 +662,8 @@ namespace RootRemake_Project
             }
             else if (TurnPhase == "Evening")
             {
+                DrawCardsForPlayer(CurrentPlayerTurn, 1);
+
                 // Check for discard before changing turns
                 CheckForDiscard();
                 Players[CurrentPlayerTurn].VictoryPoints++;
@@ -664,21 +681,47 @@ namespace RootRemake_Project
                         new Uri("pack://application:,,,/Assets/Birdsong.png", UriKind.RelativeOrAbsolute));
                 }
             }
+            // Adds new Side Panel user control
+            LoadUserControl(TurnPhase, Players[CurrentPlayerTurn].CharacterName());
         }
         public void ChangePlayersTurn()
         {
+            // Removes Side Panel user Control
+            RemoveControlByName(Players[CurrentPlayerTurn].CharacterName(), TurnPhase);
+            // Hide any visible faction board
+            if (factionBoardImage != null && factionBoardImage.Visibility == Visibility.Visible)
+            {
+                factionBoardImage.Visibility = Visibility.Collapsed;
+            }
 
+            // Advance turn
             CurrentPlayerTurn++;
             if (CurrentPlayerTurn >= Players.Length)
             {
                 CurrentPlayerTurn = 0;
             }
+
+            // Update turn counter if full round completed
             if (CurrentPlayerTurn == StartingPlayersTurn)
             {
                 TurnNumber++;
             }
+
+            // Update UI elements
             playerNameTextBlock.Text = Players[CurrentPlayerTurn].UserName;
             chaBannerImage.Source = new BitmapImage(Players[CurrentPlayerTurn].BannerArt);
+
+            // Refresh victory point tokens (in case of tie situations)
+            foreach (var player in Players)
+            {
+                PlaceVPToken(player);
+            }
+
+            // Update hand display if visible
+            if (isHandVisible)
+            {
+                cardHand.DisplayHand(Players[CurrentPlayerTurn].Hand);
+            }
         }
 
         #endregion
@@ -721,6 +764,15 @@ namespace RootRemake_Project
         /// <param name="locationID"></param>
         public void AddWarriorToLocation(int locationID, int WarriorsAdded, int playerID)
         {
+            // Checks if there is already warriors in the location
+            if (Locations[locationID].ContainsArmy(playerID))
+            {
+                // If there is already an army in the location, add to it
+                Locations[locationID].Armies[0].WarriorCount += WarriorsAdded;
+                UpdateWarriorPlacement(locationID);
+                return;
+            }
+
             string keyString = GetRandomString();
             Locations[locationID].Armies.Add(
                 new Army(
@@ -785,15 +837,11 @@ namespace RootRemake_Project
 
         #region load Side panel character actions 
 
-        // TODO: Implement once all character methods added
         public void LoadUserControl(string turnPhase, string characterName)
         {
             // Example usage: Load a user control based on character and time of day
             var control = AddControlByName(characterName, turnPhase);
-            if (control is MarquisSetup marquisSetup)
-            {
-                marquisSetup.SetupLoaded += MarquisSetup_SetupLoaded;
-            }
+
             sidePanelGrid.Children.Add(control);
             Grid.SetRow(control, 3);
 
@@ -813,20 +861,27 @@ namespace RootRemake_Project
             throw new InvalidOperationException($"UserControl class '{fullTypeName}' not found.");
         }
 
-        #endregion
-
-        #region Marquis Methods
-        private void MarquisSetup_SetupLoaded(object sender, EventArgs e)
+        public void RemoveControlByName(string character, string turnPhase)
         {
-            int[] cornerLocations = { 0, 3, 8, 11 };
-            HighlightLocations(cornerLocations);
+            try
+            {
+                sidePanelGrid.Children.Remove(
+                    sidePanelGrid.Children
+                    .OfType<UserControl>()
+                    .FirstOrDefault(c => c.GetType().Name == $"{character}{turnPhase}")
+                );
+
+
+            } catch
+            {
+                Debug.WriteLine($"Error removing control");
+            }
+
         }
 
-
-
         #endregion
 
-
+        #region Misc Methods
         /// <summary>
         /// Gets string of 10 random characters, used for adding in images and labels
         /// to the game board
@@ -838,7 +893,7 @@ namespace RootRemake_Project
             return new string(Enumerable.Repeat(chars, 10)
                               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
+        #endregion
 
-       
     }
 }

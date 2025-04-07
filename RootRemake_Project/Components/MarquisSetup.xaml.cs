@@ -27,10 +27,10 @@ namespace RootRemake_Project.Components
         public MarquisSetup()
         {
             InitializeComponent();
-            this.Loaded += MarquisSetup_Loaded;
+            this.Loaded += UserControl_Loaded;
         }
 
-        private void MarquisSetup_Loaded(object sender, RoutedEventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             SetupLoaded?.Invoke(this, EventArgs.Empty);
 
@@ -38,7 +38,10 @@ namespace RootRemake_Project.Components
             if (parentWindow != null)
             {
                 parentWindow.LocationClicked += ParentWindow_LocationClicked;
+                parentWindow.HighlightLocations(new int[] { 0, 3, 8, 11 });
+                parentWindow.endTurnBtn.IsEnabled = false;
             }
+
         }
 
         private void ParentWindow_LocationClicked(object sender, int locationId)
@@ -48,6 +51,7 @@ namespace RootRemake_Project.Components
             var parentWindow = Window.GetWindow(this) as GameScreen;
             if (parentWindow != null)
             {
+
                 int OppositeCorner = -1;
                 if (lastLocationClicked == 0)
                 {
@@ -71,6 +75,7 @@ namespace RootRemake_Project.Components
                     if (location.LocationID != OppositeCorner && location.LocationType != "Forest")
                     {
                         parentWindow.AddWarriorToLocation(location.LocationID, 1, lastLocationClicked);
+
                     }
                 }
 
@@ -82,12 +87,16 @@ namespace RootRemake_Project.Components
 
                 // Disconnects the event
                 parentWindow.LocationClicked -= ParentWindow_LocationClicked;
+
+                // Enables the end turn button
+                parentWindow.endTurnBtn.IsEnabled = true;
             }
-  
+
 
         }
 
     }
+
 
 
     

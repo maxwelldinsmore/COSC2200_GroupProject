@@ -27,6 +27,8 @@ namespace RootRemake_Project.CharacterClasses
         public Uri BannerArt;
 
         public Uri VictoryPointArt;
+
+        public Uri BoardArt;
         public List<Card> Hand { get; set; }
 
 

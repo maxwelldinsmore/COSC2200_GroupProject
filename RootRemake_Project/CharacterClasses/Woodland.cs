@@ -13,6 +13,7 @@ namespace RootRemake_Project.CharacterClasses
         {
             // Implementation of Woodland constructor
             VictoryPointArt = new Uri("pack://application:,,,/Assets/Woodland/VP.png", UriKind.RelativeOrAbsolute);
+            BoardArt = new Uri("pack://application:,,,/Assets/Woodland/Board.png", UriKind.RelativeOrAbsolute);
         }
         public override void CharacterSetup()
         {
