@@ -452,7 +452,7 @@ namespace RootRemake_Project
                     image.Source = new BitmapImage(imageUri);
                 }
 
-                    image.Width = imgMap.ActualWidth;
+                image.Width = imgMap.ActualWidth;
                 image.Height = imgMap.ActualHeight;
                 image.Opacity = 1;
                 image.Name = "Highlight_" + location.LocationID;
