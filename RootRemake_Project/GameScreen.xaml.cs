@@ -405,7 +405,7 @@ namespace RootRemake_Project
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void imgMap_MouseMove(object sender, MouseEventArgs e)
+       
 
 
         private void ToggleFactionBoard()
@@ -420,20 +420,12 @@ namespace RootRemake_Project
         {
             ToggleFactionBoard();
         }
-        private void testCardLoad()
-        {
-            //Debug.WriteLine("Mouse Move");
-            double imgWidth = imgMap.ActualWidth;
-            double imgHeight = imgMap.ActualHeight;
-            Point position = e.GetPosition(imgMap);
-            double[][] location = Locations[0].LocationPolygon;
-
-
+       
             //if (InsideLocation(position, location))
             //{
             //    Debug.WriteLine("Inside Location 0");
             //}
-        }
+        
 
       
 
