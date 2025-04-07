@@ -76,7 +76,7 @@ namespace RootRemake_Project
             this.Locations = LocationInfo.MapLocations;
             Players = new Player[2];
             Players[0] = new MarquisDeCat("Bilgan");
-            Players[1] = new MarquisDeCat("Mariah");
+            Players[1] = new Eyrie("Mariah");
             cardDeck = CardDeck.cardDeck;
             discardPile = new List<Card>();
             
@@ -382,6 +382,20 @@ namespace RootRemake_Project
                 playerNameTextBlock.Foreground = Brushes.Gold;
             }
         }
+
+
+        private void ToggleFactionBoard()
+        {
+            factionBoardImage.Source = new BitmapImage(Players[CurrentPlayerTurn].BoardArt);
+            factionBoardImage.Visibility = factionBoardImage.Visibility == Visibility.Visible
+                ? Visibility.Collapsed
+                : Visibility.Visible;
+        }
+
+        private void viewBoardBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleFactionBoard();
+        }
         private void testCardLoad()
         {
             Card card = CardDeck.cardDeck[25];
@@ -667,18 +681,40 @@ namespace RootRemake_Project
         }
         public void ChangePlayersTurn()
         {
+            // Hide any visible faction board
+            if (factionBoardImage != null && factionBoardImage.Visibility == Visibility.Visible)
+            {
+                factionBoardImage.Visibility = Visibility.Collapsed;
+            }
 
+            // Advance turn
             CurrentPlayerTurn++;
             if (CurrentPlayerTurn >= Players.Length)
             {
                 CurrentPlayerTurn = 0;
             }
+
+            // Update turn counter if full round completed
             if (CurrentPlayerTurn == StartingPlayersTurn)
             {
                 TurnNumber++;
             }
+
+            // Update UI elements
             playerNameTextBlock.Text = Players[CurrentPlayerTurn].UserName;
             chaBannerImage.Source = new BitmapImage(Players[CurrentPlayerTurn].BannerArt);
+
+            // Refresh victory point tokens (in case of tie situations)
+            foreach (var player in Players)
+            {
+                PlaceVPToken(player);
+            }
+
+            // Update hand display if visible
+            if (isHandVisible)
+            {
+                cardHand.DisplayHand(Players[CurrentPlayerTurn].Hand);
+            }
         }
 
         #endregion

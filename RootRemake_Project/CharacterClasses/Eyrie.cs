@@ -17,6 +17,7 @@ namespace RootRemake_Project.CharacterClasses
             // Implementation of Eyrie constructor
             BannerArt = new Uri("pack://application:,,,/Assets/Eyrie/Banner.png", UriKind.RelativeOrAbsolute);
             VictoryPointArt = new Uri("pack://application:,,,/Assets/Eyrie/VP.png", UriKind.RelativeOrAbsolute);
+            BoardArt = new Uri("pack://application:,,,/Assets/Eyrie/Board.png", UriKind.RelativeOrAbsolute);
         }
         public override void CharacterSetup()
         {

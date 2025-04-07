@@ -21,7 +21,7 @@ namespace RootRemake_Project.CharacterClasses
             FactionRank = new Dictionary<string, int>();
             Quests = new List<string>();
             VictoryPointArt = new Uri("pack://application:,,,/Assets/Vagabond/VP.png", UriKind.RelativeOrAbsolute);
-
+            BoardArt = new Uri("pack://application:,,,/Assets/Vagabond/Board.png", UriKind.RelativeOrAbsolute);
         }
 
         public void ExploreRuin()
