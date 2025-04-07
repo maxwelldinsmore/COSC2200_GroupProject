@@ -1,13 +1,13 @@
-﻿<UserControl x:Class="RootRemake_Project.Components.CardHand"
+﻿<UserControl x:Class="RootRemake_Project.Components.EyrieBirdsong"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RootRemake_Project.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    
-    <Grid >
-        <StackPanel x:Name="CardsPanel" Orientation="Horizontal" Panel.ZIndex="40000"/>
+             FontFamily="{StaticResource Luminari}"
+             Height="451" Width="253">
+    <Grid>
+            
     </Grid>
 </UserControl>

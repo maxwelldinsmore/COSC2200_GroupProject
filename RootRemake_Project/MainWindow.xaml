@@ -6,12 +6,10 @@
         xmlns:local="clr-namespace:RootRemake_Project"
         mc:Ignorable="d"
         x:Name="PlayerContainer"
-        Title="MainWindow" Height="389" Width="800">
+        FontFamily="{StaticResource Luminari}"
+        Title="MainWindow" Height="800" Width="800"
+        >
     <Grid>
-        <TextBlock FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" Margin="23,28,0,356"
-                   FontFamily="Luminari" Width="257">
-            <Run Language="en-ca" Text="Playe"/><Run Text="r"/><Run Language="en-ca" Text=" 1"/>
-        </TextBlock>
 
         <Button Content="Start Game" Click="StartGame_Click" Width="150" Height="50"
                 HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,290,0,0"

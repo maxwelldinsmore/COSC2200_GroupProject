@@ -73,19 +73,19 @@
     </TypeIdentifier>
   </Class>
   <Class Name="RootRemake_Project.LocationClasses.Location" Collapsed="true">
-    <Position X="3.5" Y="2.75" Width="1.5" />
+    <Position X="3.5" Y="3" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>BAAAAhBACAAAAAAAAAACAAAAACAAAAAAFAAAAIAAAgg=</HashCode>
+      <HashCode>BAAAAhBACAAgAAIAAAAAAAAAACAAAAAAFAAAAIAAAgg=</HashCode>
       <FileName>LocationClasses\Location.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RootRemake_Project.LocationClasses.LocationInfo" Collapsed="true">
     <Position X="5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>LocationClasses\LocationInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -106,7 +106,7 @@
   <Class Name="RootRemake_Project.GameScreen" Collapsed="true">
     <Position X="5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEAAAEAQAIiCBgAAIAIAAAgBAQAgFBCCFAACCAAAQAA=</HashCode>
+      <HashCode>AEAAIEAQAICCAgQAIAoIAAQBAQAgFBDKFAACCgAAQCA=</HashCode>
       <FileName>GameScreen.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -114,7 +114,7 @@
   <Class Name="RootRemake_Project.MainWindow" Collapsed="true">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ABAAACgAAAAAAAAACAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -129,7 +129,7 @@
   <Class Name="RootRemake_Project.CharacterClasses.Player" Collapsed="true">
     <Position X="7" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEgAAIAAAOAAAAoABAAADAAAEEgACAAAAUAAAAAAAAA=</HashCode>
+      <HashCode>AEgAAIAAAOAEAAoCAAAADAAAEEgACAAAAUAAAAAAAAA=</HashCode>
       <FileName>CharacterClasses\Player.cs</FileName>
     </TypeIdentifier>
   </Class>

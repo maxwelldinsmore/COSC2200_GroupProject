@@ -47,7 +47,9 @@ namespace RootRemake_Project.CharacterClasses
             SawmillArt = new Uri("pack://application:,,,/Assets/Marquis/Sawmill.png", UriKind.RelativeOrAbsolute);
             WorkshopArt = new Uri("pack://application:,,,/Assets/Marquis/Workshop.png", UriKind.RelativeOrAbsolute);
             RecruiterArt = new Uri("pack://application:,,,/Assets/Marquis/Recruiter.png", UriKind.RelativeOrAbsolute);
-            warriorArt = new Uri("pack://application:,,,/Assets/Marquis/Warrior.png", UriKind.RelativeOrAbsolute);
+            WarriorArt = new Uri("pack://application:,,,/Assets/Marquis/Warrior.png", UriKind.RelativeOrAbsolute);
+            BannerArt = new Uri("pack://application:,,,/Assets/Marquis/Banner.png", UriKind.RelativeOrAbsolute);
+            VictoryPointArt = new Uri("pack://application:,,,/Assets/Marquis/VP.png", UriKind.RelativeOrAbsolute);
         }
         // -----------------------------------------------
         // SET UP PHASE -- at the start of the game
@@ -59,7 +61,6 @@ namespace RootRemake_Project.CharacterClasses
             // then auto spawn cats and auto place buildings around
 
             PlaceCats();
-            Tokens();
         }
 
         // places a cat at each area on the game board
@@ -67,11 +68,6 @@ namespace RootRemake_Project.CharacterClasses
         {
         }
 
-        // places the keep token to the selected area
-        private void Tokens()
-        {
-            
-        }
 
         public void PlaceBuilding(int locationId, string buildingType)
         {

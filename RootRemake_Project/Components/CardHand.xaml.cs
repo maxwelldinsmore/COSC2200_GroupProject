@@ -21,29 +21,41 @@ namespace RootRemake_Project.Components
     /// </summary>
     public partial class CardHand : UserControl
     {
+        public event Action<int>? CardClicked; // Declare the event as nullable
+
         public CardHand()
         {
             InitializeComponent();
         }
 
-        //TODO: handle more than 5 cards
         public void DisplayHand(List<Card> hand)
         {
             CardsPanel.Children.Clear();
 
-            foreach (var card in hand)
+            for (int i = 0; i < hand.Count; i++)
             {
+                int cardIndex = i; // Capture current index
+                var card = hand[i];
+
                 var cardControl = new Image()
                 {
                     Source = card.GetCardImage(),
                     Height = 200,
                     Margin = new Thickness(5),
-                    Tag = card // Store card reference for click handling
+                    Opacity = 1,
+                    Tag = cardIndex // Store index instead of card object
                 };
 
-                // Optional hover effect
+                // Keep your hover effects
                 cardControl.MouseEnter += (s, e) => cardControl.Height = 220;
                 cardControl.MouseLeave += (s, e) => cardControl.Height = 200;
+
+
+                // Add click handler
+                cardControl.MouseDown += (s, e) =>
+                {
+                    CardClicked?.Invoke(cardIndex);
+                };
 
                 CardsPanel.Children.Add(cardControl);
             }

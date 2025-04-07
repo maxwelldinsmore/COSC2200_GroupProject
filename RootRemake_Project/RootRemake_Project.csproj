@@ -13,6 +13,13 @@
     <None Remove="Assets\Areas\1.png" />
     <None Remove="Assets\Areas\10.png" />
     <None Remove="Assets\Areas\11.png" />
+    <None Remove="Assets\Areas\12_gray.png" />
+    <None Remove="Assets\Areas\13_gray.png" />
+    <None Remove="Assets\Areas\14_gray.png" />
+    <None Remove="Assets\Areas\15_gray.png" />
+    <None Remove="Assets\Areas\16_gray.png" />
+    <None Remove="Assets\Areas\17_gray.png" />
+    <None Remove="Assets\Areas\18_gray.png" />
     <None Remove="Assets\Areas\2.png" />
     <None Remove="Assets\Areas\3.png" />
     <None Remove="Assets\Areas\4.png" />
@@ -22,11 +29,17 @@
     <None Remove="Assets\Areas\8.png" />
     <None Remove="Assets\Areas\9.png" />
     <None Remove="Assets\basic UI Mockup.png" />
+    <None Remove="Assets\Birdsong.png" />
     <None Remove="Assets\CardDeck.png" />
+    <None Remove="Assets\Daylight.png" />
+    <None Remove="Assets\Evening.png" />
     <None Remove="Assets\EyrieBoard.png" />
     <None Remove="Assets\EyrieBuildingIcon.png" />
     <None Remove="Assets\EyrieCards.png" />
+    <None Remove="Assets\Eyrie\Banner.png" />
+    <None Remove="Assets\Eyrie\BuildingIcon.png" />
     <None Remove="Assets\Eyrie\Icon.png" />
+    <None Remove="Assets\Eyrie\VP.png" />
     <None Remove="Assets\Images\MarquiseIcon.png" />
     <None Remove="Assets\Images\Recruiter.png" />
     <None Remove="Assets\Images\Sawmill.png" />
@@ -48,16 +61,22 @@
     <None Remove="Assets\Items\SwordUsed.png" />
     <None Remove="Assets\Luminari-Regular.ttf" />
     <None Remove="Assets\MarquisBoard.png" />
+    <None Remove="Assets\Marquis\Banner.png" />
     <None Remove="Assets\Marquis\Icon.png" />
     <None Remove="Assets\Marquis\Recruiter.png" />
     <None Remove="Assets\Marquis\Sawmill.png" />
+    <None Remove="Assets\Marquis\VP.png" />
     <None Remove="Assets\Marquis\Warrior.png" />
     <None Remove="Assets\Marquis\Warrior.svg" />
-    <None Remove="Assets\Marquis\Wokrshop.png" />
     <None Remove="Assets\RootClassDiagrams.png" />
     <None Remove="Assets\rootmap.jpg" />
+    <None Remove="Assets\Setups.png" />
+    <None Remove="Assets\SidePanelBackground.png" />
+    <None Remove="Assets\Vagabond\Banner.png" />
     <None Remove="Assets\Vagabond\Icon.png" />
+    <None Remove="Assets\Vagabond\VP.png" />
     <None Remove="Assets\Woodland\Icon.png" />
+    <None Remove="Assets\Woodland\VP.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -77,6 +96,27 @@
     </Resource>
     <Resource Include="Assets\Areas\11.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Areas\12_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Areas\13_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Areas\14_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Areas\15_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Areas\16_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Areas\17_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Areas\18_gray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Areas\2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -102,14 +142,35 @@
     <Resource Include="Assets\Areas\9.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Birdsong.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\CardDeck.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Daylight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Evening.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Eyrie\Banner.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Eyrie\BuildingIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Eyrie\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Eyrie\VP.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Luminari-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Marquis\Banner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Marquis\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -120,23 +181,41 @@
     <Resource Include="Assets\Marquis\Sawmill.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Marquis\VP.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Marquis\Warrior.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Marquis\Warrior.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Marquis\Wokrshop.png">
+    <Resource Include="Assets\Marquis\Workshop.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\rootmap.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Setups.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\SidePanelBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Vagabond\Banner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Vagabond\Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Vagabond\VP.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Woodland\Icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Woodland\VP.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
