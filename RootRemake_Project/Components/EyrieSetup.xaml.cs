@@ -39,6 +39,8 @@ namespace RootRemake_Project.Components
                 parentWindow.LocationClicked += ParentWindow_LocationClicked;
                 parentWindow.HighlightLocations(new int[] { 0, 3, 8, 11 });
 
+                // Disables next turn btn till corner location is clicked
+                parentWindow.endTurnBtn.IsEnabled = false;
             }
         } 
     
@@ -59,6 +61,9 @@ namespace RootRemake_Project.Components
 
                 // Disconnects the event
                 parentWindow.LocationClicked -= ParentWindow_LocationClicked;
+
+                // Enables the end turn button
+                parentWindow.endTurnBtn.IsEnabled = true;
             }
 
         }

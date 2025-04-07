@@ -136,7 +136,7 @@ namespace RootRemake_Project.CharacterClasses
         // overwork: spends a card to plcae one wood at a sawmill in a matching clearing
         private void Overwork()
         {
-
+            DaylightActions += 1;
         }
 
         // extra action: allows user to have 1 more action by using their wil card
