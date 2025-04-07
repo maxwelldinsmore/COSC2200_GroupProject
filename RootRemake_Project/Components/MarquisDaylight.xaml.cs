@@ -121,16 +121,22 @@ namespace RootRemake_Project.Components
         #region Building Methods
         private void buildWorkShopBtn_Click(object sender, RoutedEventArgs e)
         {
+
+            AttemptBuild("Workshop");
+
             UpdateActionsInfo();
         }
 
         private void buildSawmillBtn_Click(object sender, RoutedEventArgs e)
         {
+            AttemptBuild("Sawmill");
             UpdateActionsInfo();
         }
 
         private void buildRecruiterBtn_Click(object sender, RoutedEventArgs e)
         {
+            AttemptBuild("Recruiter");
+
             UpdateActionsInfo();
         }
 
@@ -217,18 +223,7 @@ namespace RootRemake_Project.Components
             }
         }
 
-        private void buildSawmillButton_Click(object sender, RoutedEventArgs e)
-        {
-            AttemptBuild("Sawmill");
-        }
-        private void buildWorkshopButton_Click(object sender, RoutedEventArgs e)
-        {
-            AttemptBuild("Workshop");
-        }
-        private void buildRecruiterButton_Click(object sender, RoutedEventArgs e)
-        {
-            AttemptBuild("Recruiter");
-        }
+
 
 
         #endregion
