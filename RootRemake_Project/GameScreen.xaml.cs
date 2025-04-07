@@ -662,6 +662,8 @@ namespace RootRemake_Project
             }
             else if (TurnPhase == "Evening")
             {
+                DrawCardsForPlayer(CurrentPlayerTurn, 1);
+
                 // Check for discard before changing turns
                 CheckForDiscard();
                 Players[CurrentPlayerTurn].VictoryPoints++;
