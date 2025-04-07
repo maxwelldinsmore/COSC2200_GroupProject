@@ -136,7 +136,6 @@ namespace RootRemake_Project.Components
 
         private void AttemptBuild(string buildingType)
         {
-            MarquisDeCat marquis = (MarquisDeCat)Players[0]; // update if tracking current player 
             int builtCount = 0;
             int remaining = 0;
             Uri imageSource = null;
@@ -213,7 +212,7 @@ namespace RootRemake_Project.Components
             Canvas.SetTop(buildingImage, buildingPoint.Y);
             if (parentWindow != null)
             {
-                parentWindow.can.Children.Add(buildingImage);
+                parentWindow.canvasGameBoard.Children.Add(buildingImage);
 
             }
         }
@@ -231,7 +230,9 @@ namespace RootRemake_Project.Components
             AttemptBuild("Recruiter");
         }
 
+
         #endregion
 
+       
     }
 }

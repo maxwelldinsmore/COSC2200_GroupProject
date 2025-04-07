@@ -10,15 +10,15 @@
     <Grid >
         <Label x:Name="actionsRemainingLabel" Content="Actions Remaining: X" Margin="10,3,42,411" FontSize="18" RenderTransformOrigin="0.491,0.978"/>
         <Label x:Name="woodCountLabel" Content="Available Wood: X" Margin="10,40,73,374" FontSize="18" RenderTransformOrigin="0.491,0.978"/>
-        <Button Content="Attack" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Height="68" Width="101"/>
-        <Button Content="Recruit" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" Height="79" Width="101"/>
-        <Button Content="Move" HorizontalAlignment="Left" Margin="126,68,0,0" VerticalAlignment="Top" Height="68" Width="100" Click="Button_Click"/>
-        <Button x:Name="buildRecruiterButton" Content="Recruiter" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Height="52" Width="83"/>
+        <Button x:Name="attackBtn" Content="Attack" HorizontalAlignment="Left" Margin="10,0,0,311" VerticalAlignment="Bottom" Height="68" Width="101" Click="attackBtn_Click"/>
+        <Button x:Name="recruitBtn" Content="Recruit" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" Height="79" Width="101" Click="recruitBtn_Click"/>
+        <Button x:Name="marchBtn" Content="Move" HorizontalAlignment="Left" Margin="126,68,0,0" VerticalAlignment="Top" Height="68" Width="100" Click="marchBtn_Click"/>
+        <Button x:Name="buildRecruiterBtn" Content="Recruiter" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Height="52" Width="83"/>
         <Label Content="Build" HorizontalAlignment="Left" Margin="12,240,0,0" VerticalAlignment="Top" Width="48"/>
-        <Button x:Name="buildWorkshopButton" Content="Workshop" HorizontalAlignment="Left" Margin="12,346,0,0" VerticalAlignment="Top" Height="52" Width="83"/>
-        <Button x:Name="buildSawmillButton" Content="Sawmill" HorizontalAlignment="Left" Margin="128,346,0,0" VerticalAlignment="Top" Height="52" Width="83"/>
-        <Button Content="Overwork&#xD;&#xA;" HorizontalAlignment="Left" Margin="126,271,0,0" VerticalAlignment="Top" Height="52" Width="85" RenderTransformOrigin="0.526,0.807"/>
-        <Button Content="Gain Action" HorizontalAlignment="Left" Margin="126,145,0,0" VerticalAlignment="Top" Height="79" Width="100"/>
+        <Button x:Name="buildWorkshopBtn" Content="Workshop" HorizontalAlignment="Left" Margin="12,346,0,0" VerticalAlignment="Top" Height="52" Width="83"/>
+        <Button x:Name="buildSawmillBtn" Content="Sawmill" HorizontalAlignment="Left" Margin="128,346,0,0" VerticalAlignment="Top" Height="52" Width="83"/>
+        <Button x:Name="overworkBtn" Content="Overwork" HorizontalAlignment="Left" Margin="126,271,0,0" VerticalAlignment="Top" Height="52" Width="85" RenderTransformOrigin="0.526,0.807"/>
+        <Button x:Name="gainActionBtn" Content="Gain Action" HorizontalAlignment="Left" Margin="126,145,0,0" VerticalAlignment="Top" Height="79" Width="100" Click="gainActionBtn_Click" />
 
     </Grid>
 </UserControl>
