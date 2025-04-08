@@ -62,7 +62,9 @@ namespace RootRemake_Project.CharacterClasses
             // Place keep token in a corner clearing
             // then auto spawn cats and auto place buildings around
 
-            PlaceCats();
+            AvailableWorkshops -= 1;
+            AvailableRecruiters -= 1;
+            AvailableSawmills -= 1;
         }
 
         // places a cat at each area on the game board
