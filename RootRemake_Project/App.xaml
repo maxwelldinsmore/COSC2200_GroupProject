@@ -1,9 +1,17 @@
 ﻿<Application x:Class="RootRemake_Project.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:RootRemake_Project"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <FontFamily x:Key="Luminari">pack://application:,,,/Assets/Luminari-Regular.ttf#Luminari</FontFamily>
+        <!-- Add MahApps.Metro resource dictionaries -->
+        <ResourceDictionary>
+            <FontFamily x:Key="Luminari">pack://application:,,,/Assets/Luminari-Regular.ttf#Luminari</FontFamily>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- MahApps.Metro styles -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Dark.Blue.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
