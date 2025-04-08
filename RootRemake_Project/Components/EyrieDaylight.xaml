@@ -8,6 +8,20 @@
              FontFamily="{StaticResource Luminari}"
              Height="451" Width="253">
     <Grid>
-            
+        <Label Content="Fulfill your Decree" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <!-- Recruit Section-->
+        <Label x:Name="recruitLbl" Content="Recruit" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top"/>
+        <Grid x:Name="recruitGrid" Margin="18,100,55,313"/>
+        <!-- Move Section-->
+        <Label x:Name="moveLbl" Content="Move" HorizontalAlignment="Left" Margin="15,143,0,0" VerticalAlignment="Top"/>
+        <Grid x:Name="moveGrid" Margin="18,157,55,256"/>
+
+        <!-- Attack Section-->
+        <Label x:Name="attackLbl" Content="Attack" HorizontalAlignment="Left" Margin="18,195,0,0" VerticalAlignment="Top"/>
+        <Grid x:Name="attackGrid" Margin="18,221,55,192"/>
+        <!-- Build Section-->
+        <Label x:Name="buildLbl"  Content="Build" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,258,0,0"/>
+        <Grid x:Name="buildGrid" Margin="18,284,55,129"/>
+
     </Grid>
 </UserControl>

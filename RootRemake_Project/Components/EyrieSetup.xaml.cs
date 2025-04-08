@@ -57,13 +57,16 @@ namespace RootRemake_Project.Components
                 parentWindow.HighlightLocations([]);
 
                 // Changes Text telling player to end setup phase
-                setupTextBlock.Text = "Setup Complete!";
+                setupTextBlock.Text = "Now Select your Leader";
 
                 // Disconnects the event
                 parentWindow.LocationClicked -= ParentWindow_LocationClicked;
 
                 // Enables the end turn button
                 parentWindow.endTurnBtn.IsEnabled = true;
+
+                // DISPLAYS CARD HAND WITH LEADERS OF Eyrie
+
             }
 
         }
