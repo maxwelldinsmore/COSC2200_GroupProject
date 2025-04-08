@@ -89,7 +89,20 @@ namespace RootRemake_Project.LocationClasses
             return Armies.Any(a => a.PlayerID == PlayerID);
         }
 
-
+        public bool ruledByPlayer(int playerID)
+        {
+            int highestArmyCount = 0; // The highest army count
+            int highestArmyPlayerID = -1; // The player ID of the highest army
+            foreach (Army army in Armies)
+            {
+                if (army.WarriorCount > highestArmyCount)
+                {
+                    highestArmyCount = army.WarriorCount; // The highest army count
+                    highestArmyPlayerID = army.PlayerID; // The player ID of the highest army
+                }
+            }   
+            return playerID == highestArmyPlayerID; // The location is ruled by the player
+        }
         public abstract bool CanBuild(); // Abstract function for building
     }
 }

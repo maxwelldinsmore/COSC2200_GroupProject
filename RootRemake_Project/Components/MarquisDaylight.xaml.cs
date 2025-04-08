@@ -1,4 +1,6 @@
 ﻿using RootRemake_Project.CharacterClasses;
+using RootRemake_Project.ObjectClasses;
+using RootRemake_Project.LocationClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +26,7 @@ namespace RootRemake_Project.Components
         MarquisDeCat marquis { get; set; }
         public event EventHandler SidePanelLoaded;
         private int lastLocationClicked;
-
+        private int PlayerID;
         public MarquisDaylight()
         {
             InitializeComponent();
@@ -38,6 +40,11 @@ namespace RootRemake_Project.Components
             if (parentWindow != null)
             {
                 parentWindow.LocationClicked -= ParentWindow_LocationClicked;
+
+                // returns the marquis de cat object to the parent window
+                parentWindow.Players[parentWindow.CurrentPlayerTurn] = marquis;
+
+                PlayerID = parentWindow.CurrentPlayerTurn;
             }
         }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -121,7 +128,7 @@ namespace RootRemake_Project.Components
         #region Building Methods
         private void buildWorkShopBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            
             AttemptBuild("Workshop");
 
             UpdateActionsInfo();
@@ -136,7 +143,18 @@ namespace RootRemake_Project.Components
         private void buildRecruiterBtn_Click(object sender, RoutedEventArgs e)
         {
             AttemptBuild("Recruiter");
-
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            //(MarquisDeCat)parentWindow.Players[PlayerID].TotalBuildings();
+            List<int> buildableLocations = new List<int>();
+            foreach (Location location in parentWindow.Locations)
+            {
+                if (location.CanBuild() && location.ruledByPlayer(PlayerID))
+                {
+                    buildableLocations.Append(location.LocationID);
+                }
+            }
+            parentWindow.HighlightLocations(buildableLocations);
+            //marquis.lastAction = "BuildRecruiter";
             UpdateActionsInfo();
         }
 
@@ -148,6 +166,7 @@ namespace RootRemake_Project.Components
             int cost = 0;
             string buildingName = "";
             
+           
 
             switch (buildingType)
             {
@@ -202,12 +221,14 @@ namespace RootRemake_Project.Components
         {
             var parentWindow = Window.GetWindow(this) as GameScreen;
 
+            Building building = new Building(PlayerID, buildingName);
+
             Image buildingImage = new Image
             {
                 Source = new BitmapImage(buildingUri),
                 Width = 25,
                 Height = 25,
-                Name = buildingName,
+                Name = building.BuildingKey,
                 IsHitTestVisible = false
             };
 

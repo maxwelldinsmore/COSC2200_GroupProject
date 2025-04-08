@@ -490,11 +490,11 @@ namespace RootRemake_Project
         }
 
         /// <summary>
-        /// Takes in an array and highlights all the 
+        /// Takes in a list and highlights all the 
         /// locations on the map and unhighlights the rest
         /// </summary>
-        /// <param name="highlightedAreas">Array of Locations ID's to be highlighted</param>
-        public void HighlightLocations(int[] highlightedAreas)
+        /// <param name="highlightedAreas">List of Location IDs to be highlighted</param>
+        public void HighlightLocations(List<int> highlightedAreas)
         {
             // Hide locations that are not adjacent to the current location
             foreach (var image in canvasGameBoard.Children.OfType<Image>())
@@ -780,7 +780,7 @@ namespace RootRemake_Project
                 return;
             }
 
-            string keyString = GetRandomString();
+            string keyString = helperFunctions.GetRandomString();
             Locations[locationID].Armies.Add(
                 new Army(
                     playerID,
@@ -895,19 +895,7 @@ namespace RootRemake_Project
 
         #endregion
 
-        #region Misc Methods
-        /// <summary>
-        /// Gets string of 10 random characters, used for adding in images and labels
-        /// to the game board
-        /// </summary>
-        public static string GetRandomString()
-        {
-            Random random = new Random();
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            return new string(Enumerable.Repeat(chars, 10)
-                              .Select(s => s[random.Next(s.Length)]).ToArray());
-        }
-        #endregion
+    
 
     }
 }

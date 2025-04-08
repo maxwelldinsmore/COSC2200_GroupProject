@@ -8,23 +8,25 @@ namespace RootRemake_Project.ObjectClasses
 {
     public class Building
     {
-        public int BuildingID;
         /// <summary>
-        /// Id Of 
+        /// Id Of player
         /// </summary>
-        public int playerID;
+        public int playerID { get; set; }
         /// <summary>
         /// 0 = Base Type, 1 = Sawmill, 2 = Recruiter, 3 = Workshop If built by Marquis de Cat
         /// </summary>
-        public int BuildingType = 0;
-        public int CharacterID;
-        public string BuildingArt = "";
+        public string BuildingType { get; set; }
+        public string BuildingKey { get; set; }
+        public Uri BuildingArt;
         //TODO: Implement Building Art and decide on how to display it
-        public Building(int playerID, int CharacterID, int BuildingType = 0) 
+        public Building(int playerID, string BuildingType) 
         { 
             this.playerID = playerID;
-            this.CharacterID = CharacterID;
+            this.BuildingType = BuildingType;
+            this.BuildingKey = helperFunctions.GetRandomString();
         }
+
+
 
     }
 }

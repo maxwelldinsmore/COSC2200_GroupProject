@@ -37,7 +37,7 @@ namespace RootRemake_Project.Components
             if (parentWindow != null)
             {
                 parentWindow.LocationClicked += ParentWindow_LocationClicked;
-                parentWindow.HighlightLocations(new int[] { 0, 3, 8, 11 });
+                parentWindow.HighlightLocations(new List<int> { 0, 3, 8, 11 });
 
                 // Disables next turn btn till corner location is clicked
                 parentWindow.endTurnBtn.IsEnabled = false;
