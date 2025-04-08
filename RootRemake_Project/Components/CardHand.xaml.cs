@@ -32,32 +32,45 @@ namespace RootRemake_Project.Components
         {
             CardsPanel.Children.Clear();
 
-            for (int i = 0; i < hand.Count; i++)
+            const int cardsPerRow = 5;
+            int numRows = (int)Math.Ceiling((double)hand.Count / cardsPerRow);
+
+            for (int row = 0; row < numRows; row++)
             {
-                int cardIndex = i; // Capture current index
-                var card = hand[i];
-
-                var cardControl = new Image()
+                var rowPanel = new StackPanel
                 {
-                    Source = card.GetCardImage(),
-                    Height = 200,
-                    Margin = new Thickness(5),
-                    Opacity = 1,
-                    Tag = cardIndex // Store index instead of card object
+                    Orientation = Orientation.Horizontal,
+                    Margin = new Thickness(0, 5, 0, 5)
                 };
 
-                // Keep your hover effects
-                cardControl.MouseEnter += (s, e) => cardControl.Height = 220;
-                cardControl.MouseLeave += (s, e) => cardControl.Height = 200;
+                // Insert new rows at the top so they appear above the previous ones
+                CardsPanel.Children.Insert(0, rowPanel);
 
-
-                // Add click handler
-                cardControl.MouseDown += (s, e) =>
+                for (int col = 0; col < cardsPerRow; col++)
                 {
-                    CardClicked?.Invoke(cardIndex);
-                };
+                    int cardIndex = row * cardsPerRow + col;
+                    if (cardIndex >= hand.Count) break;
 
-                CardsPanel.Children.Add(cardControl);
+                    var card = hand[cardIndex];
+
+                    var cardControl = new Image()
+                    {
+                        Source = card.GetCardImage(),
+                        Height = 200,
+                        Margin = new Thickness(5),
+                        Opacity = 1,
+                        Tag = cardIndex
+                    };
+
+                    cardControl.MouseEnter += (s, e) => cardControl.Height = 220;
+                    cardControl.MouseLeave += (s, e) => cardControl.Height = 200;
+                    cardControl.MouseDown += (s, e) =>
+                    {
+                        CardClicked?.Invoke(cardIndex);
+                    };
+
+                    rowPanel.Children.Add(cardControl);
+                }
             }
         }
     }
