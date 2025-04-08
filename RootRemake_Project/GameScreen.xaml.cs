@@ -842,6 +842,92 @@ namespace RootRemake_Project
 
         #endregion
 
+
+        #region Building Related Methods
+        /// <summary>
+        /// Updates the information of the warriors on the map
+        /// </summary>
+        public void UpdateBuildingPlacement(int locationID)
+        {
+            Location updatedLocation = Locations[locationID];
+            if (updatedLocation.TotalBuildings == 1)
+            {
+                foreach (var image in canvasGameBoard.Children.OfType<Image>())
+                {
+                    if (image.Name.Contains(updatedLocation.Buildings.First().BuildingKey))
+                    {
+                        Canvas.SetLeft(image, updatedLocation.Building1Location.Value.X);
+                        Canvas.SetTop(image, updatedLocation.Building1Location.Value.Y);
+                    }
+                }
+               
+            } else
+            {
+                foreach (var image in canvasGameBoard.Children.OfType<Image>())
+                {
+                    if (image.Name.Contains(updatedLocation.Buildings.First().BuildingKey))
+                    {
+                        Canvas.SetLeft(image, updatedLocation.Building1Location.Value.X);
+                        Canvas.SetTop(image, updatedLocation.Building1Location.Value.Y);
+                    }
+                    if (image.Name.Contains(updatedLocation.Buildings.Last().BuildingKey))
+                    {
+                        Canvas.SetLeft(image, updatedLocation.Building2Location.Value.X);
+                        Canvas.SetTop(image, updatedLocation.Building2Location.Value.Y);
+                    }
+                }
+            }
+            
+        }
+
+        public void AddBuildingToLocation(int locationID, int playerID, string BuildingType)
+        {
+            Building addedBuilding = new Building(
+                    playerID,
+                    BuildingType
+            );
+
+            Locations[locationID].Buildings.Add(addedBuilding);
+            Image image = new Image();
+            image.Source = new BitmapImage(addedBuilding.BuildingArt);
+            image.Width = 30;
+            image.Height = 30;
+            image.Name = addedBuilding.BuildingKey;
+            image.IsHitTestVisible = false;
+
+    
+            if (canvasGameBoard is Canvas canvas)
+            {
+                canvas.Children.Add(image);
+            }
+            UpdateBuildingPlacement(locationID);
+        }
+
+        /// <summary>
+        /// Removes the image and label of the warrior from the map
+        /// and then calls UpdateWarriorPlacement to update placements
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="deletedArmy"></param>
+        public void DeleteBuildingImage(int locationID, Building deletedBuilding)
+        {
+            if (canvasGameBoard is Canvas canvas)
+            {
+                foreach (var image in canvas.Children.OfType<Image>())
+                {
+                    if (image.Name.Contains(deletedBuilding.BuildingKey))
+                    {
+                        canvas.Children.Remove(image);
+                    }
+                }
+                
+            }
+            // Removes from players army from the location
+            Locations[locationID].Buildings.Remove(deletedBuilding);
+        }
+
+        #endregion
+
         #region load Side panel character actions 
 
         public void LoadUserControl(string turnPhase, string characterName)

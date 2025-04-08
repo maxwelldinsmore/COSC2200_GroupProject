@@ -44,16 +44,23 @@ namespace RootRemake_Project.LocationClasses
         }
         override public bool CanBuild()
         {
-            // Forests can't build
-            return false;
+            if (TotalBuildings == 1 && Buildings.Count == 1)
+            {
+                return false;
+            }
+            else if (TotalBuildings == 2 && Buildings.Count == 2)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
         }
 
 
 
-        public bool RulesClearing(int playerID)
-        {
-            // TODO: add logic
-            return false;
-        }
+        
     }
 }

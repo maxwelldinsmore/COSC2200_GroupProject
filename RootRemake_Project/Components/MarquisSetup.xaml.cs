@@ -75,7 +75,7 @@ namespace RootRemake_Project.Components
                 {
                     if (location.LocationID != OppositeCorner && location.LocationType != "Forest")
                     {
-                        parentWindow.AddWarriorToLocation(location.LocationID, 1, lastLocationClicked);
+                        parentWindow.AddWarriorToLocation(location.LocationID, 1, parentWindow.CurrentPlayerTurn);
 
                     }
                 }

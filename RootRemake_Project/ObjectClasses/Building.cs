@@ -17,13 +17,32 @@ namespace RootRemake_Project.ObjectClasses
         /// </summary>
         public string BuildingType { get; set; }
         public string BuildingKey { get; set; }
-        public Uri BuildingArt;
+        public Uri BuildingArt { get; set; }
         //TODO: Implement Building Art and decide on how to display it
         public Building(int playerID, string BuildingType) 
         { 
             this.playerID = playerID;
             this.BuildingType = BuildingType;
-            this.BuildingKey = helperFunctions.GetRandomString();
+            BuildingKey = "Building_" + helperFunctions.GetRandomString();
+
+            switch (BuildingType)
+            {
+                case "Roost":
+                    BuildingArt = new Uri("pack://application:,,,/Assets/Eyrie/Roost.png", UriKind.RelativeOrAbsolute);
+                    break;
+                case "Sawmill":
+                    BuildingArt = new Uri("pack://application:,,,/Assets/Marquis/Sawmill.png", UriKind.RelativeOrAbsolute);
+                    break;
+                case "Recruiter":
+                    BuildingArt = new Uri("pack://application:,,,/Assets/Marquis/Recruiter.png", UriKind.RelativeOrAbsolute);
+                    break;
+                case "Workshop":
+                    BuildingArt = new Uri("pack://application:,,,/Assets/Marquis/Workshop.png", UriKind.RelativeOrAbsolute);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid building type");
+            }
+
         }
 
 

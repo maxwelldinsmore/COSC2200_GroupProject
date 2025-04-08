@@ -108,8 +108,6 @@ namespace RootRemake_Project.CharacterClasses
         // build : let player build a building of choice by spending their wood
         public void Build()
         {
-            var parentWindow = Window.GetWindow(Application.Current.MainWindow) as GameScreen;
-            parentWindow.HighlightLocations(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, });
         }
         // recruit: lets player to span a cat to a recruiter building
         public void Recruit()

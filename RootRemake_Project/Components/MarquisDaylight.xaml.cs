@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace RootRemake_Project.Components
 {
@@ -27,6 +28,7 @@ namespace RootRemake_Project.Components
         public event EventHandler SidePanelLoaded;
         private int lastLocationClicked;
         private int PlayerID;
+        private string lastActionClicked;
         public MarquisDaylight()
         {
             InitializeComponent();
@@ -74,8 +76,29 @@ namespace RootRemake_Project.Components
             var parentWindow = Window.GetWindow(this) as GameScreen;
             if (parentWindow != null)
             { 
+                switch(lastActionClicked)
+                {
+                    case "March":
+                        // march action
+                        break;
+                    case "Attack":
+                        // attack action
+                        break;
+                    case "BuildWorkshop":
+                        parentWindow.AddBuildingToLocation(locationId, PlayerID, "Workshop");
+                        break;
+                    case "BuildSawmill":
+                        parentWindow.AddBuildingToLocation(locationId, PlayerID, "Sawmill");
+                        break;
+                    case "BuildRecruiter":
+                        parentWindow.AddBuildingToLocation(locationId, PlayerID, "Recruiter");
+                        break;
+                    default:
+                        break;
 
-               
+                }
+                parentWindow.HighlightLocations(new List<int>());
+
 
             }
 
@@ -95,11 +118,13 @@ namespace RootRemake_Project.Components
 
         private void marchBtn_Click(object sender, RoutedEventArgs e)
         {
+            lastActionClicked = "March";
             UpdateActionsInfo();
         }
 
         private void attackBtn_Click(object sender, RoutedEventArgs e)
         {
+            lastActionClicked = "Attack";
             UpdateActionsInfo();
         }
 
@@ -112,6 +137,7 @@ namespace RootRemake_Project.Components
         //TODO: add a check to spend a wildcard first
         private void gainActionBtn_Click(object sender, RoutedEventArgs e)
         {
+            lastActionClicked = "GainAction";
             // since update actions removes 1 action we add 2
             marquis.DaylightActions += 2;
             UpdateActionsInfo();
@@ -119,6 +145,10 @@ namespace RootRemake_Project.Components
 
         private void overworkBtn_Click(object sender, RoutedEventArgs e)
         {
+            lastActionClicked = "Overwork";
+
+
+
             UpdateActionsInfo();
         }
 
@@ -128,21 +158,9 @@ namespace RootRemake_Project.Components
         #region Building Methods
         private void buildWorkShopBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            lastActionClicked = "BuildWorkshop";
             AttemptBuild("Workshop");
 
-            UpdateActionsInfo();
-        }
-
-        private void buildSawmillBtn_Click(object sender, RoutedEventArgs e)
-        {
-            AttemptBuild("Sawmill");
-            UpdateActionsInfo();
-        }
-
-        private void buildRecruiterBtn_Click(object sender, RoutedEventArgs e)
-        {
-            AttemptBuild("Recruiter");
             var parentWindow = Window.GetWindow(this) as GameScreen;
             //(MarquisDeCat)parentWindow.Players[PlayerID].TotalBuildings();
             List<int> buildableLocations = new List<int>();
@@ -150,11 +168,72 @@ namespace RootRemake_Project.Components
             {
                 if (location.CanBuild() && location.ruledByPlayer(PlayerID))
                 {
-                    buildableLocations.Append(location.LocationID);
+                    buildableLocations.Add(location.LocationID);
                 }
+                Debug.WriteLine($"Location {location.LocationID} can build: {location.CanBuild()}");
+                Debug.WriteLine(location.ruledByPlayer(PlayerID));
+            }
+            foreach (int ints in buildableLocations)
+            {
+                Debug.WriteLine(ints);
+
             }
             parentWindow.HighlightLocations(buildableLocations);
-            //marquis.lastAction = "BuildRecruiter";
+
+            UpdateActionsInfo();
+        }
+
+        private void buildSawmillBtn_Click(object sender, RoutedEventArgs e)
+        {
+            lastActionClicked = "BuildSawmill";
+
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            //(MarquisDeCat)parentWindow.Players[PlayerID].TotalBuildings();
+            List<int> buildableLocations = new List<int>();
+            foreach (Location location in parentWindow.Locations)
+            {
+                if (location.CanBuild() && location.ruledByPlayer(PlayerID))
+                {
+                    buildableLocations.Add(location.LocationID);
+                }
+                Debug.WriteLine($"Location {location.LocationID} can build: {location.CanBuild()}");
+                Debug.WriteLine(location.ruledByPlayer(PlayerID));
+            }
+            foreach (int ints in buildableLocations)
+            {
+                Debug.WriteLine(ints);
+
+            }
+            parentWindow.HighlightLocations(buildableLocations);
+
+            AttemptBuild("Sawmill");
+            UpdateActionsInfo();
+        }
+
+        private void buildRecruiterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            lastActionClicked = "BuildRecruiter";
+
+
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            //(MarquisDeCat)parentWindow.Players[PlayerID].TotalBuildings();
+            List<int> buildableLocations = new List<int>();
+            foreach (Location location in parentWindow.Locations)
+            {
+                if (location.CanBuild() && location.ruledByPlayer(PlayerID))
+                {
+                    buildableLocations.Add(location.LocationID);
+                }
+                Debug.WriteLine($"Location {location.LocationID} can build: {location.CanBuild()}");
+                Debug.WriteLine(location.ruledByPlayer(PlayerID));
+            }
+            foreach (int ints in buildableLocations)
+            {
+                Debug.WriteLine(ints);
+
+            }
+            parentWindow.HighlightLocations(buildableLocations);
+
             UpdateActionsInfo();
         }
 
@@ -214,35 +293,10 @@ namespace RootRemake_Project.Components
             }
 
             // render building on board -- update later to let user choose location
-            PlaceBuildingOnBoard(imageSource, buildingName);
+            //PlaceBuildingOnBoard(imageSource, buildingName);
         }
 
-        private void PlaceBuildingOnBoard(Uri buildingUri, string buildingName)
-        {
-            var parentWindow = Window.GetWindow(this) as GameScreen;
 
-            Building building = new Building(PlayerID, buildingName);
-
-            Image buildingImage = new Image
-            {
-                Source = new BitmapImage(buildingUri),
-                Width = 25,
-                Height = 25,
-                Name = building.BuildingKey,
-                IsHitTestVisible = false
-            };
-
-            // update it later with location methods
-            Point buildingPoint = new Point(100, 100); // example
-
-            Canvas.SetLeft(buildingImage, buildingPoint.X);
-            Canvas.SetTop(buildingImage, buildingPoint.Y);
-            if (parentWindow != null)
-            {
-                parentWindow.canvasGameBoard.Children.Add(buildingImage);
-
-            }
-        }
 
 
 
