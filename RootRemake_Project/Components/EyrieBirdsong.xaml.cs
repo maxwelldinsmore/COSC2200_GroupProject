@@ -24,6 +24,7 @@ namespace RootRemake_Project.Components
     {
         int playerID;
         private Eyrie eyrie;
+        private string lastClickedBtn;
         public EyrieBirdsong()
         {
             InitializeComponent();
@@ -63,15 +64,35 @@ namespace RootRemake_Project.Components
             attackBtn.IsEnabled = true;
             buildBtn.IsEnabled = true;
 
-
-            foreach (Card card in eyrie.Hand)
+            List<Card> cardCopy = new List<Card>(eyrie.Hand);
+            foreach (Card card in cardCopy)
             {
                 if (card.CardKey == cardID)
                 {
                     // Do something with the clicked card
                     // For example, display its name in a message box
                     
-                    break;
+                    switch(lastClickedBtn)
+                    {
+                        case "recruitBtn":
+                            eyrie.recruitDecree.Add(card.Suit);
+                            break;
+                        case "moveBtn":
+                            eyrie.moveDecree.Add(card.Suit);
+                            break;
+                        case "attackBtn":
+                            eyrie.attackDecree.Add(card.Suit);
+                            break;
+                        case "buildBtn":
+                            eyrie.buildDecree.Add(card.Suit);
+                            break;
+                    }
+                    var parentWindow = Window.GetWindow(this) as GameScreen;
+                    // then removes card from hand
+                    parentWindow.Players[parentWindow.CurrentPlayerTurn].Hand.Remove(card);
+
+                    // REFRESH HAND
+                    parentWindow.UpdateHandDisplay();
                 }
             }
 
@@ -166,30 +187,42 @@ namespace RootRemake_Project.Components
 
         private void recruitBtn_Click(object sender, RoutedEventArgs e)
         {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            parentWindow.cardHand.Visibility = Visibility.Visible;
             moveBtn.IsEnabled = false;
             attackBtn.IsEnabled = false;
             buildBtn.IsEnabled = false;
+            lastClickedBtn = "recruitBtn";
         }
 
         private void moveBtn_Click(object sender, RoutedEventArgs e)
         {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            parentWindow.cardHand.Visibility = Visibility.Visible;
             recruitBtn.IsEnabled = false;
             attackBtn.IsEnabled = false;
             buildBtn.IsEnabled = false;
+            lastClickedBtn = "moveBtn";
         }
 
         private void attackBtn_Click(object sender, RoutedEventArgs e)
         {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            parentWindow.cardHand.Visibility = Visibility.Visible;
             recruitBtn.IsEnabled = false;
             moveBtn.IsEnabled = false;
             buildBtn.IsEnabled = false;
+            lastClickedBtn = "attackBtn";
         }
 
         private void buildBtn_Click(object sender, RoutedEventArgs e)
         {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            parentWindow.cardHand.Visibility = Visibility.Visible;
             recruitBtn.IsEnabled = false;
             moveBtn.IsEnabled = false;
             attackBtn.IsEnabled = false;
+            lastClickedBtn = "buildBtn";
         }
     }
 }

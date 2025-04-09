@@ -19,14 +19,14 @@
 
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="860"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="845"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="21"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Menu DockPanel.Dock="Top" Grid.Row="0" Margin="847,0,0,0" Grid.ColumnSpan="2 " Background="#7C816A" FontFamily="{StaticResource Luminari}">
+        <Menu DockPanel.Dock="Top" Grid.Row="0" Margin="1,0,0,0" Background="#7C816A" FontFamily="{StaticResource Luminari}" Grid.Column="1">
             <MenuItem Header="_Debug" >
                 <MenuItem Name="displayPolygonsMenuItem" Header="_Display Collison Polygons" Click="displayPolygonsMenuItem_Click"/>
                 <MenuItem Name="displayHighlightsMenuItem" Header="_Toggle Highlight Viewability" Click="displayHighlightsMenuItem_Click"/>
@@ -64,10 +64,10 @@
             </myComponents:CardHand>
         </Canvas>
         <Image x:Name="backgroundImage" Grid.ColumnSpan="2" Margin="838,11,0,0" Stretch="UniformToFill" Source="/Assets/SidePanelBackground.png" Grid.RowSpan="2"/>
-        <Grid x:Name="sidePanelGrid" Grid.Row="1" Grid.ColumnSpan="2" Margin="847,0,0,0">
+        <Grid x:Name="sidePanelGrid" Grid.Row="1" Margin="1,0,0,0" Grid.Column="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="25*"/>
-                <ColumnDefinition Width="228*"/>
+                <ColumnDefinition Width="131*"/>
+
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
@@ -86,9 +86,9 @@
             <Button Name="endTurnBtn" Content="End Turn Phase" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="46" Width="232" Click="endPhaseBtn_Click"
                     ToolTip = "End Turn To Next Phase or Player" Grid.ColumnSpan="2" Background="#FF2D372F" FontSize="16" Foreground="#FFEAEAE1"/>
             <Button x:Name="viewBoardBtn" Content="ViewBoard" HorizontalAlignment="Left" Margin="6,64,0,0" Grid.Row="4" VerticalAlignment="Top" Height="57" Width="116" Click="viewBoardBtn_Click"  
-                ToolTip = "View The Full Game Board" Grid.ColumnSpan="2" Background="#FF2D372F" FontFamily="Luminari" FontSize="16"/>
-            <Button x:Name="toggleHandBtn" Content="Show Hand" HorizontalAlignment="Left" Margin="102,66,0,0" Grid.Row="4" VerticalAlignment="Top" Height="56" Width="116" Click="toggleHandBtn_Click"
-                    ToolTip = "View Player Cards" Grid.Column="1" Background="#FF2D372F" FontSize="16"/>
+                ToolTip = "View The Full Game Board" Background="#FF2D372F" FontFamily="Luminari" FontSize="16"/>
+            <Button x:Name="toggleHandBtn" Content="Show Hand" HorizontalAlignment="Left" Margin="138,64,0,0" Grid.Row="4" VerticalAlignment="Top" Height="56" Width="116" Click="toggleHandBtn_Click"
+                    ToolTip = "View Player Cards" Background="#FF2D372F" FontSize="16" TextBlock.FontFamily="{StaticResource Luminari}"/>
         </Grid>
     </Grid>
 </Window>

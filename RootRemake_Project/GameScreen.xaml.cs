@@ -232,13 +232,17 @@ namespace RootRemake_Project
         }
 
         // Call this whenever the hand changes to keep it updated
-        private void UpdateHandDisplay()
+        public void UpdateHandDisplay()
         {
-            if (IsHandVisible)
-            {
-                cardHand.DisplayHand(Players[CurrentPlayerTurn].Hand);
-            }
+                if (IsHandVisible)
+                {
+                    // Refresh the display in case cards changed
+                    cardHand.Visibility = Visibility.Visible;
+                }
+                
         }
+        
+
         private void OnCardClicked(string cardIndex)
         {
             var currentPlayer = Players[CurrentPlayerTurn];
