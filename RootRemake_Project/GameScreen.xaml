@@ -12,7 +12,7 @@
         ResizeMode="NoResize"
         Height="800" Width="1100"  Closed="Window_Closed"
         FontFamily="{StaticResource Luminari}" 
-        Icon="C:\Users\shane\Source\Repos\COSC2200_GroupProject\RootRemake_Project\Assets\Images\Icon.png"
+        Icon="Assets\Images\Icon.png"
 >
     <!-- Potientially make game fullscreen  WindowState="Maximized" WindowStyle="None"-->
 
@@ -86,7 +86,9 @@
                        ToolTip = "Current Player Name"/>
             <!-- Location for the user controls loaded in and out Grid.Row="3"-->
             <Button Name="endTurnBtn" Content="End Turn Phase" HorizontalAlignment="Left" Margin="6,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="46" Width="224" Click="endPhaseBtn_Click"
-                    ToolTip = "End Turn To Next Phase or Player" Background="#FF6E735C" FontSize="16" Foreground="#FF29251E" BorderBrush="#FF5A433B" TextBlock.FontFamily="{StaticResource Luminari}"/>
+                    ToolTip = "End Turn To Next Phase or Player" 
+                    
+                    Background="#FF6E735C" FontSize="16" Foreground="#FF29251E" BorderBrush="#FF5A433B" TextBlock.FontFamily="{StaticResource Luminari}"/>
             <Button x:Name="viewBoardBtn" Content="ViewBoard" HorizontalAlignment="Left" Margin="6,64,0,0" Grid.Row="4" VerticalAlignment="Top" Height="57" Width="98" Click="viewBoardBtn_Click"  
                 ToolTip = "View The Full Game Board" Background="#FF6E735C" FontFamily="Luminari" FontSize="12" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
             <Button x:Name="toggleHandBtn" Content="Show Hand" HorizontalAlignment="Left" Margin="127,64,0,0" Grid.Row="4" VerticalAlignment="Top" Height="57" Width="103" Click="toggleHandBtn_Click"

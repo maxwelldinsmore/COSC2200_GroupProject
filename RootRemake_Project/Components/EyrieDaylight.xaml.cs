@@ -31,6 +31,8 @@ namespace RootRemake_Project.Components
         private bool turmoilOccured = false;
         private string currentAction = "None";
 
+        private int movingFromLocationID = -1;
+
         public EyrieDaylight()
         {
             InitializeComponent();
@@ -46,7 +48,7 @@ namespace RootRemake_Project.Components
             {
                 //parentWindow.endTurnBtn.IsEnabled = false;
                 playerID = parentWindow.CurrentPlayerTurn;
-
+                parentWindow.LocationClicked += ParentWindow_LocationClicked;
                 eyrie = (Eyrie)parentWindow.Players[playerID];
             }
             RefreshDecree();
@@ -54,25 +56,33 @@ namespace RootRemake_Project.Components
         }
         private void ParentWindow_LocationClicked(object sender, int locationId)
         {
-
+            var ParentWindow = Window.GetWindow(this) as GameScreen;
+            if (ParentWindow != null)
+            {
+                ParentWindow.HighlightLocations(new List<int>());
+            }
             switch (currentAction)
             {
                 case "Recruit":
                     FinalizeRecruit(locationId);
                     break;
                 case "Move":
-                    FinalizeMove();
+                    FinalizeMove(locationId);
+                    break;
+                case "MoveTo":
+                    FinalizeSecondMove(locationId);
                     break;
                 case "Attack":
-                    FinalizeAttack();
+                    FinalizeAttack(locationId);
                     break;
                 case "Build":
-                    FinalizeBuild();
+                    FinalizeBuild(locationId);
                     break;
                 default:
                     break;
                 }
-            }
+            CheckDecree();
+         }
 
         private void CheckDecree()
         {
@@ -92,7 +102,7 @@ namespace RootRemake_Project.Components
 
             if (eyrie.recruitDecree.Count > 0)
             {
-                recruitLbl.Foreground = new SolidColorBrush(Colors.Red);
+                recruitLbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0269C6"));
                 currentAction = "Recruit";
                 Recruit();
                 return;
@@ -100,26 +110,30 @@ namespace RootRemake_Project.Components
 
             if (eyrie.moveDecree.Count > 0)
             {
-                moveLbl.Foreground = new SolidColorBrush(Colors.Red);
+                moveLbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0269C6"));
                 recruitLbl.Foreground = new SolidColorBrush(Colors.White);
                 currentAction = "Move";
+                Move();
                 return;
             }
 
             if (eyrie.attackDecree.Count > 0)
             {
-                attackLbl.Foreground = new SolidColorBrush(Colors.Red);
+                attackLbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0269C6"));
                 moveLbl.Foreground = new SolidColorBrush(Colors.White);
                 currentAction = "Attack";
+                
+                // TODO: IMPLEMENT ATTACK
+                //Attack();
                 return;
             }
 
             if (eyrie.buildDecree.Count > 0)
             {
-                buildLbl.Foreground = new SolidColorBrush(Colors.Red);
+                buildLbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0269C6"));
                 attackLbl.Foreground = new SolidColorBrush(Colors.White);
                 currentAction = "Build";
-
+                Build();
                 return;
             }
 
@@ -141,13 +155,17 @@ namespace RootRemake_Project.Components
                     if (eyrie.recruitDecree.Contains(1))
                     {
                         Highlightable.Add(location.LocationID);
-
+                    } else if (eyrie.recruitDecree.Any(i => i == location.LocationFaction))
+                    {
+                        Highlightable.Add(location.LocationID);
                     }
                 }
             }
             parentWindow.HighlightLocations(Highlightable);
         }
         
+        
+
         private void FinalizeRecruit(int locationID)
         {
             var parentLocation = Window.GetWindow(this) as GameScreen;
@@ -168,11 +186,71 @@ namespace RootRemake_Project.Components
 
         private void Move()
         {
+            MessageBox.Show("Move");
+            var parentWindow = Window.GetWindow(this) as GameScreen;
 
+            List<int> Highlightable = new List<int>();
+
+            foreach (Location location in parentWindow.Locations)
+            {
+                // Check if roosts are in the location
+
+                if (eyrie.moveDecree.Contains(1))
+                {
+                    Highlightable.Add(location.LocationID);
+                } else if (eyrie.moveDecree.Any(i => i == location.LocationFaction))
+                {
+                    Highlightable.Add(location.LocationID);
+                }
+                
+            }
+            parentWindow.HighlightLocations(Highlightable);
         }
-        private void FinalizeMove()
+
+        private void FinalizeMove(int locationID)
         {
+            List<int> Highlightable = new List<int>();
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow != null)
+            {
+                Location location = parentWindow.Locations[locationID];
+
+                // Adds to 
+                foreach (Location locationCurrent in parentWindow.Locations)
+                {
+                    // Check if roosts are in the location
+
+                    if (eyrie.recruitDecree.Contains(1))
+                    {
+                        Highlightable.Add(locationCurrent.LocationID);
+                    }
+                    else if (eyrie.recruitDecree.Any(i => i == location.LocationFaction))
+                    {
+                        Highlightable.Add(location.LocationID);
+                    }
+
+                }
+                parentWindow.HighlightLocations(Highlightable);
+            }
+            
         }
+        private void FinalizeSecondMove(int locationID)
+        {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow != null)
+            {
+                Location location = parentWindow.Locations[locationID];
+                // Deletes the action from the decree
+                bool deleted = eyrie.moveDecree.Remove(parentWindow.Locations[movingFromLocationID].LocationFaction);
+                if (!deleted)
+                {
+                    eyrie.moveDecree.Remove(1);
+                }
+            }
+            
+            
+        }
+        
         #endregion
 
         #region Attack Actions
@@ -181,7 +259,7 @@ namespace RootRemake_Project.Components
         {
         }
 
-        private void FinalizeAttack()
+        private void FinalizeAttack(int locationID)
         {
         }
         #endregion
@@ -190,8 +268,9 @@ namespace RootRemake_Project.Components
         private void Build()
         {
         }
-        private void FinalizeBuild()
+        private void FinalizeBuild(int locationID)
         {
+
         }
 
         #endregion

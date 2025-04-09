@@ -63,7 +63,7 @@ namespace RootRemake_Project.Components
             var parentWindow = Window.GetWindow(this) as GameScreen;
             if (parentWindow != null)
             {
-                parentWindow.AddWarriorToLocation(locationId, 6, lastLocationClicked);
+                parentWindow.AddWarriorToLocation(locationId, 6, parentWindow.CurrentPlayerTurn);
 
                 parentWindow.AddBuildingToLocation(locationId, parentWindow.CurrentPlayerTurn, "Roost");
 

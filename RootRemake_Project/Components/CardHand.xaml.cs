@@ -32,6 +32,15 @@ namespace RootRemake_Project.Components
         {
             CardsPanel.Children.Clear();
 
+            //Grid gridBackground = new Grid
+            //{
+            //    Background = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0)),
+            //    Opacity = 0.5,
+            //    Width = 2800,
+            //    Height = 2200,
+            //    Margin = new Thickness(0, 0, 0, 0)
+            //};
+            //CardsPanel.Children.Add(gridBackground);
             const int cardsPerRow = 5;
             int numRows = (int)Math.Ceiling((double)hand.Count / cardsPerRow);
 

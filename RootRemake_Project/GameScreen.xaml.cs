@@ -798,6 +798,31 @@ new (17, 740),  // VP 0
             UpdateWarriorPlacement(locationID);
         }
 
+        public void DeductWarrior(int locationID, int playerID, int lost)
+        {
+            // Checks if there is already warriors in the location
+            if (Locations[locationID].ContainsArmy(playerID))
+            {
+                Army army = Locations[locationID].Armies.First(a => a.PlayerID == playerID);
+                // If there is already an army in the location, add to it
+              
+
+                foreach (Army armyCheck in Locations[locationID].Armies)
+                {
+                    if (armyCheck.PlayerID == playerID)
+                    {
+                        armyCheck.WarriorCount -= lost;
+                        if (army.WarriorCount < 1)
+                        {
+                            DeleteWarriorImage(locationID, army);
+                        }
+                    }
+                    
+                }
+                UpdateWarriorPlacement(locationID);
+            }
+        }
+
         /// <summary>
         /// Removes the image and label of the warrior from the map
         /// and then calls UpdateWarriorPlacement to update placements

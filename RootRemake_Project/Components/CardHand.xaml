@@ -7,15 +7,18 @@
              mc:Ignorable="d" 
              Height="Auto" Width="Auto" MinHeight="310" MinWidth="850">
 
-    <Grid>
+    <Grid >
         <ScrollViewer VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled"
-                      Padding="0,0,20,0">
-           
+                      Padding="0,0,20,0"
+                      
+                      >
+
             <StackPanel x:Name="CardsPanel"
                         Orientation="Vertical"
-                        VerticalAlignment="Top"
-                        Margin="10"/>
+                        Margin="10" Width="840">
+            </StackPanel>
+
         </ScrollViewer>
     </Grid>
 </UserControl>
