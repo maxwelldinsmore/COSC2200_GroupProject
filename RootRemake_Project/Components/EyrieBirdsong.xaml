@@ -9,12 +9,25 @@
              Height="451" Width="253"
              FontSize="24">
     <Grid>
-        <Label Content="Add to Decree Up to 2&#xD;&#xA;times (using a&#xD;&#xA; wildcard only once)" />
-        <Button Margin="10,174,146,225" Content="Recruit"/>
-        
-        <Button Margin="10,346,146,46" Content="Move"/>
-        <Button Margin="10,261,146,146" Content="Attack"/>
+        <TextBlock Text="Add to Decree Up to 2 times (using a wildcard only once)" TextWrapping="Wrap"/>
 
-        <Button Margin="10,103,146,301" Content="Build"/>
+
+
+
+
+        <!-- Recruit Section-->
+        <Button x:Name="recruitBtn" Margin="10,130,145,290" Content="Recruit" FontFamily="{StaticResource Luminari}" Click="recruitBtn_Click"/>
+        <Grid x:Name="recruitGrid" Margin="10,161,63,252">
+        </Grid>
+        <!-- Move Section-->
+        <Button x:Name="moveBtn"  Margin="10,199,146,221"  Content="Move" FontFamily="{StaticResource Luminari}" Click="moveBtn_Click"/>
+        <Grid x:Name="moveGrid" Margin="10,230,62,183" />
+
+        <!-- Attack Section-->
+        <Button x:Name="attackBtn" Margin="10,268,146,152" Content="Attack" FontFamily="{StaticResource Luminari}" Click="attackBtn_Click"/>
+        <Grid x:Name="attackGrid" Margin="10,301,63,112" />
+        <!-- Build Section-->
+        <Button x:Name="buildBtn" Margin="10,339,145,81" Content="Build" FontFamily="{StaticResource Luminari}" Click="buildBtn_Click"/>
+        <Grid x:Name="buildGrid" Margin="10,381,63,32" />
     </Grid>
 </UserControl>

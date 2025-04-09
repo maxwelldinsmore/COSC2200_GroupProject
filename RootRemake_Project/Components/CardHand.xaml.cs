@@ -21,7 +21,7 @@ namespace RootRemake_Project.Components
     /// </summary>
     public partial class CardHand : UserControl
     {
-        public event Action<int>? CardClicked; // Declare the event as nullable
+        public event Action<string>? CardClicked; // Declare the event as nullable
 
         public CardHand()
         {
@@ -59,14 +59,14 @@ namespace RootRemake_Project.Components
                         Height = 200,
                         Margin = new Thickness(5),
                         Opacity = 1,
-                        Tag = cardIndex
+                        Tag = card.CardKey
                     };
 
-                    cardControl.MouseEnter += (s, e) => cardControl.Height = 220;
-                    cardControl.MouseLeave += (s, e) => cardControl.Height = 200;
+                    cardControl.MouseEnter += (s, e) => cardControl.Height = 250;
+                    cardControl.MouseLeave += (s, e) => cardControl.Height = 220;
                     cardControl.MouseDown += (s, e) =>
                     {
-                        CardClicked?.Invoke(cardIndex);
+                        CardClicked?.Invoke(card.CardKey);
                     };
 
                     rowPanel.Children.Add(cardControl);

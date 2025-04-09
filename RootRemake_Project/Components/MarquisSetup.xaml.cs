@@ -41,6 +41,8 @@ namespace RootRemake_Project.Components
                 parentWindow.HighlightLocations(new List<int> { 0, 3, 8, 11 });
                 parentWindow.endTurnBtn.IsEnabled = false;
                 
+
+                
             }
 
         }
@@ -52,7 +54,7 @@ namespace RootRemake_Project.Components
             var parentWindow = Window.GetWindow(this) as GameScreen;
             if (parentWindow != null)
             {
-
+                int currentPlayer = parentWindow.CurrentPlayerTurn;
                 int OppositeCorner = -1;
                 if (lastLocationClicked == 0)
                 {
@@ -79,6 +81,31 @@ namespace RootRemake_Project.Components
 
                     }
                 }
+
+                // Adds each one of the building types
+
+                // gets 2 neighboring clearing to place the other two buildings
+
+                // Get a random connected location
+                Random random = new Random();
+                int location1 = parentWindow.Locations[locationId].ConnectedLocations
+                    .Where(locId => parentWindow.Locations[locId].LocationType != "Forest") // Filter out forests
+                    .OrderBy(x => random.Next())
+                    .First();
+
+                // Get a random connected location
+                int location2 = parentWindow.Locations[locationId].ConnectedLocations
+                    .Where(locId => parentWindow.Locations[locId].LocationType != "Forest" && locId != location1) // Filter out forests
+                    .OrderBy(x => random.Next()) // Shuffle the remaining locations
+                    .First();
+
+                parentWindow.AddBuildingToLocation(locationId, currentPlayer, "Recruiter");
+
+                
+                parentWindow.AddBuildingToLocation(location2, currentPlayer, "Workshop");
+                parentWindow.AddBuildingToLocation(location1, currentPlayer, "Sawmill");
+
+                
 
                 // Disables Location highlights
                 parentWindow.HighlightLocations([]);

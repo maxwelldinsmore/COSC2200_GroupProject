@@ -8,6 +8,11 @@
              FontFamily="{StaticResource Luminari}"
              Height="451" Width="253">
     <Grid>
-            
+
+
+        <TextBlock Text="Wood Gained for sawmills:" FontSize="20" TextWrapping="Wrap" Margin="21,100,0,175"/>
+        <Label x:Name="woodCountLabel" Content="0" Margin="126,122,-121,0" VerticalAlignment="Top" FontSize="20"/>
+
+
     </Grid>
 </UserControl>

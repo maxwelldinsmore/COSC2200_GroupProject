@@ -16,7 +16,7 @@ namespace RootRemake_Project.CharacterClasses
 
         // properties
         public int TotalCats; // total available cats
-        public int AvailableWood; // available wood for buildings
+        public int AvailableWood { get; set; } // available wood for buildings
         public int AvailableWorkshops = 6; // available workshops
         public int[] WorkShopVP = { 0, 2, 2, 3, 3, 4 }; // workshop victory points     
 
@@ -43,7 +43,7 @@ namespace RootRemake_Project.CharacterClasses
             VictoryPoints = 0;
 
             TotalCats = 25; // total cat count
-            AvailableWood = 1; // starting wood count
+            AvailableWood = 0; // starting wood count
             //locationSquares = new List<int>() {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             SawmillArt = new Uri("pack://application:,,,/Assets/Marquis/Sawmill.png", UriKind.RelativeOrAbsolute);
             WorkshopArt = new Uri("pack://application:,,,/Assets/Marquis/Workshop.png", UriKind.RelativeOrAbsolute);
@@ -52,6 +52,7 @@ namespace RootRemake_Project.CharacterClasses
             BannerArt = new Uri("pack://application:,,,/Assets/Marquis/Banner.png", UriKind.RelativeOrAbsolute);
             VictoryPointArt = new Uri("pack://application:,,,/Assets/Marquis/VP.png", UriKind.RelativeOrAbsolute);
             BoardArt = new Uri("pack://application:,,,/Assets/Marquis/Board.png", UriKind.Absolute);
+            CharacterSetup();
         }
         // -----------------------------------------------
         // SET UP PHASE -- at the start of the game
@@ -62,14 +63,10 @@ namespace RootRemake_Project.CharacterClasses
             // Place keep token in a corner clearing
             // then auto spawn cats and auto place buildings around
 
-            PlaceCats();
+            AvailableWorkshops -= 1;
+            AvailableRecruiters -= 1;
+            AvailableSawmills -= 1;
         }
-
-        // places a cat at each area on the game board
-        private void PlaceCats()
-        {
-        }
-
 
         public void PlaceBuilding(int locationId, string buildingType)
         {
@@ -84,17 +81,16 @@ namespace RootRemake_Project.CharacterClasses
 
             
         }
-        // -----------------------------------------------
-        // BIRDSONG
-        // -----------------------------------------------
-        /// <summary>
-        /// Generates a wood for each sawmill at start of turn
-        /// </summary>
         override public void BirdSong()
         {
             AvailableWood += 6 - AvailableSawmills;
             // EVENT TO NOTIFY MAIN SCREEN WOOD ADDED
             
+        }
+
+        public void AddWood(int amount)
+        {
+            AvailableWood += amount;
         }
         // -----------------------------------------------
         // DAYLIGHT
