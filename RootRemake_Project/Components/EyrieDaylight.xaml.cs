@@ -86,6 +86,8 @@ namespace RootRemake_Project.Components
 
                 Image icon = GenerateIcon(suit);
                 icon.Margin = new Thickness(xShift, 0, 0, 0);
+                icon.HorizontalAlignment = HorizontalAlignment.Left;
+
                 attackGrid.Children.Add(icon);
                 
                 xShift += 50;
@@ -96,6 +98,8 @@ namespace RootRemake_Project.Components
 
                 Image icon = GenerateIcon(suit);
                 icon.Margin = new Thickness(xShift, 0, 0, 0);
+                icon.HorizontalAlignment = HorizontalAlignment.Left;
+
                 moveGrid.Children.Add(icon);
 
                 xShift += 50;
@@ -106,6 +110,8 @@ namespace RootRemake_Project.Components
 
                 Image icon = GenerateIcon(suit);
                 icon.Margin = new Thickness(xShift, 0, 0, 0);
+                icon.HorizontalAlignment = HorizontalAlignment.Left;
+
                 recruitGrid.Children.Add(icon);
 
                 xShift += 50;
@@ -116,6 +122,7 @@ namespace RootRemake_Project.Components
 
                 Image icon = GenerateIcon(suit);
                 icon.Margin = new Thickness(xShift, 0, 0, 0);
+                icon.HorizontalAlignment = HorizontalAlignment.Left;
                 buildGrid.Children.Add(icon);
 
                 xShift += 50;

@@ -14,14 +14,14 @@
         <Grid x:Name="recruitGrid" Margin="17,105,56,308"/>
         <!-- Move Section-->
         <Label x:Name="moveLbl" FontSize="20" Content="Move" HorizontalAlignment="Left" Margin="17,148,0,0" VerticalAlignment="Top"/>
-        <Grid x:Name="moveGrid" Margin="17,174,55,239"/>
+        <Grid x:Name="moveGrid" Margin="17,174,55,239" />
 
         <!-- Attack Section-->
         <Label x:Name="attackLbl" FontSize="20" Content="Attack" HorizontalAlignment="Left" Margin="17,217,0,0" VerticalAlignment="Top"/>
-        <Grid x:Name="attackGrid" Margin="17,245,56,168"/>
+        <Grid x:Name="attackGrid" Margin="17,245,56,168" />
         <!-- Build Section-->
-        <Label x:Name="buildLbl"  FontSize="20"  Content="Build" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,288,0,0"/>
-        <Grid x:Name="buildGrid" Margin="17,325,56,88"/>
+        <Label x:Name="buildLbl"  FontSize="20"  Content="Build" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,288,0,0" />
+        <Grid x:Name="buildGrid" Margin="17,325,56,88" />
 
     </Grid>
 </UserControl>

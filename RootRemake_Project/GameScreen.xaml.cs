@@ -239,7 +239,7 @@ namespace RootRemake_Project
                 cardHand.DisplayHand(Players[CurrentPlayerTurn].Hand);
             }
         }
-        private void OnCardClicked(int cardIndex)
+        private void OnCardClicked(string cardIndex)
         {
             var currentPlayer = Players[CurrentPlayerTurn];
             int excessCards = currentPlayer.Hand.Count - 5;
@@ -247,7 +247,7 @@ namespace RootRemake_Project
             if (excessCards > 0 && TurnPhase == "Evening")
             {
                 // Discard mode
-                Card clickedCard = currentPlayer.Hand[cardIndex];
+                Card clickedCard = currentPlayer.Hand.Find(c => c.CardKey == cardIndex);
 
                 var result = MessageBox.Show($"Discard this card?\n{clickedCard.CardText}",
                                             "Confirm Discard",
@@ -265,7 +265,7 @@ namespace RootRemake_Project
             else
             {
                 // Normal card viewing
-                Card clickedCard = currentPlayer.Hand[cardIndex];
+                Card clickedCard = currentPlayer.Hand.Find(c => c.CardKey == cardIndex);
                 MessageBox.Show($"Card {cardIndex + 1} clicked\n" +
                                $"{clickedCard.CardText}\n" +
                                $"Suit: {GetSuitName(clickedCard.Suit)}",

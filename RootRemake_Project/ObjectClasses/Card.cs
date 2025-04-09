@@ -17,6 +17,7 @@ namespace RootRemake_Project.ObjectClasses
         public int[] CraftCost;
         public int CardX;
         public int CardY;
+        public string CardKey;
         // 10 columns * 533 6 rows * 745
 
         // TODO: Pixel Count slightly off so will show part of a card and another card
@@ -53,6 +54,8 @@ namespace RootRemake_Project.ObjectClasses
 
             // Extract the card image
             CardArt = new CroppedBitmap(CardSheet, new Int32Rect(x, y, quadWidth, quadHeight));
+
+            CardKey = $"card_${helperFunctions.GetRandomString()}";
         }
 
         public BitmapSource GetCardImage()
