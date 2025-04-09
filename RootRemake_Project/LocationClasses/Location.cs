@@ -54,6 +54,8 @@ namespace RootRemake_Project.LocationClasses
 
         public Point? Building1Location { get; set; }
         public Point? Building2Location { get; set; }
+
+        public int LocationFaction { get; set; } // The faction of the location
         public Location(int locationID, string locationType, double[][] locationCoordinates, int[] connectedLocations, string locationHighlight)
         {
             LocationID = locationID;

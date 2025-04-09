@@ -29,10 +29,20 @@ namespace RootRemake_Project.CharacterClasses
 
             WarriorArt = new Uri("pack://application:,,,/Assets/Eyrie/Warrior.png", UriKind.RelativeOrAbsolute);
 
-            // TEMP
-            moveDecree = new List<int>(1);
-            recruitDecree = new List<int>(1);
+            
+            attackDecree = new List<int>();
+            buildDecree = new List<int>();
 
+            moveDecree = new List<int>();
+            recruitDecree = new List<int>();
+
+            // TEMP
+            moveDecree.Add(1);
+            attackDecree.Add(2);
+            recruitDecree.Add(3);
+            buildDecree.Add(4);
+            moveDecree.Add(1);
+            moveDecree.Add(2);
         }
         public override void CharacterSetup()
         {

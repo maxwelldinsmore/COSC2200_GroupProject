@@ -142,7 +142,7 @@ namespace RootRemake_Project
         private void Location_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Polygon source = (Polygon)sender;
-            MessageBox.Show("Location Clicked " + source.Name.Split('_')[1]);
+            //MessageBox.Show("Location Clicked " + source.Name.Split('_')[1]);
             //Updates what location the user clicked
             lastLocationClicked = Int32.Parse(source.Name.Split('_')[1]);
             OnLocationClicked(lastLocationClicked);
@@ -538,11 +538,11 @@ new (17, 740),  // VP 0
         private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
-            Point position = e.GetPosition(imgMap);
-            MessageBox.Show(position.X.ToString("F2") + ", " + position.Y.ToString("F2"));
+            //Point position = e.GetPosition(imgMap);
+            //MessageBox.Show(position.X.ToString("F2") + ", " + position.Y.ToString("F2"));
 
-            Clipboard.SetText(position.X.ToString("F2") + ", " + position.Y.ToString("F2")
-            );
+            //Clipboard.SetText(position.X.ToString("F2") + ", " + position.Y.ToString("F2")
+            //);
         }
         private void placeWarriorMenuItem_Click(object sender, RoutedEventArgs e)
         {

@@ -36,8 +36,20 @@ namespace RootRemake_Project.Components
             var parentWindow = Window.GetWindow(this) as GameScreen;
             if (parentWindow != null)
             {
+                int currentPlayer = parentWindow.CurrentPlayerTurn;
                 parentWindow.LocationClicked += ParentWindow_LocationClicked;
-                parentWindow.HighlightLocations(new List<int> { 0, 3, 8, 11 });
+                List<int> cornerLocations = new List<int> { 0, 3, 8, 11 };
+                List<int> availableCorners = new List<int>();
+
+                foreach (int location in cornerLocations)
+                {
+
+                    if (parentWindow.Locations[location].ruledByPlayer(-1))
+                    {
+                        availableCorners.Add(location);
+                    }
+                }
+                parentWindow.HighlightLocations(availableCorners);
 
                 // Disables next turn btn till corner location is clicked
                 parentWindow.endTurnBtn.IsEnabled = false;
@@ -52,6 +64,8 @@ namespace RootRemake_Project.Components
             if (parentWindow != null)
             {
                 parentWindow.AddWarriorToLocation(locationId, 6, lastLocationClicked);
+
+                parentWindow.AddBuildingToLocation(locationId, parentWindow.CurrentPlayerTurn, "Roost");
 
                 // Disables Location highlights
                 parentWindow.HighlightLocations([]);
