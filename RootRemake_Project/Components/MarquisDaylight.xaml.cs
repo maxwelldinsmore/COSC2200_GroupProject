@@ -29,6 +29,7 @@ namespace RootRemake_Project.Components
         private int lastLocationClicked;
         private int PlayerID;
         private string lastActionClicked;
+
         public MarquisDaylight()
         {
             InitializeComponent();

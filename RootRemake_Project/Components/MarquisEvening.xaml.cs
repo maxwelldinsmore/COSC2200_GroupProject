@@ -26,12 +26,15 @@ namespace RootRemake_Project.Components
         {
             InitializeComponent();
             this.Loaded += UserControl_Loaded;
-            this.Unloaded += MarquisEvening_Unloaded;
         }
 
-        private void MarquisEvening_Unloaded(object sender, RoutedEventArgs e)
+        private void MarquisBirdsong_Unloaded(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            //var parentWindow = Window.GetWindow(this) as GameScreen;
+            //if (parentWindow != null)
+            //{
+            //    parentWindow.Players[parentWindow.CurrentPlayerTurn] = marquis;
+            //}
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -40,8 +43,7 @@ namespace RootRemake_Project.Components
             if (parentWindow != null)
             {
                 // get the current player as Marquis de Cat
-                marquis = parentWindow.Players[parentWindow.CurrentPlayerTurn] as MarquisDeCat;
-           
+                marquis = (MarquisDeCat)parentWindow.Players[parentWindow.CurrentPlayerTurn];
             }
         }
 
@@ -51,10 +53,51 @@ namespace RootRemake_Project.Components
             if (parentWindow != null)
             {
                 parentWindow.Players[parentWindow.CurrentPlayerTurn] = marquis;
+                EndEveningPhase();
+            }
+        }
+
+        private void EndEveningPhase()
+        {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow != null)
+            {
+                int recruiterCount = 6 - marquis.AvailableRecruiters;
+                int cardsToDraw = 1;
+
+                // draw 1 extra card if have 3 recruiters
+                // draw 1 more extra card if have 5 recruiters+
+                if (recruiterCount == 3)
+                {
+                    cardsToDraw += 1;
+                } else if (recruiterCount == 5)
+                {
+                    cardsToDraw += 2;
+                }
+
+                // draw cards
+                parentWindow.DrawCardsForPlayer(parentWindow.CurrentPlayerTurn, cardsToDraw);
+
+                //// auto discarding if over 5 cards
+                //if (marquis.Hand.Count > 5)
+                //{
+                //    int cardsToDiscard = marquis.Hand.Count - 5;
+
+                //    for (int i = 0; i < cardsToDiscard; i++)
+                //    {
+                //        CardHand cardToDiscard = marquis.Hand[0]; // remove the first card
+                //        marquis.Hand.RemoveAt(0);
+                //        parentWindow.discardPile.Add(cardToDiscard);
+                //    }
+                //}
 
             }
         }
 
+        private void EndEveningButton_Click(object sender, RoutedEventArgs e)
+        {
+            EndEveningPhase();
+        }
 
     }
 }

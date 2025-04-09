@@ -34,6 +34,9 @@ namespace RootRemake_Project.CharacterClasses
 
         public int DaylightActions { get; set; }
 
+        public int CardsCraftedThisTurn { get; set; } = 0;
+
+
         public MarquisDeCat(string PlayerName)
         {
             UserName = PlayerName;
