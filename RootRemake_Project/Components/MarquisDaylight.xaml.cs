@@ -107,12 +107,52 @@ namespace RootRemake_Project.Components
         /// <summary>
         /// Updates actions and info on the side panel according to the current player
         /// if actions remaining = 0 then end turn button is enabled
+        /// Disabling all action buttons once the action counter has finished but keeping the gain action button enabled to gain another action
         /// </summary>
         private void UpdateActionsInfo()
         {
             marquis.DaylightActions -= 1;
             actionsRemainingLabel.Content = "Actions Remaining: " + marquis.DaylightActions.ToString();
             woodCountLabel.Content = "Wood: " + marquis.AvailableWood.ToString();
+
+            // Disables the action buttons if action count is = 0
+
+            if (marquis.DaylightActions <= 0)
+            {
+                DisableActionButtons();
+            }
+            else 
+            { 
+                EnableActionButtons();
+            }
+            
+        }
+
+        // Disables the action buttons expect the gain action button
+        private void DisableActionButtons()
+        {
+            marchBtn.IsEnabled = false;
+            attackBtn.IsEnabled = false;
+            recruitBtn.IsEnabled = false;
+            overworkBtn.IsEnabled = false;
+            buildRecruiterBtn.IsEnabled = false;
+            buildSawmillBtn.IsEnabled = false;
+            buildWorkshopBtn.IsEnabled = false;
+            
+            gainActionBtn.IsEnabled = true; 
+        }
+
+        // enables the action buttons
+        private void EnableActionButtons()
+        {
+            marchBtn.IsEnabled = true;
+            attackBtn.IsEnabled = true;
+            recruitBtn.IsEnabled = true;
+            overworkBtn.IsEnabled = true;
+            buildRecruiterBtn.IsEnabled = true;
+            buildSawmillBtn.IsEnabled = true;
+            buildWorkshopBtn.IsEnabled = true;
+
         }
 
         #region Action Methods
@@ -142,6 +182,8 @@ namespace RootRemake_Project.Components
             // since update actions removes 1 action we add 2
             marquis.DaylightActions += 2;
             UpdateActionsInfo();
+            // Calls EnableActionButtons to enable the action buttons duhhhhhhhh
+            EnableActionButtons();
         }
 
         private void overworkBtn_Click(object sender, RoutedEventArgs e)

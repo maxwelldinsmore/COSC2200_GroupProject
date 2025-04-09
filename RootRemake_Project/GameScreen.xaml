@@ -12,7 +12,7 @@
         ResizeMode="NoResize"
         Height="800" Width="1100"  Closed="Window_Closed"
         FontFamily="{StaticResource Luminari}" 
-        Icon="C:\Users\shane\Source\Repos\COSC2200_GroupProject\RootRemake_Project\Assets\Images\Icon.png"
+        Icon="\Assets\Images\Icon.png"
 >
     <!-- Potientially make game fullscreen  WindowState="Maximized" WindowStyle="None"-->
 
