@@ -8,11 +8,13 @@ namespace RootRemake_Project.LocationClasses
 
         //TODO: Add in the correct values for the locations
         public static Location[] MapLocations =
-        {
+        {//Suit 1 is Wild, Suit 2 is Fox, Suit 3 is Bunny, Suit 4 is Mouse.
                 // location 0
                 new Clearing(
                     // location ID
                     0,
+                    // location faction
+                    2,
                     // location coordinates for clicking on the area
                     new double[][] { new double[] {37.6000, 37.6000}, new double[] {153.6000, 36.8000}, new double[] {156.8000, 162.4000}, new double[] {43.2000, 157.6000} },
                     // all location id's that are 1 move away from this location
@@ -24,6 +26,7 @@ namespace RootRemake_Project.LocationClasses
                 ),
                 new Clearing(
                     1,
+                    3,
                     new double[][] { new double[] {402.4000, 1.6000}, new double[] {524.0000, 4.0000}, new double[] {511.2000, 108.8000}, new double[] {444.8000, 124.8000}, new double[] {398.4000, 95.2000} },
                     new int[] {0, 3, 12 },
                     
@@ -36,6 +39,7 @@ namespace RootRemake_Project.LocationClasses
                 ),
                 new Clearing(
                     2,
+                    3,
                     new double[][] { new double[] {289.6000, 176.0000}, new double[] {362.4000, 145.6000}, new double[] {419.2000, 168.8000}, new double[] {416.8000, 271.2000}, new double[] {305.6000, 275.2000} },
                     new int[] {0, 3, 5, 12, 13, 14 },
                     // Point for warrior location
@@ -46,6 +50,7 @@ namespace RootRemake_Project.LocationClasses
                 ),
                 new Clearing(
                     3,
+                    4,
                     new double[][] { new double[] {684.0000, 104.0000}, new double[] {797.6000, 98.4000}, new double[] {796.0000, 223.2000}, new double[] {687.2000, 220.8000}},
                     new int[] {1, 2, 7, 12, 14 },
                    // Point for warrior location
@@ -55,6 +60,7 @@ namespace RootRemake_Project.LocationClasses
                     new Point(765, 152)
                 ),
                 new Clearing(
+                    4,
                     4,
                     new double[][] {
                         new double[] {16.0000, 248.8000},
@@ -71,6 +77,7 @@ namespace RootRemake_Project.LocationClasses
                 ),
                 new Clearing(
                     5,
+                    2,
                     new double[][] {
                         new double[] {196.8000, 396.0000},
                         new double[] {300.8000, 345.6000},
@@ -87,6 +94,7 @@ namespace RootRemake_Project.LocationClasses
                 ),
                 new Clearing(
                     6,
+                    4,
                     new double[][] {
                         new double[] {504.0000, 318.4000},
                         new double[] {604.0000, 321.6000},
@@ -102,6 +110,7 @@ namespace RootRemake_Project.LocationClasses
                 ),
                 new Clearing(
                     7,
+                    2,
                     new double[][] {
                         new double[] {692.80, 392.80},
                         new double[] {760.80, 344.00},
@@ -118,6 +127,7 @@ namespace RootRemake_Project.LocationClasses
                 ),
                 new Clearing(
                     8,
+                    3,
                     new double[][] {
                         new double[] {44.00, 601.60},
                         new double[] {104.00, 565.60},
@@ -134,6 +144,7 @@ namespace RootRemake_Project.LocationClasses
                 ),
                 new Clearing(
                     9,
+                    4,
                     new double[][] {
                         new double[] {251.20, 737.60},
                         new double[] {240.00, 637.60},
@@ -149,6 +160,7 @@ namespace RootRemake_Project.LocationClasses
                 ),
                 new Clearing(
                     10,
+                    4,
                     new double[][] {
                         new double[] {429.60, 645.60},
                         new double[] {428.80, 552.00},
@@ -164,6 +176,7 @@ namespace RootRemake_Project.LocationClasses
                 ),
                 new Clearing(
                     11,
+                    3,
                     new double[][] {
                         new double[] {648.00, 657.60},
                         new double[] {711.20, 598.40},

@@ -14,7 +14,8 @@
 
         <Button Content="Start Game" Click="StartGame_Click" Width="150" Height="50"
                 HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,290,0,0"
-                FontFamily="Luminari" FontSize="20" FontStyle="Normal"/>
+                FontFamily="Luminari" FontSize="20" FontStyle="Normal"
+                ToolTip = "Starts The Game"/>
         
         <Rectangle HorizontalAlignment="Left" Height="257" Margin="10,10,0,0" Stroke="Black"
                    VerticalAlignment="Top" Width="496"/>
@@ -23,27 +24,34 @@
         <Label Content="Select Character:" HorizontalAlignment="Left" Margin="23,120,0,0"
        VerticalAlignment="Top" Width="100"/>
         <Button x:Name="marquisCharButton" HorizontalAlignment="Left" Height="61" Margin="131,133,0,0"
-        VerticalAlignment="Top" Width="61" Tag="Marquis" Click="CharacterSelected">
+        VerticalAlignment="Top" Width="61" Tag="Marquis" Click="CharacterSelected" 
+                ToolTip = "Select The Marquis Class">
             <Image Height="59" Width="59" Source="pack://application:,,,/Assets/Marquis/Icon.png"/>
         </Button>
         <Button x:Name="eyrieCharButton" HorizontalAlignment="Left" Height="61"
-        Margin="197,133,0,0" VerticalAlignment="Top" Width="61" Tag="Eyrie" Click="CharacterSelected">
+        Margin="197,133,0,0" VerticalAlignment="Top" Width="61" Tag="Eyrie" Click="CharacterSelected"
+                ToolTip = "Select the Eyrie Class">
             <Image Height="56" Width="56" Source="/Assets/Eyrie/Icon.png"/>
         </Button>
         <Button x:Name="woodlandCharButton" HorizontalAlignment="Left" Height="61"
-        Margin="263,133,0,0" VerticalAlignment="Top" Width="61" Tag="Woodland" Click="CharacterSelected">
+        Margin="263,133,0,0" VerticalAlignment="Top" Width="61" Tag="Woodland" Click="CharacterSelected"
+                ToolTip = "Select Woodland">
             <Image Height="57" Width="57" Source="/Assets/Woodland/Icon.png"/>
         </Button>
         <Button x:Name="vagabondCharButtonGray" HorizontalAlignment="Left" Height="61"
-        Margin="329,134,0,0" VerticalAlignment="Top" Width="61" Tag="VagabondGray" Click="CharacterSelected">
+        Margin="329,134,0,0" VerticalAlignment="Top" Width="61" Tag="VagabondGray" Click="CharacterSelected"
+                ToolTip = "Select The Gray Vagabond Class">
             <Image Height="57" Width="57" Source="/Assets/Vagabond/Icon.png"/>
         </Button>
         <Button x:Name="vagabondCharButtonBlack" HorizontalAlignment="Left" Height="61"
-        Margin="395,134,0,0" VerticalAlignment="Top" Width="61" Tag="VagabondBlack" Click="CharacterSelected">
-            <Image Height="56" Width="56" Source="/Assets/Vagabond/Icon.png"/>
+        Margin="395,134,0,0" VerticalAlignment="Top" Width="61" Tag="VagabondBlack" Click="CharacterSelected" 
+                ToolTip = "Select The Black Vagabond Class">
+            <Image Height="56" Width="56" Source="/Assets/Vagabond/Icon.png" 
+                ToolTip = "Select The Black Vagabond Class"/>
         </Button>
         <TextBox HorizontalAlignment="Left" Height="22" Margin="128,78,0,0" TextWrapping="Wrap"
-                 VerticalAlignment="Top" Width="196" TextChanged="TextBox_TextChanged"/>
+                 VerticalAlignment="Top" Width="196" TextChanged="TextBox_TextChanged"  
+                ToolTip = "Enter player name"/>
         <Label Content="Player 1" HorizontalAlignment="Left" Height="32" Margin="23,28,0,0"
                VerticalAlignment="Top" Width="235" FontFamily="Wide Latin" FontSize="20"/>
         <Rectangle HorizontalAlignment="Left" Height="257" Margin="523,10,0,0" Stroke="Black"
@@ -55,7 +63,8 @@
                VerticalAlignment="Top" Width="235" FontFamily="Wide Latin" FontSize="20"/>
         <Button x:Name="charAddButton" Content="+" HorizontalAlignment="Left" Margin="594,89,0,0"
                 VerticalAlignment="Top" Height="114" Width="112" FontSize="72"
-                RenderTransformOrigin="0.5,0.5" Click="AddPLayer_Click"/>
+                RenderTransformOrigin="0.5,0.5" Click="AddPLayer_Click"
+                ToolTip = "Add an new player"/>
         
     </Grid>
 </Window>

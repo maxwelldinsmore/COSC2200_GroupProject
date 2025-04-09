@@ -25,15 +25,18 @@ namespace RootRemake_Project.Components
         public MarquisBirdsong()
         {
             InitializeComponent();
-            UpdateWoodlabel();
             this.Loaded += UserControl_Loaded;
-            this.Unloaded += MarquisBirdsong_Unloaded;
+    
         }
 
 
         private void MarquisBirdsong_Unloaded(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow != null)
+            {
+                parentWindow.Players[parentWindow.CurrentPlayerTurn] = marquis;
+            }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -42,32 +45,25 @@ namespace RootRemake_Project.Components
             if (parentWindow != null)
             {
                 // get the current player as Marquis de Cat
-                marquis = parentWindow.Players[parentWindow.CurrentPlayerTurn] as MarquisDeCat;
-                UpdateWoodlabel();
+                marquis = (MarquisDeCat)parentWindow.Players[parentWindow.CurrentPlayerTurn];
+                AddWoodToSawmill();
             }
         }
 
-        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        public void AddWoodToSawmill()
         {
+            marquis.AddWood(6 - marquis.AvailableSawmills);
+            UpdateWoodlabel();
             var parentWindow = Window.GetWindow(this) as GameScreen;
             if (parentWindow != null)
             {
                 parentWindow.Players[parentWindow.CurrentPlayerTurn] = marquis;
-                UpdateWoodlabel();
             }
-        }
-
-        public void AddWoodToSawmill(int amount)
-        {
-            marquis.AvailableWood += 6 - marquis.AvailableSawmills;
-            marquis.AddWood(amount);
-            UpdateWoodlabel();
         }
 
         private void UpdateWoodlabel()
         {
-            if (woodCountLabel != null && marquis != null)
-                woodCountLabel.Content = marquis.AvailableWood.ToString();
+            woodCountLabel.Content = marquis.AvailableWood.ToString();
         }
     }
 }

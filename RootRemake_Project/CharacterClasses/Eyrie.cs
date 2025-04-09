@@ -9,6 +9,13 @@ namespace RootRemake_Project.CharacterClasses
 {
     internal class Eyrie : Player
     {
+        
+
+        //Suit 1 is Wild, Suit 2 is Fox, Suit 3 is Bunny, Suit 4 is Rat.
+        public List<int> attackDecree;
+        public List<int> moveDecree;
+        public List<int> buildDecree;
+        public List<int> recruitDecree;
         public Eyrie(string UserName) 
         {
             this.UserName = UserName;
@@ -22,6 +29,20 @@ namespace RootRemake_Project.CharacterClasses
 
             WarriorArt = new Uri("pack://application:,,,/Assets/Eyrie/Warrior.png", UriKind.RelativeOrAbsolute);
 
+            
+            attackDecree = new List<int>();
+            buildDecree = new List<int>();
+
+            moveDecree = new List<int>();
+            recruitDecree = new List<int>();
+
+            // TEMP
+            moveDecree.Add(1);
+            attackDecree.Add(2);
+            recruitDecree.Add(3);
+            buildDecree.Add(4);
+            moveDecree.Add(1);
+            moveDecree.Add(2);
         }
         public override void CharacterSetup()
         {
@@ -52,5 +73,6 @@ namespace RootRemake_Project.CharacterClasses
         {
             return "Eyrie";
         }
+
     }
 }

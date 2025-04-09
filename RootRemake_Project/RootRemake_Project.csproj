@@ -40,7 +40,6 @@
     <None Remove="Assets\EyrieCards.png" />
     <None Remove="Assets\Eyrie\Banner.png" />
     <None Remove="Assets\Eyrie\Board.png" />
-    <None Remove="Assets\Eyrie\BuildingIcon.png" />
     <None Remove="Assets\Eyrie\Icon.png" />
     <None Remove="Assets\Eyrie\VP.png" />
     <None Remove="Assets\Eyrie\Warrior.png" />
@@ -176,8 +175,8 @@
     <Resource Include="Assets\Eyrie\Board.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Eyrie\BuildingIcon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Resource Include="Assets\Eyrie\Roost.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Eyrie\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

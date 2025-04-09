@@ -24,6 +24,7 @@ namespace RootRemake_Project.LocationClasses
             this.Building1Location = null;
             this.Building2Location = null;
             this.WarriorLocation = warriorLocations;
+            LocationFaction = -1; // No faction
         }
         override public bool CanBuild()
         {

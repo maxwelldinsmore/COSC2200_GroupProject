@@ -19,21 +19,21 @@
 
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="860"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="845"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="21"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Menu DockPanel.Dock="Top" Grid.Row="0" Margin="847,0,0,0" Grid.ColumnSpan="2 " Background="#7C816A" FontFamily="{StaticResource Luminari}">
+        <Menu DockPanel.Dock="Top" Grid.Row="0" Margin="1,0,0,0" Background="#7C816A" FontFamily="{StaticResource Luminari}" Grid.Column="1">
             <MenuItem Header="_Debug" >
                 <MenuItem Name="displayPolygonsMenuItem" Header="_Display Collison Polygons" Click="displayPolygonsMenuItem_Click"/>
                 <MenuItem Name="displayHighlightsMenuItem" Header="_Toggle Highlight Viewability" Click="displayHighlightsMenuItem_Click"/>
                 <MenuItem Name="highlightMenuItem" Header="_Highlight All locations" Click="highlightMenuItem_Click"/>
                 <MenuItem Name="placeWarriorMenuItem" Header="_Place Warrior" Click="placeWarriorMenuItem_Click"/>
                 <MenuItem Name="loadBuildingMenuItem" Header="_Test Load a building" Click="loadBuildingMenuItem_Click"/>
-                
+
             </MenuItem>
         </Menu>
         <Canvas x:Name="canvasGameBoard" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
@@ -64,7 +64,11 @@
             </myComponents:CardHand>
         </Canvas>
         <Image x:Name="backgroundImage" Grid.ColumnSpan="2" Margin="838,11,0,0" Stretch="UniformToFill" Source="/Assets/SidePanelBackground.png" Grid.RowSpan="2"/>
-        <Grid x:Name="sidePanelGrid" Grid.Row="1" Grid.ColumnSpan="2" Margin="847,0,0,0">
+        <Grid x:Name="sidePanelGrid" Grid.Row="1" Margin="1,0,0,0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="131*"/>
+
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
                 <RowDefinition Height="70" />
@@ -73,13 +77,18 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Image x:Name="turnPhaseImage" Grid.Row="0" Stretch="Uniform" Source="/Assets/Setups.png"/>
-            <Image x:Name="chaBannerImage" Grid.Row="1" Stretch="UniformToFill" Source="/Assets/Marquis/Banner.png" />
-            <TextBlock x:Name="playerNameTextBlock" Grid.Row="2" Text="Player1" TextAlignment="Center" FontSize="26"/>
+            <Image x:Name="turnPhaseImage" Grid.Row="0" Stretch="Uniform" Source="/Assets/Setups.png" Grid.ColumnSpan="2"
+                   ToolTip = "Current Game Phase"/>
+            <Image x:Name="chaBannerImage" Grid.Row="1" Stretch="UniformToFill" Source="/Assets/Marquis/Banner.png" Grid.ColumnSpan="2" />
+            <TextBlock x:Name="playerNameTextBlock" Grid.Row="2" Text="Player1" TextAlignment="Center" FontSize="26" Grid.ColumnSpan="2"
+                       ToolTip = "Current Player Name"/>
             <!-- Location for the user controls loaded in and out Grid.Row="3"-->
-            <Button Name="endTurnBtn" Content="End Turn Phase" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="46" Width="232" Click="endPhaseBtn_Click"/>
-            <Button x:Name="viewBoardBtn" Content="ViewBoard" HorizontalAlignment="Left" Margin="6,64,0,0" Grid.Row="4" VerticalAlignment="Top" Height="57" Width="116" Click="viewBoardBtn_Click" />
-            <Button x:Name="toggleHandBtn" Content="Show Hand" HorizontalAlignment="Left" Margin="127,66,0,0" Grid.Row="4" VerticalAlignment="Top" Height="56" Width="116" Click="toggleHandBtn_Click"/>
+            <Button Name="endTurnBtn" Content="End Turn Phase" HorizontalAlignment="Left" Margin="6,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="46" Width="237" Click="endPhaseBtn_Click"
+                    ToolTip = "End Turn To Next Phase or Player" Grid.ColumnSpan="2" Background="#FFC8533A" FontSize="16" Foreground="#FF29251E" BorderBrush="#FFB69E7A"/>
+            <Button x:Name="viewBoardBtn" Content="ViewBoard" HorizontalAlignment="Left" Margin="6,64,0,0" Grid.Row="4" VerticalAlignment="Top" Height="57" Width="116" Click="viewBoardBtn_Click"  
+                ToolTip = "View The Full Game Board" Grid.ColumnSpan="2" Background="#FFC8533A" FontFamily="Luminari" FontSize="16" BorderBrush="#FFB69E7A" Foreground="#FF29251E"/>
+            <Button x:Name="toggleHandBtn" Content="Show Hand" HorizontalAlignment="Left" Margin="129,64,0,0" Grid.Row="4" VerticalAlignment="Top" Height="57" Width="115" Click="toggleHandBtn_Click"
+                    ToolTip = "View Player Cards" Background="#FFC8533A" FontSize="16" BorderBrush="#FFB69E7A" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
         </Grid>
     </Grid>
 </Window>

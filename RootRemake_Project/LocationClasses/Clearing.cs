@@ -14,9 +14,10 @@ namespace RootRemake_Project.LocationClasses
 
 
 
-        public Clearing(int locationID, double[][] locationCoordinates, int[] connectedLocations, Point warriorLocations, Point buildLocation, Point buildLocation2)
+        public Clearing(int locationID, int locationFaction, double[][] locationCoordinates, int[] connectedLocations, Point warriorLocations, Point buildLocation, Point buildLocation2)
         {
             this.LocationID = locationID;
+            this.LocationFaction = locationFaction;
             this.LocationType = "Clearing";
             this.LocationPolygon = locationCoordinates;
             this.ConnectedLocations = connectedLocations;
@@ -29,8 +30,9 @@ namespace RootRemake_Project.LocationClasses
             this.Building2Location = buildLocation2;
         }
 
-        public Clearing(int locationID, double[][] locationCoordinates, int[] connectedLocations, Point warriorLocations, Point buildLocation)
+        public Clearing(int locationID, int locationFaction, double[][] locationCoordinates, int[] connectedLocations, Point warriorLocations, Point buildLocation)
         {
+            this.LocationFaction = locationFaction;
             this.LocationID = locationID;
             this.LocationType = "Clearing";
             this.LocationPolygon = locationCoordinates;

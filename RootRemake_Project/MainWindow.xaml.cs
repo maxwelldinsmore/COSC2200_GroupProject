@@ -48,6 +48,7 @@ namespace RootRemake_Project
         private void CharacterSelected(object sender, RoutedEventArgs e)
         {
             Button selectedButton = sender as Button;
+            
             if (selectedButton == null) return;
 
             StackPanel characterSelection = selectedButton.Parent as StackPanel;

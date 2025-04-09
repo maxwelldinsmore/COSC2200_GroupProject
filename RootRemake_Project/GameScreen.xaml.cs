@@ -142,7 +142,7 @@ namespace RootRemake_Project
         private void Location_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Polygon source = (Polygon)sender;
-            MessageBox.Show("Location Clicked " + source.Name.Split('_')[1]);
+            //MessageBox.Show("Location Clicked " + source.Name.Split('_')[1]);
             //Updates what location the user clicked
             lastLocationClicked = Int32.Parse(source.Name.Split('_')[1]);
             OnLocationClicked(lastLocationClicked);
@@ -232,14 +232,18 @@ namespace RootRemake_Project
         }
 
         // Call this whenever the hand changes to keep it updated
-        private void UpdateHandDisplay()
+        public void UpdateHandDisplay()
         {
-            if (IsHandVisible)
-            {
-                cardHand.DisplayHand(Players[CurrentPlayerTurn].Hand);
-            }
+                if (IsHandVisible)
+                {
+                    // Refresh the display in case cards changed
+                    cardHand.Visibility = Visibility.Visible;
+                }
+                
         }
-        private void OnCardClicked(int cardIndex)
+        
+
+        private void OnCardClicked(string cardIndex)
         {
             var currentPlayer = Players[CurrentPlayerTurn];
             int excessCards = currentPlayer.Hand.Count - 5;
@@ -247,7 +251,7 @@ namespace RootRemake_Project
             if (excessCards > 0 && TurnPhase == "Evening")
             {
                 // Discard mode
-                Card clickedCard = currentPlayer.Hand[cardIndex];
+                Card clickedCard = currentPlayer.Hand.Find(c => c.CardKey == cardIndex);
 
                 var result = MessageBox.Show($"Discard this card?\n{clickedCard.CardText}",
                                             "Confirm Discard",
@@ -265,7 +269,7 @@ namespace RootRemake_Project
             else
             {
                 // Normal card viewing
-                Card clickedCard = currentPlayer.Hand[cardIndex];
+                Card clickedCard = currentPlayer.Hand.Find(c => c.CardKey == cardIndex);
                 MessageBox.Show($"Card {cardIndex + 1} clicked\n" +
                                $"{clickedCard.CardText}\n" +
                                $"Suit: {GetSuitName(clickedCard.Suit)}",
@@ -538,11 +542,11 @@ new (17, 740),  // VP 0
         private void imgMap_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
-            Point position = e.GetPosition(imgMap);
-            MessageBox.Show(position.X.ToString("F2") + ", " + position.Y.ToString("F2"));
+            //Point position = e.GetPosition(imgMap);
+            //MessageBox.Show(position.X.ToString("F2") + ", " + position.Y.ToString("F2"));
 
-            Clipboard.SetText(position.X.ToString("F2") + ", " + position.Y.ToString("F2")
-            );
+            //Clipboard.SetText(position.X.ToString("F2") + ", " + position.Y.ToString("F2")
+            //);
         }
         private void placeWarriorMenuItem_Click(object sender, RoutedEventArgs e)
         {

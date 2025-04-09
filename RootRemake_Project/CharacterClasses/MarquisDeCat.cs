@@ -50,6 +50,7 @@ namespace RootRemake_Project.CharacterClasses
             BannerArt = new Uri("pack://application:,,,/Assets/Marquis/Banner.png", UriKind.RelativeOrAbsolute);
             VictoryPointArt = new Uri("pack://application:,,,/Assets/Marquis/VP.png", UriKind.RelativeOrAbsolute);
             BoardArt = new Uri("pack://application:,,,/Assets/Marquis/Board.png", UriKind.Absolute);
+            CharacterSetup();
         }
         // -----------------------------------------------
         // SET UP PHASE -- at the start of the game
@@ -60,14 +61,10 @@ namespace RootRemake_Project.CharacterClasses
             // Place keep token in a corner clearing
             // then auto spawn cats and auto place buildings around
 
-            PlaceCats();
+            AvailableWorkshops -= 1;
+            AvailableRecruiters -= 1;
+            AvailableSawmills -= 1;
         }
-
-        // places a cat at each area on the game board
-        private void PlaceCats()
-        {
-        }
-
 
         public void PlaceBuilding(int locationId, string buildingType)
         {
