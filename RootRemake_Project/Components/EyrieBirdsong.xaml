@@ -9,7 +9,7 @@
              Height="451" Width="253"
              FontSize="24">
     <Grid>
-        <TextBlock Text="Add to Decree Up to 2 times (using a wildcard only once)" TextWrapping="Wrap"/>
+        <TextBlock x:Name="eyrieText" Text="Add to Decree Up to 2 times (using a wildcard only once)" TextWrapping="Wrap" Margin="0,0,26,0"/>
 
 
 
