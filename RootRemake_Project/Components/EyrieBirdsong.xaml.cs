@@ -86,6 +86,7 @@ namespace RootRemake_Project.Components
                             wildCardAdded = true;
                             break;
                         case "moveBtn":
+
                             eyrie.moveDecree.Add(card.Suit);
                             break;
                         case "attackBtn":
@@ -97,10 +98,15 @@ namespace RootRemake_Project.Components
                     }
                     var parentWindow = Window.GetWindow(this) as GameScreen;
                     // then removes card from hand
-                    parentWindow.Players[parentWindow.CurrentPlayerTurn].Hand.Remove(card);
-                    // REFRESH HAND
-                    parentWindow.UpdateHandDisplay();
-                    parentWindow.endTurnBtn.IsEnabled = true;
+                    //TODO: FIX At some fucking point
+                    if (parentWindow != null)
+                    {
+                        parentWindow.Players[parentWindow.CurrentPlayerTurn].Hand.Remove(card);
+                        // REFRESH HAND
+                        parentWindow.UpdateHandDisplay();
+                        parentWindow.endTurnBtn.IsEnabled = true;
+                    }
+                   
                     cardsAdded++;
                     if( cardsAdded >1) {
                         moveBtn.IsEnabled = false;

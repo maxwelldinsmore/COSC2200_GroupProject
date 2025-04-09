@@ -688,6 +688,7 @@ new (17, 740),  // VP 0
                 factionBoardImage.Visibility = Visibility.Collapsed;
             }
 
+
             // Advance turn
             CurrentPlayerTurn++;
             if (CurrentPlayerTurn >= Players.Length)

@@ -40,16 +40,13 @@ namespace RootRemake_Project.CharacterClasses
             recruitDecree = new List<int>();
 
             // TEMP
-            moveDecree.Add(1);
-            attackDecree.Add(2);
-            recruitDecree.Add(3);
-            buildDecree.Add(4);
-            moveDecree.Add(1);
-            moveDecree.Add(2);
+            CharacterSetup();
         }
         public override void CharacterSetup()
         {
-            // Implementation of CharacterSetup method
+            // Where we will add leader abilities / base actions 
+            moveDecree.Add(1);
+            attackDecree.Add(1);
         }
 
         public override void BirdSong()
