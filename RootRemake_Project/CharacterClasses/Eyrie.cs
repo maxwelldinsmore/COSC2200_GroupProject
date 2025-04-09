@@ -16,6 +16,8 @@ namespace RootRemake_Project.CharacterClasses
         public List<int> moveDecree;
         public List<int> buildDecree;
         public List<int> recruitDecree;
+        public int availableBuildings;
+
         public Eyrie(string UserName) 
         {
             this.UserName = UserName;
@@ -29,6 +31,7 @@ namespace RootRemake_Project.CharacterClasses
 
             WarriorArt = new Uri("pack://application:,,,/Assets/Eyrie/Warrior.png", UriKind.RelativeOrAbsolute);
 
+            availableBuildings = 6;
             
             attackDecree = new List<int>();
             buildDecree = new List<int>();
