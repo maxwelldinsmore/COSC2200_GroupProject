@@ -12,8 +12,6 @@ namespace RootRemake_Project.CharacterClasses
 {
     public class MarquisDeCat : Player
     {
-
-
         // properties
         public int TotalCats; // total available cats
         public int AvailableWood { get; set; } // available wood for buildings
