@@ -25,6 +25,8 @@ namespace RootRemake_Project.Components
         int playerID;
         private Eyrie eyrie;
         private string lastClickedBtn;
+        private int cardsAdded = 0;
+        private bool wildCardAdded = false;
         public EyrieBirdsong()
         {
             InitializeComponent();
@@ -69,15 +71,22 @@ namespace RootRemake_Project.Components
             {
                 if (card.CardKey == cardID)
                 {
+                    if (card.Suit == 1 && wildCardAdded)
+                    {
+                        MessageBox.Show("You can only add one wild card to the decree.");
+                        return;
+                    }
                     // Do something with the clicked card
                     // For example, display its name in a message box
-                    
-                    switch(lastClickedBtn)
+
+                    switch (lastClickedBtn)
                     {
                         case "recruitBtn":
                             eyrie.recruitDecree.Add(card.Suit);
+                            wildCardAdded = true;
                             break;
                         case "moveBtn":
+
                             eyrie.moveDecree.Add(card.Suit);
                             break;
                         case "attackBtn":
@@ -89,12 +98,28 @@ namespace RootRemake_Project.Components
                     }
                     var parentWindow = Window.GetWindow(this) as GameScreen;
                     // then removes card from hand
-                    parentWindow.Players[parentWindow.CurrentPlayerTurn].Hand.Remove(card);
-
-                    // REFRESH HAND
-                    parentWindow.UpdateHandDisplay();
+                    //TODO: FIX At some fucking point
+                    if (parentWindow != null)
+                    {
+                        parentWindow.Players[parentWindow.CurrentPlayerTurn].Hand.Remove(card);
+                        // REFRESH HAND
+                        parentWindow.UpdateHandDisplay();
+                        parentWindow.endTurnBtn.IsEnabled = true;
+                    }
+                   
+                    cardsAdded++;
+                    if( cardsAdded >1) {
+                        moveBtn.IsEnabled = false;
+                        attackBtn.IsEnabled = false;
+                        buildBtn.IsEnabled = false;
+                        recruitBtn.IsEnabled = false;
+                        eyrieText.Text = "Decree is finished,go to next turn";
+                        eyrieText.Foreground = new SolidColorBrush(Colors.Red);
+                    }
                 }
             }
+
+            lastClickedBtn = "";
 
             RefreshDecree();
         }
@@ -188,7 +213,11 @@ namespace RootRemake_Project.Components
         private void recruitBtn_Click(object sender, RoutedEventArgs e)
         {
             var parentWindow = Window.GetWindow(this) as GameScreen;
-            parentWindow.cardHand.Visibility = Visibility.Visible;
+            if (parentWindow.cardHand.Visibility != Visibility.Visible)
+            {
+                parentWindow.toggleHandBtn_Click(parentWindow, new RoutedEventArgs());
+            }
+
             moveBtn.IsEnabled = false;
             attackBtn.IsEnabled = false;
             buildBtn.IsEnabled = false;
@@ -198,7 +227,12 @@ namespace RootRemake_Project.Components
         private void moveBtn_Click(object sender, RoutedEventArgs e)
         {
             var parentWindow = Window.GetWindow(this) as GameScreen;
-            parentWindow.cardHand.Visibility = Visibility.Visible;
+            if (parentWindow.cardHand.Visibility != Visibility.Visible)
+            {
+                parentWindow.toggleHandBtn_Click(parentWindow, new RoutedEventArgs());
+            }
+
+
             recruitBtn.IsEnabled = false;
             attackBtn.IsEnabled = false;
             buildBtn.IsEnabled = false;
@@ -208,7 +242,10 @@ namespace RootRemake_Project.Components
         private void attackBtn_Click(object sender, RoutedEventArgs e)
         {
             var parentWindow = Window.GetWindow(this) as GameScreen;
-            parentWindow.cardHand.Visibility = Visibility.Visible;
+            if (parentWindow.cardHand.Visibility != Visibility.Visible)
+            {
+                parentWindow.toggleHandBtn_Click(parentWindow, new RoutedEventArgs());
+            }
             recruitBtn.IsEnabled = false;
             moveBtn.IsEnabled = false;
             buildBtn.IsEnabled = false;
@@ -218,7 +255,11 @@ namespace RootRemake_Project.Components
         private void buildBtn_Click(object sender, RoutedEventArgs e)
         {
             var parentWindow = Window.GetWindow(this) as GameScreen;
-            parentWindow.cardHand.Visibility = Visibility.Visible;
+            if (parentWindow.cardHand.Visibility != Visibility.Visible)
+            {
+                parentWindow.toggleHandBtn_Click(parentWindow, new RoutedEventArgs());
+            }
+            
             recruitBtn.IsEnabled = false;
             moveBtn.IsEnabled = false;
             attackBtn.IsEnabled = false;

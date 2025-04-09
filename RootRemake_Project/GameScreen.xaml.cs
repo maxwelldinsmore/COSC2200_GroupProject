@@ -210,7 +210,7 @@ namespace RootRemake_Project
             }
         }
 
-        private void toggleHandBtn_Click(object sender, RoutedEventArgs e)
+        public void toggleHandBtn_Click(object sender, RoutedEventArgs e)
         {
             IsHandVisible = !IsHandVisible; // Toggle state
 
@@ -236,6 +236,7 @@ namespace RootRemake_Project
         {
                 if (IsHandVisible)
                 {
+                    cardHand.DisplayHand(Players[CurrentPlayerTurn].Hand);
                     // Refresh the display in case cards changed
                     cardHand.Visibility = Visibility.Visible;
                 }
@@ -252,30 +253,12 @@ namespace RootRemake_Project
             {
                 // Discard mode
                 Card clickedCard = currentPlayer.Hand.Find(c => c.CardKey == cardIndex);
-
-                var result = MessageBox.Show($"Discard this card?\n{clickedCard.CardText}",
-                                            "Confirm Discard",
-                                            MessageBoxButton.YesNo,
-                                            MessageBoxImage.Question);
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    currentPlayer.DiscardCard(clickedCard, discardPile);
-                    UpdateHandDisplay();
-
-
-                }
             }
             else
             {
                 // Normal card viewing
                 Card clickedCard = currentPlayer.Hand.Find(c => c.CardKey == cardIndex);
-                MessageBox.Show($"Card {cardIndex + 1} clicked\n" +
-                               $"{clickedCard.CardText}\n" +
-                               $"Suit: {GetSuitName(clickedCard.Suit)}",
-                               "Card Selected",
-                               MessageBoxButton.OK,
-                               MessageBoxImage.Information);
+                
             }
         }
 
@@ -704,6 +687,7 @@ new (17, 740),  // VP 0
             {
                 factionBoardImage.Visibility = Visibility.Collapsed;
             }
+
 
             // Advance turn
             CurrentPlayerTurn++;

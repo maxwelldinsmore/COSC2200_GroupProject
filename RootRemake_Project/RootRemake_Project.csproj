@@ -44,6 +44,7 @@
     <None Remove="Assets\Eyrie\VP.png" />
     <None Remove="Assets\Eyrie\Warrior.png" />
     <None Remove="Assets\Fox.png" />
+    <None Remove="Assets\Images\Icon.png" />
     <None Remove="Assets\Images\MarquiseIcon.png" />
     <None Remove="Assets\Images\Recruiter.png" />
     <None Remove="Assets\Images\Sawmill.png" />
@@ -188,6 +189,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Fox.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Luminari-Regular.ttf">
