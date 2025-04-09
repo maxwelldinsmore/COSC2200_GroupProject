@@ -52,6 +52,12 @@
        HorizontalAlignment="Center"
        VerticalAlignment="Center"/>
 
+            <myComponents:DiscardPopup x:Name="discardPopup"
+                              Panel.ZIndex="9999"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Visibility="Collapsed"/>
+
 
             <myComponents:CardHand x:Name="cardHand"
                        Width="763"
@@ -62,6 +68,7 @@
                 <Canvas.Bottom>20</Canvas.Bottom>
                 <Canvas.Left>50</Canvas.Left>
             </myComponents:CardHand>
+            
         </Canvas>
         <Image x:Name="backgroundImage" Grid.ColumnSpan="2" Margin="838,11,0,0" Stretch="UniformToFill" Source="/Assets/SidePanelBackground.png" Grid.RowSpan="2"/>
         <Grid x:Name="sidePanelGrid" Grid.Row="1" Grid.ColumnSpan="2" Margin="847,0,0,0">

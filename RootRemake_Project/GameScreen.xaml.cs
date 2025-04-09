@@ -243,38 +243,45 @@ namespace RootRemake_Project
         {
             var currentPlayer = Players[CurrentPlayerTurn];
             int excessCards = currentPlayer.Hand.Count - 5;
+            Card clickedCard = currentPlayer.Hand[cardIndex];
 
-            if (excessCards > 0 && TurnPhase == "Evening")
+            // Normal viewing when no discard needed
+            if (excessCards <= 0 || TurnPhase != "Evening")
             {
-                // Discard mode
-                Card clickedCard = currentPlayer.Hand[cardIndex];
+                MessageBox.Show(
+                    $"Card {cardIndex + 1}: {clickedCard.CardText}\n" +
+                    $"Suit: {GetSuitName(clickedCard.Suit)}",
+                    "Card Info",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+                return;
+            }
 
-                var result = MessageBox.Show($"Discard this card?\n{clickedCard.CardText}",
-                                            "Confirm Discard",
-                                            MessageBoxButton.YesNo,
-                                            MessageBoxImage.Question);
+            // Discard confirmation
+            discardPopup.ShowCardDiscard(
+                clickedCard,
+                $"Discard this card? ({currentPlayer.Hand.Count}/5 remaining)");
 
-                if (result == MessageBoxResult.Yes)
+            discardPopup.DialogResult += (shouldDiscard) =>
+            {
+                if (shouldDiscard)
                 {
                     currentPlayer.DiscardCard(clickedCard, discardPile);
                     UpdateHandDisplay();
 
-
+                    // Check if more discards needed
+                    if (currentPlayer.Hand.Count > 5)
+                        CheckForDiscard();
+                    else
+                    {
+                        // Auto-hide discard UI when done
+                        IsHandVisible = false;
+                        cardHand.Visibility = Visibility.Collapsed;
+                        toggleHandBtn.Content = "Show Hand";
+                    }
                 }
-            }
-            else
-            {
-                // Normal card viewing
-                Card clickedCard = currentPlayer.Hand[cardIndex];
-                MessageBox.Show($"Card {cardIndex + 1} clicked\n" +
-                               $"{clickedCard.CardText}\n" +
-                               $"Suit: {GetSuitName(clickedCard.Suit)}",
-                               "Card Selected",
-                               MessageBoxButton.OK,
-                               MessageBoxImage.Information);
-            }
+            };
         }
-
         private string GetSuitName(int suit)
         {
             return suit switch
@@ -294,15 +301,12 @@ namespace RootRemake_Project
 
             if (excessCards > 0)
             {
-                // Show discard notification
-                string message = $"{currentPlayer.UserName} has too many cards!\n" +
-                               $"You have {currentPlayer.Hand.Count} cards (max 5).\n" +
-                               $"Please discard {excessCards} card(s).\n\n" +
-                               "Click OK then select cards to discard from your hand.";
+                discardPopup.ShowWarning(
+                    $"{currentPlayer.UserName}, you have too many cards!\n" +
+                    $"Current: {currentPlayer.Hand.Count} | Maximum: 5\n\n" +
+                    $"Please select {excessCards} card(s) to discard.");
 
-                MessageBox.Show(message, "Too Many Cards", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-
-                // Force hand to be visible
+                // Force hand visibility
                 IsHandVisible = true;
                 cardHand.Visibility = Visibility.Visible;
                 toggleHandBtn.Content = "Hide Hand";
@@ -644,7 +648,6 @@ new (17, 740),  // VP 0
         /// </summary>
         private void endPhaseBtn_Click(object sender, RoutedEventArgs e)
         {
-            // 
             RemoveControlByName(Players[CurrentPlayerTurn].CharacterName(), TurnPhase);
             if (TurnPhase == "Setup")
             {
@@ -667,17 +670,25 @@ new (17, 740),  // VP 0
             }
             else if (TurnPhase == "Evening")
             {
+                // === 1. FIRST, DRAW 1 CARD (even if already at 5) ===
                 DrawCardsForPlayer(CurrentPlayerTurn, 1);
 
-                // Check for discard before changing turns
-                CheckForDiscard();
+                // === 2. CHECK IF PLAYER NOW HAS >5 CARDS ===
+                if (Players[CurrentPlayerTurn].Hand.Count > 5)
+                {
+                    // Force discard before proceeding
+                    CheckForDiscard();
+                    return; // Exit early (turn ends after discard)
+                }
+
+                // === 3. ONLY PROCEED IF HAND IS VALID (<=5) ===
                 Players[CurrentPlayerTurn].VictoryPoints++;
                 PlaceVPToken(Players[CurrentPlayerTurn]);
 
-                // Add this victory check
+                // === 4. CHECK FOR VICTORY ===
                 CheckForVictory(Players[CurrentPlayerTurn]);
 
-                // Only proceed if game isn't over
+                // === 5. CHANGE TURN ===
                 if (endTurnBtn.IsEnabled)
                 {
                     ChangePlayersTurn();
@@ -686,7 +697,6 @@ new (17, 740),  // VP 0
                         new Uri("pack://application:,,,/Assets/Birdsong.png", UriKind.RelativeOrAbsolute));
                 }
             }
-            // TODO: CARLOS ADD YOUR CODE HERE
 
             // Adds new Side Panel user control
             LoadUserControl(TurnPhase, Players[CurrentPlayerTurn].CharacterName());
