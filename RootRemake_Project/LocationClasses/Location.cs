@@ -101,7 +101,8 @@ namespace RootRemake_Project.LocationClasses
                 {
                     highestArmyCount = army.WarriorCount; // The highest army count
                     highestArmyPlayerID = army.PlayerID; // The player ID of the highest army
-                }
+                } 
+                // TODO: CODE EYRIE TIE CHECKS
             }   
             return playerID == highestArmyPlayerID; // The location is ruled by the player
         }

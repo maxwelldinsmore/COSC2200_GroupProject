@@ -865,14 +865,16 @@ namespace RootRemake_Project
         {
             if (canvasGameBoard is Canvas canvas)
             {
-                foreach (var image in canvas.Children.OfType<Image>())
+                List<Image> copiedList = canvas.Children.OfType<Image>().ToList();
+                List<Label> copiedLabelList = canvas.Children.OfType<Label>().ToList();
+                foreach (var image in copiedList)
                 {
                     if (image.Name.Contains(deletedArmy.KeyString))
                     {
                         canvas.Children.Remove(image);
                     }
                 }
-                foreach (var labelNum in canvas.Children.OfType<Label>())
+                foreach (var labelNum in copiedLabelList)
                 {
                     if (labelNum.Name.Contains(deletedArmy.KeyString))
                     {

@@ -16,6 +16,7 @@ using ControlzEx.Standard;
 using RootRemake_Project.CharacterClasses;
 using RootRemake_Project.ObjectClasses;
 using RootRemake_Project.LocationClasses;
+using System.Diagnostics;
 namespace RootRemake_Project.Components
 {
     /// <summary>
@@ -61,7 +62,6 @@ namespace RootRemake_Project.Components
             if (ParentWindow != null)
             {
                 ParentWindow.HighlightLocations(new List<int>());
-                MessageBox.Show(currentAction);
             }
             
             switch (currentAction)
@@ -113,7 +113,11 @@ namespace RootRemake_Project.Components
             if (eyrie.recruitDecree.Count > 0)
             {
                 recruitLbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0269C6"));
+                moveLbl.Foreground = new SolidColorBrush(Colors.White);
+                attackLbl.Foreground = new SolidColorBrush(Colors.White);
+                buildLbl.Foreground = new SolidColorBrush(Colors.White);
                 currentAction = "Recruit";
+
                 Recruit();
                 return;
             }
@@ -122,6 +126,8 @@ namespace RootRemake_Project.Components
             {
                 moveLbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0269C6"));
                 recruitLbl.Foreground = new SolidColorBrush(Colors.White);
+                attackLbl.Foreground = new SolidColorBrush(Colors.White);
+                buildLbl.Foreground = new SolidColorBrush(Colors.White);
                 currentAction = "Move";
                 Move();
                 return;
@@ -131,6 +137,8 @@ namespace RootRemake_Project.Components
             {
                 attackLbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0269C6"));
                 moveLbl.Foreground = new SolidColorBrush(Colors.White);
+                recruitLbl.Foreground = new SolidColorBrush(Colors.White);
+                buildLbl.Foreground = new SolidColorBrush(Colors.White);
                 currentAction = "Attack";
                 
                 // TODO: IMPLEMENT ATTACK
@@ -142,6 +150,8 @@ namespace RootRemake_Project.Components
             {
                 buildLbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0269C6"));
                 attackLbl.Foreground = new SolidColorBrush(Colors.White);
+                recruitLbl.Foreground = new SolidColorBrush(Colors.White);
+                moveLbl.Foreground = new SolidColorBrush(Colors.White);
                 currentAction = "Build";
                 Build();
                 return;
@@ -276,15 +286,60 @@ namespace RootRemake_Project.Components
 
         private void FinalizeAttack(int locationID)
         {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow != null)
+            {
+                Location location = parentWindow.Locations[locationID];
+                // Deletes the action from the decree
+                bool deleted = eyrie.moveDecree.Remove(parentWindow.Locations[movingFromLocationID].LocationFaction);
+                if (!deleted)
+                {
+                    eyrie.moveDecree.Remove(1);
+                }
+            }
+
         }
         #endregion
 
         #region Build Actions
         private void Build()
         {
+           
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            List<int> buildableLocations = new List<int>();
+            if (parentWindow != null)
+            {
+                foreach (Location location in parentWindow.Locations)
+                {
+                    if (location.CanBuild() && location.ruledByPlayer(playerID) )
+                    {
+                        if (eyrie.buildDecree.Contains(1))
+                        {
+                            buildableLocations.Add(location.LocationID);
+                           
+
+                        }
+                        else if (eyrie.buildDecree.Any(i => i == location.LocationFaction))
+                        {
+                            buildableLocations.Add(location.LocationID);
+                            
+                        }
+                    }
+                    Debug.WriteLine($"Location {location.LocationID} can build: {location.CanBuild()}");
+                    Debug.WriteLine(location.ruledByPlayer(playerID));
+                }
+               
+                parentWindow.HighlightLocations(buildableLocations);
+            }
+            
         }
         private void FinalizeBuild(int locationID)
         {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow != null )
+            {
+                parentWindow.AddBuildingToLocation(locationID, playerID, "Roost");
+            }
 
         }
 
