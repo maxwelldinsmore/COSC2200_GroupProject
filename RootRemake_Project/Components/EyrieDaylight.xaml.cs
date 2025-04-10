@@ -402,7 +402,14 @@ namespace RootRemake_Project.Components
                 Eyrie copy = (Eyrie)parentWindow.Players[playerID];
                 copy.AvailableRoosts--;
                 parentWindow.Players[playerID] = copy;
+
+                bool deleted = eyrie.moveDecree.Remove(parentWindow.Locations[movingFromLocationID].LocationFaction);
+                if (!deleted)
+                {
+                    eyrie.moveDecree.Remove(1);
+                }
             }
+           
 
         }
 

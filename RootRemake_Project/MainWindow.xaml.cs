@@ -32,13 +32,13 @@ namespace RootRemake_Project
 
 
 
-            Player[] players = new Player[2];
-            players[0] = new MarquisDeCat("Bilgan");
-            players[1] = new Eyrie("Mariah");
-            GameScreen gameScreen = new GameScreen(players);
-            gameScreen.Closed += (sender, e) => this.Show();
-            this.Hide();
-            gameScreen.Show();
+            //Player[] players = new Player[2];
+            //players[0] = new MarquisDeCat("Bilgan");
+            //players[1] = new Eyrie("Mariah");
+            //GameScreen gameScreen = new GameScreen(players);
+            //gameScreen.Closed += (sender, e) => this.Show();
+            //this.Hide();
+            //gameScreen.Show();
 
 
         }

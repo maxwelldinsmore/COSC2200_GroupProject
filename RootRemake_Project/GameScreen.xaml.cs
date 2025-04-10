@@ -106,6 +106,7 @@ namespace RootRemake_Project
             StartingPlayersTurn = 0;
             CurrentPlayerTurn = StartingPlayersTurn;
             playerNameTextBlock.Text = Players[CurrentPlayerTurn].UserName;
+            chaBannerImage.Source = new BitmapImage(Players[CurrentPlayerTurn].BannerArt);
 
         }
 
