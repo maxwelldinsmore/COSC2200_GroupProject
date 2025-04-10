@@ -73,12 +73,21 @@ namespace RootRemake_Project.Components
                 marquis.DaylightActions += 1;
                 UpdateActionsInfo();
             }
-            
+            if (parentWindow?.cardHand != null)
+            {
+                parentWindow.cardHand.CardClicked += (cardId) => CardClicked(parentWindow.cardHand, cardId);
+            }
+
         }
 
         private void CardClicked(object sender, string cardID)
         {
-           var parentWindow = Window.GetWindow(this) as GameScreen;
+            Debug.WriteLine($"CardID: {cardID}");
+            foreach (var card in marquis.Hand)
+            {
+                Debug.WriteLine($"Card in Hand: {card.CardKey}");
+            }
+            var parentWindow = Window.GetWindow(this) as GameScreen;
             if (parentWindow == null) return;
             List<Card> cardCopy = new List<Card>(marquis.Hand);
             foreach (Card card in cardCopy)
@@ -91,6 +100,7 @@ namespace RootRemake_Project.Components
                         // REFRESH HAND
                         parentWindow.UpdateHandDisplay();
                         parentWindow.endTurnBtn.IsEnabled = true;
+                        marquis.AvailableWood += 1;
                     }
                     if (card.Suit == 1 && lastActionClicked == "GainAction")
                     {
@@ -99,6 +109,7 @@ namespace RootRemake_Project.Components
                         parentWindow.UpdateHandDisplay();
                         parentWindow.endTurnBtn.IsEnabled = true;
                         marquis.DaylightActions += 2;
+                        UpdateActionsInfo();
                     }
                     else if (lastActionClicked == "GainAction")
                     {
@@ -127,12 +138,18 @@ namespace RootRemake_Project.Components
                         break;
                     case "BuildWorkshop":
                         parentWindow.AddBuildingToLocation(locationId, PlayerID, "Workshop");
+                        marquis.AvailableWood -= marquis.BuildingCosts[6 - marquis.AvailableWorkshops];
+                        marquis.AvailableWorkshops--;
                         break;
                     case "BuildSawmill":
                         parentWindow.AddBuildingToLocation(locationId, PlayerID, "Sawmill");
+                        marquis.AvailableWood -= marquis.BuildingCosts[6 - marquis.AvailableSawmills];
+                        marquis.AvailableSawmills--;
                         break;
                     case "BuildRecruiter":
                         parentWindow.AddBuildingToLocation(locationId, PlayerID, "Recruiter");
+                        marquis.AvailableWood -= marquis.BuildingCosts[6 - marquis.AvailableRecruiters];
+                        marquis.AvailableRecruiters--;
                         break;
                     default:
                         break;
@@ -142,6 +159,7 @@ namespace RootRemake_Project.Components
 
 
             }
+            UpdateActionsInfo();
 
         }
         /// <summary>
@@ -165,6 +183,9 @@ namespace RootRemake_Project.Components
             { 
                 EnableActionButtons();
             }
+            recruitWoodLbl.Content = marquis.BuildingCosts[6-marquis.AvailableRecruiters];
+            sawmillWoodLbl.Content = marquis.BuildingCosts[6 - marquis.AvailableSawmills];
+            workshopWoodLbl.Content = marquis.BuildingCosts[6 - marquis.AvailableWorkshops];
 
             // Updates parent window with the current player
             var parentWindow = Window.GetWindow(this) as GameScreen;
@@ -184,14 +205,16 @@ namespace RootRemake_Project.Components
             buildRecruiterBtn.IsEnabled = false;
             buildSawmillBtn.IsEnabled = false;
             buildWorkshopBtn.IsEnabled = false;
-            
             gainActionBtn.IsEnabled = true; 
         }
 
         // enables the action buttons
         private void EnableActionButtons()
         {
+            Debug.WriteLine($"Available Wood: {marquis.AvailableWood}");
+            Debug.WriteLine($"Sawmill Cost: {marquis.BuildingCosts[6 - marquis.AvailableSawmills]}");
 
+            // THIS NOT WORKING TODO
             if (recruitDone)
             {
                 recruitBtn.IsEnabled = false;
@@ -201,7 +224,7 @@ namespace RootRemake_Project.Components
                 recruitBtn.IsEnabled = true;
             }
 
-            if (marquis.BuildingCosts[marquis.AvailableSawmills] > marquis.AvailableWood)
+            if (marquis.BuildingCosts[6-marquis.AvailableSawmills] > marquis.AvailableWood)
             {
                 buildSawmillBtn.IsEnabled = false;
             }
@@ -209,7 +232,7 @@ namespace RootRemake_Project.Components
             {
                 buildSawmillBtn.IsEnabled = true;
             }
-            if (marquis.BuildingCosts[marquis.AvailableWorkshops] > marquis.AvailableWood)
+            if (marquis.BuildingCosts[6-marquis.AvailableWorkshops] > marquis.AvailableWood)
             {
                 buildWorkshopBtn.IsEnabled = false;
             }
@@ -217,7 +240,7 @@ namespace RootRemake_Project.Components
             {
                 buildWorkshopBtn.IsEnabled = true;
             }
-            if (marquis.BuildingCosts[marquis.AvailableRecruiters] > marquis.AvailableWood)
+            if (marquis.BuildingCosts[6-marquis.AvailableRecruiters] > marquis.AvailableWood)
             {
                 buildRecruiterBtn.IsEnabled = false;
             }
@@ -230,9 +253,6 @@ namespace RootRemake_Project.Components
             attackBtn.IsEnabled = true;
             recruitBtn.IsEnabled = true;
             overworkBtn.IsEnabled = true;
-            buildRecruiterBtn.IsEnabled = true;
-            buildSawmillBtn.IsEnabled = true;
-            buildWorkshopBtn.IsEnabled = true;
 
         }
 
@@ -284,8 +304,7 @@ namespace RootRemake_Project.Components
             // since update actions removes 1 action we add 2
             
             UpdateActionsInfo();
-            // Calls EnableActionButtons to enable the action buttons duhhhhhhhh
-            EnableActionButtons();
+            
         }
 
         private void overworkBtn_Click(object sender, RoutedEventArgs e)
@@ -297,7 +316,9 @@ namespace RootRemake_Project.Components
                 parentWindow.toggleHandBtn_Click(parentWindow, new RoutedEventArgs());
             }
 
+            marquis.DaylightActions++;
             UpdateActionsInfo();
+
         }
 
         #endregion
@@ -307,7 +328,7 @@ namespace RootRemake_Project.Components
         private void buildWorkShopBtn_Click(object sender, RoutedEventArgs e)
         {
             lastActionClicked = "BuildWorkshop";
-            AttemptBuild("Workshop");
+            
 
             var parentWindow = Window.GetWindow(this) as GameScreen;
             //(MarquisDeCat)parentWindow.Players[PlayerID].TotalBuildings();
@@ -328,7 +349,7 @@ namespace RootRemake_Project.Components
             }
             parentWindow.HighlightLocations(buildableLocations);
 
-            UpdateActionsInfo();
+           
         }
 
         private void buildSawmillBtn_Click(object sender, RoutedEventArgs e)
@@ -354,8 +375,8 @@ namespace RootRemake_Project.Components
             }
             parentWindow.HighlightLocations(buildableLocations);
 
-            AttemptBuild("Sawmill");
-            UpdateActionsInfo();
+            
+  
         }
 
         private void buildRecruiterBtn_Click(object sender, RoutedEventArgs e)
@@ -382,68 +403,10 @@ namespace RootRemake_Project.Components
             }
             parentWindow.HighlightLocations(buildableLocations);
             recruitDone = true;
-            UpdateActionsInfo();
+          
         }
 
-        private void AttemptBuild(string buildingType)
-        {
-            int builtCount = 0;
-            int remaining = 0;
-            Uri imageSource = null;
-            int cost = 0;
-            string buildingName = "";
-            
-           
-
-            switch (buildingType)
-            {
-                case "Sawmill":
-                    builtCount = 6 - marquis.AvailableSawmills;
-                    remaining = marquis.AvailableSawmills;
-                    imageSource = marquis.SawmillArt;
-                    buildingName = "Sawmill";
-                    break;
-                case "Workshop":
-                    builtCount = 6 - marquis.AvailableWorkshops;
-                    remaining = marquis.AvailableWorkshops;
-                    imageSource = marquis.WorkshopArt;
-                    buildingName = "Workshop";
-                    break;
-                case "Recruiter":
-                    builtCount = 6 - marquis.AvailableRecruiters;
-                    remaining = marquis.AvailableRecruiters;
-                    imageSource = marquis.RecruiterArt;
-                    buildingName = "Recruiter";
-                    break;
-            }
-
-            if (remaining <= 0)
-            {
-                MessageBox.Show($"Not enough wood to build a {buildingType}. You need {cost} wood.");
-                return;
-            }
-
-            // deduct wood
-            marquis.AvailableWood -= cost;
-
-            // update remaining count
-            switch (buildingType)
-            {
-                case "Sawmill":
-                    marquis.AvailableSawmills--;
-                    break;
-                case "Workshop":
-                    marquis.AvailableWorkshops--;
-                    break;
-                case "Recruiter":
-                    marquis.AvailableRecruiters--;
-                    break;
-            }
-
-            // render building on board -- update later to let user choose location
-            //PlaceBuildingOnBoard(imageSource, buildingName);
-        }
-
+        
 
 
 

@@ -990,7 +990,7 @@ namespace RootRemake_Project
             sidePanelGrid.Children.Add(control);
             Grid.SetRow(control, 3);
             SidePanelLoaded = true;
-
+            HighlightLocations(new List<int>());
 
         }
         public static UserControl? AddControlByName(string character, string turnPhase)
