@@ -1,11 +1,11 @@
 # 🌲 Root: Our Digital Adaptation
 Welcome to our recreation of the beloved Root tabletop game reimagined as a digital experience! \
-This project is being developed as part of the Object-Oriented Programming 3 (COSC 2200) course at Durham College. Our goal is to apply advanced OOP principles to build a structured, scalable, and interactive game using C# and WPF.
+This project is being developed as part of the Object-Oriented Programming 3 (COSC 2200) course at Durham College. Our goal is to apply advanced OOP principles to build a structured, scalable, and interactive game using C# and WPF. \
 Project Lead and lead developer: [Max Dinsmore](https://github.com/maxwelldinsmore) \
 Main Developer for cards implementation: [Carlos Carvalho](https://github.com/CarlosCarvalhoC) \
 Artist for custom assets: [Bilgan Kiris](https://github.com/bilgandc) \
 Game presentation lead: [Mariah Laroco](https://github.com/marroco11) \
-Game rules Implementation [Shane Walker](https://github.com/Hannibpl) \
+Game rules Implementation [Shane Walker](https://github.com/Hannibpl)
 
 # 🎮 About the Game
 Deep in a vast and mysterious forest, four factions are locked in a struggle for power. The once-mighty Eyrie Dynasties seek to reclaim their lost glory. The ambitious Marquise de Cat has industrialized the woods for her own ends. Meanwhile, the Woodland Alliance stirs in the shadows, plotting a rebellion, and a lone Vagabond roams the land, picking sides (or playing all of them).
