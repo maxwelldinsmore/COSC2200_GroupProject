@@ -52,9 +52,10 @@ namespace RootRemake_Project.Components
                 playerID = parentWindow.CurrentPlayerTurn;
                 parentWindow.LocationClicked += ParentWindow_LocationClicked;
                 eyrie = (Eyrie)parentWindow.Players[playerID];
+                parentWindow.endTurnBtn.IsEnabled = false;
             }
+
             RefreshDecree();
-            Turmoil();
             // Loads in icons for the eyrie Events
         }
         private void ParentWindow_LocationClicked(object sender, int locationId)
@@ -183,6 +184,11 @@ namespace RootRemake_Project.Components
                         }
                     }
                 }
+                if (Highlightable.Count == 0)
+                {
+                    Turmoil();
+                    return;
+                }
                 parentWindow.HighlightLocations(Highlightable);
 
             }
@@ -215,24 +221,34 @@ namespace RootRemake_Project.Components
 
             List<int> Highlightable = new List<int>();
 
-            foreach (Location location in parentWindow.Locations)
+            if (parentWindow != null)
             {
-                // Check if roosts are in the location
-                if (location.Armies.Any(army => army.PlayerID == playerID))
+                foreach (Location location in parentWindow.Locations)
                 {
-                    if (eyrie.moveDecree.Contains(1))
+                    // Check if roosts are in the location
+                    if (location.Armies.Any(army => army.PlayerID == playerID))
                     {
-                        Highlightable.Add(location.LocationID);
+                        if (eyrie.moveDecree.Contains(1))
+                        {
+                            Highlightable.Add(location.LocationID);
+                        }
+                        else if (eyrie.moveDecree.Any(i => i == location.LocationFaction))
+                        {
+                            Highlightable.Add(location.LocationID);
+                        }
                     }
-                    else if (eyrie.moveDecree.Any(i => i == location.LocationFaction))
-                    {
-                        Highlightable.Add(location.LocationID);
-                    }
+
+
                 }
-                
-                
+                if (Highlightable.Count == 0)
+                {
+                    Turmoil();
+                    return;
+                }
+                parentWindow.HighlightLocations(Highlightable);
             }
-            parentWindow.HighlightLocations(Highlightable);
+            
+            
         }
 
         private void FinalizeMove(int locationID)
@@ -283,7 +299,7 @@ namespace RootRemake_Project.Components
         private void Attack()
         {
             var parentWindow = Window.GetWindow(this) as GameScreen;
-            List<int> buildableLocations = new List<int>();
+            List<int> fightableLocations = new List<int>();
             if (parentWindow != null)
             {
                 foreach (Location location in parentWindow.Locations)
@@ -292,15 +308,20 @@ namespace RootRemake_Project.Components
                     {
                         if (eyrie.buildDecree.Contains(1))
                         {
-                            buildableLocations.Add(location.LocationID);
+                            fightableLocations.Add(location.LocationID);
                         }
                         else if (eyrie.buildDecree.Any(i => i == location.LocationFaction))
                         {
-                            buildableLocations.Add(location.LocationID);
+                            fightableLocations.Add(location.LocationID);
                         }
                     }
                 }
-                parentWindow.HighlightLocations(buildableLocations);
+                if (fightableLocations.Count == 0)
+                {
+                    Turmoil();
+                    return;
+                }
+                parentWindow.HighlightLocations(fightableLocations);
             }
         }
 
@@ -362,7 +383,12 @@ namespace RootRemake_Project.Components
                     Debug.WriteLine($"Location {location.LocationID} can build: {location.CanBuild()}");
                     Debug.WriteLine(location.ruledByPlayer(playerID));
                 }
-               
+               if (buildableLocations.Count == 0)
+               {
+                    Turmoil();
+                    return;
+               }
+                
                 parentWindow.HighlightLocations(buildableLocations);
             }
             
@@ -398,6 +424,7 @@ namespace RootRemake_Project.Components
             if (parentWindow != null)
             {
                 parentWindow.endTurnBtn.IsEnabled = true;
+                parentWindow.Players[playerID].CharacterSetup();
             }
         }
 

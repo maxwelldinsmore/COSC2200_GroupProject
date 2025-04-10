@@ -1,4 +1,5 @@
 ﻿using RootRemake_Project.CharacterClasses;
+using RootRemake_Project.Components;
 using System.Diagnostics;
 using System.Numerics;
 using System.Text;
@@ -22,150 +23,144 @@ namespace RootRemake_Project
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public bool toggled3 = false; // Toggle for the third button
+        public bool toggled4 = false; // Toggle for the fourth button
         public MainWindow()
         {
             InitializeComponent();
 
 
-            /// If you click run with debugging the debugger is attached code 
-            /// will run, i.e. straight into the game screen or allowing
-            /// character selection to go first.
-            //if (Debugger.IsAttached)
-            //{
-            //}
-                Player[] players = new Player[4];
 
-                GameScreen gameScreen = new GameScreen();
-                gameScreen.Closed += (sender, e) => this.Show();
-                this.Hide();
-                gameScreen.Show();
-            
+            Player[] players = new Player[2];
+            players[0] = new MarquisDeCat("Bilgan");
+            players[1] = new Eyrie("Mariah");
+            GameScreen gameScreen = new GameScreen(players);
+            gameScreen.Closed += (sender, e) => this.Show();
+            this.Hide();
+            gameScreen.Show();
+
 
         }
 
-        private Button lastSelectedButton = null; // Store the last selected character
-
-        private void CharacterSelected(object sender, RoutedEventArgs e)
+        private Player assignCharacter(characterSelect characterSelect)
         {
-            Button selectedButton = sender as Button;
-            
-            if (selectedButton == null) return;
-
-            StackPanel characterSelection = selectedButton.Parent as StackPanel;
-            if (characterSelection == null) return;
-
-            // Reset all buttons in the current player's selection area
-            foreach (Button btn in characterSelection.Children)
+            if (characterSelect.SelectedCharacter == null)
             {
-                btn.Background = Brushes.Transparent;
+                return null;
+            }
+            if (string.IsNullOrEmpty(characterSelect.charText.Text))
+            {
+                return null;
             }
 
-            // Highlight the selected button in green
-            selectedButton.Background = new SolidColorBrush(Color.FromArgb(128, 0, 255, 0));
-
-            // If there was a previously selected character, highlight it in red
-            if (lastSelectedButton != null && lastSelectedButton != selectedButton)
+            Player player;
+            if (characterSelect.SelectedCharacter == "Marquis")
             {
-                lastSelectedButton.Background = Brushes.Red;
+                player = new MarquisDeCat(characterSelect.charText.Text);
             }
-
-            // Store this as the last selected button
-            lastSelectedButton = selectedButton;
+            else if (characterSelect.SelectedCharacter == "Eyrie")
+            {
+                player = new Eyrie(characterSelect.charText.Text);
+            }
+            else if (characterSelect.SelectedCharacter == "Woodland")
+            {
+                player = new Woodland(characterSelect.charText.Text);
+            }
+            else 
+            {
+                player = new Vagabond(characterSelect.charText.Text);
+            }
+            return player;
         }
-
-
 
 
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
-            GameScreen gameScreen = new GameScreen();
+            Player[] players;
+            
+           
+            Player[] UpdatedPlayers;
+            // Get player array 
+            if (toggled3 && toggled4)
+            {
+                players = new Player[2];
+                players[0] = assignCharacter(c1);
+                players[1] = assignCharacter(c2);
+                UpdatedPlayers = players;
+            }
+            else if (toggled3)
+            {
+                players = new Player[3];
+                players[0] = assignCharacter(c1);
+                players[1] = assignCharacter(c2);
+                players[3] = assignCharacter(c4);
+            }
+            else if (toggled4)
+            {
+                players = new Player[3];
+                players[0] = assignCharacter(c1);
+                players[1] = assignCharacter(c2);
+                players[2] = assignCharacter(c3);
+            }
+            else
+            {
+                players = new Player[4];
+                players[0] = assignCharacter(c1);
+                players[1] = assignCharacter(c2);
+                players[2] = assignCharacter(c3);
+                players[3] = assignCharacter(c4);
+            }
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (players[i] == null)
+                {
+                    MessageBox.Show("Please select a character for all players.");
+                    return;
+                }
+            }
+            GameScreen gameScreen = new GameScreen(players);
+
             gameScreen.Closed += (sender, e) => this.Show();
             this.Hide();
             gameScreen.Show();
 
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private int playerCount = 1;
-        private void AddPLayer_Click(object sender, RoutedEventArgs e)
+        
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (playerCount >= 6) return; // Limit to 6 players
-
-            playerCount++;
-
-            // Increase the window height dynamically
-            this.Height += 170;
-
-            // Create a rectangle for the new player's section
-            Rectangle playerRectangle = new Rectangle
+            if (!toggled3)
             {
-                Height = 257,
-                Width = 496,
-                Stroke = Brushes.Black,
-                Margin = new Thickness(0, 10, 0, 0)
-            };
-
-            Label nameLabel = new Label
-            {
-                Content = "Player Name:",
-                Margin = new Thickness(23, 10, 0, 0)
-            };
-
-            TextBox playerNameBox = new TextBox
-            {
-                Width = 200,
-                Margin = new Thickness(23, 5, 0, 0)
-            };
-
-            Label charSelectionLabel = new Label
-            {
-                Content = "Select Character:",
-                Margin = new Thickness(23, 5, 0, 0)
-            };
-
-            StackPanel characterSelection = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(23, 5, 0, 0) };
-
-            string[] characterNames = { "Marquis", "Eyrie", "Woodland", "Vagabond", "Vagabond" };
-
-            foreach (string character in characterNames)
-            {
-                Button characterButton = new Button
-                {
-                    Width = 61,
-                    Height = 61,
-                    Tag = character,
-                    Margin = new Thickness(5)
-                };
-
-                Image characterImage = new Image
-                {
-                    Source = new BitmapImage(new Uri($"/Assets/{character}/Icon.png", UriKind.Relative)),
-                    Width = 59,
-                    Height = 59
-                };
-
-                characterButton.Content = characterImage;
-                characterButton.Click += CharacterSelected;
-
-                characterSelection.Children.Add(characterButton);
+                c3.Opacity = 0.5;
+                toggled3 = !toggled3;
+                c3.IsEnabled = false; // Disable the button
             }
+            else
+            {
+                c3.Opacity = 1;
+                toggled3 = !toggled3;
+                c3.IsEnabled = true; // Enable the button
 
-            // Create a StackPanel to hold the player's elements
-            StackPanel playerPanel = new StackPanel { Margin = new Thickness(0, 10, 0, 0) };
-            playerPanel.Children.Add(playerRectangle);
-            playerPanel.Children.Add(nameLabel);
-            playerPanel.Children.Add(playerNameBox);
-            playerPanel.Children.Add(charSelectionLabel);
-            playerPanel.Children.Add(characterSelection);
-
-            // Add the player panel to the main StackPanel (PlayersContainer)
-            PlayersContainer.Children.Add(playerPanel);
+            }
         }
 
-
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (!toggled4)
+            {
+                c4.Opacity = 0.5;
+                toggled4 = !toggled4;
+                c4.IsEnabled = false; // Disable the button
+            }
+            else
+            {
+                c4.Opacity = 1;
+                toggled4 = !toggled4;
+                c4.IsEnabled = true;
+            }
+        }
     }
 }

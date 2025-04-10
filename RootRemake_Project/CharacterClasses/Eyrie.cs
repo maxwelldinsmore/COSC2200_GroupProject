@@ -44,6 +44,12 @@ namespace RootRemake_Project.CharacterClasses
         }
         public override void CharacterSetup()
         {
+
+            attackDecree = new List<int>();
+            buildDecree = new List<int>();
+
+            moveDecree = new List<int>();
+            recruitDecree = new List<int>();
             // Where we will add leader abilities / base actions 
             moveDecree.Add(1);
             //attackDecree.Add(1);

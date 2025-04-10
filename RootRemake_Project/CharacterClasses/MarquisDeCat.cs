@@ -124,12 +124,7 @@ namespace RootRemake_Project.CharacterClasses
 
         }
 
-        // battle: battles againts another Character
-        private void Battle()
-        {
-
-        }
-
+       
         // overwork: spends a card to plcae one wood at a sawmill in a matching clearing
         private void Overwork()
         {

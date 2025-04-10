@@ -81,16 +81,14 @@ namespace RootRemake_Project
 
         #endregion
 
-        public GameScreen()
+        public GameScreen(Player[] players)
         {
             InitializeComponent();
             this.Locations = LocationInfo.MapLocations;
-            Players = new Player[2];
-            Players[0] = new MarquisDeCat("Bilgan");
-            Players[1] = new Eyrie("Mariah");
+           
             cardDeck = CardDeck.cardDeck;
             discardPile = new List<Card>();
-            
+            Players = players;
             // Shuffle and deal initial cards
             ShuffleDeck();
             DealInitialCards();
