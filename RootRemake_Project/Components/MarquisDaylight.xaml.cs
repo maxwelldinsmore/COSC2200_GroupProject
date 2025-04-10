@@ -30,7 +30,8 @@ namespace RootRemake_Project.Components
         private int PlayerID;
         private string lastActionClicked;
         private bool recruitDone;
-
+        private bool moving = false; // used to check if the player is moving a warrior or not
+        private int movingFromLocationID;
         public MarquisDaylight()
         {
             InitializeComponent();
@@ -70,7 +71,6 @@ namespace RootRemake_Project.Components
                 // then returns the object once end actions are run out
                 marquis = (MarquisDeCat)parentWindow.Players[parentWindow.CurrentPlayerTurn];
                 marquis.Daylight();
-                marquis.DaylightActions += 1;
                 UpdateActionsInfo();
             }
             if (parentWindow?.cardHand != null)
@@ -108,7 +108,7 @@ namespace RootRemake_Project.Components
                         // REFRESH HAND
                         parentWindow.UpdateHandDisplay();
                         parentWindow.endTurnBtn.IsEnabled = true;
-                        marquis.DaylightActions += 2;
+                        marquis.DaylightActions += 1;
                         UpdateActionsInfo();
                     }
                     else if (lastActionClicked == "GainAction")
@@ -131,31 +131,80 @@ namespace RootRemake_Project.Components
                 switch(lastActionClicked)
                 {
                     case "March":
-                        // march action
-                        break;
+                        if (!moving)
+                        {
+
+                            movingFromLocationID = locationId;
+                            List<int> Highlightables = new List<int>();
+                           
+                            Location location = parentWindow.Locations[locationId];
+
+                            foreach (int loc in parentWindow.Locations[locationId].ConnectedLocations)
+                            {
+                                if (parentWindow.Locations[loc].LocationType != "Forest")
+                                {
+                                    Highlightables.Add(loc);
+                                    
+                                }
+                            }
+                            moving = true;
+                            parentWindow.HighlightLocations(Highlightables);
+                            
+                        } else
+                        {
+                            Location location = parentWindow.Locations[locationId];
+                            // Deletes the action from the decree
+                            
+
+                            parentWindow.AddWarriorToLocation(location.LocationID, 1, PlayerID);
+                            parentWindow.DeductWarrior(movingFromLocationID, PlayerID, 1);
+                            moving = false;
+                            marquis.DaylightActions -= 1;
+                        }
+                            break;
                     case "Attack":
-                        // attack action
+                        
+                        Army myArmy = parentWindow.Locations[locationId].Armies.FirstOrDefault(a => a.PlayerID == PlayerID);
+
+                        Army enemyArmy = parentWindow.Locations[locationId].Armies.FirstOrDefault(a => a.PlayerID != PlayerID);
+                        if (myArmy != null && enemyArmy != null)
+                        {
+                            int[] damage = marquis.Battle();
+                            MessageBox.Show(parentWindow.Players[enemyArmy.PlayerID].UserName + " took " + damage[1] + " damage and " + parentWindow.Players[PlayerID].UserName + " took " + damage[0] + " damage.");
+                            parentWindow.DeductWarrior(locationId, enemyArmy.PlayerID, damage[1]);
+                            parentWindow.DeductWarrior(locationId, PlayerID, damage[0]);
+                        }
                         break;
                     case "BuildWorkshop":
                         parentWindow.AddBuildingToLocation(locationId, PlayerID, "Workshop");
                         marquis.AvailableWood -= marquis.BuildingCosts[6 - marquis.AvailableWorkshops];
                         marquis.AvailableWorkshops--;
+                        marquis.DaylightActions -= 1;
+                        marquis.VictoryPoints += marquis.WorkShopVP[6 - marquis.AvailableWorkshops];
                         break;
                     case "BuildSawmill":
                         parentWindow.AddBuildingToLocation(locationId, PlayerID, "Sawmill");
                         marquis.AvailableWood -= marquis.BuildingCosts[6 - marquis.AvailableSawmills];
                         marquis.AvailableSawmills--;
+                        marquis.DaylightActions -= 1;
+                        marquis.VictoryPoints += marquis.SawmillVP[6 - marquis.AvailableSawmills];
                         break;
                     case "BuildRecruiter":
                         parentWindow.AddBuildingToLocation(locationId, PlayerID, "Recruiter");
                         marquis.AvailableWood -= marquis.BuildingCosts[6 - marquis.AvailableRecruiters];
                         marquis.AvailableRecruiters--;
+                        marquis.DaylightActions -= 1;
+                        marquis.VictoryPoints += marquis.RecruiterVP[6 - marquis.AvailableRecruiters];
                         break;
                     default:
                         break;
 
                 }
-                parentWindow.HighlightLocations(new List<int>());
+                if (!moving)
+                {
+                    parentWindow.HighlightLocations(new List<int>());
+
+                }
 
 
             }
@@ -169,7 +218,7 @@ namespace RootRemake_Project.Components
         /// </summary>
         private void UpdateActionsInfo()
         {
-            marquis.DaylightActions -= 1;
+            
             actionsRemainingLabel.Content = "Actions Remaining: " + marquis.DaylightActions.ToString();
             woodCountLabel.Content = "Wood: " + marquis.AvailableWood.ToString();
 
@@ -260,12 +309,44 @@ namespace RootRemake_Project.Components
 
         private void marchBtn_Click(object sender, RoutedEventArgs e)
         {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+
+            List<int> Highlightable = new List<int>();
+
+            if (parentWindow != null)
+            {
+                foreach (Location location in parentWindow.Locations)
+                {
+                    // Check if roosts are in the location
+                    if (location.Armies.Any(army => army.PlayerID == PlayerID))
+                    {
+                      
+                        Highlightable.Add(location.LocationID);
+ 
+                    }
+                }
+                parentWindow.HighlightLocations(Highlightable);
+            }
             lastActionClicked = "March";
             UpdateActionsInfo();
         }
 
         private void attackBtn_Click(object sender, RoutedEventArgs e)
         {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            List<int> fightableLocations = new List<int>();
+            if (parentWindow != null)
+            {
+                foreach (Location location in parentWindow.Locations)
+                {
+                    if (location.Armies.Count > 1 && location.Armies.Any(c => c.PlayerID == PlayerID))
+                    {
+                        fightableLocations.Add(location.LocationID); 
+                    }
+                }
+                
+                parentWindow.HighlightLocations(fightableLocations);
+            }
             lastActionClicked = "Attack";
             UpdateActionsInfo();
         }
@@ -286,12 +367,12 @@ namespace RootRemake_Project.Components
                     }
                 }
             }
-            
+            marquis.DaylightActions -= 1;
             UpdateActionsInfo();
             recruitBtn.IsEnabled = false;
         }
 
-        //TODO: add a check to spend a wildcard first
+       
         private void gainActionBtn_Click(object sender, RoutedEventArgs e)
         {
             var parentWindow = Window.GetWindow(this) as GameScreen;
@@ -318,7 +399,7 @@ namespace RootRemake_Project.Components
 
             marquis.DaylightActions++;
             UpdateActionsInfo();
-
+            marquis.DaylightActions -= 1;
         }
 
         #endregion
