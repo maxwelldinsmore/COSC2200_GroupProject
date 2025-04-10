@@ -16,6 +16,8 @@ namespace RootRemake_Project.CharacterClasses
         public List<int> moveDecree;
         public List<int> buildDecree;
         public List<int> recruitDecree;
+
+        public int AvailableRoosts { get; set; }
         public Eyrie(string UserName) 
         {
             this.UserName = UserName;

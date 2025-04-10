@@ -28,7 +28,7 @@ namespace RootRemake_Project.Components
             this.Loaded += UserControl_Loaded;
         }
 
-        private void MarquisBirdsong_Unloaded(object sender, RoutedEventArgs e)
+        private void MarquisEvening_Unloaded(object sender, RoutedEventArgs e)
         {
             //var parentWindow = Window.GetWindow(this) as GameScreen;
             //if (parentWindow != null)
