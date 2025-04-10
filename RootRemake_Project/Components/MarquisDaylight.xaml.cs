@@ -29,6 +29,7 @@ namespace RootRemake_Project.Components
         private int lastLocationClicked;
         private int PlayerID;
         private string lastActionClicked;
+        private bool recruitDone;
 
         public MarquisDaylight()
         {
@@ -48,6 +49,10 @@ namespace RootRemake_Project.Components
                 parentWindow.Players[parentWindow.CurrentPlayerTurn] = marquis;
 
                 PlayerID = parentWindow.CurrentPlayerTurn;
+                if (parentWindow?.cardHand != null)
+                {
+                    parentWindow.cardHand.CardClicked += (cardId) => CardClicked(parentWindow.cardHand, cardId);
+                }
             }
         }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -70,6 +75,41 @@ namespace RootRemake_Project.Components
             }
             
         }
+
+        private void CardClicked(object sender, string cardID)
+        {
+           var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow == null) return;
+            List<Card> cardCopy = new List<Card>(marquis.Hand);
+            foreach (Card card in cardCopy)
+            {
+                if (card.CardKey == cardID)
+                {
+                    if (lastActionClicked == "Overwork")
+                    {
+                        parentWindow.Players[parentWindow.CurrentPlayerTurn].Hand.Remove(card);
+                        // REFRESH HAND
+                        parentWindow.UpdateHandDisplay();
+                        parentWindow.endTurnBtn.IsEnabled = true;
+                    }
+                    if (card.Suit == 1 && lastActionClicked == "GainAction")
+                    {
+                        parentWindow.Players[parentWindow.CurrentPlayerTurn].Hand.Remove(card);
+                        // REFRESH HAND
+                        parentWindow.UpdateHandDisplay();
+                        parentWindow.endTurnBtn.IsEnabled = true;
+                        marquis.DaylightActions += 2;
+                    }
+                    else if (lastActionClicked == "GainAction")
+                    {
+                        MessageBox.Show("You can only gain an action via a wild card");
+                    }
+
+                }
+            }
+
+        }
+
         private void ParentWindow_LocationClicked(object sender, int locationId)
         {
             lastLocationClicked = locationId;
@@ -125,7 +165,13 @@ namespace RootRemake_Project.Components
             { 
                 EnableActionButtons();
             }
-            
+
+            // Updates parent window with the current player
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow != null)
+            {
+                parentWindow.Players[parentWindow.CurrentPlayerTurn] = marquis;
+            }
         }
 
         // Disables the action buttons expect the gain action button
@@ -145,6 +191,41 @@ namespace RootRemake_Project.Components
         // enables the action buttons
         private void EnableActionButtons()
         {
+
+            if (recruitDone)
+            {
+                recruitBtn.IsEnabled = false;
+            }
+            else
+            {
+                recruitBtn.IsEnabled = true;
+            }
+
+            if (marquis.BuildingCosts[marquis.AvailableSawmills] > marquis.AvailableWood)
+            {
+                buildSawmillBtn.IsEnabled = false;
+            }
+            else
+            {
+                buildSawmillBtn.IsEnabled = true;
+            }
+            if (marquis.BuildingCosts[marquis.AvailableWorkshops] > marquis.AvailableWood)
+            {
+                buildWorkshopBtn.IsEnabled = false;
+            }
+            else
+            {
+                buildWorkshopBtn.IsEnabled = true;
+            }
+            if (marquis.BuildingCosts[marquis.AvailableRecruiters] > marquis.AvailableWood)
+            {
+                buildRecruiterBtn.IsEnabled = false;
+            }
+            else
+            {
+                buildRecruiterBtn.IsEnabled = true;
+            }
+
             marchBtn.IsEnabled = true;
             attackBtn.IsEnabled = true;
             recruitBtn.IsEnabled = true;
@@ -171,6 +252,21 @@ namespace RootRemake_Project.Components
 
         private void recruitBtn_Click(object sender, RoutedEventArgs e)
         {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow != null)
+            {
+                foreach (Location location in parentWindow.Locations)
+                {
+                    foreach (Building building in location.Buildings)
+                    {
+                        if (building.BuildingType == "Recruiter")
+                        {
+                            parentWindow.AddWarriorToLocation(location.LocationID, 1, PlayerID);
+                        }
+                    }
+                }
+            }
+            
             UpdateActionsInfo();
             recruitBtn.IsEnabled = false;
         }
@@ -178,9 +274,15 @@ namespace RootRemake_Project.Components
         //TODO: add a check to spend a wildcard first
         private void gainActionBtn_Click(object sender, RoutedEventArgs e)
         {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow.cardHand.Visibility != Visibility.Visible)
+            {
+                parentWindow.toggleHandBtn_Click(parentWindow, new RoutedEventArgs());
+            }
+
             lastActionClicked = "GainAction";
             // since update actions removes 1 action we add 2
-            marquis.DaylightActions += 2;
+            
             UpdateActionsInfo();
             // Calls EnableActionButtons to enable the action buttons duhhhhhhhh
             EnableActionButtons();
@@ -189,8 +291,11 @@ namespace RootRemake_Project.Components
         private void overworkBtn_Click(object sender, RoutedEventArgs e)
         {
             lastActionClicked = "Overwork";
-
-
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow.cardHand.Visibility != Visibility.Visible)
+            {
+                parentWindow.toggleHandBtn_Click(parentWindow, new RoutedEventArgs());
+            }
 
             UpdateActionsInfo();
         }
@@ -276,7 +381,7 @@ namespace RootRemake_Project.Components
 
             }
             parentWindow.HighlightLocations(buildableLocations);
-
+            recruitDone = true;
             UpdateActionsInfo();
         }
 
