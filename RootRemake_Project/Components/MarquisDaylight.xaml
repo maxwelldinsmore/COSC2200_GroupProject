@@ -24,9 +24,9 @@
         <Button x:Name="buildSawmillBtn" Content="Sawmill" HorizontalAlignment="Left" Margin="124,312,0,0" VerticalAlignment="Top" Height="53" Width="80" Click="buildSawmillBtn_Click"
                 ToolTip = "Build an sawmill" Background="#FFC4673C" FontSize="11" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
         <Button x:Name="overworkBtn" Content="Overwork" HorizontalAlignment="Left" Margin="128,145,0,0" VerticalAlignment="Top" Height="60" Width="98" Click="overworkBtn_Click"
-                ToolTip = "use wild card for one more action" Background="#FFC4673C" FontSize="11" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
-        <Button x:Name="gainActionBtn" Content="Gain Action" HorizontalAlignment="Left" Margin="131,210,0,0" VerticalAlignment="Top" Height="26" Width="91" Click="gainActionBtn_Click" 
-                ToolTip = "Gain an second action" Background="#FFC4673C" FontSize="10" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
+                ToolTip = "Gain one more wood" Background="#FFC4673C" FontSize="11" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
+        <Button x:Name="gainActionBtn" Content="Gain Action" HorizontalAlignment="Left" Margin="128,209,0,0" VerticalAlignment="Top" Height="26" Width="98" Click="gainActionBtn_Click" 
+                ToolTip = "use wild card for one more action" Background="#FFC4673C" FontSize="10" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
         <Label Content="00" HorizontalAlignment="Left" Margin="90,321,0,0" VerticalAlignment="Top" Width="29" FontSize="16" Height="31"/>
         <Label Content="00" HorizontalAlignment="Left" Margin="90,385,0,0" VerticalAlignment="Top" Width="29" FontSize="16" Height="31"/>
         <Label Content="00" HorizontalAlignment="Left" Margin="207,321,0,0" VerticalAlignment="Top" Width="29" FontSize="16" Height="31"/>
