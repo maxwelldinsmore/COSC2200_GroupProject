@@ -8,7 +8,7 @@
              FontFamily="{StaticResource Luminari}"
              Height="451" Width="253">
     <Grid x:Name="mainGrid">
-        <Label Content="Fulfill your Decree" ToolTip="Complete your decree based on card suits with Birds/Blues being wildcards." FontSize="25" HorizontalAlignment="Left" Margin="17,10,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="headerText" TextWrapping="Wrap" Text="Fulfill your Decree" ToolTip="Complete your decree based on card suits with Birds/Blues being wildcards." FontSize="25" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="175" Width="208"/>
         <!-- Recruit Section-->
         <Label x:Name="recruitLbl" ToolTip="Recruit in a matching clearing" FontSize="20" Content="Recruit" HorizontalAlignment="Left" Margin="17,74,0,0" VerticalAlignment="Top"/>
         <Grid x:Name="recruitGrid" Margin="17,105,56,308"/>

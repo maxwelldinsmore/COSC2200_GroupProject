@@ -47,7 +47,7 @@ namespace RootRemake_Project.CharacterClasses
             // Where we will add leader abilities / base actions 
             moveDecree.Add(1);
             //attackDecree.Add(1);
-            buildDecree.Add(1);
+            recruitDecree.Add(1);
         }
 
         public override void BirdSong()

@@ -54,6 +54,7 @@ namespace RootRemake_Project.Components
                 eyrie = (Eyrie)parentWindow.Players[playerID];
             }
             RefreshDecree();
+            Turmoil();
             // Loads in icons for the eyrie Events
         }
         private void ParentWindow_LocationClicked(object sender, int locationId)
@@ -141,8 +142,7 @@ namespace RootRemake_Project.Components
                 buildLbl.Foreground = new SolidColorBrush(Colors.White);
                 currentAction = "Attack";
                 
-                // TODO: IMPLEMENT ATTACK
-                //Attack();
+                Attack();
                 return;
             }
 
@@ -282,6 +282,26 @@ namespace RootRemake_Project.Components
 
         private void Attack()
         {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            List<int> buildableLocations = new List<int>();
+            if (parentWindow != null)
+            {
+                foreach (Location location in parentWindow.Locations)
+                {
+                    if (location.Armies.Count > 1 && location.Armies.Any(c => c.PlayerID == playerID))
+                    {
+                        if (eyrie.buildDecree.Contains(1))
+                        {
+                            buildableLocations.Add(location.LocationID);
+                        }
+                        else if (eyrie.buildDecree.Any(i => i == location.LocationFaction))
+                        {
+                            buildableLocations.Add(location.LocationID);
+                        }
+                    }
+                }
+                parentWindow.HighlightLocations(buildableLocations);
+            }
         }
 
         private void FinalizeAttack(int locationID)
@@ -291,11 +311,25 @@ namespace RootRemake_Project.Components
             {
                 Location location = parentWindow.Locations[locationID];
                 // Deletes the action from the decree
-                bool deleted = eyrie.moveDecree.Remove(parentWindow.Locations[movingFromLocationID].LocationFaction);
+                bool deleted = eyrie.attackDecree.Remove(parentWindow.Locations[movingFromLocationID].LocationFaction);
                 if (!deleted)
                 {
-                    eyrie.moveDecree.Remove(1);
+                    eyrie.attackDecree.Remove(1);
                 }
+
+                // Battle Actions
+
+                Army myArmy = location.Armies.FirstOrDefault(a => a.PlayerID == playerID);
+
+                Army enemyArmy = location.Armies.FirstOrDefault(a => a.PlayerID != playerID);
+                if (myArmy != null && enemyArmy != null)
+                {
+                    int[] damage = eyrie.Battle();
+                    MessageBox.Show(parentWindow.Players[enemyArmy.PlayerID].UserName + " took " + damage[1] + " damage and " + parentWindow.Players[playerID].UserName + " took " + damage[0] + " damage.");
+                    parentWindow.DeductWarrior(locationID, enemyArmy.PlayerID, damage[1]);
+                    parentWindow.DeductWarrior(locationID, playerID, damage[0]);
+                }
+
             }
 
         }
@@ -344,6 +378,31 @@ namespace RootRemake_Project.Components
         }
 
         #endregion
+
+
+        #region Turmoil Methods
+
+        private void Turmoil()
+        {
+            foreach (UIElement content in mainGrid.Children)
+            {
+                if (content is FrameworkElement element && element.Name != "headerText")
+                {
+                    element.Visibility = Visibility.Hidden;
+                }
+            }
+
+            headerText.Foreground = new SolidColorBrush(Colors.Red);
+            headerText.Text = "Turmoil! Your decree has failed and you must start anew";
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow != null)
+            {
+                parentWindow.endTurnBtn.IsEnabled = true;
+            }
+        }
+
+        #endregion
+
         private void RefreshDecree()
         {
             attackGrid.Children.Clear();

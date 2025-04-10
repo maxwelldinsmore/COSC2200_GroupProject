@@ -73,7 +73,7 @@ namespace RootRemake_Project.CharacterClasses
         /// </summary>
         /// <returns>int[] {damage attacker takes, damage defender takes}</returns>
         /// //TODO: add condition for woodland alliance
-        public int[] Battle(Player attacker, Player defender)
+        public int[] Battle()
         {
             int roll1 = rand.Next(0, 4);
             int roll2 = rand.Next(0, 4);

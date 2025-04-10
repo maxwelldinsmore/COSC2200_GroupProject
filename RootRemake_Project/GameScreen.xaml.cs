@@ -838,8 +838,8 @@ namespace RootRemake_Project
                 Army army = Locations[locationID].Armies.First(a => a.PlayerID == playerID);
                 // If there is already an army in the location, add to it
               
-
-                foreach (Army armyCheck in Locations[locationID].Armies)
+                List<Army> armyList = Locations[locationID].Armies.Where(a => a.PlayerID == playerID).ToList();
+                foreach (Army armyCheck in armyList)
                 {
                     if (armyCheck.PlayerID == playerID)
                     {
