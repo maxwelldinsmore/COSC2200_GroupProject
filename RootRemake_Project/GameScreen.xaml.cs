@@ -68,7 +68,7 @@ namespace RootRemake_Project
 
         public event EventHandler<int> LocationClicked;
 
-        
+        public bool DiscardMode = false;
 
         /// <summary>
         /// Keeps track of users actions
@@ -246,20 +246,19 @@ namespace RootRemake_Project
 
         private void OnCardClicked(string cardIndex)
         {
-            var currentPlayer = Players[CurrentPlayerTurn];
-            int excessCards = currentPlayer.Hand.Count - 5;
 
-            if (excessCards > 0 && TurnPhase == "Evening")
+            Card clickedCard = Players[CurrentPlayerTurn].Hand.Find(c => c.CardKey == cardIndex);
+            if (clickedCard != null )
             {
-                // Discard mode
-                Card clickedCard = currentPlayer.Hand.Find(c => c.CardKey == cardIndex);
+                if (DiscardMode)
+                {
+                    Players[CurrentPlayerTurn].Hand.Remove(clickedCard);
+                    discardPile.Add(clickedCard);
+                    CheckForDiscard();
+                }
             }
-            else
-            {
-                // Normal card viewing
-                Card clickedCard = currentPlayer.Hand.Find(c => c.CardKey == cardIndex);
-                
-            }
+
+            
         }
 
         private string GetSuitName(int suit)
@@ -276,65 +275,83 @@ namespace RootRemake_Project
 
         private void CheckForDiscard()
         {
-            var currentPlayer = Players[CurrentPlayerTurn];
-            int excessCards = currentPlayer.Hand.Count - 5;
-
-            if (excessCards > 0)
+            if (!SidePanelLoaded)
             {
-                // Show discard notification
-                string message = $"{currentPlayer.UserName} has too many cards!\n" +
-                               $"You have {currentPlayer.Hand.Count} cards (max 5).\n" +
-                               $"Please discard {excessCards} card(s).\n\n" +
-                               "Click OK then select cards to discard from your hand.";
+                DiscardPopup discardControl = new DiscardPopup();
+                sidePanelGrid.Children.Add(discardControl);
+                Grid.SetRow(discardControl, 3);
+                SidePanelLoaded = true;
+            }
+            DiscardMode = true;
 
-                MessageBox.Show(message, "Too Many Cards", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            // Force hand to be visible
+            IsHandVisible = true;
+            cardHand.Visibility = Visibility.Visible;
+            toggleHandBtn.Content = "Hide Hand";
+            cardHand.DisplayHand(Players[CurrentPlayerTurn].Hand);
 
-                // Force hand to be visible
-                IsHandVisible = true;
-                cardHand.Visibility = Visibility.Visible;
-                toggleHandBtn.Content = "Hide Hand";
-                cardHand.DisplayHand(currentPlayer.Hand);
+            if (Players[CurrentPlayerTurn].Hand.Count < 6)
+            {
+                // Hide the discard popup if hand is less than 6
+                    sidePanelGrid.Children.Remove(sidePanelGrid.Children.OfType<DiscardPopup>().First());
+
+
+                DiscardMode = false;
+                SidePanelLoaded = false;
+                ChangePlayersTurn();
+                TurnPhase = "Birdsong";
+                turnPhaseImage.Source = new BitmapImage(
+                    new Uri("pack://application:,,,/Assets/Birdsong.png", UriKind.RelativeOrAbsolute));
+                LoadUserControl(TurnPhase, Players[CurrentPlayerTurn].CharacterName());
+
+            }
+            else
+            {
+                // Show the discard popup
+                foreach (var control in sidePanelGrid.Children.OfType<DiscardPopup>())
+                {
+                    control.Visibility = Visibility.Visible;
+                }
             }
         }
-
         #endregion
 
         #region Victory Points
 
         private readonly Point[] _scoreTrackPositions = new Point[]
-      {
-new (17, 740),  // VP 0
-           new (43.3, 740),  // VP 1 
-           new (69.6, 740),  // VP 2
-           new (95.9, 740),  // VP 3
-           new (122.2, 740), // VP 4                      
-           new (148.5, 740), // VP 5
-           new (174.8, 740), // VP 6
-           new (201.1, 740), // VP 7 
-           new (227.4, 740), // VP 8
-           new (253.7, 740), // VP 9
-           new (280, 740),   // VP 10                     
-           new (306.3, 740), // VP 11
-           new (332.6, 740), // VP 12
-           new (358.9, 740), // VP 13
-           new (385.2, 740), // VP 14
-           new (411.5, 740), // VP 15
-           new (437.8, 740), // VP 16
-           new (464.1, 740), // VP 17
-           new (490.4, 740), // VP 18
-           new (516.7, 740), // VP 19
-           new (543, 740),   // VP 20
-           new (569.3, 740), // VP 21
-           new (595.6, 740), // VP 22
-           new (621.9, 740), // VP 23
-           new (648.2, 740), // VP 24
-           new (674.5, 740), // VP 25
-           new (700.8, 740), // VP 26
-           new (727.1, 740), // VP 27
-           new (753.4, 740), // VP 28
-           new (779.7, 740), // VP 29
-           new (806, 740)    // VP 30
-     };
+        {
+            new (17, 740),  // VP 0
+            new (43.3, 740),  // VP 1 
+            new (69.6, 740),  // VP 2
+            new (95.9, 740),  // VP 3
+            new (122.2, 740), // VP 4                      
+            new (148.5, 740), // VP 5
+            new (174.8, 740), // VP 6
+            new (201.1, 740), // VP 7 
+            new (227.4, 740), // VP 8
+            new (253.7, 740), // VP 9
+            new (280, 740),   // VP 10                     
+            new (306.3, 740), // VP 11
+            new (332.6, 740), // VP 12
+            new (358.9, 740), // VP 13
+            new (385.2, 740), // VP 14
+            new (411.5, 740), // VP 15
+            new (437.8, 740), // VP 16
+            new (464.1, 740), // VP 17
+            new (490.4, 740), // VP 18
+            new (516.7, 740), // VP 19
+            new (543, 740),   // VP 20
+            new (569.3, 740), // VP 21
+            new (595.6, 740), // VP 22
+            new (621.9, 740), // VP 23
+            new (648.2, 740), // VP 24
+            new (674.5, 740), // VP 25
+            new (700.8, 740), // VP 26
+            new (727.1, 740), // VP 27
+            new (753.4, 740), // VP 28
+            new (779.7, 740), // VP 29
+            new (806, 740)    // VP 30
+        };
 
         private void PlaceVPToken(Player player)
         {
@@ -633,6 +650,9 @@ new (17, 740),  // VP 0
         {
             // 
             RemoveControlByName(Players[CurrentPlayerTurn].CharacterName(), TurnPhase);
+
+           
+
             if (TurnPhase == "Setup")
             {
                 ChangePlayersTurn();
@@ -654,11 +674,6 @@ new (17, 740),  // VP 0
             }
             else if (TurnPhase == "Evening")
             {
-                DrawCardsForPlayer(CurrentPlayerTurn, 1);
-
-                // Check for discard before changing turns
-                CheckForDiscard();
-                Players[CurrentPlayerTurn].VictoryPoints++;
                 PlaceVPToken(Players[CurrentPlayerTurn]);
 
                 // Add this victory check
@@ -667,10 +682,18 @@ new (17, 740),  // VP 0
                 // Only proceed if game isn't over
                 if (endTurnBtn.IsEnabled)
                 {
+
+                    if (DiscardRequired())
+                    {
+                        CheckForDiscard();
+                        return;
+                    }
                     ChangePlayersTurn();
                     TurnPhase = "Birdsong";
                     turnPhaseImage.Source = new BitmapImage(
                         new Uri("pack://application:,,,/Assets/Birdsong.png", UriKind.RelativeOrAbsolute));
+                    // DISCARD LOGIC
+                    
                 }
             }
             // TODO: CARLOS ADD YOUR CODE HERE
@@ -717,6 +740,15 @@ new (17, 740),  // VP 0
             {
                 cardHand.DisplayHand(Players[CurrentPlayerTurn].Hand);
             }
+        }
+
+        private bool DiscardRequired()
+        {
+            if (Players[CurrentPlayerTurn].Hand.Count > 5)
+            {
+                return true;
+            }
+            return false;
         }
 
         #endregion
@@ -955,6 +987,7 @@ new (17, 740),  // VP 0
             sidePanelGrid.Children.Add(control);
             Grid.SetRow(control, 3);
             SidePanelLoaded = true;
+
 
         }
         public static UserControl? AddControlByName(string character, string turnPhase)

@@ -30,6 +30,7 @@ namespace RootRemake_Project.Components
         private int playerID;
         private bool turmoilOccured = false;
         private string currentAction = "None";
+        private bool moving = false;
 
         private int movingFromLocationID = -1;
 
@@ -60,18 +61,26 @@ namespace RootRemake_Project.Components
             if (ParentWindow != null)
             {
                 ParentWindow.HighlightLocations(new List<int>());
+                MessageBox.Show(currentAction);
             }
+            
             switch (currentAction)
             {
                 case "Recruit":
                     FinalizeRecruit(locationId);
                     break;
                 case "Move":
-                    FinalizeMove(locationId);
+                    if (!moving)
+                    {
+                        FinalizeMove(locationId);
+                        return;
+                    } else
+                    {
+                        FinalizeSecondMove(locationId);
+                        moving = false;
+                    }
                     break;
-                case "MoveTo":
-                    FinalizeSecondMove(locationId);
-                    break;
+
                 case "Attack":
                     FinalizeAttack(locationId);
                     break;
@@ -80,9 +89,10 @@ namespace RootRemake_Project.Components
                     break;
                 default:
                     break;
-                }
-            CheckDecree();
-         }
+            }
+           
+            RefreshDecree();
+        }
 
         private void CheckDecree()
         {
@@ -146,22 +156,26 @@ namespace RootRemake_Project.Components
             var parentWindow = Window.GetWindow(this) as GameScreen;
 
             List<int> Highlightable = new List<int>();
-
-            foreach (Location location in parentWindow.Locations)
+            if (parentWindow != null)
             {
-                // Check if roosts are in the location
-                if (location.Buildings.Any(building => building.BuildingType == "Roost") )
+                foreach (Location location in parentWindow.Locations)
                 {
-                    if (eyrie.recruitDecree.Contains(1))
+                    // Check if roosts are in the location
+                    if (location.Buildings.Any(building => building.BuildingType == "Roost"))
                     {
-                        Highlightable.Add(location.LocationID);
-                    } else if (eyrie.recruitDecree.Any(i => i == location.LocationFaction))
-                    {
-                        Highlightable.Add(location.LocationID);
+                        if (eyrie.recruitDecree.Contains(1))
+                        {
+                            Highlightable.Add(location.LocationID);
+                        }
+                        else if (eyrie.recruitDecree.Any(i => i == location.LocationFaction))
+                        {
+                            Highlightable.Add(location.LocationID);
+                        }
                     }
                 }
+                parentWindow.HighlightLocations(Highlightable);
+
             }
-            parentWindow.HighlightLocations(Highlightable);
         }
         
         
@@ -169,6 +183,7 @@ namespace RootRemake_Project.Components
         private void FinalizeRecruit(int locationID)
         {
             var parentLocation = Window.GetWindow(this) as GameScreen;
+            if (parentLocation == null) return;
             Location location = parentLocation.Locations[locationID];
             parentLocation.AddWarriorToLocation(location.LocationID, 1, playerID);
            
@@ -186,7 +201,6 @@ namespace RootRemake_Project.Components
 
         private void Move()
         {
-            MessageBox.Show("Move");
             var parentWindow = Window.GetWindow(this) as GameScreen;
 
             List<int> Highlightable = new List<int>();
@@ -194,14 +208,18 @@ namespace RootRemake_Project.Components
             foreach (Location location in parentWindow.Locations)
             {
                 // Check if roosts are in the location
-
-                if (eyrie.moveDecree.Contains(1))
+                if (location.Armies.Any(army => army.PlayerID == playerID))
                 {
-                    Highlightable.Add(location.LocationID);
-                } else if (eyrie.moveDecree.Any(i => i == location.LocationFaction))
-                {
-                    Highlightable.Add(location.LocationID);
+                    if (eyrie.moveDecree.Contains(1))
+                    {
+                        Highlightable.Add(location.LocationID);
+                    }
+                    else if (eyrie.moveDecree.Any(i => i == location.LocationFaction))
+                    {
+                        Highlightable.Add(location.LocationID);
+                    }
                 }
+                
                 
             }
             parentWindow.HighlightLocations(Highlightable);
@@ -209,28 +227,22 @@ namespace RootRemake_Project.Components
 
         private void FinalizeMove(int locationID)
         {
-            List<int> Highlightable = new List<int>();
+            movingFromLocationID = locationID;
+            List<int> Highlightables = new List<int>();
             var parentWindow = Window.GetWindow(this) as GameScreen;
             if (parentWindow != null)
             {
                 Location location = parentWindow.Locations[locationID];
 
-                // Adds to 
-                foreach (Location locationCurrent in parentWindow.Locations)
+                foreach (int loc in parentWindow.Locations[locationID].ConnectedLocations)
                 {
-                    // Check if roosts are in the location
-
-                    if (eyrie.recruitDecree.Contains(1))
+                    if (parentWindow.Locations[loc].LocationType != "Forest")
                     {
-                        Highlightable.Add(locationCurrent.LocationID);
+                        Highlightables.Add(loc);
                     }
-                    else if (eyrie.recruitDecree.Any(i => i == location.LocationFaction))
-                    {
-                        Highlightable.Add(location.LocationID);
-                    }
-
                 }
-                parentWindow.HighlightLocations(Highlightable);
+                moving = true;
+                parentWindow.HighlightLocations(Highlightables);
             }
             
         }
@@ -246,6 +258,9 @@ namespace RootRemake_Project.Components
                 {
                     eyrie.moveDecree.Remove(1);
                 }
+
+                parentWindow.AddWarriorToLocation(location.LocationID, 1, playerID);
+                parentWindow.DeductWarrior(movingFromLocationID, playerID, 1);
             }
             
             
@@ -276,6 +291,10 @@ namespace RootRemake_Project.Components
         #endregion
         private void RefreshDecree()
         {
+            attackGrid.Children.Clear();
+            moveGrid.Children.Clear();
+            recruitGrid.Children.Clear();
+            buildGrid.Children.Clear();
             int xShift = 0;
             foreach (int suit in eyrie.attackDecree)
             {

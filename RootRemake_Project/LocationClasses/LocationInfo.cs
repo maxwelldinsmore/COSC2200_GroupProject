@@ -184,7 +184,7 @@ namespace RootRemake_Project.LocationClasses
                         new double[] {764.00, 706.40},
                         new double[] {641.60, 717.60}
                     },
-                    new int[] {7, 10, 17, 18 },
+                    new int[] {6,7, 10, 17, 18 },
                     // Point for warrior location
                     new Point(754.40, 613.60),
                     // Point for building location
