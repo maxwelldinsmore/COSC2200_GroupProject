@@ -793,7 +793,10 @@ namespace RootRemake_Project
             if (Locations[locationID].ContainsArmy(playerID))
             {
                 // If there is already an army in the location, add to it
-                Locations[locationID].Armies[0].WarriorCount += WarriorsAdded;
+                if (Locations[locationID].Armies.Find(a => a.PlayerID == playerID) != null)
+                {
+                    Locations[locationID].Armies.Find(a => a.PlayerID == playerID).WarriorCount += WarriorsAdded;
+                }
                 UpdateWarriorPlacement(locationID);
                 return;
             }
