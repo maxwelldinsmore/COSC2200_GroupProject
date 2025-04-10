@@ -16,18 +16,22 @@
 
 
         <!-- Recruit Section-->
-        <Button x:Name="recruitBtn" Margin="10,130,145,290" Content="Recruit" FontFamily="{StaticResource Luminari}" Click="recruitBtn_Click"/>
+        <Button x:Name="recruitBtn" Margin="10,130,145,290" Content="Recruit" FontFamily="{StaticResource Luminari}" Click="recruitBtn_Click"
+                ToolTip = "Recruit more units" Background="#FF0269C6" FontSize="12" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
         <Grid x:Name="recruitGrid" Margin="10,161,63,252">
         </Grid>
         <!-- Move Section-->
-        <Button x:Name="moveBtn"  Margin="10,199,146,221"  Content="Move" FontFamily="{StaticResource Luminari}" Click="moveBtn_Click"/>
+        <Button x:Name="moveBtn"  Margin="10,199,146,221"  Content="Move" FontFamily="{StaticResource Luminari}" Click="moveBtn_Click"
+                ToolTip = "Moving to a different location" Background="#FF0269C6" FontSize="12" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
         <Grid x:Name="moveGrid" Margin="10,230,62,183" />
 
         <!-- Attack Section-->
-        <Button x:Name="attackBtn" Margin="10,268,146,152" Content="Attack" FontFamily="{StaticResource Luminari}" Click="attackBtn_Click"/>
+        <Button x:Name="attackBtn" Margin="10,268,146,152" Content="Attack" FontFamily="{StaticResource Luminari}" Click="attackBtn_Click"
+                ToolTip = "Attack action" Background="#FF0269C6" FontSize="12" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
         <Grid x:Name="attackGrid" Margin="10,301,63,112" />
         <!-- Build Section-->
-        <Button x:Name="buildBtn" Margin="10,339,145,81" Content="Build" FontFamily="{StaticResource Luminari}" Click="buildBtn_Click"/>
+        <Button x:Name="buildBtn" Margin="10,339,145,81" Content="Build" FontFamily="{StaticResource Luminari}" Click="buildBtn_Click"
+                ToolTip = "Build in an location" Background="#FF0269C6" FontSize="12" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
         <Grid x:Name="buildGrid" Margin="10,381,63,32" />
     </Grid>
 </UserControl>

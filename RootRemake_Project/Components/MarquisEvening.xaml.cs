@@ -44,6 +44,7 @@ namespace RootRemake_Project.Components
             {
                 // get the current player as Marquis de Cat
                 marquis = (MarquisDeCat)parentWindow.Players[parentWindow.CurrentPlayerTurn];
+                EndEveningPhase();
             }
         }
 
@@ -64,16 +65,19 @@ namespace RootRemake_Project.Components
             {
                 int recruiterCount = 6 - marquis.AvailableRecruiters;
                 int cardsToDraw = 1;
-
+                cardText.Text = "1 Card Drawn";
                 // draw 1 extra card if have 3 recruiters
                 // draw 1 more extra card if have 5 recruiters+
                 if (recruiterCount == 3)
                 {
                     cardsToDraw += 1;
+                    cardText.Text = "2 Cards Drawn";
                 } else if (recruiterCount == 5)
                 {
                     cardsToDraw += 2;
+                    cardText.Text = "3 Cards Drawn";
                 }
+
 
                 // draw cards
                 parentWindow.DrawCardsForPlayer(parentWindow.CurrentPlayerTurn, cardsToDraw);

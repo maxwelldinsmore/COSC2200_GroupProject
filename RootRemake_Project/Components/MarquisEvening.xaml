@@ -7,8 +7,7 @@
              mc:Ignorable="d" 
              FontFamily="{StaticResource Luminari}"
              Height="451" Width="253">
-    <Grid>
-        <Button x:Name="EndEveningButton" Content="End Evening Phase" Click="EndEveningButton_Click" HorizontalAlignment="Center" Margin="0,394,0,0" VerticalAlignment="Top" Height="38" Width="140" RenderTransformOrigin="0.48,0.66"/>
-
+    <Grid Margin="0,0,37,0">
+        <TextBlock x:Name="cardText"  Text="Drew X Cards." TextWrapping="Wrap" ToolTip="Cards drawn based on Recruiters" FontSize="25" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="166" Height="111"/>
     </Grid>
 </UserControl>

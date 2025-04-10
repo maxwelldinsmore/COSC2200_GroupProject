@@ -14,7 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ControlzEx.Standard;
 using RootRemake_Project.CharacterClasses;
-
+using RootRemake_Project.ObjectClasses;
+using RootRemake_Project.LocationClasses;
 namespace RootRemake_Project.Components
 {
     /// <summary>
@@ -27,7 +28,12 @@ namespace RootRemake_Project.Components
         private int lastLocationClicked;
         private Eyrie eyrie;
         private int playerID;
-        private bool turmoilOccured;
+        private bool turmoilOccured = false;
+        private string currentAction = "None";
+        private bool moving = false;
+
+        private int movingFromLocationID = -1;
+
         public EyrieDaylight()
         {
             InitializeComponent();
@@ -41,9 +47,9 @@ namespace RootRemake_Project.Components
             var parentWindow = Window.GetWindow(this) as GameScreen;
             if (parentWindow != null)
             {
-                parentWindow.endTurnBtn.IsEnabled = false;
+                //parentWindow.endTurnBtn.IsEnabled = false;
                 playerID = parentWindow.CurrentPlayerTurn;
-
+                parentWindow.LocationClicked += ParentWindow_LocationClicked;
                 eyrie = (Eyrie)parentWindow.Players[playerID];
             }
             RefreshDecree();
@@ -51,7 +57,41 @@ namespace RootRemake_Project.Components
         }
         private void ParentWindow_LocationClicked(object sender, int locationId)
         {
+            var ParentWindow = Window.GetWindow(this) as GameScreen;
+            if (ParentWindow != null)
+            {
+                ParentWindow.HighlightLocations(new List<int>());
+                MessageBox.Show(currentAction);
+            }
+            
+            switch (currentAction)
+            {
+                case "Recruit":
+                    FinalizeRecruit(locationId);
+                    break;
+                case "Move":
+                    if (!moving)
+                    {
+                        FinalizeMove(locationId);
+                        return;
+                    } else
+                    {
+                        FinalizeSecondMove(locationId);
+                        moving = false;
+                    }
+                    break;
 
+                case "Attack":
+                    FinalizeAttack(locationId);
+                    break;
+                case "Build":
+                    FinalizeBuild(locationId);
+                    break;
+                default:
+                    break;
+            }
+           
+            RefreshDecree();
         }
 
         private void CheckDecree()
@@ -70,16 +110,191 @@ namespace RootRemake_Project.Components
 
             // Checks what decrees are left to be made 
 
+            if (eyrie.recruitDecree.Count > 0)
+            {
+                recruitLbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0269C6"));
+                currentAction = "Recruit";
+                Recruit();
+                return;
+            }
+
+            if (eyrie.moveDecree.Count > 0)
+            {
+                moveLbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0269C6"));
+                recruitLbl.Foreground = new SolidColorBrush(Colors.White);
+                currentAction = "Move";
+                Move();
+                return;
+            }
+
             if (eyrie.attackDecree.Count > 0)
             {
+                attackLbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0269C6"));
+                moveLbl.Foreground = new SolidColorBrush(Colors.White);
+                currentAction = "Attack";
                 
+                // TODO: IMPLEMENT ATTACK
+                //Attack();
+                return;
             }
-           
+
+            if (eyrie.buildDecree.Count > 0)
+            {
+                buildLbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0269C6"));
+                attackLbl.Foreground = new SolidColorBrush(Colors.White);
+                currentAction = "Build";
+                Build();
+                return;
+            }
+
 
         }
 
+        #region Recruit Actions
+        private void Recruit()
+        {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+
+            List<int> Highlightable = new List<int>();
+            if (parentWindow != null)
+            {
+                foreach (Location location in parentWindow.Locations)
+                {
+                    // Check if roosts are in the location
+                    if (location.Buildings.Any(building => building.BuildingType == "Roost"))
+                    {
+                        if (eyrie.recruitDecree.Contains(1))
+                        {
+                            Highlightable.Add(location.LocationID);
+                        }
+                        else if (eyrie.recruitDecree.Any(i => i == location.LocationFaction))
+                        {
+                            Highlightable.Add(location.LocationID);
+                        }
+                    }
+                }
+                parentWindow.HighlightLocations(Highlightable);
+
+            }
+        }
+        
+        
+
+        private void FinalizeRecruit(int locationID)
+        {
+            var parentLocation = Window.GetWindow(this) as GameScreen;
+            if (parentLocation == null) return;
+            Location location = parentLocation.Locations[locationID];
+            parentLocation.AddWarriorToLocation(location.LocationID, 1, playerID);
+           
+            // Deletes the action from the decree
+            bool deleted = eyrie.recruitDecree.Remove(location.LocationFaction);
+            if (!deleted)
+            {
+                eyrie.recruitDecree.Remove(1);
+            }
+        }
+
+        #endregion
+
+        #region Move Actions
+
+        private void Move()
+        {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+
+            List<int> Highlightable = new List<int>();
+
+            foreach (Location location in parentWindow.Locations)
+            {
+                // Check if roosts are in the location
+                if (location.Armies.Any(army => army.PlayerID == playerID))
+                {
+                    if (eyrie.moveDecree.Contains(1))
+                    {
+                        Highlightable.Add(location.LocationID);
+                    }
+                    else if (eyrie.moveDecree.Any(i => i == location.LocationFaction))
+                    {
+                        Highlightable.Add(location.LocationID);
+                    }
+                }
+                
+                
+            }
+            parentWindow.HighlightLocations(Highlightable);
+        }
+
+        private void FinalizeMove(int locationID)
+        {
+            movingFromLocationID = locationID;
+            List<int> Highlightables = new List<int>();
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow != null)
+            {
+                Location location = parentWindow.Locations[locationID];
+
+                foreach (int loc in parentWindow.Locations[locationID].ConnectedLocations)
+                {
+                    if (parentWindow.Locations[loc].LocationType != "Forest")
+                    {
+                        Highlightables.Add(loc);
+                    }
+                }
+                moving = true;
+                parentWindow.HighlightLocations(Highlightables);
+            }
+            
+        }
+        private void FinalizeSecondMove(int locationID)
+        {
+            var parentWindow = Window.GetWindow(this) as GameScreen;
+            if (parentWindow != null)
+            {
+                Location location = parentWindow.Locations[locationID];
+                // Deletes the action from the decree
+                bool deleted = eyrie.moveDecree.Remove(parentWindow.Locations[movingFromLocationID].LocationFaction);
+                if (!deleted)
+                {
+                    eyrie.moveDecree.Remove(1);
+                }
+
+                parentWindow.AddWarriorToLocation(location.LocationID, 1, playerID);
+                parentWindow.DeductWarrior(movingFromLocationID, playerID, 1);
+            }
+            
+            
+        }
+        
+        #endregion
+
+        #region Attack Actions
+
+        private void Attack()
+        {
+        }
+
+        private void FinalizeAttack(int locationID)
+        {
+        }
+        #endregion
+
+        #region Build Actions
+        private void Build()
+        {
+        }
+        private void FinalizeBuild(int locationID)
+        {
+
+        }
+
+        #endregion
         private void RefreshDecree()
         {
+            attackGrid.Children.Clear();
+            moveGrid.Children.Clear();
+            recruitGrid.Children.Clear();
+            buildGrid.Children.Clear();
             int xShift = 0;
             foreach (int suit in eyrie.attackDecree)
             {
@@ -99,9 +314,7 @@ namespace RootRemake_Project.Components
                 Image icon = GenerateIcon(suit);
                 icon.Margin = new Thickness(xShift, 0, 0, 0);
                 icon.HorizontalAlignment = HorizontalAlignment.Left;
-
                 moveGrid.Children.Add(icon);
-
                 xShift += 50;
             }
             xShift = 0;
@@ -127,6 +340,7 @@ namespace RootRemake_Project.Components
 
                 xShift += 50;
             }
+            CheckDecree();
 
         }
         //Suit 1 is Wild, Suit 2 is Fox, Suit 3 is Bunny, Suit 4 is Rat.

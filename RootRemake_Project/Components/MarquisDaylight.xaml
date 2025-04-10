@@ -8,17 +8,28 @@
              FontFamily="{StaticResource Luminari}"
              Height="451" Width="253">
     <Grid >
-        <Label x:Name="actionsRemainingLabel" Content="Actions Remaining: X" Margin="10,3,42,411" FontSize="18" RenderTransformOrigin="0.491,0.978"/>
-        <Label x:Name="woodCountLabel" Content="Available Wood: X" Margin="10,40,73,374" FontSize="18" RenderTransformOrigin="0.491,0.978"/>
-        <Button x:Name="attackBtn" Content="Attack" HorizontalAlignment="Left" Margin="10,0,0,311" VerticalAlignment="Bottom" Height="68" Width="101" Click="attackBtn_Click"/>
-        <Button x:Name="recruitBtn" Content="Recruit" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" Height="79" Width="101" Click="recruitBtn_Click"/>
-        <Button x:Name="marchBtn" Content="Move" HorizontalAlignment="Left" Margin="126,68,0,0" VerticalAlignment="Top" Height="68" Width="100" Click="marchBtn_Click"/>
-        <Button x:Name="buildRecruiterBtn" Content="Recruiter" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Height="52" Width="83" Click="buildRecruiterBtn_Click"/>
-        <Label Content="Build" HorizontalAlignment="Left" Margin="12,240,0,0" VerticalAlignment="Top" Width="48" />
-        <Button x:Name="buildWorkshopBtn" Content="Workshop" HorizontalAlignment="Left" Margin="12,346,0,0" VerticalAlignment="Top" Height="52" Width="83" Click="buildWorkShopBtn_Click"/>
-        <Button x:Name="buildSawmillBtn" Content="Sawmill" HorizontalAlignment="Left" Margin="128,346,0,0" VerticalAlignment="Top" Height="52" Width="83" Click="buildSawmillBtn_Click"/>
-        <Button x:Name="overworkBtn" Content="Overwork" HorizontalAlignment="Left" Margin="126,271,0,0" VerticalAlignment="Top" Height="52" Width="85" Click="overworkBtn_Click"/>
-        <Button x:Name="gainActionBtn" Content="Gain Action" HorizontalAlignment="Left" Margin="126,145,0,0" VerticalAlignment="Top" Height="79" Width="100" Click="gainActionBtn_Click" />
+        <Label x:Name="actionsRemainingLabel" Content="Actions Remaining: X" Margin="10,27,42,387" FontSize="18" RenderTransformOrigin="0.491,0.978" Background="#FFC4673C"/>
+        <Label x:Name="woodCountLabel" Content="Available Wood: X" Margin="12,257,71,157" FontSize="18" RenderTransformOrigin="0.491,0.978" Background="#FFC4673C"/>
+        <Button x:Name="attackBtn" Content="Attack" HorizontalAlignment="Left" Margin="12,0,0,311" VerticalAlignment="Bottom" Height="58" Width="99" Click="attackBtn_Click"
+                ToolTip = "Attack Action" Background="#FFC4673C" FontSize="12" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
+        <Button x:Name="recruitBtn" Content="Recruit" HorizontalAlignment="Left" Margin="12,145,0,0" VerticalAlignment="Top" Height="60" Width="98" Click="recruitBtn_Click"
+                ToolTip = "Recruit Troopers" Background="#FFC4673C" FontSize="12" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
+        <Button x:Name="marchBtn" Content="Move" HorizontalAlignment="Left" Margin="128,82,0,0" VerticalAlignment="Top" Height="58" Width="98" Click="marchBtn_Click" 
+                ToolTip = "Move to an different clearing" Background="#FFC4673C" FontSize="12" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
+        <Button x:Name="buildRecruiterBtn" Content="Recruiter" HorizontalAlignment="Left" Margin="12,312,0,0" VerticalAlignment="Top" Height="53" Width="78" Click="buildRecruiterBtn_Click"
+                ToolTip = "Build to an location" Background="#FFC4673C" FontSize="10" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
+        <Label Content="Build" HorizontalAlignment="Left" Margin="12,226,0,0" VerticalAlignment="Top" Width="48" Background="#FFC4673C" />
+        <Button x:Name="buildWorkshopBtn" Content="Workshop" HorizontalAlignment="Left" Margin="11,376,0,0" VerticalAlignment="Top" Height="53" Width="78" Click="buildWorkShopBtn_Click"
+                ToolTip = "Build an workshop" Background="#FFC4673C" FontSize="10" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
+        <Button x:Name="buildSawmillBtn" Content="Sawmill" HorizontalAlignment="Left" Margin="124,312,0,0" VerticalAlignment="Top" Height="53" Width="80" Click="buildSawmillBtn_Click"
+                ToolTip = "Build an sawmill" Background="#FFC4673C" FontSize="11" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
+        <Button x:Name="overworkBtn" Content="Overwork" HorizontalAlignment="Left" Margin="128,145,0,0" VerticalAlignment="Top" Height="60" Width="98" Click="overworkBtn_Click"
+                ToolTip = "Gain one more wood" Background="#FFC4673C" FontSize="11" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
+        <Button x:Name="gainActionBtn" Content="Gain Action" HorizontalAlignment="Left" Margin="128,209,0,0" VerticalAlignment="Top" Height="26" Width="98" Click="gainActionBtn_Click" 
+                ToolTip = "use wild card for one more action" Background="#FFC4673C" FontSize="10" BorderBrush="#FF4A413C" Foreground="#FF29251E" TextBlock.FontFamily="{StaticResource Luminari}"/>
+        <Label Content="00" HorizontalAlignment="Left" Margin="90,321,0,0" VerticalAlignment="Top" Width="29" FontSize="16" Height="31"/>
+        <Label Content="00" HorizontalAlignment="Left" Margin="90,385,0,0" VerticalAlignment="Top" Width="29" FontSize="16" Height="31"/>
+        <Label Content="00" HorizontalAlignment="Left" Margin="207,321,0,0" VerticalAlignment="Top" Width="29" FontSize="16" Height="31"/>
 
     </Grid>
 </UserControl>
