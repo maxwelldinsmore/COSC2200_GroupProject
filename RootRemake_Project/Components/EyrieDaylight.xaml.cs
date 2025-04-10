@@ -399,6 +399,9 @@ namespace RootRemake_Project.Components
             if (parentWindow != null )
             {
                 parentWindow.AddBuildingToLocation(locationID, playerID, "Roost");
+                Eyrie copy = (Eyrie)parentWindow.Players[playerID];
+                copy.AvailableRoosts--;
+                parentWindow.Players[playerID] = copy;
             }
 
         }

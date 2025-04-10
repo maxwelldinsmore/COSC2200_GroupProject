@@ -31,7 +31,7 @@ namespace RootRemake_Project.CharacterClasses
 
             WarriorArt = new Uri("pack://application:,,,/Assets/Eyrie/Warrior.png", UriKind.RelativeOrAbsolute);
 
-            availableBuildings = 6;
+            AvailableRoosts = 6;
             
             attackDecree = new List<int>();
             buildDecree = new List<int>();
