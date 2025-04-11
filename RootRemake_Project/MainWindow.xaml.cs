@@ -162,5 +162,23 @@ namespace RootRemake_Project
                 c4.IsEnabled = true;
             }
         }
+
+        private void YouTubeButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Open the YouTube video in default browser
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "https://www.youtube.com/watch?v=G08TDwBbV7o",
+                    UseShellExecute = true
+                });
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show($"Could not open the video: {ex.Message}", "Error",
+                              MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }
